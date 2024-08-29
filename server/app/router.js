@@ -8,26 +8,18 @@ const router = express.Router();
 
 // Import item-related actions
 const items = require("./controllers/itemActions");
-
-// Route to get a list of items
-router.get("/items", items.browse);
-
-// Route to get a specific item by ID
-router.get("/items/:id", items.read);
-
-// Route to add a new item
-router.post("/items", items.add);
-
-// Import item-related actions
 const users = require("./controllers/UserActions");
 
 // Route to get a list of items
+router.get("/items", items.browse);
 router.get("/users", users.browse);
 
 // Route to get a specific item by ID
+router.get("/items/:id", items.read);
 router.get("/users/:id", users.read);
 
 // Route to add a new item
+router.post("/items", items.add);
 router.post("/users", users.add);
 
 /* ************************************************************************* */
