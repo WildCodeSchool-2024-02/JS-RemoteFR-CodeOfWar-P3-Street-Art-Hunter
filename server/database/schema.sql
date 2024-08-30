@@ -89,17 +89,39 @@ CREATE TABLE style (
     description TEXT
 );
 
+INSERT INTO
+    style (name, description)
+VALUES (
+        'graffiti',
+        'lorem bfgfdsgdshdgqllsjgsdllkqsdl.'
+    ),
+    (
+        'pop art',
+        'lorem bfgfdsgdshdgqllsjgsdllkqsdl.'
+    ),
+    (
+        'abstrait',
+        'lorem bfgfdsgdshdgqllsjgsdllkqsdl.'
+    );
+
 CREATE TABLE city (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(80) NOT NULL
 );
+
+INSERT INTO
+    city (name)
+VALUES ('Paris'),
+    ('Lyon'),
+    ('Marseille'),
+    ('Bordeaux'),
+    ('Toulouse');
 
 CREATE TABLE artwork (
     id int PRIMARY KEY auto_increment NOT NULL,
     title varchar(255) NOT NULL,
     description text,
     location int NOT NULL,
-    city varchar(80) NOT NULL,
     create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     image_url TEXT NOT NULL,
     author VARCHAR(255),
