@@ -1,5 +1,3 @@
-create database streetart
-
 create table user (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   lastName VARCHAR(255),
