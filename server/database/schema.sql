@@ -1,8 +1,6 @@
-create database streetart
-
 create table user (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  lastName VARCHAR(255),
+  lastname VARCHAR(255),
   firstname VARCHAR(255),
   pseudo VARCHAR(255) NOT NULL,
   mail VARCHAR(255) NOT NULL,
@@ -32,23 +30,23 @@ INSERT INTO user(lastname, firstname, pseudo, mail, password, isAdmin, pictures,
 --   name VARCHAR(80) NOT NULL
 -- );
 
--- create table artwork(
---   id int primary key auto_increment not null,
---   title varchar(255) not null,
---   description text,
---   location int not null,
---   city varchar(80) not null,
---   create_date date not null,
---   image_url TEXT not null,
---   author VARCHAR(255),
---   isValidated BOOLEAN not null DEFAULT 0,
---   style_id INT not null,
---   foreign key(style_id) references style(id),
---   city_id INT not null,
---   foreign key(city_id) references city(id),
---   user_id int not null,
---   foreign key(user_id) references user(id)
--- );
+create table artwork(
+  id int primary key auto_increment not null,
+  title varchar(255) not null,
+  description text,
+  location int not null,
+  city varchar(80) not null,
+  create_date date not null DEFAULT (CURRENT_DATE),
+  image_url TEXT not null,
+  author VARCHAR(255),
+  isValidated BOOLEAN not null DEFAULT 0,
+  style_id INT not null,
+  foreign key(style_id) references style(id),
+  city_id INT not null,
+  foreign key(city_id) references city(id),
+  user_id int not null,
+  foreign key(user_id) references user(id)
+);
 
 -- create table favori(
 --   user_id INT NOT NULL,
