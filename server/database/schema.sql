@@ -1,6 +1,6 @@
 create table user (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  lastName VARCHAR(255),
+  lastname VARCHAR(255),
   firstname VARCHAR(255),
   pseudo VARCHAR(255) NOT NULL,
   mail VARCHAR(255) NOT NULL,
