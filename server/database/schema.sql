@@ -19,16 +19,16 @@ INSERT INTO user(lastname, firstname, pseudo, mail, password, isAdmin, pictures,
     ('lopez', 'david', 'lolo', 'lolo@gmail.com', 'Monpassword3', false, null, null),
     ('Rous', 'agathe', 'ag', 'age@gmail.com', 'Monpassword3', false, null, null);
 
--- create table style (
---   id INT PRIMARY KEY AUTO_INCREMENT,
---   name VARCHAR(80) NOT NULL,
---   description TEXT
--- );
+create table style (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(80) NOT NULL,
+  description TEXT
+);
 
--- create table city (
---   id INT AUTO_INCREMENT PRIMARY KEY,
---   name VARCHAR(80) NOT NULL
--- );
+create table city (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80) NOT NULL
+);
 
 create table artwork(
   id int primary key auto_increment not null,
@@ -48,12 +48,12 @@ create table artwork(
   foreign key(user_id) references user(id)
 );
 
--- create table favori(
---   user_id INT NOT NULL,
---   FOREIGN KEY(user_id) REFERENCES user(id),
---   artwork_id INT NOT NULL,
---   FOREIGN KEY(artwork_id) REFERENCES artwork(id)
--- );
+create table favori(
+  user_id INT NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES user(id),
+  artwork_id INT NOT NULL,
+  FOREIGN KEY(artwork_id) REFERENCES artwork(id)
+);
 
 
 
