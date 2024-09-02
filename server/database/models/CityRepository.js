@@ -1,22 +1,14 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class UserRepository extends AbstractRepository {
+class cityRepository extends AbstractRepository {
   constructor() {
-    super({ table: "user" });
+    super({ table: "city" });
   }
 
-  async create(user) {
+  async create(city) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (firstname,lastname, pseudo, mail, password, pictures, avatar) values (?, ?, ?, ?, ?, ?, ?)`,
-      [
-        user.firstname,
-        user.lastname,
-        user.pseudo,
-        user.mail,
-        user.password,
-        user.pictures,
-        user.avatar,
-      ]
+      `insert into ${this.table} (name) values (?)`,
+      [city.name]
     );
 
     return result.insertId;
@@ -38,4 +30,4 @@ class UserRepository extends AbstractRepository {
   }
 }
 
-module.exports = UserRepository;
+module.exports = cityRepository;
