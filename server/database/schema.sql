@@ -92,16 +92,16 @@ CREATE TABLE style (
 INSERT INTO
     style (name, description)
 VALUES (
-        'graffiti',
-        'lorem bfgfdsgdshdgqllsjgsdllkqsdl.'
+        'tag graffiti',
+        'Le tag est en réalité la trace d’un artiste. C’est une manière pour lui de se faire connaître en dessinant son nom à l’aide d’une bombe aérosol, de marqueurs ou encore d’autocollants (stickers)'
     ),
     (
-        'pop art',
-        'lorem bfgfdsgdshdgqllsjgsdllkqsdl.'
+        'Le Wildstyle',
+        'Ce style de graffiti représente un ensemble de lettres entremêlées entre elles'
     ),
     (
-        'abstrait',
-        'lorem bfgfdsgdshdgqllsjgsdllkqsdl.'
+        'pochoir',
+        'Le pochoir consiste à préparer un patron troué de formes nettes par lesquelles on va pouvoir venir appliquer de la peinture ou passer le spray d’une bombe aérosol.'
     );
 
 CREATE TABLE city (
@@ -132,11 +132,4 @@ CREATE TABLE artwork (
     FOREIGN KEY (city_id) REFERENCES city (id),
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
-);
-
-CREATE TABLE favori (
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (id),
-    artwork_id INT NOT NULL,
-    FOREIGN KEY (artwork_id) REFERENCES artwork (id)
 );
