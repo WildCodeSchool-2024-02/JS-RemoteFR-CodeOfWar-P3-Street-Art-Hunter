@@ -40,11 +40,18 @@ router.post("/favorites", favorites.add);
 
 // Route to update a new item
 router.put("/users/:id", users.edit);
+router.put("/artworks/:id", artworks.edit);
 router.put("/cities/:id", cities.edit);
+// router.put("/styles/:id", styles.edit);
+// router.put("/favorites/:id", favorites.edit);
 
 // Route to delete a new item
 router.delete("/users/:id", users.destroy);
+router.delete("/artworks/:id", artworks.destroy);
 router.delete("/cities/:id", cities.destroy);
+// router.delete("/styles/:id", styles.destroy);
+// router.delete("/favorites/:id", favorites.destroy);
+
 /* ************************************************************************* */
 
 module.exports = router;

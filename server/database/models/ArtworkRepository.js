@@ -38,6 +38,33 @@ class ArtworkRepository extends AbstractRepository {
 
     return rows;
   }
+
+  async update(artwork) {
+    const [result] = await this.database.query(
+      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
+      [
+        artwork.title,
+        artwork.description,
+        artwork.lat,
+        artwork.lon,
+        artwork.image_url,
+        artwork.author,
+        artwork.style_id,
+        artwork.city_id,
+        artwork.user_id,
+        artwork.id,
+      ]
+    );
+    return result.affectedRows;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
+    return result.affectedRows;
+  }
 }
 
 module.exports = ArtworkRepository;
