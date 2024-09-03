@@ -36,10 +36,28 @@ const add = async (req, res, next) => {
   }
 };
 
+const edit = async (req, res, next) => {
+  const style = { ...req.body, id: req.params.id };
+  try {
+    await tables.style.update(style);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+const destroy = async (req, res, next) => {
+  try {
+    await tables.style.delete(req.params.id);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   add,
-  // destroy,
+  destroy,
 };

@@ -28,6 +28,22 @@ class StyleRepository extends AbstractRepository {
 
     return rows;
   }
+
+  async update(style) {
+    const [result] = await this.database.query(
+      `update ${this.table} set name = ?, description = ? where id = ?`,
+      [style.name, style.description, style.id]
+    );
+    return result.affectedRows;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
+    return result.affectedRows;
+  }
 }
 
 module.exports = StyleRepository;
