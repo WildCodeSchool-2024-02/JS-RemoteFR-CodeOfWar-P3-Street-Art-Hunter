@@ -29,8 +29,8 @@ const add = async (req, res, next) => {
 
   try {
     const insertId = await tables.artwork.create(artwork);
-
     res.status(201).json({ insertId });
+    console.info('New artwork !')
   } catch (err) {
     next(err);
   }

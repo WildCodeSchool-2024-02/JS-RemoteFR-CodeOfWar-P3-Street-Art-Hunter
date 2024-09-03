@@ -29,8 +29,8 @@ const add = async (req, res, next) => {
 
   try {
     const insertId = await tables.user.create(user);
-
     res.status(201).json({ insertId });
+    console.info("New User !")
   } catch (err) {
     next(err);
   }

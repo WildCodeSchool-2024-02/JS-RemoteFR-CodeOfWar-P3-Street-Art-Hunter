@@ -7,14 +7,14 @@ class ArtworkRepository extends AbstractRepository {
 
   async create(artwork) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, description, location, image_url, author, isValidated, style_id, city_id, user_id) values (?, ?, ?, ?, ?, ?,?, ?, ?)`,
+      `insert into ${this.table} (title, description, lat, lon, image_url, author, style_id, city_id, user_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         artwork.title,
         artwork.description,
-        artwork.location,
+        artwork.lat,
+        artwork.lon,
         artwork.image_url,
         artwork.author,
-        artwork.isValidated,
         artwork.style_id,
         artwork.city_id,
         artwork.user_id,
