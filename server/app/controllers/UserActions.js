@@ -41,6 +41,7 @@ const edit = async (req, res, next) => {
   try {
     await tables.user.update(user);
     res.sendStatus(204);
+    console.info("User edited!!");
   } catch (error) {
     next(error);
   }
@@ -49,6 +50,7 @@ const destroy = async (req, res, next) => {
   try {
     await tables.user.delete(req.params.id);
     res.sendStatus(204);
+    console.info("User deleted!!");
   } catch (error) {
     next(error);
   }
