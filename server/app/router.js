@@ -38,6 +38,11 @@ router.post("/cities", cities.add);
 router.post("/styles", styles.add);
 router.post("/favorites", favorites.add);
 
+// Route to update a new item
+router.put("/users/:id", users.edit);
+
+// Route to delete a new item
+router.delete("/users/:id", users.destroy);
 /* ************************************************************************* */
 
 module.exports = router;
