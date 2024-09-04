@@ -10,7 +10,8 @@ import Home from "./pages/Home";
 import Help from "./pages/Help";
 import Gallery from "./pages/Gallery";
 import Camera from "./pages/Camera";
-// import Profile from "./pages/Profile"
+// import Profile from "./pages/Profile";
+// import Ranking from "./pages/Ranking";
 
 const router = createBrowserRouter([
   {
@@ -23,21 +24,25 @@ const router = createBrowserRouter([
         loader: getMap,
       },
       {
-        path: "/Help",
+        path: "/help",
         element: <Help />,
       },
       {
-        path: "/Gallery",
+        path: "/gallery",
         element: <Gallery />,
       },
       {
-        path: "/Camera",
+        path: "/camera",
         element: <Camera />,
       },
       /*
       {
-        path: "/Profile",
+        path: "/profile",
         element: <Profile />,
+      },
+            {
+        path: "/profile/ranking",
+        element: <Ranking />,
       },
       */
     ],
