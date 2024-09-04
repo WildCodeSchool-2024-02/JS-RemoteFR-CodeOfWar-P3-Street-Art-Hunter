@@ -1,11 +1,14 @@
 .navBar {
+  height: 12%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   position: absolute;
   bottom: 0;
+  z-index: 3;
+  background-color: #fff;
 }
 
 .nav_description {
@@ -15,16 +18,14 @@
 .nav_picto_large {
   background-color: white;
   border-radius: 50%;
-  border: px solid #fff;
+  border: 1px solid #fff;
   cursor: pointer;
   position: relative;
-  bottom: 70px;
-  z-index: 2000;
+  bottom: 40px;
 }
 
 .nav_picto {
   cursor: pointer;
-  margin-top: -5rem;
 }
 
 .navBar > .nav_picto > a {

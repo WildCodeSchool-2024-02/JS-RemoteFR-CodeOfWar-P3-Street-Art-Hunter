@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "../styles/styleGradientButton.css";
 
@@ -11,6 +11,6 @@ export default function GradientButton({ text, onClick }) {
 }
 
 GradientButton.propTypes = {
-    text: PropTypes.string.isRequired,      
-    onClick: PropTypes.func.isRequired,     
-  };
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
