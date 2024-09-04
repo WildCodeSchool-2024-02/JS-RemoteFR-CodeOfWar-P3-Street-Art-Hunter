@@ -36,5 +36,21 @@ const add = async (req, res, next) => {
   }
 };
 
-
-module.exports = { browse,  read,  add };
+const edit = async (req, res, next) => {
+  const favorite = { ...req.body, id: req.params.id };
+  try {
+    await tables.favorite.update(favorite);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+const destroy = async (req, res, next) => {
+  try {
+    await tables.favorite.delete(req.params.id);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports = { browse, read, edit, add, destroy };

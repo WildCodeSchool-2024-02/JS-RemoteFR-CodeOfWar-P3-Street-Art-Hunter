@@ -36,6 +36,31 @@ class UserRepository extends AbstractRepository {
 
     return rows;
   }
+
+  async update(user) {
+    const [result] = await this.database.query(
+      `update ${this.table} set firstname = ?, lastname = ?, pseudo = ?, mail =?, password = ?, pictures = ?, avatar = ? where id = ?`,
+      [
+        user.firstname,
+        user.lastname,
+        user.pseudo,
+        user.mail,
+        user.password,
+        user.pictures,
+        user.avatar,
+        user.id,
+      ]
+    );
+    return result.affectedRows;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
+    return result.affectedRows;
+  }
 }
 
 module.exports = UserRepository;

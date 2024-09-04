@@ -31,15 +31,36 @@ const add = async (req, res, next) => {
     const insertId = await tables.city.create(city);
 
     res.status(201).json({ insertId });
+    console.info("New city!!");
   } catch (err) {
     next(err);
+  }
+};
+
+const edit = async (req, res, next) => {
+  const city = { ...req.body, id: req.params.id };
+  try {
+    await tables.city.update(city);
+    res.sendStatus(204);
+    console.info("City edited!!!");
+  } catch (error) {
+    next(error);
+  }
+};
+const destroy = async (req, res, next) => {
+  try {
+    await tables.city.delete(req.params.id);
+    res.sendStatus(204);
+    console.info("City deleted!!");
+  } catch (error) {
+    next(error);
   }
 };
 
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   add,
-  // destroy,
+  destroy,
 };

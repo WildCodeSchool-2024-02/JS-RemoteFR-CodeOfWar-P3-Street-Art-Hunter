@@ -31,15 +31,36 @@ const add = async (req, res, next) => {
     const insertId = await tables.style.create(style);
 
     res.status(201).json({ insertId });
+    console.info("New style!!");
   } catch (err) {
     next(err);
+  }
+};
+
+const edit = async (req, res, next) => {
+  const style = { ...req.body, id: req.params.id };
+  try {
+    await tables.style.update(style);
+    res.sendStatus(204);
+    console.info("Style edited!!");
+  } catch (error) {
+    next(error);
+  }
+};
+const destroy = async (req, res, next) => {
+  try {
+    await tables.style.delete(req.params.id);
+    res.sendStatus(204);
+    console.info("Style deleted!!");
+  } catch (error) {
+    next(error);
   }
 };
 
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   add,
-  // destroy,
+  destroy,
 };
