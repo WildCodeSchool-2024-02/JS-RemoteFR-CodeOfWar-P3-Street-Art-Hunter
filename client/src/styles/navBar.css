@@ -1,0 +1,28 @@
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.nav_description {
+  color: #c5c5c5;
+}
+
+.nav_picto_large {
+  background-color: white;
+  border-radius: 50%;
+  border: px solid #fff;
+  cursor: pointer;
+  position: relative;
+  bottom: 70px;
+  z-index: 2000;
+}
+
+.nav_picto {
+  cursor: pointer;
+  margin-top: -5rem;
+}
