@@ -23,8 +23,8 @@ export default function Home() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {data?.map((artwork) => (
-          <Marker key={artwork.id} position={[artwork.lat, artwork.lon]}>
+        {data?.map((artwork, i) => (
+          <Marker key={artwork.id || i} position={[artwork.lat, artwork.lon]}>
             <Popup>
               {artwork.title},{artwork.description}
             </Popup>

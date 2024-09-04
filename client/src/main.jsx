@@ -16,7 +16,6 @@ import Camera from "./pages/Camera";
 const router = createBrowserRouter([
   {
     element: <App />,
-    id: "app",
     children: [
       {
         path: "/",
