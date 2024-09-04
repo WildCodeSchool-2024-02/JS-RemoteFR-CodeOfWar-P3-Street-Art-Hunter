@@ -23,11 +23,3 @@
   --title-font: "Gochi Hand", sans-serif;
   --main-font: "Futura PT Medium", sans-serif;
 }
-
-h1 {
-  font-family: var(--title-font);
-}
-p {
-  font-family: var(--main-font-light);
-  font-weight: lighter;
-}
