@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
+
+@font-face {
+  font-family: "Futura PT Medium";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local("Futura PT Medium"),
+    url("FuturaCyrillicMedium.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+:root {
+  --primary-gradient: linear-gradient(90deg, #ff0d5a, #ff743e);
+  --black: #0f0f0f;
+  --grey: #c5c5c5;
+  --white: #f0f0f0;
+  --title-font: "Gochi Hand", sans-serif;
+  --main-font: "Futura PT Medium", sans-serif;
+}
+
+h1 {
+  font-family: var(--title-font);
+}
+p {
+  font-family: var(--main-font-light);
+  font-weight: lighter;
+}
