@@ -12,13 +12,13 @@ export default function NavBar() {
   return (
     <nav className="navBar">
       <div className="nav_picto">
-        <Link to="/Help">
+        <Link to="/help">
           <img src={Help} alt="Help" />
           <span className="nav_description">Help</span>
         </Link>
       </div>
       <div className="nav_picto">
-        <Link to="/Gallery">
+        <Link to="/gallery">
           <img src={Gallery} alt="Gallery" />
           <span className="nav_description">Gallery</span>
         </Link>
@@ -29,13 +29,13 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="nav_picto">
-        <Link to="/Camera">
+        <Link to="/camera">
           <img src={Camera} alt="Camera" />
           <span className="nav_description">Camera</span>
         </Link>
       </div>
       <div className="nav_picto">
-        <Link to="/Profile">
+        <Link to="/profile">
           <img src={Profil} alt="Profile" />
           <span className="nav_description">Profile</span>
         </Link>
