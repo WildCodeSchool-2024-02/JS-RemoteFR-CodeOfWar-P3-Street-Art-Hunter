@@ -5,7 +5,6 @@ import GradientButton from "./GradientButton";
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
-  console.info(artwork);
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
