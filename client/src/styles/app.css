@@ -27,7 +27,12 @@
 .headline {
   font-size: 2rem;
   font-weight: bold;
-  background: -webkit-linear-gradient(110deg, #ff0d5a 0%, #ff743e 100%);
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
