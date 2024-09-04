@@ -30,6 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery />,
+        loader: getMap,
       },
       {
         path: "/camera",

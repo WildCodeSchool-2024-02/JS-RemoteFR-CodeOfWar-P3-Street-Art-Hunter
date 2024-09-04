@@ -1,0 +1,27 @@
+.header-gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+h1 {
+  font-family: var(--title-font);
+  font-size: 2rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(110deg, #ff743e 0%, #ff0d5a 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grid {
+  display: flex;
+}
+.grid-item {
+  width: 200px;
+}
+.grid-item--width2 {
+  width: 400px;
+}
+.galleryNavbar {
+  overflow: hidden;
+}

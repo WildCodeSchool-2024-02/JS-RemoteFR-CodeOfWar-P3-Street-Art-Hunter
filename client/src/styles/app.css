@@ -16,7 +16,7 @@
 }
 
 :root {
-  --primary-gradient: linear-gradient(90deg, #ff0d5a, #ff743e);
+  --primary-gradient: linear-gradient(-90deg, #ff0d5a, #ff743e);
   --black: #0f0f0f;
   --grey: #c5c5c5;
   --white: #f0f0f0;
@@ -24,10 +24,10 @@
   --main-font: "Futura PT Medium", sans-serif;
 }
 
-h1 {
-  font-family: var(--title-font);
-}
-p {
-  font-family: var(--main-font-light);
-  font-weight: lighter;
+.headline {
+  font-size: 2rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(110deg, #ff0d5a 0%, #ff743e 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
