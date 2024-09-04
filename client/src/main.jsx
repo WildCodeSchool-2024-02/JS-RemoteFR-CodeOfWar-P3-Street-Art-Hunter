@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import getMap from "./services/request";
+
 import App from "./App";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
@@ -13,10 +15,12 @@ import Camera from "./pages/Camera";
 const router = createBrowserRouter([
   {
     element: <App />,
+    id: "app",
     children: [
       {
         path: "/",
         element: <Home />,
+        loader: getMap,
       },
       {
         path: "/Help",

@@ -1,8 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-import { useState, useEffect } from "react";
-
-import myAxios from "../services/instanceAxios";
+import { useLoaderData } from "react-router-dom";
 
 import "leaflet/dist/leaflet.css";
 import "../styles/map.css";
@@ -10,14 +8,7 @@ import "../styles/map.css";
 export default function Home() {
   const position = [48.8566, 2.3522];
 
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    myAxios
-      .get("/artworks")
-      .then((response) => setData(response.data))
-      .catch((error) => console.info(error));
-  }, [data]);
+  const data = useLoaderData();
 
   return (
     <section className="homePage_Map">
