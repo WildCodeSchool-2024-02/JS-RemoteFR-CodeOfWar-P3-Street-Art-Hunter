@@ -315,17 +315,3 @@ VALUES (
         8,
         4
     );
-INSERT INTO artwork (title, description, lat, lon, image_url, author, style_id, city_id, user_id) VALUES
-('Le Baiser de l\'Hôtel de Ville', 'Sculpture en bronze située sur la place de l\'Hôtel de Ville.', 48.8566, 2.3522, 'https://example.com/images/baiser_hotel_de_ville.jpg', 'Robert Doisneau', 1, 1, 1),
-('La Pyramide du Louvre', 'Œuvre d\'art moderne en verre au Musée du Louvre.', 48.8606, 2.3376, 'https://example.com/images/pyramide_louvre.jpg', 'Ieoh Ming Pei', 2, 1, 2),
-('Le Mur des Je t\'aime', 'Mur de carreaux bleus avec les mots "Je t\'aime" en plusieurs langues.', 48.8867, 2.3431, 'https://example.com/images/mur_je_taime.jpg', 'Frédéric Baron', 3, 1, 3),
-('Les Colonnes de Buren', 'Colonnes rayées en noir et blanc au Palais Royal.', 48.8653, 2.3400, 'https://example.com/images/colonnes_buren.jpg', 'Daniel Buren', 2, 1, 2),
-('Le Pont des Arts', 'Pont couvert de cadenas par les amoureux sur la Seine.', 48.8594, 2.3376, 'https://example.com/images/pont_des_arts.jpg', 'Anonymous', 2, 1, 2);
-
-
-INSERT INTO artwork (title, description, lat, lon, image_url, author, style_id, city_id, user_id) VALUES
-('Le Baiser de l\'Hôtel de Ville', 'Sculpture en bronze située sur la place de l\'Hôtel de Ville.', 48.8566, 2.3522, 'https://example.com/images/baiser_hotel_de_ville.jpg', 'Robert Doisneau', 1, 1, 1),
-('La Pyramide du Louvre', 'Œuvre d\'art moderne en verre au Musée du Louvre.', 48.8606, 2.3376, 'https://example.com/images/pyramide_louvre.jpg', 'Ieoh Ming Pei', 2, 1, 2),
-('Le Mur des Je t\'aime', 'Mur de carreaux bleus avec les mots "Je t\'aime" en plusieurs langues.', 48.8867, 2.3431, 'https://example.com/images/mur_je_taime.jpg', 'Frédéric Baron', 3, 1, 3),
-('Les Colonnes de Buren', 'Colonnes rayées en noir et blanc au Palais Royal.', 48.8653, 2.3400, 'https://example.com/images/colonnes_buren.jpg', 'Daniel Buren', 2, 1, 2),
-('Le Pont des Arts', 'Pont couvert de cadenas par les amoureux sur la Seine.', 48.8594, 2.3376, 'https://example.com/images/pont_des_arts.jpg', 'Anonymous', 2, 1, 2);
