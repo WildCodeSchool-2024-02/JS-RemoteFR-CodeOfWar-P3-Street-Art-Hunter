@@ -26,3 +26,7 @@
   cursor: pointer;
   margin-top: -5rem;
 }
+
+.navBar > .nav_picto > a {
+  text-decoration: none;
+}
