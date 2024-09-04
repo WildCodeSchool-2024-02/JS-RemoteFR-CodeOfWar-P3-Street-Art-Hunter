@@ -141,23 +141,23 @@ CREATE TABLE city (
 
 INSERT INTO
     city (name)
-VALUES ('New York'),
-    ('Tokyo'),
-    ('Paris'),
-    ('London'),
-    ('Shanghai'),
-    ('Moscow'),
-    ('Berlin'),
-    ('Sydney'),
-    ('Dubai'),
-    ('São Paulo');
+VALUES ('Paris'),
+    ('Lyon'),
+    ('Bordeaux'),
+    ('Saint Etienne'),
+    ('Nice'),
+    ('Marseille'),
+    ('Angouleme'),
+    ('Strasbourg'),
+    ('Montpellier'),
+    ('Toulouse');
 
 CREATE TABLE artwork (
     id int PRIMARY KEY auto_increment NOT NULL,
     title varchar(255) NOT NULL,
     description text,
-    lat int NOT NULL,
-    lon int NOT NULL,
+    lat DOUBLE NOT NULL,
+    lon DOUBLE NOT NULL,
     create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     image_url TEXT NOT NULL,
     author VARCHAR(255),
