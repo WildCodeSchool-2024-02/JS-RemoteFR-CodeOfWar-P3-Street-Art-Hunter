@@ -1,12 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
-
-    console.info(artwork)
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
@@ -35,15 +33,15 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
 }
 
 ArtworkDetails.propTypes = {
-    artwork: PropTypes.shape({
-        id: PropTypes.number.isRequired,             
-        title: PropTypes.string.isRequired,          
-        description: PropTypes.string.isRequired,    
-        lat: PropTypes.number.isRequired,            
-        lon: PropTypes.number.isRequired,      
-        author: PropTypes.string.isRequired,    
-        create_date: PropTypes.string.isRequired, 
-        image_url: PropTypes.string.isRequired
-    }).isRequired,
-    setArtworkDetails: PropTypes.func.isRequired, 
+  artwork: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    lat: PropTypes.number.isRequired,
+    lon: PropTypes.number.isRequired,
+    author: PropTypes.string.isRequired,
+    create_date: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
+  }).isRequired,
+  setArtworkDetails: PropTypes.func.isRequired,
 };

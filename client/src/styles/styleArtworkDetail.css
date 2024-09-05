@@ -3,7 +3,7 @@
   height: 100%;
   width: 100%;
   top: 0;
-  z-index: 2;
+  z-index: 4;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   display: flex;
@@ -26,7 +26,7 @@
 .textDetailsContainer {
   height: 65%;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
