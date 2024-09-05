@@ -1,0 +1,53 @@
+.picture_update {
+  background-color: white;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
+
+.form_camera {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+}
+
+.form_container_picture {
+  width: auto;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.picture_camera {
+  width: 100%;
+  height: auto;
+}
+
+.picture_upload {
+  all: unset;
+}
+
+label {
+  font-size: 0.7rem;
+  color: #aeaeae;
+  font-weight: 700;
+  position: relative;
+  top: 0.4rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #ffffff;
+  width: fit-content;
+}
+
+.form_camera > input,
+.form_camera > textarea,
+.form_camera > select {
+  padding: 11px 10px;
+  border: 1px #aeaeae solid;
+  border-radius: 4px;
+  color: #666666;
+  font-weight: bolder;
+}
+
+.form_camera > textarea {
+  margin-bottom: 2rem;
+}
