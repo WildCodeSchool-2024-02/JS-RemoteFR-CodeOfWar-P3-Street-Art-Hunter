@@ -1,0 +1,37 @@
+.detailsContaineur {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.detailsContain {
+  height: 70%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 24px 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailsImg {
+  height: 35%;
+  border-radius: 24px 24px 0 0;
+}
+.textDetailsContainer {
+  height: 65%;
+  width: 100%;
+  padding: 1rem 1rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.textDetails > p:first-child {
+  margin-bottom: 0.3rem;
+}
