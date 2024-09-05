@@ -6,12 +6,14 @@
   background: linear-gradient(-90deg, #ff0d5a, #ff743e);
   cursor: pointer;
 }
+
 #textButton {
   text-align: center;
   font-weight: 700;
   color: #fff;
   margin: 0;
 }
+
 .leaflet-popup-content p {
   margin: 0;
 }

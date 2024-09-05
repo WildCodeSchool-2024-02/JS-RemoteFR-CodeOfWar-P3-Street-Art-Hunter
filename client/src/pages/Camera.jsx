@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import myAxios from "../services/instanceAxios";
+import { sendArtwork } from "../services/request";
 
 import GradientButton from "../components/GradientButton";
 
@@ -17,21 +17,18 @@ export default function Camera() {
     title: "",
     description: "",
     picture: "",
-    latitude: "",
-    longitude: "",
+    lat: "",
+    lon: "",
     author: "",
     style: "",
   });
 
-  const sendArtwork = () => {
-    myAxios
-      .post("/artworks", artworkProperties)
-      .then((response) => console.info(response))
-      .catch((error) => console.info(error));
-  };
-
   const handleChangeProperties = (event) => {
-    setArtworkProperties(event.target.value);
+    const { name, value } = event.target;
+    setArtworkProperties((previousAdd) => ({
+      ...previousAdd,
+      [name]: value,
+    }));
   };
 
   const datePicture = new Date().toLocaleDateString("fr-FR", {
@@ -54,15 +51,19 @@ export default function Camera() {
           name="picture"
           className="picture_upload"
           accept="image/png, image/jpeg"
+          value={artworkProperties.picture}
           onChange={handleChangeProperties}
         />
         <label htmlFor="picture_date">Date</label>
         <input type="text" value={datePicture} readOnly />
         <label htmlFor="picture_style">Type*</label>
-        <select className="dropdown_Style">
-          <option value="" name="style" onChange={handleChangeProperties}>
-            Selectionner un type
-          </option>
+        <select
+          className="dropdown_Style"
+          name="style"
+          value={artworkProperties.style}
+          onChange={handleChangeProperties}
+        >
+          <option value="">Selectionner un type</option>
           {data?.map((style) => (
             <option key={style.id} value={style.id}>
               {style.name}
@@ -70,15 +71,33 @@ export default function Camera() {
           ))}
         </select>
         <label htmlFor="picture_title">Titre*</label>
-        <input type="text" name="title" onChange={handleChangeProperties} />
+        <input
+          type="text"
+          name="title"
+          value={artworkProperties.title}
+          onChange={handleChangeProperties}
+        />
         <label htmlFor="picture_author">Auteur</label>
-        <input type="text" name="author" onChange={handleChangeProperties} />
+        <input
+          type="text"
+          name="author"
+          value={artworkProperties.author}
+          onChange={handleChangeProperties}
+        />
         <label htmlFor="picture_location">Lieu*</label>
-        <input type="text" onChange={handleChangeProperties} />
+        <input
+          type="text"
+          value={artworkProperties.lat}
+          onChange={handleChangeProperties}
+        />
         <label htmlFor="picture_description">Description</label>
-        <textarea rows="5" onChange={handleChangeProperties} />
+        <textarea
+          rows="5"
+          value={artworkProperties.description}
+          onChange={handleChangeProperties}
+        />
         <GradientButton
-          text="Add an artwork"
+          text="Ajouter une œuvre"
           type="submit"
           onClick={sendArtwork}
         />

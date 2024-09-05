@@ -3,15 +3,17 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { getMap, getCamera } from "./services/request";
+import { getMap, getUserbyId, getCamera } from "./services/request";
 
 import App from "./App";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import Gallery from "./pages/Gallery";
 import Camera from "./pages/Camera";
-// import Profile from "./pages/Profile";
+import Profile from "./pages/Profile";
 // import Ranking from "./pages/Ranking";
+
+import "./styles/app.css";
 
 const router = createBrowserRouter([
   {
@@ -35,11 +37,13 @@ const router = createBrowserRouter([
         element: <Camera />,
         loader: getCamera,
       },
-      /*
+
       {
-        path: "/profile",
+        path: "/profile/:id",
         element: <Profile />,
+        loader: ({ params }) => getUserbyId(params.id),
       },
+      /*
             {
         path: "/profile/ranking",
         element: <Ranking />,
