@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import getMap from "./services/request";
+import { getMap, getGallery } from "./services/request";
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "/gallery/:id",
         element: <GalleryDetails />,
-        loader: ({ params }) => getMap(params.id),
+        loader: ({ params }) => getGallery(params.id),
       },
       {
         path: "/camera",

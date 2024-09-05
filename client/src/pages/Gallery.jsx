@@ -11,9 +11,10 @@ export default function Gallery() {
   return (
     <section className="gallery">
       <section className="header-gallery">
-        <h1>Gallery</h1>
+        <h1>Galerie</h1>
         <label>
-          <input type="image" src={Filter} alt="Filtre" value="Filtre" /> Filtre
+          <input type="image" src={Filter} alt="Filtre" value="Filtres" />{" "}
+          Filtres
         </label>
       </section>
       <section className="body-gallery">
