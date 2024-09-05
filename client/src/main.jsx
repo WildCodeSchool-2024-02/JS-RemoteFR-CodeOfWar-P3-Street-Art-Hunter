@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "/gallery/:id",
         element: <GalleryDetails />,
-        loader: getMap,
+        loader: ({ params }) => getMap(params.id),
       },
       {
         path: "/camera",

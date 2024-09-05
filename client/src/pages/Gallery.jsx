@@ -9,7 +9,7 @@ export default function Gallery() {
 
   console.info(gallery);
   return (
-    <>
+    <section className="gallery">
       <section className="header-gallery">
         <h1>Gallery</h1>
         <label>
@@ -30,6 +30,6 @@ export default function Gallery() {
       <div className="galleryNavbar">
         <NavBar />
       </div>
-    </>
+    </section>
   );
 }
