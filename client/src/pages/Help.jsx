@@ -16,6 +16,12 @@ export default function Help() {
   const helpComponents = { Règles, Licence, Contact };
   const Component = helpComponents[isActive];
 
+  const handleClickActive = (help) => {
+    if(help.name.length > 0){
+    setIsActive(help.name)
+    }
+  }
+
   return (
     <section className="helpContainer">
       <div className="helpHeader">
@@ -26,7 +32,7 @@ export default function Help() {
               key={help.name}
               type="button"
               className={help.name === isActive ? "helpers active" : " helpers"}
-              onClick={help.name.length > 0 && (() => setIsActive(help.name))}
+              onClick={() => handleClickActive(help)}
             >
               <p>{help.name}</p>
             </button>
