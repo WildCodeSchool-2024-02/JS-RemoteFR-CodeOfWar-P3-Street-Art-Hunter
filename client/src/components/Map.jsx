@@ -1,10 +1,12 @@
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
-
 import { useLoaderData } from "react-router-dom";
+
+import PropTypes from "prop-types";
 
 import "leaflet/dist/leaflet.css";
 
-export default function Map() {
+export default function Map({ setArtworkDetails }) {
+
   const data = useLoaderData();
 
   const position = [48.8566, 2.3522];
@@ -21,8 +23,16 @@ export default function Map() {
       />
 
       {data?.map((artwork) => (
-        <Marker key={artwork.id} position={[artwork.lat, artwork.lon]} />
+        <Marker
+          key={artwork.id}
+          position={[artwork.lat, artwork.lon]}
+          eventHandlers={{ click: () => setArtworkDetails(artwork) }}
+        />
       ))}
     </MapContainer>
   );
+};
+
+Map.propTypes = {
+    setArtworkDetails: PropTypes.func.isRequired,
 }
