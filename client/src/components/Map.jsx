@@ -5,9 +5,8 @@ import { useLoaderData } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 
 export default function Map() {
-
   const data = useLoaderData();
-  
+
   const position = [48.8566, 2.3522];
 
   return (
@@ -22,10 +21,7 @@ export default function Map() {
       />
 
       {data?.map((artwork) => (
-        <Marker
-          key={artwork.id}
-          position={[artwork.lat, artwork.lon]}
-        />
+        <Marker key={artwork.id} position={[artwork.lat, artwork.lon]} />
       ))}
     </MapContainer>
   );

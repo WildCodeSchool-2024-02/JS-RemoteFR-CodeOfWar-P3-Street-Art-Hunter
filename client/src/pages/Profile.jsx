@@ -1,49 +1,23 @@
-// import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-// import PropTypes from "prop-types";
+import ProfileForm from "../components/ProfileForm";
+import "../styles/profile.css";
 
 export default function Profile() {
   const user = useLoaderData();
-  // const [editUser, setEditUser] = useState(user);
-
-  // const editField = (e) => {
-  //   setEditUser({ ...editUser, [e.target.id]: e.target.value });
-  // };
+  console.info(user);
   return (
-    <div>
-      <section>
+    <div className="profilePage">
+      <div className="profiltitle">
         <h2>Profil</h2>
-        <img src={user.avatar} alt={user.pseudo} />
+      </div>
+      <section className="profilContainer">
+        <img src={user.avatar} alt={user.pseudo} className="avatar" />
         <h2>{user.pseudo}</h2>
+        <p>{user.mail}</p>
       </section>
-      <section>
-        <div>
-          <div>
-            <h6>Adresse email</h6>
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nO3VPQoCMRBA4XcYsbPbwloQC1tLL7GVpVOt3ssj2OsJFCvbyEICIfizRWbCYh6kCuRjEtiF2shrgTtwBhorVAAXrQcwt0ZjvCkBO3/tlMBvGpAMwNvcaDj4mOztor29FhrWu8lFG/00uQnqtHAZgJq8qatoruRvrnfl/6e/0Kwfh9C2BNq3LIH2TS3RWXLwBFgAG+CpOenhy1RrFLtavWPaCbgAnb/22vh7AQEMocoBCJ3cAAAAAElFTkSuQmCC"
-              alt="crayon pour modifier"
-            />
-          </div>
-          <p>{user.email}</p>
-        </div>
-        <div>
-          <h6>Mot de passe</h6>
-          <p>{user.password}</p>
-        </div>
-        <div>
-          <h6>Ville</h6>
-          <p>{user.city}</p>
-        </div>
-        <div>
-          <h6>Pseudo</h6>
-          <p>{user.pseudo}</p>
-        </div>
-        <div>
-          <h6>Avatar</h6>
-          <p>upload</p>
-        </div>
-      </section>
+      <div className="profilFormcontainer">
+        <ProfileForm userDetail={user} />
+      </div>
     </div>
   );
 }
