@@ -23,3 +23,13 @@
   --title-font: "Gochi Hand", sans-serif;
   --main-font: "Futura PT Medium", sans-serif;
 }
+
+h1 {
+  font-family: var(--title-font);
+  font-size: 40px;
+  font-weight: bold;
+  padding: 1rem;
+  background: -webkit-linear-gradient(-90deg, #ff0d5a, #ff743e);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

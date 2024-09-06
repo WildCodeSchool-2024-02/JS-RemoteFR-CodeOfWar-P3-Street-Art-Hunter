@@ -1,26 +1,45 @@
-.picture_update {
-  background-color: white;
-  border-radius: 50%;
-  border: 10px solid #fff;
-}
-
 .form_camera {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10rem;
   padding: 0.5rem;
+  height: 80vh;
+  overflow: scroll;
 }
 
 .form_container_picture {
   width: auto;
-  height: 400px;
-  overflow: hidden;
+  min-height: 400px;
+  background-color: rgb(220, 220, 220);
   border-radius: 0px 0px 40px 40px;
+}
+
+.form_file_upload {
+  display: flex;
+  justify-content: center;
+  margin-top: 170px;
+}
+
+.form_file_input {
+  display: none;
+}
+
+.form_custom_file_label {
+  display: inline-block;
+  border: 1px #ff743e solid;
+  color: #ff743e;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .picture_camera {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px 0px 40px 40px;
 }
 
 .picture_upload {
@@ -51,4 +70,5 @@ label {
 
 .form_camera > textarea {
   margin-bottom: 2rem;
+  min-height: 150px;
 }

@@ -22,6 +22,7 @@ export function getCamera() {
 }
 
 export function sendArtwork(artworkProperties) {
+  console.info("test:", artworkProperties);
   return myAxios
     .post("/artworks", artworkProperties)
     .then((response) => console.info(response))

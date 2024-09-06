@@ -3,11 +3,9 @@ import { useState } from "react";
 
 import { sendArtwork } from "../services/request";
 
-import GradientButton from "../components/GradientButton";
+import myAxios from "../services/instanceAxios";
 
-// import defaultPicture from "../assets/images/camera_illustration_default.svg";
-import defaultPicture2 from "../assets/images/camera_illustration_default2.jpg";
-import updatePicture from "../assets/images/camera_changePicture.svg";
+import GradientButton from "../components/GradientButton";
 
 import "../styles/styleGradientButton.css";
 import "../styles/camera.css";
@@ -16,11 +14,13 @@ export default function Camera() {
   const [artworkProperties, setArtworkProperties] = useState({
     title: "",
     description: "",
-    picture: "",
-    lat: "",
-    lon: "",
+    image_url: `${myAxios}/assets/images/test.jpg`,
+    lat: 48.8466,
+    lon: 2.3122,
     author: "",
-    style: "",
+    style_id: 0,
+    city_id: 1,
+    user_id: 1,
   });
 
   const handleChangeProperties = (event) => {
@@ -43,24 +43,29 @@ export default function Camera() {
     <section>
       <form action="" method="post" className="form_camera">
         <div className="form_container_picture">
-          <img src={defaultPicture2} alt="artwork" className="picture_camera" />
-          <img src={updatePicture} alt="update" className="picture_update" />
+          <div className="form_file_upload">
+            <label htmlFor="form_file_input" className="form_custom_file_label">
+              + Ajouter une photo
+            </label>
+            <input
+              type="file"
+              id="form_file_input"
+              className="form_file_input"
+              accept="image/png, image/jpeg"
+              value={artworkProperties.picture}
+              onChange={handleChangeProperties}
+            />
+          </div>
         </div>
-        <input
-          type="file"
-          name="picture"
-          className="picture_upload"
-          accept="image/png, image/jpeg"
-          value={artworkProperties.picture}
-          onChange={handleChangeProperties}
-        />
+
+        <h1>Post</h1>
         <label htmlFor="picture_date">Date</label>
         <input type="text" value={datePicture} readOnly />
         <label htmlFor="picture_style">Type*</label>
         <select
           className="dropdown_Style"
-          name="style"
-          value={artworkProperties.style}
+          name="style_id"
+          value={artworkProperties.style_id}
           onChange={handleChangeProperties}
         >
           <option value="">Selectionner un type</option>
@@ -93,13 +98,15 @@ export default function Camera() {
         <label htmlFor="picture_description">Description</label>
         <textarea
           rows="5"
+          name="description"
           value={artworkProperties.description}
           onChange={handleChangeProperties}
         />
+
         <GradientButton
           text="Ajouter une œuvre"
           type="submit"
-          onClick={sendArtwork}
+          onClick={() => sendArtwork(artworkProperties)}
         />
       </form>
     </section>
