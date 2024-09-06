@@ -17,6 +17,7 @@
 
 :root {
   --primary-gradient: linear-gradient(90deg, #ff0d5a, #ff743e);
+  --primary-color: #ff0d5a;
   --black: #0f0f0f;
   --grey: #c5c5c5;
   --white: #f0f0f0;
