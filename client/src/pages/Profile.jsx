@@ -1,11 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 import ProfileForm from "../components/ProfileForm";
+
 import "../styles/profile.css";
 import Trophy from "../assets/images/profil_trophy.svg";
 
 export default function Profile() {
   const user = useLoaderData();
-  console.info(user);
   return (
     <div className="profilePage">
       <div className="profileContainer">

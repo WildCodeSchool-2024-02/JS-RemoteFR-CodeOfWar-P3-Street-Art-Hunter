@@ -1,143 +1,252 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { updateUser } from "../services/request";
+
+import "../styles/profile.css";
 import Pen from "../assets/images/profil_pen.svg";
-import Check from "../assets/images/check.svg";
+import Valid from "../assets/images/profil_valid.svg";
 
 export default function ProfileForm({ userDetail }) {
   const [editField, setEditField] = useState(null);
-  const { lastname, firstname, pseudo, mail, password, avatar, id } =
-    userDetail;
   const [formData, setFormData] = useState({
-    lastname,
-    firstname,
-    pseudo,
-    mail,
-    password,
-    avatar,
-    id,
+    lastname: userDetail.lastname,
+    firstname: userDetail.firstname,
+    pseudo: userDetail.pseudo,
+    mail: userDetail.mail,
+    password: userDetail.password,
+    avatar: userDetail.avatar,
+    id: userDetail.id,
   });
-
-  const fields = [
-    {
-      name: "lastname",
-      label: "Nom",
-      type: "text",
-      placeholder: "Nom",
-      id: "lastname",
-    },
-    {
-      name: "firstname",
-      label: "Prénom",
-      type: "text",
-      placeholder: "Prénom",
-      id: "firstname",
-    },
-    {
-      name: "pseudo",
-      label: "Pseudo",
-      type: "text",
-      placeholder: "Pseudo",
-      id: "pseudo",
-    },
-    {
-      name: "mail",
-      label: "Email",
-      type: "email",
-      placeholder: "Email",
-      id: "mail",
-    },
-    {
-      name: "password",
-      label: "Mot de passe",
-      type: "password",
-      placeholder: "Mot de passe",
-      id: "password",
-    },
-    {
-      name: "avatar",
-      label: "Avatar",
-      type: "file",
-      placeholder: "upload",
-      id: "avatar",
-    },
-  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleEdit = (field) => {
     setEditField(field);
   };
 
-  const handleSave = async (field) => {
+  const handleSave = async () => {
     const userData = {
-      ...formData,
-      [field]: formData[field],
+      lastname: formData.lastname,
+      firstname: formData.firstname,
+      pseudo: formData.pseudo,
+      mail: formData.mail,
+      password: formData.password,
+      avatar: formData.avatar,
+      id: formData.id,
     };
-    const response = await updateUser(formData.id, userData);
-    console.info("profil modifié", response);
+    await updateUser(userDetail.id, userData);
     setEditField(null);
   };
 
   return (
-    <div>
-      <section>
-        <div className="profilFormField">
-          {fields.map((field) => (
-            <div key={field.name} className="profileField">
-              <label htmlFor={field.name}>{field.label}</label>
-              {editField === field.name ? (
-                <div className="valid">
-                  <input
-                    type={field.type}
-                    id={field.name}
-                    name={field.name}
-                    placeholder={field.label}
-                    value={formData[field.name]}
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => handleSave(field.name)}
-                  >
-                    <img src={Check} alt="valider" />
-                  </button>
-                </div>
-              ) : (
-                <div className="edit">
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => handleEdit(field.name)}
-                  >
-                    <img src={Pen} alt="crayon pour modifier" />
-                  </button>
-                  <p>{formData[field.name]}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
+    <section>
+      <div className="profileField">
+        <label htmlFor="lastname">Nom</label>
+        {editField === "lastname" ? (
+          <div className="valid">
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              value={formData.lastname}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleSave("lastname")}
+            >
+              <img src={Valid} alt="valider" />
+            </button>
+          </div>
+        ) : (
+          <div className="edit">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleEdit("lastname")}
+            >
+              <img src={Pen} alt="modifier" />
+            </button>
+            <p>{formData.lastname}</p>
+          </div>
+        )}
+      </div>
+      <div className="profileField">
+        <label htmlFor="firstname">Prénom</label>
+        {editField === "firstname" ? (
+          <div className="valid">
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              value={formData.firstname}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleSave("firstname")}
+            >
+              <img src={Valid} alt="valider" />
+            </button>
+          </div>
+        ) : (
+          <div className="edit">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleEdit("firstname")}
+            >
+              <img src={Pen} alt="modifier" />
+            </button>
+            <p>{formData.firstname}</p>
+          </div>
+        )}
+      </div>
+      <div className="profileField">
+        <label htmlFor="pseudo">Pseudo</label>
+        {editField === "pseudo" ? (
+          <div className="valid">
+            <input
+              type="text"
+              id="pseudo"
+              name="pseudo"
+              value={formData.pseudo}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleSave("pseudo")}
+            >
+              <img src={Valid} alt="valider" />
+            </button>
+          </div>
+        ) : (
+          <div className="edit">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleEdit("pseudo")}
+            >
+              <img src={Pen} alt="modifier" />
+            </button>
+            <p>{formData.pseudo}</p>
+          </div>
+        )}
+      </div>
+      <div className="profileField">
+        <label htmlFor="mail">Email</label>
+        {editField === "mail" ? (
+          <div className="valid">
+            <input
+              type="email"
+              id="mail"
+              name="mail"
+              value={formData.mail}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleSave("mail")}
+            >
+              <img src={Valid} alt="valider" />
+            </button>
+          </div>
+        ) : (
+          <div className="edit">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleEdit("mail")}
+            >
+              <img src={Pen} alt="modifier" />
+            </button>
+            <p>{formData.mail}</p>
+          </div>
+        )}
+      </div>
+      <div className="profileField">
+        <label htmlFor="password">Mot de passe</label>
+        {editField === "password" ? (
+          <div className="valid">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleSave("password")}
+            >
+              <img src={Valid} alt="valider" />
+            </button>
+          </div>
+        ) : (
+          <div className="edit">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleEdit("password")}
+            >
+              <img src={Pen} alt="modifier" />
+            </button>
+            <p>{formData.password}</p>
+          </div>
+        )}
+      </div>
+      <div className="profileField">
+        <label htmlFor="avatar">Avatar</label>
+        {editField === "avatar" ? (
+          <div className="valid">
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              value={formData.avatar}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleSave("avatar")}
+            >
+              <img src={Valid} alt="valider" />
+            </button>
+          </div>
+        ) : (
+          <div className="edit">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => handleEdit("avatar")}
+            >
+              <img src={Pen} alt="modifier" />
+            </button>
+            <p>{formData.avatar}</p>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
 ProfileForm.propTypes = {
   userDetail: PropTypes.shape({
-    lastname: PropTypes.string,
-    firstname: PropTypes.string,
-    pseudo: PropTypes.string,
-    mail: PropTypes.string,
-    password: PropTypes.string,
-    avatar: PropTypes.string,
-    id: PropTypes.number,
+    lastname: PropTypes.string.isRequired,
+    firstname: PropTypes.string.isRequired,
+    pseudo: PropTypes.string.isRequired,
+    mail: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
