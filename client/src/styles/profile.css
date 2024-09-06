@@ -1,0 +1,120 @@
+.profilePage {
+  font-family: var(--main-font);
+}
+
+.profileContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  max-height: calc(33800 / 926 * 100%);
+  border-radius: 0px 0px 40px 40px;
+}
+
+.grid-item {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  text-align: left;
+  font-family: var(--title-font);
+  font-size: 32px;
+  margin: 16px 0 0 16px;
+}
+
+.profilSection {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.profilAvatar {
+  width: 5rem;
+  height: 5rem;
+  margin-top: 32px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.profileContainer h2 {
+  font-family: var(--title-font);
+}
+
+.profilEmail {
+  font-size: 1rem;
+}
+
+.profilClassement {
+  height: 4rem;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 16px;
+  display: flex;
+  color: var(--primary-gradient);
+  margin-bottom: 64px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profilClassement {
+  color: #ff0d5a;
+  font-size: 1rem;
+}
+
+.profilClassement div {
+  background-color: rgb(255, 13, 90, 0.1);
+  width: 36px;
+  height: 22px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilClassement div p {
+  color: #ff0d5a;
+}
+
+.profilFormcontainer {
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  max-height: calc(58800 / 926 * 100%);
+  color: var(--font-profile);
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.profileField {
+  display: flex;
+  flex-direction: column;
+  height: 58px;
+  gap: 0.5rem;
+  border-bottom: 0.5px solid #555555;
+  margin: 8px 0 0 0;
+}
+.profileField label {
+  font-size: 10px;
+}
+
+.profileField .edit {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: white;
+  border: none;
+}
+
+.profileField .valid {
+  font-size: 14px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+}

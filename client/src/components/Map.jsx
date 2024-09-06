@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import "leaflet/dist/leaflet.css";
 
 export default function Map({ setArtworkDetails }) {
-
   const data = useLoaderData();
 
   const position = [48.8566, 2.3522];
@@ -31,8 +30,8 @@ export default function Map({ setArtworkDetails }) {
       ))}
     </MapContainer>
   );
-};
+}
 
 Map.propTypes = {
-    setArtworkDetails: PropTypes.func.isRequired,
-}
+  setArtworkDetails: PropTypes.func.isRequired,
+};
