@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { updateUser } from "../services/request";
-import fields from "../services/dataProfile";
 import Pen from "../assets/images/profil_pen.svg";
 import Check from "../assets/images/check.svg";
 
@@ -18,6 +17,51 @@ export default function ProfileForm({ userDetail }) {
     avatar,
     id,
   });
+
+  const fields = [
+    {
+      name: "lastname",
+      label: "Nom",
+      type: "text",
+      placeholder: "Nom",
+      id: "lastname",
+    },
+    {
+      name: "firstname",
+      label: "Prénom",
+      type: "text",
+      placeholder: "Prénom",
+      id: "firstname",
+    },
+    {
+      name: "pseudo",
+      label: "Pseudo",
+      type: "text",
+      placeholder: "Pseudo",
+      id: "pseudo",
+    },
+    {
+      name: "mail",
+      label: "Email",
+      type: "email",
+      placeholder: "Email",
+      id: "mail",
+    },
+    {
+      name: "password",
+      label: "Mot de passe",
+      type: "password",
+      placeholder: "Mot de passe",
+      id: "password",
+    },
+    {
+      name: "avatar",
+      label: "Avatar",
+      type: "file",
+      placeholder: "upload",
+      id: "avatar",
+    },
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
