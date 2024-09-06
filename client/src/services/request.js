@@ -13,6 +13,13 @@ export function getUserbyId(id) {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
+
+export function getStyle() {
+  return myAxios
+    .get("/styles")
+    .then((response) => response.data)
+    .catch((error) => console.info(error));
+}
 export function getGallery(id) {
   return myAxios
     .get(`/artworks/${id}`)

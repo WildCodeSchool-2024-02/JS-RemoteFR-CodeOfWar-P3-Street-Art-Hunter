@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import getMap, { getUserbyId, getGallery } from "./services/request";
+import { getMap, getUserbyId, getGallery, getStyle } from "./services/request";
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -33,7 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery />,
-        loader: getMap,
+        loader: async () => ({
+          artworkList: await getMap(),
+          styleArtwork: await getStyle(),
+        }),
       },
       {
         path: "/gallery/:id",

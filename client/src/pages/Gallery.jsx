@@ -1,4 +1,5 @@
 import { useLoaderData, Link } from "react-router-dom";
+import Masonry from "react-masonry-css";
 import { useState } from "react";
 import NavBar from "../components/NavBar";
 
@@ -6,22 +7,23 @@ import "../styles/gallery.css";
 // import Filter from "../assets/images/gallery_filter.svg";
 
 export default function Gallery() {
-  const data = useLoaderData();
-  console.info(data);
-  // const [selection, setSelection] = useState([]);
+  const { artworkList, styleArtwork } = useLoaderData();
 
-  // const handleChangeSelection = (event) => {
-  //   setSelection(event.target.value);
-  // };
-  const [currentFilter, setCurrentFilter] = useState("");
-  const getFilter = (event) => setCurrentFilter(event.target.value);
+  const data = artworkList;
+  const styles = styleArtwork;
 
-  // const filteredArtwork = data.filter((style) =>
-  //   selection === "" ? style : style.style === selection
-  // );
+  const [styleFilter, setStyleFilter] = useState("");
+  const handleChangeFilter = (event) => setStyleFilter(event.target.value);
+  console.info(handleChangeFilter);
 
-  /* <input type="image" src={Filter} alt="Filtre" value="Filtres" />{" "}
-    Filtres */
+  console.info(styleFilter);
+
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 3,
+    500: 2,
+  };
 
   return (
     <section className="gallery">
@@ -29,32 +31,34 @@ export default function Gallery() {
         <h1>Galerie</h1>
         <label>
           {" "}
-          <select onChange={getFilter} id="artwork-select">
+          <select onChange={handleChangeFilter} id="artwork-select">
             <option value="Filtre">Filtres</option>
-            {data?.map((style) => (
-              <option key={style.id} value={style.style}>
-                {style.style}
+            {styles.map((style) => (
+              <option key={style.id} value={style.name}>
+                {style.name}
               </option>
             ))}
           </select>
         </label>
       </section>
       <section className="body-gallery">
-        <div className="grid">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
           {data
             .filter((artwork) =>
-              currentFilter
-                ? artwork.style === currentFilter
-                : artwork.image_url
+              styleFilter ? artwork.style === styleFilter : artwork
             )
             .map((artwork) => (
-              <div className="grid-item" key={artwork.id}>
+              <div key={artwork.style}>
                 <Link to={`/gallery/${artwork.id}`}>
                   <img src={artwork.image_url} alt={artwork.title} />
                 </Link>
               </div>
             ))}
-        </div>
+        </Masonry>
       </section>
       <div className="galleryNavbar">
         <NavBar />

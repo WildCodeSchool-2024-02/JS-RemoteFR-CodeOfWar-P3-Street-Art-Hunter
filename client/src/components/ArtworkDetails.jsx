@@ -4,6 +4,18 @@ import GradientButton from "./GradientButton";
 
 import "../styles/styleArtworkDetail.css";
 
+function frenchDate(date) {
+  const event = new Date(date);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return date
+    ? event.toLocaleDateString("fr-FR", options)
+    : " Pas d'information";
+}
+
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
   return (
     <section className="detailsContaineur">
@@ -19,7 +31,7 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
             <p>{artwork.author}</p>
           </div>
           <div className="textDetails">
-            <p>📅 {artwork.create_date}</p>
+            <p>📅 {frenchDate(artwork.create_date)}</p>
             <p>
               📍 {artwork.lat}, {artwork.lon}
             </p>
