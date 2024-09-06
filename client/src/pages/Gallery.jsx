@@ -14,9 +14,6 @@ export default function Gallery() {
 
   const [styleFilter, setStyleFilter] = useState("");
   const handleChangeFilter = (event) => setStyleFilter(event.target.value);
-  console.info(handleChangeFilter);
-
-  console.info(styleFilter);
 
   const breakpointColumnsObj = {
     default: 4,

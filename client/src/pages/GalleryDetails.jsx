@@ -1,11 +1,9 @@
 import { useLoaderData } from "react-router-dom";
-
 import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
   console.info(artwork);
-
   function frenchDate(date) {
     const event = new Date(date);
     const options = {
@@ -29,11 +27,23 @@ export default function GalleryDetails() {
         />
 
         <ul>
-          <li>Auteur : {artwork.author}</li>
-          <li>Description : {artwork.description}</li>
-          <li>Date de création : {frenchDate(artwork.create_date)}</li>
-          <li>Style : {artwork.style}</li>
-          <li>Ville : {artwork.city}</li>
+          <li>
+            <span className="title-font">Auteur </span>: {artwork.author}
+          </li>
+          <li>
+            <span className="title-font">Description </span>:{" "}
+            {artwork.description}
+          </li>
+          <li>
+            <span className="title-font">Date de création </span>: :{" "}
+            {frenchDate(artwork.create_date)}
+          </li>
+          <li>
+            <span className="title-font">Style </span>: {artwork.style}
+          </li>
+          <li>
+            <span className="title-font">Ville </span>: {artwork.city}
+          </li>
         </ul>
       </div>
     </section>

@@ -39,12 +39,7 @@ where ${this.table}.id = ?`,
   }
 
   async readAll() {
-    const [rows] = await this.database
-      .query(`SELECT artwork.id, artwork.title, artwork.description, artwork.lat, artwork.lon, artwork.create_date, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, city.name as city, user.pseudo as pseudo
-FROM ${this.table}
-INNER JOIN style ON style.id= artwork.style_id
-INNER JOIN city ON city_id = artwork.city_id
-INNER JOIN user ON user.id = artwork.user_id;`);
+    const [rows] = await this.database.query(`select * from ${this.table}`);
 
     return rows;
   }
