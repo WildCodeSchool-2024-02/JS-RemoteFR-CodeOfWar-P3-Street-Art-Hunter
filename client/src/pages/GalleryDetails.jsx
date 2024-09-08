@@ -35,7 +35,7 @@ export default function GalleryDetails() {
             {artwork.description}
           </li>
           <li>
-            <span className="title-font">Date de création </span>: :{" "}
+            <span className="title-font">Date de création </span> :{" "}
             {frenchDate(artwork.create_date)}
           </li>
           <li>
