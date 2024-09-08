@@ -3,7 +3,7 @@ import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
-  console.info(artwork);
+
   function frenchDate(date) {
     const event = new Date(date);
     const options = {

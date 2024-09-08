@@ -15,7 +15,6 @@ export default function Gallery() {
 
   const [styleFilter, setStyleFilter] = useState("");
   const handleChangeFilter = (event) => setStyleFilter(event.target.value);
-  console.info(artworkList);
 
   const breakpointColumnsObj = {
     default: 4,
@@ -45,7 +44,7 @@ export default function Gallery() {
         </label>
       </section>
       <section className="body-gallery">
-        {data.length < 0 ? (
+        {data.length === 0 ? (
           <div className="nothing">
             <img src={nothingNow} alt="Pas d'artwork" />
             <p>Aucune oeuvre pour le moment</p>
@@ -61,7 +60,7 @@ export default function Gallery() {
                 styleFilter ? artwork.style === styleFilter : artwork
               )
               .map((artwork) => (
-                <div key={artwork.style}>
+                <div key={artwork.id}>
                   <Link to={`/gallery/${artwork.id}`}>
                     <img src={artwork.image_url} alt={artwork.title} />
                   </Link>
