@@ -70,9 +70,7 @@ export default function Gallery() {
           </Masonry>
         )}
       </section>
-      <div className="galleryNavbar">
-        <NavBar />
-      </div>
+      <NavBar />
     </section>
   );
 }
