@@ -5,7 +5,6 @@ import NavBar from "../components/NavBar";
 import nothingNow from "../assets/images/nothingNow.svg";
 
 import "../styles/gallery.css";
-// import Filter from "../assets/images/gallery_filter.svg";
 
 export default function Gallery() {
   const { artworkList, styleArtwork } = useLoaderData();
@@ -44,7 +43,7 @@ export default function Gallery() {
         </label>
       </section>
       <section className="body-gallery">
-        {data.length === 0 ? (
+        {data.length === 10 ? (
           <div className="nothing">
             <img src={nothingNow} alt="Pas d'artwork" />
             <p>Aucune oeuvre pour le moment</p>
