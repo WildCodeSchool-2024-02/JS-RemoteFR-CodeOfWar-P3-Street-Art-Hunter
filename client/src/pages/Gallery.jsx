@@ -43,7 +43,7 @@ export default function Gallery() {
         </label>
       </section>
       <section className="body-gallery">
-        {data.length === 10 ? (
+        {data.length === 0 ? (
           <div className="nothing">
             <img src={nothingNow} alt="Pas d'artwork" />
             <p>Aucune oeuvre pour le moment</p>
