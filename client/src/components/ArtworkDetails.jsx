@@ -29,7 +29,6 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
           <div className="textDetails">
             <p>{artwork.title}</p>
             <p>{artwork.author}</p>
-            <p>{artwork.style}</p>
           </div>
           <div className="textDetails">
             <p>📅 {frenchDate(artwork.create_date)}</p>
