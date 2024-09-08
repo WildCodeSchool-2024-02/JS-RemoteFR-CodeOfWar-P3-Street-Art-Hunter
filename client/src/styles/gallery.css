@@ -72,11 +72,6 @@
 }
 .nothing img {
   width: auto;
-  height: auto;
-  border-radius: 6px;
-  text-align: center;
-  align-items: center;
-  object-position: 50% 50%;
 }
 .nothing p {
   margin-top: -4rem;
