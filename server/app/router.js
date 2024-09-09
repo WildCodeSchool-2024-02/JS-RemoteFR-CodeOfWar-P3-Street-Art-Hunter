@@ -14,6 +14,7 @@ const cities = require("./controllers/CityActions");
 const styles = require("./controllers/StyleActions");
 const favorites = require("./controllers/FavoriteActions");
 const auth = require("./services/auth");
+const authActions = require("./controllers/authActions");
 
 // Route to get a list of items
 router.get("/items", items.browse);
@@ -38,6 +39,7 @@ router.post("/artworks", artworks.add);
 router.post("/cities", cities.add);
 router.post("/styles", styles.add);
 router.post("/favorites", favorites.add);
+router.post("/login", authActions.login);
 
 // Route to update a new item
 router.put("/users/:id", users.edit);
