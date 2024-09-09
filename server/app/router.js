@@ -13,6 +13,7 @@ const artworks = require("./controllers/ArtworkActions");
 const cities = require("./controllers/CityActions");
 const styles = require("./controllers/StyleActions");
 const favorites = require("./controllers/FavoriteActions");
+const auth = require("./services/auth");
 
 // Route to get a list of items
 router.get("/items", items.browse);
@@ -32,7 +33,7 @@ router.get("/favorites/:id", favorites.read);
 
 // Route to add a new item
 router.post("/items", items.add);
-router.post("/users", users.add);
+router.post("/users", auth.hashPassword, users.add);
 router.post("/artworks", artworks.add);
 router.post("/cities", cities.add);
 router.post("/styles", styles.add);
