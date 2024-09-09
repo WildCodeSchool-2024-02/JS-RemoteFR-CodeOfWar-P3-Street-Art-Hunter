@@ -13,3 +13,10 @@ export function getUserbyId(id) {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
+
+export function updateUser(id, userData) {
+  return myAxios
+    .put(`/users/${id}`, userData)
+    .then((response) => response.data)
+    .catch((error) => console.info(error));
+}
