@@ -14,6 +14,7 @@ export function getUserbyId(id) {
     .catch((error) => console.info(error));
 }
 
+
 export function getCamera() {
   return myAxios
     .get("/styles")
@@ -28,3 +29,11 @@ export function sendArtwork(artworkProperties) {
     .then((response) => console.info(response))
     .catch((error) => console.info(error));
 }
+
+export function updateUser(id, userData) {
+  return myAxios
+    .put(`/users/${id}`, userData)
+    .then((response) => response.data)
+    .catch((error) => console.info(error));
+}
+
