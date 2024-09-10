@@ -9,7 +9,6 @@ CREATE TABLE user (
     password VARCHAR(255) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
     registration_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    pictures TEXT,
     avatar VARCHAR(255) DEFAULT 'https://picsum.photos/id/237/200/300'
 );
 
@@ -21,7 +20,6 @@ INSERT INTO
         mail,
         password,
         isAdmin,
-        pictures,
         avatar
     )
 VALUES (
@@ -31,7 +29,6 @@ VALUES (
         'alex@gmail.com',
         'Monpassword',
         TRUE,
-        NULL,
         DEFAULT
     ),
     (
@@ -41,7 +38,6 @@ VALUES (
         'cha@gmail.com',
         'Monpassword1',
         TRUE,
-        NULL,
         DEFAULT
     ),
     (
@@ -51,7 +47,6 @@ VALUES (
         'rosa@gmail.com',
         'Monpassword2',
         TRUE,
-        NULL,
         DEFAULT
     ),
     (
@@ -61,7 +56,6 @@ VALUES (
         'davido@gmail.com',
         'Monpassword3',
         TRUE,
-        NULL,
         DEFAULT
     ),
     (
@@ -71,7 +65,6 @@ VALUES (
         'lolo@gmail.com',
         'Monpassword3',
         FALSE,
-        NULL,
         DEFAULT
     ),
     (
@@ -81,7 +74,6 @@ VALUES (
         'age@gmail.com',
         'Monpassword3',
         FALSE,
-        NULL,
         DEFAULT
     );
 
@@ -170,21 +162,31 @@ CREATE TABLE artwork (
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
-INSERT INTO artwork 
-(title, description, lat, lon, image_url, author, isValidated, style_id, city_id, user_id) 
+INSERT INTO
+    artwork (
+        title,
+        description,
+        lat,
+        lon,
+        image_url,
+        author,
+        isValidated,
+        style_id,
+        city_id,
+        user_id
+    )
 VALUES (
-    'le loup binational', 
-    'Le Finlandais Jussi TwoSeven a représenté la décomposition du mouvement d’un loup en pleine course (rappelant le travail du photographe Eadweard Muybridge sur l’étude du mouvement au XIXe siècle). Mi-canidé, mi-Tour Eiffel, l’artiste combine à la fois le symbole de Paris et celui de son pays, la Finlande, et un élément de la ville et de la nature pour créer une œuvre on ne peut plus poétique.', 
-    41.2,
-    10, 
-    'https://www.connaissancedesarts.com/wp-content/thumbnails/uploads/2022/07/cda2022_jussi_two_seven_street_art_tunnel_paris_tuileries_2-tt-width-620-height-399-fill-0-crop-0-bgcolor-eeeeee.jpg', 
-    'Jussi TwoSeven', 
-    1, 
-    3, 
-    1, 
-    2
-)
-;
+        'le loup binational',
+        'Le Finlandais Jussi TwoSeven a représenté la décomposition du mouvement d’un loup en pleine course (rappelant le travail du photographe Eadweard Muybridge sur l’étude du mouvement au XIXe siècle). Mi-canidé, mi-Tour Eiffel, l’artiste combine à la fois le symbole de Paris et celui de son pays, la Finlande, et un élément de la ville et de la nature pour créer une œuvre on ne peut plus poétique.',
+        41.2,
+        10,
+        'https://www.connaissancedesarts.com/wp-content/thumbnails/uploads/2022/07/cda2022_jussi_two_seven_street_art_tunnel_paris_tuileries_2-tt-width-620-height-399-fill-0-crop-0-bgcolor-eeeeee.jpg',
+        'Jussi TwoSeven',
+        1,
+        3,
+        1,
+        2
+    );
 
 CREATE TABLE favorite (
     user_id INT NOT NULL,
@@ -192,7 +194,6 @@ CREATE TABLE favorite (
     artwork_id INT NOT NULL,
     FOREIGN KEY (artwork_id) REFERENCES artwork (id)
 );
-
 
 INSERT INTO
     artwork (
