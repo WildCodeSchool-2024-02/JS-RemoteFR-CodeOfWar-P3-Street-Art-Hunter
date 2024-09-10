@@ -8,7 +8,7 @@ import Valid from "../assets/images/profil_valid.svg";
 
 export default function ProfileForm({ userDetail }) {
   const [editField, setEditField] = useState(null);
-  const [formData, setFormData] = useState({
+  const [formDetail, setFormDetail] = useState({
     lastname: userDetail.lastname,
     firstname: userDetail.firstname,
     pseudo: userDetail.pseudo,
@@ -17,10 +17,16 @@ export default function ProfileForm({ userDetail }) {
     avatar: userDetail.avatar,
     id: userDetail.id,
   });
+  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === "avatar") {
+      setFile(e.target.files[0]);
+      setFormDetail({ ...formDetail, [name]: e.target.files[0].name });
+    } else {
+      setFormDetail({ ...formDetail, [name]: value });
+    }
   };
 
   const handleEdit = (field) => {
@@ -28,15 +34,10 @@ export default function ProfileForm({ userDetail }) {
   };
 
   const handleSave = async () => {
-    const userData = {
-      lastname: formData.lastname,
-      firstname: formData.firstname,
-      pseudo: formData.pseudo,
-      mail: formData.mail,
-      password: formData.password,
-      avatar: formData.avatar,
-      id: formData.id,
-    };
+    const userData = { ...formDetail };
+    if (file) {
+      userData.avatar = file;
+    }
     await updateUser(userDetail.id, userData);
     setEditField(null);
   };
@@ -51,7 +52,7 @@ export default function ProfileForm({ userDetail }) {
               type="text"
               id="lastname"
               name="lastname"
-              value={formData.lastname}
+              value={formDetail.lastname}
               onChange={handleChange}
             />
             <button
@@ -71,7 +72,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formData.lastname}</p>
+            <p>{formDetail.lastname}</p>
           </div>
         )}
       </div>
@@ -83,7 +84,7 @@ export default function ProfileForm({ userDetail }) {
               type="text"
               id="firstname"
               name="firstname"
-              value={formData.firstname}
+              value={formDetail.firstname}
               onChange={handleChange}
             />
             <button
@@ -103,7 +104,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formData.firstname}</p>
+            <p>{formDetail.firstname}</p>
           </div>
         )}
       </div>
@@ -115,7 +116,7 @@ export default function ProfileForm({ userDetail }) {
               type="text"
               id="pseudo"
               name="pseudo"
-              value={formData.pseudo}
+              value={formDetail.pseudo}
               onChange={handleChange}
             />
             <button
@@ -135,7 +136,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formData.pseudo}</p>
+            <p>{formDetail.pseudo}</p>
           </div>
         )}
       </div>
@@ -147,7 +148,7 @@ export default function ProfileForm({ userDetail }) {
               type="email"
               id="mail"
               name="mail"
-              value={formData.mail}
+              value={formDetail.mail}
               onChange={handleChange}
             />
             <button
@@ -167,7 +168,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formData.mail}</p>
+            <p>{formDetail.mail}</p>
           </div>
         )}
       </div>
@@ -179,7 +180,7 @@ export default function ProfileForm({ userDetail }) {
               type="password"
               id="password"
               name="password"
-              value={formData.password}
+              value={formDetail.password}
               onChange={handleChange}
             />
             <button
@@ -199,7 +200,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formData.password}</p>
+            <p>{formDetail.password}</p>
           </div>
         )}
       </div>
@@ -211,7 +212,6 @@ export default function ProfileForm({ userDetail }) {
               type="file"
               id="avatar"
               name="avatar"
-              value={formData.avatar}
               onChange={handleChange}
             />
             <button
@@ -231,7 +231,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formData.avatar}</p>
+            <img src={formDetail.avatar} alt="Avatar" />
           </div>
         )}
       </div>

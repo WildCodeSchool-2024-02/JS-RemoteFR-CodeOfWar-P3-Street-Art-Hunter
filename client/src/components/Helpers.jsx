@@ -100,14 +100,16 @@ function Contact() {
         . Nous nous efforçons de répondre dans les plus brefs délais.
       </p>
       <p className="helpersText">
-        - Formulaire en Ligne : Rendez-vous sur notre <a href="https://www.wildcodeschool.com/fr-fr/">site web</a>{" "}
-        pour remplir notre formulaire de contact en ligne. Décrivez-nous votre
+        - Formulaire en Ligne : Rendez-vous sur notre{" "}
+        <a href="https://www.wildcodeschool.com/fr-fr/">site web</a> pour
+        remplir notre formulaire de contact en ligne. Décrivez-nous votre
         demande et nous reviendrons vers vous rapidement.
       </p>
       <p className="helpersText">
         - Réseaux Sociaux : Suivez-nous sur nos réseaux sociaux pour les
         dernières mises à jour, actualités et événements. Nous sommes présents
-        sur <a href="https://www.facebook.com/?locale=fr_FR">Facebook</a>, <a href="https://x.com/?lang=fr">Twitter</a>, et{" "}
+        sur <a href="https://www.facebook.com/?locale=fr_FR">Facebook</a>,{" "}
+        <a href="https://x.com/?lang=fr">Twitter</a>, et{" "}
         <a href="https://www.instagram.com/">Instagram</a>.
       </p>
       <p className="helpersText">
