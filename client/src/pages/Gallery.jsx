@@ -12,8 +12,18 @@ export default function Gallery() {
   const data = artworkList;
   const styles = styleArtwork;
 
-  const [styleFilter, setStyleFilter] = useState("");
+  const [styleFilter, setStyleFilter] = useState();
   const handleChangeFilter = (event) => setStyleFilter(event.target.value);
+
+  const filterArtwork = data?.filter((artwork) => {
+    if (!styleFilter) {
+      return true;
+    }
+    if (artwork.style_id === parseInt(styleFilter, 10)) {
+      return artwork;
+    }
+    return null;
+  });
 
   const breakpointColumnsObj = {
     default: 4,
@@ -28,14 +38,10 @@ export default function Gallery() {
         <h1>Galerie</h1>
         <label>
           {" "}
-          <select
-            value={styleFilter}
-            onChange={handleChangeFilter}
-            id="artwork-select"
-          >
+          <select onChange={handleChangeFilter} id="artwork-select">
             <option value="">Filtres</option>
-            {styles.map((style) => (
-              <option key={style.id} value={style.name}>
+            {styles?.map((style) => (
+              <option key={style.id} value={style.id}>
                 {style.name}
               </option>
             ))}
@@ -54,17 +60,13 @@ export default function Gallery() {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {data
-              .filter((artwork) =>
-                styleFilter ? artwork.style === styleFilter : artwork
-              )
-              .map((artwork) => (
-                <div key={artwork.id}>
-                  <Link to={`/gallery/${artwork.id}`}>
-                    <img src={artwork.image_url} alt={artwork.title} />
-                  </Link>
-                </div>
-              ))}
+            {filterArtwork.map((artwork) => (
+              <div key={artwork.id}>
+                <Link to={`/gallery/${artwork.id}`}>
+                  <img src={artwork.image_url} alt={artwork.title} />
+                </Link>
+              </div>
+            ))}
           </Masonry>
         )}
       </section>
