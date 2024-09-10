@@ -16,7 +16,8 @@
 }
 
 :root {
-  --primary-gradient: linear-gradient(-90deg, #ff0d5a, #ff743e);
+  --primary-gradient: linear-gradient(90deg, #ff0d5a, #ff743e);
+  --primary-color: #ff0d5a;
   --black: #0f0f0f;
   --grey: #c5c5c5;
   --white: #f0f0f0;
@@ -33,6 +34,13 @@
     #ff374f 60%,
     #ff0d5a 100%
   );
+}
+h1 {
+  font-family: var(--title-font);
+  font-size: 40px;
+  font-weight: bold;
+  padding: 1rem;
+  background: -webkit-linear-gradient(-90deg, #ff0d5a, #ff743e);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }

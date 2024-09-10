@@ -14,7 +14,7 @@ export function getUserbyId(id) {
     .catch((error) => console.info(error));
 }
 
-export function getStyle() {
+export function getCamera() {
   return myAxios
     .get("/styles")
     .then((response) => response.data)
@@ -23,6 +23,21 @@ export function getStyle() {
 export function getGallery(id) {
   return myAxios
     .get(`/artworks/${id}`)
+    .then((response) => response.data)
+    .catch((error) => console.info(error));
+}
+
+export function sendArtwork(artworkProperties) {
+  console.info("test:", artworkProperties);
+  return myAxios
+    .post("/artworks", artworkProperties)
+    .then((response) => console.info(response))
+    .catch((error) => console.info(error));
+}
+
+export function updateUser(id, userData) {
+  return myAxios
+    .put(`/users/${id}`, userData)
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
