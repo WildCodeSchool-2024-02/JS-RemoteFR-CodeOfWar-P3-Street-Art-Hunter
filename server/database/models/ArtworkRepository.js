@@ -46,7 +46,8 @@ where ${this.table}.id = ?`,
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `update ${this.table}      set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
+      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
+
       [
         artwork.title,
         artwork.description,

@@ -35,7 +35,7 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="nav_picto">
-        <Link to="/profile">
+        <Link to="/profile/1">
           <img src={Profil} alt="Profile" />
           <span className="nav_description">Profile</span>
         </Link>

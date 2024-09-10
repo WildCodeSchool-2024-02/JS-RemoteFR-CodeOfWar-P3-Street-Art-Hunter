@@ -61,16 +61,16 @@ function Licence() {
         Le jeu Street Art Hunter est une création originale développée par Wild
         Code School, une entreprise innovante spécialisée dans l’éducation
         numérique et le développement de solutions interactives. Cette œuvre
-        interactive a été conçue par une équipe talentueuse composée de
-        Rossignol Alex, Davido, Rosa, et Charlotte. Leur expertise collective a
-        permis de créer une expérience immersive et engageante pour les amateurs
-        de street art et les passionnés de jeux de géolocalisation. Wild Code
-        School détient tous les droits de propriété intellectuelle associés à ce
-        jeu, et son utilisation est régie par les conditions de licence
-        spécifiques établies par l'entreprise. Toute reproduction, distribution
-        ou modification non autorisée du jeu est strictement interdite. Nous
-        remercions nos joueurs et supporters pour leur enthousiasme et leur
-        participation à cette aventure artistique urbaine.
+        interactive a été conçue par une équipe talentueuse composée de Alex,
+        Davido, Rosa, et Charlotte. Leur expertise collective a permis de créer
+        une expérience immersive et engageante pour les amateurs de street art
+        et les passionnés de jeux de géolocalisation. Wild Code School détient
+        tous les droits de propriété intellectuelle associés à ce jeu, et son
+        utilisation est régie par les conditions de licence spécifiques établies
+        par l'entreprise. Toute reproduction, distribution ou modification non
+        autorisée du jeu est strictement interdite. Nous remercions nos joueurs
+        et supporters pour leur enthousiasme et leur participation à cette
+        aventure artistique urbaine.
       </p>
     </>
   );
@@ -100,14 +100,16 @@ function Contact() {
         . Nous nous efforçons de répondre dans les plus brefs délais.
       </p>
       <p className="helpersText">
-        - Formulaire en Ligne : Rendez-vous sur notre <a href="https://www.wildcodeschool.com/fr-fr/">site web</a>{" "}
-        pour remplir notre formulaire de contact en ligne. Décrivez-nous votre
+        - Formulaire en Ligne : Rendez-vous sur notre{" "}
+        <a href="https://www.wildcodeschool.com/fr-fr/">site web</a> pour
+        remplir notre formulaire de contact en ligne. Décrivez-nous votre
         demande et nous reviendrons vers vous rapidement.
       </p>
       <p className="helpersText">
         - Réseaux Sociaux : Suivez-nous sur nos réseaux sociaux pour les
         dernières mises à jour, actualités et événements. Nous sommes présents
-        sur <a href="https://www.facebook.com/?locale=fr_FR">Facebook</a>, <a href="https://x.com/?lang=fr">Twitter</a>, et{" "}
+        sur <a href="https://www.facebook.com/?locale=fr_FR">Facebook</a>,{" "}
+        <a href="https://x.com/?lang=fr">Twitter</a>, et{" "}
         <a href="https://www.instagram.com/">Instagram</a>.
       </p>
       <p className="helpersText">
