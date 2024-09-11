@@ -38,15 +38,21 @@ where ${this.table}.id = ?`,
     return rows[0];
   }
 
-  async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
-
+  async readAll(where) {
+    if (!where.q) {
+      const [rows] = await this.database.query(`select * from ${this.table}`);
+      return rows;
+    }
+    const [rows] = await this.database.query(
+      `SELECT artwork.*, style.name as style FROM artwork JOIN style ON artwork.style_id=style.id where artwork.style_id = ?`,
+      [where.q]
+    );
     return rows;
   }
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `update ${this.table}      set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
+      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
       [
         artwork.title,
         artwork.description,

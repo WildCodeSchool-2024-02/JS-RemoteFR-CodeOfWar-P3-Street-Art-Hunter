@@ -1,14 +1,13 @@
 const tables = require("../../database/tables");
 
-const browse = async (req, res, next) => {
-  try {
-    const artworks = await tables.artwork.readAll();
-
-    res.json(artworks);
-  } catch (err) {
-    next(err);
-  }
-};
+// const browse = async (req, res, next) => {
+//   try {
+//     const artworks = await tables.artwork.readAll();
+//     res.json(artworks);
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 const read = async (req, res, next) => {
   try {
@@ -21,6 +20,16 @@ const read = async (req, res, next) => {
     }
   } catch (err) {
     next(err);
+  }
+};
+
+const artworkByStyle = async (req, res, next) => {
+  const toto = req.query;
+  try {
+    const artworks = await tables.artwork.readAll(toto);
+    res.json(artworks);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -56,8 +65,9 @@ const destroy = async (req, res, next) => {
 };
 
 module.exports = {
-  browse,
+  // browse,
   read,
+  artworkByStyle,
   edit,
   add,
   destroy,

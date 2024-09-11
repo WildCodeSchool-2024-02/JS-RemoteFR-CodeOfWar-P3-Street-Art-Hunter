@@ -64,6 +64,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  margin: auto;
+  width: 85%;
 }
 .nothing img {
   width: auto;
