@@ -16,6 +16,7 @@ const favorites = require("./controllers/FavoriteActions");
 const auth = require("./services/auth");
 const authActions = require("./controllers/authActions");
 const verifyMiddleware = require("./services/verifyMiddleware");
+const { compareLogin } = require("./services/compareLogin");
 
 // Route to get a list of items
 // router.get("/items", items.browse);
@@ -46,7 +47,7 @@ router.post(
 router.post("/cities", cities.add);
 router.post("/styles", styles.add);
 router.post("/favorites", favorites.add);
-router.post("/login", authActions.login);
+router.post("/login", compareLogin, auth.createToken, authActions.login);
 
 // Route to update a new item
 router.put("/users/:id", verifyMiddleware.uploadPicture, users.edit);
