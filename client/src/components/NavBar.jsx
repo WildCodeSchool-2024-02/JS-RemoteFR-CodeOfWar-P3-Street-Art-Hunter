@@ -14,13 +14,13 @@ export default function NavBar() {
       <div className="nav_picto">
         <Link to="/help">
           <img src={Help} alt="Help" />
-          <span className="nav_description">Help</span>
+          <span className="nav_description">Aide</span>
         </Link>
       </div>
       <div className="nav_picto">
         <Link to="/gallery">
           <img src={Gallery} alt="Gallery" />
-          <span className="nav_description">Gallery</span>
+          <span className="nav_description">Galerie</span>
         </Link>
       </div>
       <div className="nav_picto_large">
@@ -37,7 +37,7 @@ export default function NavBar() {
       <div className="nav_picto">
         <Link to="/profile/1">
           <img src={Profil} alt="Profile" />
-          <span className="nav_description">Profile</span>
+          <span className="nav_description">Profil</span>
         </Link>
       </div>
     </nav>
