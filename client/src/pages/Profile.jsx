@@ -5,7 +5,7 @@ import "../styles/profile.css";
 import Trophy from "../assets/images/profil_trophy.svg";
 
 export default function Profile() {
-  const user = useLoaderData();
+  const user = useLoaderData().result;
   return (
     <div className="profilePage">
       <div className="profileContainer">

@@ -7,14 +7,13 @@ class UserRepository extends AbstractRepository {
 
   async create(user) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (firstname,lastname, pseudo, mail, password, pictures, avatar) values (?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname,lastname, pseudo, mail, hashed_password, avatar) values (?, ?, ?, ?, ?, ?)`,
       [
         user.firstname,
         user.lastname,
         user.pseudo,
         user.mail,
-        user.password,
-        user.pictures,
+        user.hashed_password,
         user.avatar,
       ]
     );
@@ -39,14 +38,13 @@ class UserRepository extends AbstractRepository {
 
   async update(user) {
     const [result] = await this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, pseudo = ?, mail =?, password = ?, pictures = ?, avatar = ? where id = ?`,
+      `update ${this.table} set firstname = ?, lastname = ?, pseudo = ?, mail =?, hashed_password = ?, avatar = ? where id = ?`,
       [
         user.firstname,
         user.lastname,
         user.pseudo,
         user.mail,
-        user.password,
-        user.pictures,
+        user.hashed_password,
         user.avatar,
         user.id,
       ]
@@ -60,6 +58,14 @@ class UserRepository extends AbstractRepository {
       [id]
     );
     return result.affectedRows;
+  }
+
+  async readByEmailWithPassword(mail) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where mail = ?`,
+      [mail]
+    );
+    return rows[0];
   }
 }
 
