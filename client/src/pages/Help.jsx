@@ -17,10 +17,10 @@ export default function Help() {
   const Component = helpComponents[isActive];
 
   const handleClickActive = (help) => {
-    if(help.name.length > 0){
-    setIsActive(help.name)
+    if (help.name.length > 0) {
+      setIsActive(help.name);
     }
-  }
+  };
 
   return (
     <section className="helpContainer">

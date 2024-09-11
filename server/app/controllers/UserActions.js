@@ -4,7 +4,14 @@ const browse = async (req, res, next) => {
   try {
     const users = await tables.user.readAll();
 
-    res.json(users);
+    if (users.length === 0) {
+      res.json({
+        message: "pas d'utilisateurs",
+        result: users,
+      });
+    } else {
+      res.json({ result: users });
+    }
   } catch (err) {
     next(err);
   }
@@ -13,11 +20,10 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     const user = await tables.user.read(req.params.id);
-
-    if (user == null) {
-      res.sendStatus(404);
+    if (user) {
+      res.json({ result: user });
     } else {
-      res.json(user);
+      res.status(404).json({ message: "utilisateur non trouvé" });
     }
   } catch (err) {
     next(err);
@@ -26,11 +32,13 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const user = req.body;
+  if (req.file) {
+    user.avatar = req.file.filename;
+  }
 
   try {
-    const insertId = await tables.user.create(user);
-    res.status(201).json({ insertId });
-    console.info("New User !");
+    const result = await tables.user.create(user);
+    res.status(201).send(`utilisateur ajouté: ${result.insertId}`);
   } catch (err) {
     next(err);
   }
@@ -38,10 +46,12 @@ const add = async (req, res, next) => {
 
 const edit = async (req, res, next) => {
   const user = { ...req.body, id: req.params.id };
+  if (req.file) {
+    user.avatar = req.file.filename;
+  }
   try {
     await tables.user.update(user);
-    res.sendStatus(204);
-    console.info("User edited!!");
+    res.status(204).send(`utilisateur modifié: ${req.params.id}`);
   } catch (error) {
     next(error);
   }
@@ -49,8 +59,7 @@ const edit = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     await tables.user.delete(req.params.id);
-    res.sendStatus(204);
-    console.info("User deleted!!");
+    res.status(204).send(`utilisateur supprimé: ${req.params.id}`);
   } catch (error) {
     next(error);
   }
