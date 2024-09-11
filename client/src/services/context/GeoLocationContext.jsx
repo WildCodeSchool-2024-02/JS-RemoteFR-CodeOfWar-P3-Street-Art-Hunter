@@ -4,30 +4,31 @@ import PropTypes from "prop-types";
 const GeoLocationContext = createContext();
 
 function GeoLocationProvider({ children }) {
-  const [userLocation, setUserLocation] = useState();
 
-  const getSuccesLocation = (position) => {
-    const { latitude, longitude } = position.coords;
-    setUserLocation({ latitude, longitude });
-  };
-  const getErrorLocation = (error) => {
-    console.error("Erreur lors de la récupération des coordonnées", error);
-  };
+    const [ userLocation, setUserLocation] = useState();
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(getSuccesLocation, getErrorLocation, {
-        enableHighAccuracy: true,
-        timeout: 8000,
-      });
-    } else {
-      console.error("La géolocalisation n'est pas supportée par ce navigateur");
-    }
-  }, []);
+    const getSuccesLocation = (position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation({ latitude, longitude});
+    };
+    const getErrorLocation = (error) => {
+        console.error("Erreur lors de la récupération des coordonnées", error)
+    };
+
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(getSuccesLocation, getErrorLocation, {
+                enableHighAccuracy: true,
+                timeout: 8000
+          });
+        }else{
+            console.error("La géolocalisation n'est pas supportée par ce navigateur")
+        }
+      }, [])
 
   return (
     <GeoLocationContext.Provider value={userLocation}>
-      {children}
+        {children}
     </GeoLocationContext.Provider>
   );
 }
