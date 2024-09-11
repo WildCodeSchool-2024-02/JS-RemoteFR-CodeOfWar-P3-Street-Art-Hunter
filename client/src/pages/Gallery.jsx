@@ -13,8 +13,6 @@ export default function Gallery() {
   const data = artworkList;
   const styles = styleArtwork;
 
-  // const [styleFilter, setStyleFilter] = useState();
-
   const [stylesArtwork, setStylesArtork] = useState({
     style_id: "",
   });

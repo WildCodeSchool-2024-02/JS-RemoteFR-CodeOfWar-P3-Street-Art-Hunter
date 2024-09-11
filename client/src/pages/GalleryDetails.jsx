@@ -1,20 +1,9 @@
 import { useLoaderData } from "react-router-dom";
+import { frenchDate } from "../utils/function";
 import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
-
-  function frenchDate(date) {
-    const event = new Date(date);
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return date
-      ? event.toLocaleDateString("fr-FR", options)
-      : " Pas d'information";
-  }
 
   return (
     <section className="galleryDetails">

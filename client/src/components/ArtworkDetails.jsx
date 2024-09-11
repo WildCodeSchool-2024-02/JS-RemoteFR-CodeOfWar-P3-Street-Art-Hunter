@@ -2,19 +2,9 @@ import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 
-import "../styles/styleArtworkDetail.css";
+import { frenchDate } from "../utils/function";
 
-function frenchDate(date) {
-  const event = new Date(date);
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  return date
-    ? event.toLocaleDateString("fr-FR", options)
-    : " Pas d'information";
-}
+import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
   return (
