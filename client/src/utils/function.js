@@ -1,3 +1,9 @@
+export const datePicture = new Date().toLocaleDateString("fr-FR", {
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+});
+
 export function frenchDate(date) {
   const event = new Date(date);
   const options = {
@@ -9,9 +15,3 @@ export function frenchDate(date) {
     ? event.toLocaleDateString("fr-FR", options)
     : " Pas d'information";
 }
-
-export const datePicture = new Date().toLocaleDateString("fr-FR", {
-  year: "numeric",
-  month: "numeric",
-  day: "numeric",
-});
