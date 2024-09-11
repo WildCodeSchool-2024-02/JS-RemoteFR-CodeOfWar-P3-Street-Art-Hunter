@@ -1,4 +1,5 @@
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -23,4 +24,32 @@ const hashPassword = async (req, res, next) => {
   }
 };
 
-module.exports = { hashPassword };
+const createToken = async (req, res, next) => {
+  try {
+    const payload = req.user;
+
+    const token = await jwt.sign(payload, process.env.APP_SECRET, {
+      expiresIn: "1y",
+    });
+
+    req.token = token;
+
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
+const verifyToken = async (req, res, next) => {
+  try {
+    const { auth } = req.cookies;
+
+    await jwt.verify(auth, process.env.APP_SECRET);
+
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { hashPassword, createToken, verifyToken };
