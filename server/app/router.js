@@ -17,7 +17,7 @@ const favorites = require("./controllers/FavoriteActions");
 // Route to get a list of items
 router.get("/items", items.browse);
 router.get("/users", users.browse);
-router.get("/artworks", artworks.artworkByStyle);
+router.get("/artworks", artworks.browse);
 router.get("/cities", cities.browse);
 router.get("/styles", styles.browse);
 router.get("/favorites", favorites.browse);
