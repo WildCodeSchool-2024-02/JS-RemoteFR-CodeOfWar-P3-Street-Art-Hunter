@@ -13,6 +13,8 @@ const artworks = require("./controllers/ArtworkActions");
 const cities = require("./controllers/CityActions");
 const styles = require("./controllers/StyleActions");
 const favorites = require("./controllers/FavoriteActions");
+const auth = require("./services/auth");
+const authActions = require("./controllers/authActions");
 const verifyMiddleware = require("./services/verifyMiddleware");
 
 // Route to get a list of items
@@ -33,16 +35,18 @@ router.get("/favorites/:id", favorites.read);
 
 // Route to add a new item
 // router.post("/items", items.add);
+router.post("/artworks", artworks.add);
 router.post(
   "/users",
   verifyMiddleware.verifyFields,
+  auth.hashPassword,
   verifyMiddleware.uploadPicture,
   users.add
 );
-// router.post("/artworks", artworks.add);
 router.post("/cities", cities.add);
 router.post("/styles", styles.add);
 router.post("/favorites", favorites.add);
+router.post("/login", authActions.login);
 
 // Route to update a new item
 router.put("/users/:id", verifyMiddleware.uploadPicture, users.edit);

@@ -6,7 +6,7 @@ CREATE TABLE user (
     firstname VARCHAR(255),
     pseudo VARCHAR(255) NOT NULL,
     mail VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    hashed_password VARCHAR(255) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
     registration_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     avatar VARCHAR(255) DEFAULT 'https://picsum.photos/id/237/200/300'
@@ -18,7 +18,7 @@ INSERT INTO
         firstname,
         pseudo,
         mail,
-        password,
+        hashed_password,
         isAdmin,
         avatar
     )
