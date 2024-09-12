@@ -20,6 +20,12 @@ export function getCamera() {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
+export function getGallery(id) {
+  return myAxios
+    .get(`/artworks/${id}`)
+    .then((response) => response.data)
+    .catch((error) => console.info(error));
+}
 
 export function sendArtwork(artworkProperties) {
   console.info("test:", artworkProperties);

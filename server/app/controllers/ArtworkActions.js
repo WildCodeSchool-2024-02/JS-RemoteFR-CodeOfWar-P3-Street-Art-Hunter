@@ -2,8 +2,8 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const artworks = await tables.artwork.readAll();
-
+    const artworkStyles = req.query;
+    const artworks = await tables.artwork.readAll(artworkStyles);
     res.json(artworks);
   } catch (err) {
     next(err);

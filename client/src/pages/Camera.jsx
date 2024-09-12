@@ -6,6 +6,7 @@ import { sendArtwork } from "../services/request";
 import myAxios from "../services/instanceAxios";
 
 import GradientButton from "../components/GradientButton";
+import { datePicture } from "../utils/function";
 
 import "../styles/styleGradientButton.css";
 import "../styles/camera.css";
@@ -30,12 +31,6 @@ export default function Camera() {
       [name]: value,
     }));
   };
-
-  const datePicture = new Date().toLocaleDateString("fr-FR", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
 
   const data = useLoaderData();
 

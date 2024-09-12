@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 
+import { frenchDate } from "../utils/function";
+
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
@@ -19,7 +21,7 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
             <p>{artwork.author}</p>
           </div>
           <div className="textDetails">
-            <p>📅 {artwork.create_date}</p>
+            <p>📅 {frenchDate(artwork.create_date)}</p>
             <p>
               📍 {artwork.lat}, {artwork.lon}
             </p>

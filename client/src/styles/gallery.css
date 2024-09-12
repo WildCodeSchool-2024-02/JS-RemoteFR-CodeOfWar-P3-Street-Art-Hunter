@@ -1,0 +1,81 @@
+.gallery {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header-gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 1rem;
+}
+
+.header-gallery h1 {
+  font-family: var(--title-font);
+  font-size: 2rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.body-gallery {
+  height: 100%;
+  overflow: scroll;
+  padding-bottom: 10px;
+  height: 100%;
+  overflow: scroll;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.my-masonry-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  width: auto;
+  padding-bottom: 7rem;
+}
+.my-masonry-grid_column {
+  padding-left: 8px;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.body-gallery a {
+  display: flex;
+  justify-content: center;
+}
+.body-gallery img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.nothing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  width: 85%;
+}
+.nothing img {
+  width: auto;
+}
+.nothing p {
+  margin-top: -4rem;
+  font-family: var(--main-font);
+  font-weight: bold;
+}
+.galleryNavbar {
+  padding-top: 1rem;
+}

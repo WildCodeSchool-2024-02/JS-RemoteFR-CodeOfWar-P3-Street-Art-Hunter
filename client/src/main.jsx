@@ -3,12 +3,13 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { getMap, getUserbyId, getCamera } from "./services/request";
+import { getMap, getUserbyId, getCamera, getGallery } from "./services/request";
 
 import App from "./App";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import Gallery from "./pages/Gallery";
+import GalleryDetails from "./pages/GalleryDetails";
 import Camera from "./pages/Camera";
 import Profile from "./pages/Profile";
 // import Ranking from "./pages/Ranking";
@@ -31,6 +32,15 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery />,
+        loader: async () => ({
+          artworkList: await getMap(),
+          styleArtwork: await getCamera(),
+        }),
+      },
+      {
+        path: "/gallery/:id",
+        element: <GalleryDetails />,
+        loader: ({ params }) => getGallery(params.id),
       },
       {
         path: "/camera",

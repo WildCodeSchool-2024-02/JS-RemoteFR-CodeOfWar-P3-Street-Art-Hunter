@@ -25,6 +25,16 @@
   --main-font: "Futura PT Medium", sans-serif;
 }
 
+.headline {
+  font-size: 2rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
+}
 h1 {
   font-family: var(--title-font);
   font-size: 40px;
