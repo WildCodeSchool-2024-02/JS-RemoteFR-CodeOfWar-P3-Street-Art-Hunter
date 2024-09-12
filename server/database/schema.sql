@@ -6,6 +6,7 @@ CREATE TABLE user (
     firstname VARCHAR(255),
     pseudo VARCHAR(255) NOT NULL,
     mail VARCHAR(255) NOT NULL,
+    score INT DEFAULT 0,
     hashed_password VARCHAR(255) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
     registration_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
