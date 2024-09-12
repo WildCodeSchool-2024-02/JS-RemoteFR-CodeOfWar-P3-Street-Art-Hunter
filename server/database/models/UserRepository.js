@@ -67,6 +67,13 @@ class UserRepository extends AbstractRepository {
     );
     return rows[0];
   }
+
+  async readAllScoreByOrder() {
+    const [rows] = await this.database.query(
+      `SELECT pseudo, score from user ORDER BY score DESC`
+    );
+    return rows;
+  }
 }
 
 module.exports = UserRepository;
