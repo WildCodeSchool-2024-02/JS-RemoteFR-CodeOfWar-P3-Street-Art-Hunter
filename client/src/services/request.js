@@ -10,7 +10,7 @@ export function getMap() {
 export function getUserbyId(id) {
   return myAxios
     .get(`/users/${id}`)
-    .then((response) => response.data)
+    .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
 
@@ -52,5 +52,12 @@ export function updateUser(id, userData) {
       console.info("tata", response.data);
       return response.data;
     })
+    .catch((error) => console.info(error));
+}
+
+export function getUsersRanking() {
+  return myAxios
+    .get("/users/ranking")
+    .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
