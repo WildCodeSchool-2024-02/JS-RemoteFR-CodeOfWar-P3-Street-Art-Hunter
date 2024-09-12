@@ -21,9 +21,9 @@ export default function Gallery() {
 
   const [artworks, setArtworks] = useState();
 
-  const getArtworks = (toto) => {
+  const getArtworks = (style) => {
     myAxios
-      .get(stylesArtwork.length > 0 ? `/artworks?q=${toto}` : "/artworks")
+      .get(stylesArtwork.length > 0 ? `/artworks?q=${style}` : "/artworks")
       .then((response) => setArtworks(response.data))
       .catch((error) => console.error(error));
   };
