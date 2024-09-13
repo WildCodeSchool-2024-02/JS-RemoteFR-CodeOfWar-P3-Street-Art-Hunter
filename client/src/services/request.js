@@ -48,10 +48,7 @@ export function updateUser(id, userData) {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((response) => {
-      console.info("tata", response.data);
-      return response.data;
-    })
+    .then((response) => response.data)
     .catch((error) => console.info(error));
 }
 

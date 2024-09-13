@@ -1,0 +1,71 @@
+.connection_form {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  overflow: scroll;
+}
+.connection h2 {
+  font-family: var(--title-font);
+  font-size: 32px;
+  padding: 1rem;
+  text-align: center;
+}
+.headConnexion {
+  background: -webkit-linear-gradient(-90deg, #ff0d5a, #ff743e);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.connection_form {
+  background-image: url("../assets/images/backgroundOnboarding.svg");
+  background-size: "cover";
+  background-position: "center";
+  height: "100vh";
+  width: "100%";
+}
+
+.connection_form > input {
+  padding: 1rem;
+  border: 1px #aeaeae solid;
+  border-radius: 12px;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
+
+.connection_without {
+  all: unset;
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid;
+  border-color: #ff743e;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  margin-top: 1rem;
+}
+
+hr::after {
+  background: #fff;
+  content: "ou";
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+
+.InscriptionLink {
+  text-decoration: underline;
+  color: inherit;
+}

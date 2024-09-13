@@ -19,6 +19,9 @@ import GalleryDetails from "./pages/GalleryDetails";
 import Camera from "./pages/Camera";
 import Profile from "./pages/Profile";
 import Ranking from "./pages/Ranking";
+import Connection from "./pages/Connection";
+import Register from "./pages/Register";
+
 
 import "./styles/app.css";
 
@@ -26,6 +29,14 @@ const router = createBrowserRouter([
   {
     element: <App />,
     children: [
+      {
+        path: "/connection",
+        element: <Connection />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
       {
         path: "/",
         element: <Home />,
