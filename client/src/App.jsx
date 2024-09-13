@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { useLocation, Outlet } from "react-router-dom";
 
 import { GeoLocationProvider } from "./services/context/GeoLocationContext";
 import NavBar from "./components/NavBar";
@@ -6,9 +6,14 @@ import NavBar from "./components/NavBar";
 import "./styles/app.css";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
-      <NavBar />
+      {location.pathname === "/connection" ||
+      location.pathname === "/inscription" ? null : (
+        <NavBar />
+      )}
       <GeoLocationProvider>
         <main>
           <Outlet />
