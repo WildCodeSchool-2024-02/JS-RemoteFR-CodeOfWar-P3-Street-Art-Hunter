@@ -13,11 +13,11 @@ export default function Gallery() {
   const data = artworkList;
   const styles = styleArtwork;
 
-  const [stylesArtwork, setStylesArtork] = useState({
+  const [stylesArtwork, setStylesArtwork] = useState({
     style_id: "",
   });
 
-  const handleChangeFilter = (event) => setStylesArtork(event.target.value);
+  const handleChangeFilter = (event) => setStylesArtwork(event.target.value);
 
   const [artworks, setArtworks] = useState();
 
@@ -74,7 +74,7 @@ export default function Gallery() {
             {artworks?.length === 0 ? (
               <div className="nothing">
                 <img src={nothingNow} alt="Pas d'artwork" />
-                <p>Aucune oeuvre pour le moment</p>
+                <p>Aucune oeuvre du style n'a été enregistré pour le moment</p>
               </div>
             ) : (
               artworks?.map((artwork) => (
