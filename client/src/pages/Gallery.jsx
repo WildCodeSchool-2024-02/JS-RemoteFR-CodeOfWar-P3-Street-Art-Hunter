@@ -47,7 +47,6 @@ export default function Gallery() {
           <select
             name="style_id"
             onChange={handleChangeFilter}
-            // id="artwork-select"
             value={stylesArtwork.style_id}
           >
             <option value="">Filtres</option>
@@ -74,7 +73,9 @@ export default function Gallery() {
             {artworks?.length === 0 ? (
               <div className="nothing">
                 <img src={nothingNow} alt="Pas d'artwork" />
-                <p>Aucune oeuvre du style n'a été enregistré pour le moment</p>
+                <p>
+                  Aucune oeuvre de ce style n'a été enregistré pour le moment
+                </p>
               </div>
             ) : (
               artworks?.map((artwork) => (
