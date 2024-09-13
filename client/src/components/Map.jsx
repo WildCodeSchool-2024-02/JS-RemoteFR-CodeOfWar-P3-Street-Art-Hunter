@@ -8,7 +8,6 @@ import { GeoLocationContext } from "../services/context/GeoLocationContext";
 import "leaflet/dist/leaflet.css";
 
 export default function Map({ setArtworkDetails }) {
-  
   const data = useLoaderData();
 
   const userLocation = useContext(GeoLocationContext);
