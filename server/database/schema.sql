@@ -1,4 +1,3 @@
-USE streetArt;
 
 CREATE TABLE user (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -19,6 +18,7 @@ INSERT INTO
         firstname,
         pseudo,
         mail,
+        score,
         hashed_password,
         isAdmin,
         avatar
@@ -26,57 +26,69 @@ INSERT INTO
 VALUES (
         'Rossignol',
         'alex',
-        'RossAlex',
+        'RossAlex0',
         'alex@gmail.com',
+        3200,
         'Monpassword',
         TRUE,
-        DEFAULT
+        'https://cdn-icons-png.freepik.com/256/3530/3530467.png?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
     ),
     (
-        'More',
+        'Mored',
         'charlotte',
-        'Chacha',
-        'cha@gmail.com',
+        'ChachaDtr',
+        'charrl@gmail.com',
+        3150,
         'Monpassword1',
         TRUE,
-        DEFAULT
+        'https://img.freepik.com/psd-gratuit/illustration-3d-personne-lunettes-soleil_23-2149436178.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
     ),
     (
         'Mare',
         'rosa',
         'Roro',
         'rosa@gmail.com',
+        3980,
         'Monpassword2',
         TRUE,
-        DEFAULT
+        'https://img.freepik.com/photos-premium/simple-sourire-homme-heureux-portrait-numerique-arriere-plan-rouge-vif_96461-13322.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
     ),
     (
         'Mire',
         'davido',
         'Dada',
         'davido@gmail.com',
+        2980,
         'Monpassword3',
         TRUE,
-        DEFAULT
+        'https://img.freepik.com/psd-gratuit/illustration-3d-personne-lunettes_23-2149436190.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
     ),
     (
         'lopez',
         'david',
         'lolo',
         'lolo@gmail.com',
-        'Monpassword3',
+        4020,
+        'Monpassword9',
         FALSE,
-        DEFAULT
+        'https://img.freepik.com/photos-premium/elevez-votre-marque-avatar-amical-qui-reflete-professionnalisme-ideal-pour-directeurs-ventes_1283595-18531.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
     ),
     (
         'Rous',
         'agathe',
         'ag',
         'age@gmail.com',
-        'Monpassword3',
+        200,
+        'Monpassword7',
         FALSE,
-        DEFAULT
-    );
+        'https://img.freepik.com/psd-gratuit/rendu-3d-du-personnage-avatar_23-2150611746.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
+    ),
+    ('Luna', 'Smith', 'lunaSmith', 'luna.smith@gmail.com', 20, 'LunaPass8', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-fille-moderne_23-2150611791.jpg?uid=R159916036&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
+('Max', 'Johnson', 'max33', 'max.johnson@gmail.com', 3450, 'MaxPass9', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-homme-jeune_23-2150611867.jpg?uid=R159916037&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
+('Eva', 'Brown', 'ev1bro', 'eva.brown@gmail.com', 1980, 'EvaPass10', FALSE, 'https://img.freepik.com/psd-gratuit/avatar-femme-petite_23-2150611972.jpg?uid=R159916039&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
+('Leo', 'Davis', 'le22vis', 'leo.davis@gmail.com', 4790, 'LeoPass11', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-homme-casual_23-2150612034.jpg?uid=R159916041&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
+('Nina', 'Wilson', 'ninson', 'nina.wilson@gmail.com', 2350, 'NinaPass12', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-femme-mode_23-2150612089.jpg?uid=R159916043&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
+('Oli', 'Martin', 'omartin', 'oli.martin@gmail.com', 520, 'OliPass13', FALSE, 'https://img.freepik.com/psd-gratuit/avatar-homme-sportif_23-2150612112.jpg?uid=R159916045&ga=GA1.1.11097458.1723198447&semt=ais_hybrid');
 
 CREATE TABLE style (
     id INT PRIMARY KEY AUTO_INCREMENT,

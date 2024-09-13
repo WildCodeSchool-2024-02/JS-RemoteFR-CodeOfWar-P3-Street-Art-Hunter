@@ -68,9 +68,17 @@ class UserRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async readAllScoreByOrder() {
+  async readAllScoreByOrder(where) {
+    if (!where) {
+      const [rows] = await this.database.query(
+        `SELECT u.pseudo, u.score, ROW_NUMBER() OVER (ORDER BY u.score DESC) AS ranking
+            FROM user u ORDER BY u.score DESC`
+      );
+      return rows;
+    }
     const [rows] = await this.database.query(
-      `SELECT pseudo, score from user ORDER BY score DESC`
+      `SELECT pseudo, score FROM ${this.table} WHERE pseudo LIKE ? ORDER BY score DESC`,
+      [`${where}%`]
     );
     return rows;
   }
