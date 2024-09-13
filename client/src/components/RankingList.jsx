@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function RankingList({ rankings, searchPseudo }) {
+export default function RankingList({ rankings, data }) {
   return (
     <>
       <div className="rankingListTitle">
@@ -9,17 +9,26 @@ export default function RankingList({ rankings, searchPseudo }) {
         <p>Points</p>
       </div>
       <div className="listRanking">
-        {rankings
-          .filter((ranking) =>
-            ranking.pseudo.toLowerCase().includes(searchPseudo.toLowerCase())
-          )
-          .map((ranking) => (
-            <div key={ranking.pseudo} className="usersRanking">
-              <p>{rankings.indexOf(ranking) + 1}</p>
-              <p>{ranking.pseudo}</p>
-              <p>{ranking.score}</p>
-            </div>
-          ))}
+        {data
+          ? rankings.map((ranking) =>
+              data.map(
+                (rankingData) =>
+                  ranking.pseudo === rankingData.pseudo && (
+                    <div key={ranking.pseudo} className="usersRanking">
+                      <p>{ranking.ranking}</p>
+                      <p>{ranking.pseudo}</p>
+                      <p>{ranking.score}</p>
+                    </div>
+                  )
+              )
+            )
+          : rankings.map((ranking) => (
+              <div key={ranking.pseudo} className="usersRanking">
+                <p>{ranking.ranking}</p>
+                <p>{ranking.pseudo}</p>
+                <p>{ranking.score}</p>
+              </div>
+            ))}
       </div>
     </>
   );
@@ -30,7 +39,12 @@ RankingList.propTypes = {
     PropTypes.shape({
       pseudo: PropTypes.string.isRequired,
       score: PropTypes.number.isRequired,
+      ranking: PropTypes.number.isRequired,
     })
   ).isRequired,
-  searchPseudo: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      pseudo: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
