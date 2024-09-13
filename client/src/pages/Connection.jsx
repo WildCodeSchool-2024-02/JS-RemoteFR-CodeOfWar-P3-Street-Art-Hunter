@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import GradientButton from "../components/GradientButton";
 import "../styles/connection.css";
 
-import background from "../assets/images/backgroundOnboarding.svg";
 import logo from "../assets/images/logo_streetArt.svg";
 
 export default function Connection() {
@@ -12,16 +11,7 @@ export default function Connection() {
 
   return (
     <section className="connection">
-      <div
-        className="connection_form"
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          width: "100%",
-        }}
-      >
+      <div className="connection_form">
         <img src={logo} alt="Logo" />
         <h2>
           DEVENEZ CHASSEUR <br />
