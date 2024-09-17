@@ -24,12 +24,18 @@
   width: "100%";
 }
 
-.connection_form > input {
+.connection_form > form > input {
+  display: flex;
+  width: 100%;
   padding: 1rem;
   border: 1px #aeaeae solid;
   border-radius: 12px;
   font-weight: bolder;
   margin-bottom: 0.5rem;
+}
+
+.connection_form > form > #gradientButton {
+  width: 91%;
 }
 
 .connection_without {
