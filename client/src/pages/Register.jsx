@@ -27,11 +27,6 @@ export default function Register() {
       .catch((error) => console.error(error));
   };
 
-  console.info(
-    userInscription.pseudo,
-    userInscription.mail,
-    userInscription.password
-  );
   return (
     <section>
       <div className="register">
