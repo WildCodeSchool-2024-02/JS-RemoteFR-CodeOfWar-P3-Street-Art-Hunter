@@ -1,0 +1,169 @@
+.rankingContainer {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.rankingHeader {
+  height: 35%;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--primary-gradient);
+  border-radius: 0px 0px 40px 40px;
+}
+.rankingTitle {
+  font-family: var(--title-font);
+  font-size: 32px;
+  color: var(--white);
+}
+.userInfoContainer {
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.userPicturePseudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.userPicture {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.userAvatar {
+  height: 92%;
+  width: 92%;
+  border-radius: 50%;
+}
+.userPseudo {
+  font-size: 150%;
+  font-weight: bold;
+  font-family: var(--title-font);
+  color: var(--white);
+}
+.userScore {
+  width: 75%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--white);
+  border-radius: 48px;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.userRank {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.userRank:first-child {
+  border-right: 0.5px solid var(--white);
+}
+.userRank:last-child {
+  border-left: 0.5px solid var(--white);
+}
+.userRank > p:first-child {
+  font-family: var(--title-font);
+  color: var(--white);
+  font-size: 130%;
+  font-weight: 900;
+}
+.userRank > p:last-child {
+  font-family: var(--main-font);
+  color: var(--white);
+  font-weight: lighter;
+}
+.usersRankingContainer {
+  height: 65%;
+  width: 100%;
+  padding: 1.5rem;
+}
+.rankInput {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid var(--grey);
+  border-radius: 12px;
+  padding: 0 1rem;
+  font-size: 17px;
+  color: var(--black);
+}
+.rankInput::placeholder {
+  color: var(--grey);
+}
+.rankInput:focus {
+  border: 1px solid var(--primary-color);
+}
+.rankingListTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--title-font);
+  font-size: 24px;
+  background: -webkit-linear-gradient(-90deg, #ff0d5a, #ff743e);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1.5rem 0 1rem 0;
+}
+.listRanking {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: scroll;
+  padding-bottom: 150px;
+}
+.usersRanking {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 24px;
+}
+.usersRanking > p {
+  width: calc(100% / 3);
+  font-family: var(--title-font);
+  font-size: 18px;
+  color: var(--black);
+}
+.usersRanking > p:nth-child(2) {
+  text-align: center;
+}
+.usersRanking > p:last-child {
+  text-align: end;
+}
+.btnRank {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background: none;
+}
+.btnRankContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.valid {
+  border: 1px solid #56ff67;
+  color: #56ff67;
+  font-size: 32px;
+}
+.refuse {
+  border: 1px solid #ff0d0d;
+  color: #ff0d0d;
+  font-size: 36px;
+}
