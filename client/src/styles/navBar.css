@@ -50,3 +50,44 @@
   align-items: center;
   text-decoration: none;
 }
+
+/* NAVBAR DESKTOP */
+
+.navDesktopContainer {
+  height: 3rem;
+  width: 100%;
+  border-bottom: 1px solid var(--grey);
+  margin: 2rem auto;
+  padding-inline: 1rem;
+  display: flex;
+  position: absolute;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.logoNavDesktop {
+  width: 15rem;
+  margin-bottom: -0.4rem;
+  opacity: 0.9;
+}
+.navDesktopNavigation {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.linkNavDesktop {
+  width: 11%;
+  text-decoration: none;
+  color: var(--grey);
+  padding-bottom: 0.4rem;
+  margin-bottom: -0.1rem;
+}
+.linkNavDesktop > p {
+  font-family: var(--title-font);
+  font-size: 24px;
+  text-align: center;
+}
+.linkNavActive {
+  color: var(--primary-color);
+  border-bottom: 1.5px solid var(--primary-color);
+}
