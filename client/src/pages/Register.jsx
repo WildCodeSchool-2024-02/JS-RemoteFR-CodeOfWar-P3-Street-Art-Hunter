@@ -11,6 +11,7 @@ export default function Register() {
     mail: "",
     password: "",
   });
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleChangeUser = (event) => {
     const { name, value } = event.target;
@@ -19,14 +20,23 @@ export default function Register() {
       [name]: value,
     }));
   };
+
+  const handleChangePassword = (event) => {
+    setConfirmPassword(event.target.value);
+  };
   const sendCredentials = (event) => {
     event.preventDefault();
-    myAxios
-      .post("/users", userInscription, { withCredentials: true })
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
+    if (userInscription.password === confirmPassword) {
+      myAxios
+        .post("/users", userInscription, { withCredentials: true })
+        .then((response) => console.info(response))
+        .catch((error) => console.error(error));
+    } else {
+      window.alert("Les deux mots de passe sont différents");
+    }
   };
 
+  console.info(confirmPassword);
   return (
     <section>
       <div className="register">
@@ -40,7 +50,6 @@ export default function Register() {
             value={userInscription.pseudo}
             onChange={handleChangeUser}
           />
-          {/* <input type="text" placeholder="Ville" /> */}
           <input
             type="email"
             name="mail"
@@ -55,7 +64,12 @@ export default function Register() {
             value={userInscription.password}
             onChange={handleChangeUser}
           />
-          {/* <input type="password" placeholder="Confirmez votre mot de passe*" /> */}
+          <input
+            type="password"
+            name="confirm_password"
+            placeholder="Confirmez votre mot de passe*"
+            onChange={handleChangePassword}
+          />
 
           <GradientButton
             text="Créer un compte"
