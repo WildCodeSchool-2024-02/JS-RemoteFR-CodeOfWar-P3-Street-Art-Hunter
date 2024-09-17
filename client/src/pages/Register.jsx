@@ -36,11 +36,10 @@ export default function Register() {
     }
   };
 
-  console.info(confirmPassword);
   return (
     <section>
       <div className="register">
-        <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" className="registerLogo" />
         <h2 className="registerTitle">INSCRIPTION</h2>
         <form className="register_form" onSubmit={sendCredentials}>
           <input
@@ -50,6 +49,7 @@ export default function Register() {
             value={userInscription.pseudo}
             onChange={handleChangeUser}
           />
+
           <input
             type="email"
             name="mail"
@@ -57,6 +57,7 @@ export default function Register() {
             value={userInscription.mail}
             onChange={handleChangeUser}
           />
+
           <input
             type="password"
             name="password"
@@ -64,6 +65,7 @@ export default function Register() {
             value={userInscription.password}
             onChange={handleChangeUser}
           />
+
           <input
             type="password"
             name="confirm_password"
