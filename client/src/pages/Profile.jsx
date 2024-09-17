@@ -1,11 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import ProfileForm from "../components/ProfileForm";
 
 import "../styles/profile.css";
 import Trophy from "../assets/images/profil_trophy.svg";
 
 export default function Profile() {
-  const user = useLoaderData().result;
+  const user = useLoaderData();
   return (
     <div className="profilePage">
       <div className="profileContainer">
@@ -14,13 +14,13 @@ export default function Profile() {
           <img src={user.avatar} alt={user.pseudo} className="profilAvatar" />
           <h2>{user.pseudo}</h2>
           <p className="profilEmail">{user.mail}</p>
-          <div className="profilClassement">
+          <Link to="/profile/ranking/1" className="profilClassement">
             <img src={Trophy} alt="trophée sur le classement" />
             <p>Classement</p>
             <div>
               <p>0</p>
             </div>
-          </div>
+          </Link>
         </section>
       </div>
       <div className="profilFormcontainer">

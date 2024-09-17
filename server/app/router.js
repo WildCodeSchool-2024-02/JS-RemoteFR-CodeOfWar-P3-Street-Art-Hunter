@@ -13,8 +13,10 @@ const artworks = require("./controllers/ArtworkActions");
 const cities = require("./controllers/CityActions");
 const styles = require("./controllers/StyleActions");
 const favorites = require("./controllers/FavoriteActions");
-const auth = require("./services/auth");
 const authActions = require("./controllers/authActions");
+const ranking = require("./controllers/RankingActions");
+
+const auth = require("./services/auth");
 const verifyMiddleware = require("./services/verifyMiddleware");
 const { compareLogin } = require("./services/compareLogin");
 
@@ -25,6 +27,7 @@ router.get("/artworks", artworks.browse);
 router.get("/cities", cities.browse);
 router.get("/styles", styles.browse);
 router.get("/favorites", favorites.browse);
+router.get("/users/ranking", ranking.browse);
 
 // Route to get a specific item by ID
 // router.get("/items/:id", items.read);
