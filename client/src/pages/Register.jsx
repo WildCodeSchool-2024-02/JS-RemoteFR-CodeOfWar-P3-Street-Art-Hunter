@@ -16,9 +16,13 @@ export default function Register() {
         <input type="password" placeholder="Mot de passe" />
         <input type="password" placeholder="Confirmez votre mot de passe" />
 
-        <GradientButton text="Créer un compte" type="submit" />
+        <GradientButton
+          text="Créer un compte"
+          type="submit"
+          className="registerSubmit"
+        />
 
-        <p className="link_connection">
+        <p className="linkRegister">
           Déja un compte ?{" "}
           <Link to="/connection" className="InscriptionLink">
             Connectez-vous!

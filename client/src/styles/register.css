@@ -4,13 +4,17 @@
   background-position: "center";
   height: "100vh";
   width: "100%";
+  padding-inline: 1rem;
+}
+.register_form img {
+  margin-left: -1rem;
 }
 .registerTitle {
   font-family: var(--title-font);
   font-size: 32px;
   padding: 1rem;
   text-align: center;
-  margin-top: -2rem;
+  margin-top: -4rem;
 }
 .register_form {
   display: flex;
@@ -27,7 +31,14 @@
   margin-bottom: 0.5rem;
 }
 
+.register #gradientButton {
+  margin: 1rem 0 1rem 0;
+}
+
 .InscriptionLink {
   text-decoration: underline;
   color: inherit;
+}
+.linkRegister {
+  text-align: center;
 }
