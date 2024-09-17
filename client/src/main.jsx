@@ -3,7 +3,13 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { getMap, getUserbyId, getCamera, getGallery } from "./services/request";
+import {
+  getMap,
+  getUserbyId,
+  getCamera,
+  getGallery,
+  getUsersRanking,
+} from "./services/request";
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -12,9 +18,9 @@ import Gallery from "./pages/Gallery";
 import GalleryDetails from "./pages/GalleryDetails";
 import Camera from "./pages/Camera";
 import Profile from "./pages/Profile";
+import Ranking from "./pages/Ranking";
 import Connection from "./pages/Connection";
 import Register from "./pages/Register";
-// import Ranking from "./pages/Ranking";
 
 import "./styles/app.css";
 
@@ -63,12 +69,14 @@ const router = createBrowserRouter([
         element: <Profile />,
         loader: ({ params }) => getUserbyId(params.id),
       },
-      /*
-            {
-        path: "/profile/ranking",
+      {
+        path: "/profile/ranking/:id",
         element: <Ranking />,
+        loader: async ({ params }) => ({
+          userInfo: await getUserbyId(params.id),
+          rankings: await getUsersRanking(),
+        }),
       },
-      */
     ],
   },
 ]);

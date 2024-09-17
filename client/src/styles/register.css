@@ -1,4 +1,4 @@
-.register_form {
+.register {
   background-image: url("../assets/images/backgroundOnboarding.svg");
   background-size: "cover";
   background-position: "center";
@@ -6,8 +6,8 @@
   width: "100%";
   padding-inline: 1rem;
 }
-.register_form img {
-  margin-left: -1rem;
+.register img {
+  width: 100%;
 }
 .registerTitle {
   font-family: var(--title-font);
