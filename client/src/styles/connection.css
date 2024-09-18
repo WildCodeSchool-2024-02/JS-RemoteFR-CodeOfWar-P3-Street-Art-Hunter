@@ -24,18 +24,16 @@
   width: "100%";
 }
 
-.connection_form > form > input {
-  display: flex;
-  width: 100%;
+.connection_form img {
+  margin-left: -1rem;
+}
+
+.connection_form > input {
   padding: 1rem;
   border: 1px #aeaeae solid;
   border-radius: 12px;
   font-weight: bolder;
   margin-bottom: 0.5rem;
-}
-
-.connection_form > form > #gradientButton {
-  width: 91%;
 }
 
 .connection_without {
@@ -74,4 +72,7 @@ hr::after {
 .InscriptionLink {
   text-decoration: underline;
   color: inherit;
+}
+.link_register {
+  text-align: center;
 }
