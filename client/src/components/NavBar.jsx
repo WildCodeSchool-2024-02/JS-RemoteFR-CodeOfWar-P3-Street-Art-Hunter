@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import useScreenWidth from "../utils/hook/useScreenWidth";
 
 import Help from "../assets/images/nav_help.svg";
 import Gallery from "../assets/images/nav_gallery.svg";
@@ -6,10 +7,16 @@ import Map from "../assets/images/nav_map.svg";
 import Camera from "../assets/images/nav_camera.svg";
 import Profil from "../assets/images/nav_profil.svg";
 
+import NavBarDesktop from "./desktop/NavBarDesktop";
+
 import "../styles/navBar.css";
 
 export default function NavBar() {
-  return (
+  const screenWidth = useScreenWidth();
+
+  return screenWidth > 480 ? (
+    <NavBarDesktop />
+  ) : (
     <nav className="navBar">
       <div className="nav_picto">
         <Link to="/help">
