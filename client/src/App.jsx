@@ -12,14 +12,21 @@ function App() {
   const location = useLocation();
   const screenWidth = useScreenWidth();
 
-  const NavResponsive = screenWidth <= 480 ? <NavBar /> : <NavBarDesktop />;
-
   return (
     <>
-      {location.pathname === "/connection" ||
-      location.pathname === "/inscription" ? null : (
-        <NavResponsive />
+      {screenWidth <= 480 ? (
+        <>
+          (
+          {location.pathname === "/connection" ||
+          location.pathname === "/inscription" ? null : (
+            <NavBar />
+          )}
+          )
+        </>
+      ) : (
+        <NavBarDesktop />
       )}
+
       <GeoLocationProvider>
         <main>
           <Outlet />
