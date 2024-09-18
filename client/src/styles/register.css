@@ -60,3 +60,11 @@
 .register #gradientButton {
   margin: 1rem 0 1rem 0;
 }
+
+@media (width >= 480px) {
+  .register {
+    background-image: url("../assets/images/backgroundDesktop.svg");
+    background-size: cover;
+    background-position: center;
+  }
+}
