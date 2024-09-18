@@ -38,7 +38,7 @@ const add = async (req, res, next) => {
 
   try {
     const result = await tables.user.create(user);
-    res.status(201).send(`utilisateur ajouté: ${result.insertId}`);
+    res.status(201).send(`utilisateur ajouté: ${result}`);
   } catch (err) {
     next(err);
   }

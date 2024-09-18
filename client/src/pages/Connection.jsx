@@ -32,7 +32,7 @@ export default function Connection() {
       )
       .then((response) => {
         setAuth(response);
-        navigate("/");
+        navigate("/connection");
       })
       .catch((error) => console.error(error));
   };
