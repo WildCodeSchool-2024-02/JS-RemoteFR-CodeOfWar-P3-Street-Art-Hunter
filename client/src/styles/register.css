@@ -1,0 +1,62 @@
+.register {
+  background-image: url("../assets/images/backgroundOnboarding.svg");
+  background-size: "cover";
+  background-position: "center";
+  height: "100vh";
+  width: "100%";
+  padding-inline: 1rem;
+}
+.registerLogo {
+  width: 100%;
+}
+.registerTitle {
+  font-family: var(--title-font);
+  font-size: 32px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: -4rem;
+}
+.register_form {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+}
+
+.register_form > input {
+  padding: 1rem;
+  border: 1px #aeaeae solid;
+  border-radius: 12px;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
+.eyes {
+  position: absolute;
+  right: 1rem;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.register_form button {
+  background-color: white;
+  border: 1px solid white;
+  color: white;
+}
+
+.InscriptionLink {
+  text-decoration: underline;
+  color: inherit;
+}
+.linkRegister {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.register #gradientButton {
+  margin: 1rem 0 1rem 0;
+}

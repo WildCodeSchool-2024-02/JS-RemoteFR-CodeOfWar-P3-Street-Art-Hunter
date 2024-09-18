@@ -51,7 +51,9 @@ const edit = async (req, res, next) => {
   }
   try {
     await tables.user.update(user);
-    res.status(204).send(`utilisateur modifié: ${req.params.id}`);
+    res
+      .status(204)
+      .send(`utilisateur modifié avec succès: #{ id:${req.params.id} }`);
   } catch (error) {
     next(error);
   }
@@ -59,7 +61,9 @@ const edit = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     await tables.user.delete(req.params.id);
-    res.status(204).send(`utilisateur supprimé: ${req.params.id}`);
+    res
+      .status(204)
+      .send(`utilisateur supprimé avec succès: #{ id:${req.params.id} }`);
   } catch (error) {
     next(error);
   }
