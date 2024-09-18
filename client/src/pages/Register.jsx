@@ -104,7 +104,6 @@ export default function Register() {
               placeholder="Mot de passe*"
               value={userRegistration.password}
               onChange={handleChangeUser}
-              className="inputWithIcon"
             />
             <button
               type="button"
@@ -126,7 +125,6 @@ export default function Register() {
               name="confirm_password"
               placeholder="Confirmez votre mot de passe*"
               onChange={handleChangePassword}
-              className="inputWithIcon"
             />
             <button type="button" className="eyes" onClick={handleClickConfirm}>
               <img
