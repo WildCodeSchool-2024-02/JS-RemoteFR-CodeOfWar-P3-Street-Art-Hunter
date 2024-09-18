@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import myAxios from "../services/instanceAxios";
@@ -13,8 +13,10 @@ export default function Connection() {
 
   const [auth, setAuth] = useState();
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [userLogin, setUserLogin] = useState({
+    mail: "",
+    password: "",
+  });
 
   const navigate = useNavigate();
 
@@ -22,19 +24,20 @@ export default function Connection() {
     event.preventDefault();
 
     myAxios
-      .post(
-        "/login",
-        {
-          mail: emailRef.current.value,
-          password: passwordRef.current.value,
-        },
-        { withCredentials: true }
-      )
+      .post("/login", userLogin, { withCredentials: true })
       .then((response) => {
         setAuth(response);
-        navigate("/connection");
+        navigate("/");
       })
       .catch((error) => console.error(error));
+  };
+
+  const handleChangeLogin = (event) => {
+    const { name, value } = event.target;
+    setUserLogin((previousAdd) => ({
+      ...previousAdd,
+      [name]: value,
+    }));
   };
 
   return (
@@ -49,17 +52,17 @@ export default function Connection() {
           <form onSubmit={handleSubmit}>
             <input
               name="mail"
-              ref={emailRef}
               type="email"
-              id="mail"
               placeholder="Adresse mail"
+              value={setUserLogin.mail}
+              onChange={handleChangeLogin}
             />
             <input
               name="password"
               type="password"
-              id="password"
-              ref={passwordRef}
               placeholder="Mot de passe"
+              value={setUserLogin.password}
+              onChange={handleChangeLogin}
             />
             <GradientButton
               text="Se connecter"
