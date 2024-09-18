@@ -4,7 +4,7 @@ import "../styles/styleGradientButton.css";
 
 export default function GradientButton({ text, onClick }) {
   return (
-    <button type="button" id="gradientButton" onClick={onClick}>
+    <button type="submit" id="gradientButton" onClick={onClick}>
       <p id="textButton">{text}</p>
     </button>
   );
