@@ -20,15 +20,29 @@
   background-color: white;
   border-radius: 50%;
   border: 1px solid #fff;
+  height: 98px;
+  width: 98px;
   cursor: pointer;
   position: relative;
-  bottom: 24px;
+  bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.nav_picto_large > a > img {
-  width: 92px;
+.nav_picto_large > a {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.nav_picto_large > a > .lottie {
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  padding-top: 1rem;
+}
 .nav_picto {
   height: 100%;
   width: 34px;
