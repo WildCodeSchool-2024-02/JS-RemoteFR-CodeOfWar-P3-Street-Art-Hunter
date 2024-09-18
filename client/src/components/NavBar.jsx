@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useScreenWidth from "../utils/hook/useScreenWidth";
+import Lottie from "lottie-react";
+
 
 import Help from "../assets/images/nav_help.svg";
 import Gallery from "../assets/images/nav_gallery.svg";
-import Map from "../assets/images/nav_map.svg";
+import Map from "../assets/images/locationAnim.json";
 import Camera from "../assets/images/nav_camera.svg";
 import Profil from "../assets/images/nav_profil.svg";
 
@@ -32,7 +34,7 @@ export default function NavBar() {
       </div>
       <div className="nav_picto_large">
         <Link to="/">
-          <img src={Map} alt="Map" />
+          <Lottie animationData={Map} loop className="lottie" />
         </Link>
       </div>
       <div className="nav_picto">
