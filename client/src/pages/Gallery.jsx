@@ -2,7 +2,6 @@ import { useLoaderData, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Masonry from "react-masonry-css";
 import myAxios from "../services/instanceAxios";
-import NavBar from "../components/NavBar";
 import nothingNow from "../assets/images/nothingNow.svg";
 
 import "../styles/gallery.css";
@@ -89,7 +88,6 @@ export default function Gallery() {
           </Masonry>
         )}
       </section>
-      <NavBar />
     </section>
   );
 }

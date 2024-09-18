@@ -1,0 +1,60 @@
+.homeDesktopContainer {
+  height: 100vh;
+  overflow: hidden;
+  padding: 8rem 8rem 2rem 8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url("../assets/images/backgroundDesktop.svg");
+  background-size: 100%;
+}
+.leftContain {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rankingHomeDesktop {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 30%;
+}
+.mapDesktop {
+  border-radius: 24px;
+  height: 60%;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 8px 2px var(--grey);
+}
+.textHomeContainer {
+  width: 100%;
+  padding-block: 3rem;
+}
+.textHomeContainer > h2 {
+  font-family: var(--title-font);
+  font-size: 32px;
+  color: var(--black);
+}
+.textHomeContainer > h2 > span {
+  background: var(--primary-gradient);
+  background-clip: text;
+  color: transparent;
+}
+.textHomeContainer > p {
+  font-family: var(--main-font);
+  color: var(--black);
+  margin-top: 1rem;
+}
+.textHomeContainer > p:last-child {
+  font-family: var(--main-font);
+  color: var(--black);
+  font-weight: bold;
+  font-size: 18px;
+}
+.crownHomeDesktop {
+  position: absolute;
+  margin: -6rem 0 0 -6rem;
+}
