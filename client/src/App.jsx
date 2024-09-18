@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       {location.pathname === "/connection" ||
-      location.pathname === "/inscription" ? null : (
+      location.pathname === "/register" ? null : (
         <NavBar />
       )}
       <GeoLocationProvider>

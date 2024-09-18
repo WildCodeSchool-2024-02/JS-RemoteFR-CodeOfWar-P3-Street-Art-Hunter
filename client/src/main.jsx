@@ -22,7 +22,6 @@ import Ranking from "./pages/Ranking";
 import Connection from "./pages/Connection";
 import Register from "./pages/Register";
 
-
 import "./styles/app.css";
 
 const router = createBrowserRouter([
