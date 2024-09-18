@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 
 import useScreenWidth from "../utils/hook/useScreenWidth";
-import Lottie from "lottie-react";
-
 
 import Help from "../assets/images/nav_help.svg";
 import Gallery from "../assets/images/nav_gallery.svg";
