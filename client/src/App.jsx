@@ -1,6 +1,7 @@
 import { useLocation, Outlet } from "react-router-dom";
 
 import { GeoLocationProvider } from "./services/context/GeoLocationContext";
+
 import NavBar from "./components/NavBar";
 
 import "./styles/app.css";
@@ -11,7 +12,7 @@ function App() {
   return (
     <>
       {location.pathname === "/connection" ||
-      location.pathname === "/inscription" ? null : (
+      location.pathname === "/register" ? null : (
         <NavBar />
       )}
       <GeoLocationProvider>

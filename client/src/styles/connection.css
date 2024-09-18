@@ -24,9 +24,17 @@
   width: "100%";
 }
 
+
 .connection_form > form > input {
   display: flex;
   width: 100%;
+  }
+
+.connection_form img {
+  margin-left: -1rem;
+}
+
+.connection_form > input {
   padding: 1rem;
   border: 1px #aeaeae solid;
   border-radius: 12px;
@@ -74,4 +82,7 @@ hr::after {
 .InscriptionLink {
   text-decoration: underline;
   color: inherit;
+}
+.link_register {
+  text-align: center;
 }
