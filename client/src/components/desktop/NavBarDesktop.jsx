@@ -7,9 +7,9 @@ export default function NavBarDesktop() {
   const [isActive, setIsActive] = useState("Acceuil");
 
   const pathArray = [
-    { path: "/", name: "Acceuil" },
-    { path: "/gallery", name: "Gallerie" },
-    { path: "/profile/:id", name: "Profile" },
+    { path: "/", name: "Accueil" },
+    { path: "/gallery", name: "Galerie" },
+    { path: "/profile/:id", name: "Profil" },
     { path: "/help", name: "Aide" },
     { path: "/connection", name: "Connexion" },
   ];
