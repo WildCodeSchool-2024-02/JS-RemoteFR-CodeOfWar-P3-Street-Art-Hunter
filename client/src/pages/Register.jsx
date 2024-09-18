@@ -9,6 +9,8 @@ import GradientButton from "../components/GradientButton";
 
 export default function Register() {
   const [userRegistration, setUserRegistration] = useState({
+    lastname: "",
+    firstname: "",
     pseudo: "",
     mail: "",
     password: "",
@@ -55,6 +57,26 @@ export default function Register() {
         <h2 className="registerTitle">INSCRIPTION</h2>
         <form onSubmit={sendCredentials}>
           <div className="register_form">
+            <label htmlFor="Lastname">Nom</label>
+            <input
+              type="text"
+              placeholder="Nom"
+              name="lastname"
+              value={userRegistration.lastname}
+              onChange={handleChangeUser}
+            />
+          </div>
+          <div className="register_form">
+            <label htmlFor="Firstname">Prénom</label>
+            <input
+              type="text"
+              placeholder="Prénom"
+              name="firstname"
+              value={userRegistration.firstname}
+              onChange={handleChangeUser}
+            />
+          </div>
+          <div className="register_form">
             <label htmlFor="Pseudo">Pseudo*</label>
             <input
               type="text"
@@ -82,7 +104,6 @@ export default function Register() {
               placeholder="Mot de passe*"
               value={userRegistration.password}
               onChange={handleChangeUser}
-              className="inputWithIcon"
             />
             <button
               type="button"
@@ -104,7 +125,6 @@ export default function Register() {
               name="confirm_password"
               placeholder="Confirmez votre mot de passe*"
               onChange={handleChangePassword}
-              className="inputWithIcon"
             />
             <button type="button" className="eyes" onClick={handleClickConfirm}>
               <img
