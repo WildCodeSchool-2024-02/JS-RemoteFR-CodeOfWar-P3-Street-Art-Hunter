@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Lottie from "lottie-react";
+
 import useScreenWidth from "../utils/hook/useScreenWidth";
 
 import Help from "../assets/images/nav_help.svg";
@@ -32,7 +34,7 @@ export default function NavBar() {
       </div>
       <div className="nav_picto_large">
         <Link to="/">
-          <img src={Map} alt="Map" />
+          <Lottie animationData={Map} loop className="lottie" />
         </Link>
       </div>
       <div className="nav_picto">
