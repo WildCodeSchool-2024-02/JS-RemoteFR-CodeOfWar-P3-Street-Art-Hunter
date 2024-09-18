@@ -10,6 +10,7 @@ import {
   getGallery,
   getUsersRanking,
 } from "./services/request";
+import useScreenWidth from "./utils/hook/useScreenWidth";
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -21,8 +22,16 @@ import Profile from "./pages/Profile";
 import Ranking from "./pages/Ranking";
 import Connection from "./pages/Connection";
 import Register from "./pages/Register";
+import HomeDesktop from "./pages/HomeDesktop";
+
 
 import "./styles/app.css";
+
+function HomeResponsive() {
+  const screenWidth = useScreenWidth();
+
+  return screenWidth <= 480 ? <Home /> : <HomeDesktop />;
+}
 
 const router = createBrowserRouter([
   {
@@ -38,8 +47,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Home />,
-        loader: getMap,
+        element: <HomeResponsive />,
+        loader: async () => ({
+          rankings: await getUsersRanking(),
+          usersGlobal: await getMap(),
+        }),
       },
       {
         path: "/help",

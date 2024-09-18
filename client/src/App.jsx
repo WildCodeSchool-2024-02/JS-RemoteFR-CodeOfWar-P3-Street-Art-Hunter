@@ -1,6 +1,7 @@
 import { useLocation, Outlet } from "react-router-dom";
 
 import { GeoLocationProvider } from "./services/context/GeoLocationContext";
+
 import NavBar from "./components/NavBar";
 
 import "./styles/app.css";

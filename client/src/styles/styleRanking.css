@@ -167,3 +167,9 @@
   color: #ff0d0d;
   font-size: 36px;
 }
+
+@media (width >= 480px) {
+  .listRanking {
+    height: 90%;
+  }
+}

@@ -8,7 +8,7 @@ import { GeoLocationContext } from "../services/context/GeoLocationContext";
 import "leaflet/dist/leaflet.css";
 
 export default function Map({ setArtworkDetails }) {
-  const data = useLoaderData();
+  const { usersGlobal } = useLoaderData();
 
   const userLocation = useContext(GeoLocationContext);
 
@@ -25,7 +25,7 @@ export default function Map({ setArtworkDetails }) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={[userLocation.latitude, userLocation.longitude]} />
-        {data?.map((artwork) => (
+        {usersGlobal?.map((artwork) => (
           <Marker
             key={artwork.id}
             position={[artwork.lat, artwork.lon]}
