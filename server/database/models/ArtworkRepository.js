@@ -38,6 +38,30 @@ where ${this.table}.id = ?`,
     return rows[0];
   }
 
+  async adminValidation() {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE isValidated = 0`
+    );
+    return rows;
+  }
+
+  async validated(id, isValidated) {
+    if (isValidated) {
+      const [result] = await this.database.query(
+        `UPDATE ${this.table} set isValidated = 1 WHERE artwork.id = ?`,
+        [id]
+      );
+      return result.affectedRows;
+    }
+    {
+      const [result] = await this.database.query(
+        `DELETE FROM ${this.table} WHERE artworkd.id = ?`,
+        [id]
+      );
+      return result.affectedRows;
+    }
+  }
+
   async readAll(where) {
     if (!where.q) {
       const [rows] = await this.database.query(`select * from ${this.table}`);
@@ -52,10 +76,11 @@ where ${this.table}.id = ?`,
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
+      `update ${this.table} set title = ?, description = ?,isValidated = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
       [
         artwork.title,
         artwork.description,
+        artwork.isValidated,
         artwork.lat,
         artwork.lon,
         artwork.image_url,

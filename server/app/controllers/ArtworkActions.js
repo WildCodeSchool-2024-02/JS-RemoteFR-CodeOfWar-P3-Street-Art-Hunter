@@ -45,6 +45,19 @@ const edit = async (req, res, next) => {
     next(error);
   }
 };
+const validatedByAdmin = async (req, res, next) => {
+  try {
+    const artwork = await tables.artwork.adminValidation(req.params.id);
+    if (artwork == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(artwork);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 const destroy = async (req, res, next) => {
   try {
     await tables.artwork.delete(req.params.id);
@@ -61,4 +74,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  validatedByAdmin,
 };
