@@ -44,9 +44,13 @@ const verifyToken = async (req, res, next) => {
   try {
     const { auth } = req.cookies;
 
-    await jwt.verify(auth, process.env.APP_SECRET);
-
-    next();
+    await jwt.verify(auth, process.env.APP_SECRET, (err, decoded) => {
+      if (err) {
+        res.status(401).send("Invalid token");
+      }
+      req.decoded = decoded;
+      next();
+    });
   } catch (error) {
     next(error);
   }

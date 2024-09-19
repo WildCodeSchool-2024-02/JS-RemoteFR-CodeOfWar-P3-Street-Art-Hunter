@@ -24,7 +24,6 @@ import Connection from "./pages/Connection";
 import Register from "./pages/Register";
 import HomeDesktop from "./pages/HomeDesktop";
 
-
 import "./styles/app.css";
 
 function HomeResponsive() {

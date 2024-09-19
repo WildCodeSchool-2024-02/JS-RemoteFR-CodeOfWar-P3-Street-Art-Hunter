@@ -39,7 +39,7 @@ router.get("/favorites/:id", favorites.read);
 
 // Route to add a new item
 // router.post("/items", items.add);
-router.post("/artworks", artworks.add);
+router.post("/artworks", auth.verifyToken, artworks.add);
 router.post(
   "/users",
   verifyMiddleware.verifyFields,
@@ -47,9 +47,9 @@ router.post(
   verifyMiddleware.uploadPicture,
   users.add
 );
-router.post("/cities", cities.add);
-router.post("/styles", styles.add);
-router.post("/favorites", favorites.add);
+router.post("/cities", auth.verifyToken, cities.add);
+router.post("/styles", auth.verifyToken, styles.add);
+router.post("/favorites", auth.verifyToken, favorites.add);
 router.post("/login", compareLogin, auth.createToken, authActions.login);
 
 // Route to update a new item

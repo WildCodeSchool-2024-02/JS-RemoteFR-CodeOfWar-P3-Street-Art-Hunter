@@ -1,10 +1,9 @@
-
 CREATE TABLE user (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     lastname VARCHAR(255),
     firstname VARCHAR(255),
     pseudo VARCHAR(255) NOT NULL,
-    mail VARCHAR(255) NOT NULL,
+    mail VARCHAR(255) NOT NULL UNIQUE,
     score INT DEFAULT 0,
     hashed_password VARCHAR(255) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
