@@ -28,9 +28,8 @@ export function getGallery(id) {
 }
 
 export function sendArtwork(artworkProperties) {
-  console.info("test:", artworkProperties);
   return myAxios
-    .post("/artworks", artworkProperties)
+    .post("/artworks", artworkProperties, { withCredentials: true })
     .then((response) => console.info(response))
     .catch((error) => console.info(error));
 }
