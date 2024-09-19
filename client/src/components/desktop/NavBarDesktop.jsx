@@ -13,8 +13,6 @@ export default function NavBarDesktop() {
     { path: "/help", name: "Aide" },
     { path: "/connection", name: "Connexion" },
     { path: "/", name: "Gestion" },
-    // ...(Connected ? [{ path: "/connection", name: "Connexion" }] : []),
-    // ...(Admin ? [{ path: "/admin", name: "Administration" }] : []),
   ];
   return (
     <section className="navDesktopContainer">
