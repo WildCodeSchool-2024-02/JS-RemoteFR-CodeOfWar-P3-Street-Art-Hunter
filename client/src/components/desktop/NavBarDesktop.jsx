@@ -9,9 +9,10 @@ export default function NavBarDesktop() {
   const pathArray = [
     { path: "/", name: "Acceuil" },
     { path: "/gallery", name: "Gallerie" },
-    { path: "/profile/:id", name: "Profile" },
+    { path: "/profile/1", name: "Profile" },
     { path: "/help", name: "Aide" },
     { path: "/connection", name: "Connexion" },
+    { path: "/", name: "Gestion" },
   ];
   return (
     <section className="navDesktopContainer">
