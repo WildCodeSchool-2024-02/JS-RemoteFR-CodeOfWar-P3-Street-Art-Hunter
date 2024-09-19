@@ -1,0 +1,9 @@
+.gestion {
+  padding-top: 7rem;
+}
+.gestionHeader {
+  height: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}

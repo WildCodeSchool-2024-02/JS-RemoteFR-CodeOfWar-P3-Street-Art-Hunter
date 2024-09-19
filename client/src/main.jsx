@@ -23,7 +23,7 @@ import Ranking from "./pages/Ranking";
 import Connection from "./pages/Connection";
 import Register from "./pages/Register";
 import HomeDesktop from "./pages/HomeDesktop";
-
+import Gestion from "./pages/Gestion";
 
 import "./styles/app.css";
 
@@ -75,7 +75,10 @@ const router = createBrowserRouter([
         element: <Camera />,
         loader: getCamera,
       },
-
+      {
+        path: "/gestion",
+        element: <Gestion />,
+      },
       {
         path: "/profile/:id",
         element: <Profile />,
