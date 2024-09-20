@@ -45,23 +45,6 @@ where ${this.table}.id = ?`,
     return rows;
   }
 
-  async validated(id, isValidated) {
-    if (isValidated) {
-      const [result] = await this.database.query(
-        `UPDATE ${this.table} set isValidated = 1 WHERE artwork.id = ?`,
-        [id]
-      );
-      return result.affectedRows;
-    }
-    {
-      const [result] = await this.database.query(
-        `DELETE FROM ${this.table} WHERE artworkd.id = ?`,
-        [id]
-      );
-      return result.affectedRows;
-    }
-  }
-
   async readAll(where) {
     if (!where.q) {
       const [rows] = await this.database.query(`select * from ${this.table}`);
