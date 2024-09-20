@@ -19,16 +19,20 @@ export default function Gestion() {
   return (
     <section className="gestion">
       <div className="gestionHeader">
-        {headers.map((header) => (
-          <button
-            key={header.name}
-            type="button"
-            className={header.name === isActive ? "headers active" : "headers"}
-            onClick={() => handleClickActive(header)}
-          >
-            <p>{header.name}</p>
-          </button>
-        ))}
+        <div className="gestionContainer">
+          {headers.map((header) => (
+            <button
+              key={header.name}
+              type="button"
+              className={
+                header.name === isActive ? "headers active" : "headers"
+              }
+              onClick={() => handleClickActive(header)}
+            >
+              <p>{header.name}</p>
+            </button>
+          ))}
+        </div>
       </div>
       <section className="gestionBody">
         <Admin />

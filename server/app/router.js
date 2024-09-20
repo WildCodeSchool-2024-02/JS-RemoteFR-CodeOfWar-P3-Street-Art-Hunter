@@ -28,7 +28,7 @@ router.get("/cities", cities.browse);
 router.get("/styles", styles.browse);
 router.get("/favorites", favorites.browse);
 router.get("/users/ranking", ranking.browse);
-router.get("/artworks/validate", artworks.validatedByAdmin);
+router.get("/artworks/:id/validate", artworks.validatedByAdmin);
 
 // Route to get a specific item by ID
 // router.get("/items/:id", items.read);
