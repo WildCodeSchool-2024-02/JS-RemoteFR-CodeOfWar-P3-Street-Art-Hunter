@@ -38,7 +38,27 @@ const uploadPicture = (req, res, next) => {
   return upload.single("avatar")(req, res, next);
 };
 
+const storageArtwork = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, path.join(__dirname, "../../public/uploads"));
+  },
+  filename(req, file, cb) {
+    const id = uuidv4();
+    const artworkImg = req.body.image_url;
+    console.info("uuid", id);
+    const artworkName = `${id}${path.extname(artworkImg)}`;
+    req.body.image_url = artworkName;
+    cb(null, artworkName);
+  },
+});
+
+const uploadArtwork = (req, res, next) => {
+  const upload = multer({ storageArtwork });
+  return upload.single("image_url")(req, res, next);
+};
+
 module.exports = {
   verifyFields,
   uploadPicture,
+  uploadArtwork,
 };

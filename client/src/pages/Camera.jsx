@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 
 import { sendArtwork } from "../services/request";
 
@@ -19,8 +19,23 @@ export default function Camera() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [isCameraActive, setIsCameraActive] = useState(false);
-  const [imageDataUrl, setImageDataUrl] = useState(null);
+  // const [imageDataUrl, setImageDataUrl] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [artworkProperties, setArtworkProperties] = useState({
+    title: "",
+    description: "",
+    image_url: "",
+    lat: `${userLocation.latitude}`,
+    lon: `${userLocation.longitude}`,
+    author: "",
+    style_id: "",
+    city_id: 1,
+    user_id: 1,
+  });
+  useEffect(() => {
+    console.info(artworkProperties);
+  }, [artworkProperties]);
 
   const startCamera = async () => {
     try {
@@ -46,22 +61,18 @@ export default function Camera() {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const imageData = canvas.toDataURL("image/jpeg");
-      setImageDataUrl(imageData);
+
+      // Convertir le canvas en Blob et créer un fichier
+      canvas.toBlob((blob) => {
+        console.info(blob);
+
+        const formData = new FormData();
+        formData.append("image_url", blob);
+
+        setArtworkProperties({ ...artworkProperties, image_url: formData });
+      }, "image/jpeg");
     }
   };
-
-  const [artworkProperties, setArtworkProperties] = useState({
-    title: "",
-    description: "",
-    image_url: `${setImageDataUrl}`,
-    lat: `${userLocation.latitude}`,
-    lon: `${userLocation.longitude}`,
-    author: "",
-    style_id: "",
-    city_id: 1,
-    user_id: "",
-  });
 
   const handleChangeProperties = (event) => {
     const { name, value } = event.target;
@@ -82,16 +93,15 @@ export default function Camera() {
   };
 
   const data = useLoaderData();
-
   return (
     <section>
       <form action="" method="post" className="form_camera">
         <div className="form_container_picture">
           <div className="form_file_upload">
-            {imageDataUrl && (
+            {artworkProperties.image_url && (
               <div className="container_picture_captured">
                 <img
-                  src={imageDataUrl}
+                  src={artworkProperties.image_url.url}
                   alt="Captured"
                   className="picture_Captured"
                 />
@@ -177,6 +187,7 @@ export default function Camera() {
           text="Ajouter une œuvre"
           type="submit"
           onClick={() => sendArtwork(artworkProperties)}
+          style={{ zIndex: 7, marginTop: -50 }}
         />
       </form>
     </section>
