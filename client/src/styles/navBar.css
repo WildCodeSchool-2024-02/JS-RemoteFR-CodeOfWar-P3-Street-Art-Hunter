@@ -65,6 +65,26 @@
   text-decoration: none;
 }
 
+.profilLogin {
+  width: 34px;
+  height: 34px;
+  margin-top: 1px;
+  margin-bottom: 3px;
+  padding: 0.2rem;
+  border-radius: 50%;
+  border: 2px solid #c5c5c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profilLogin > div {
+  width: 14px;
+  height: 14px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #c5c5c5;
+}
+
 /* NAVBAR DESKTOP */
 
 .navDesktopContainer {
