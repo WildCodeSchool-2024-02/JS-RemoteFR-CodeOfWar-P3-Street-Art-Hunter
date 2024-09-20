@@ -64,3 +64,10 @@ export function getUserConnected(setter) {
     .then((response) => setter(response.data))
     .catch((error) => console.error(error.message));
 }
+
+export function deleteCookie() {
+  return myAxios
+    .get("/logout", { withCredentials: true })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}
