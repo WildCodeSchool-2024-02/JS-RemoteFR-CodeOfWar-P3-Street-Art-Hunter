@@ -56,4 +56,13 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.exports = { hashPassword, createToken, verifyToken };
+const deleteCookie = async (req, res, next) => {
+  try {
+    res.clearCookie("auth");
+    res.status(200).send({ message: "Disconnected" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { hashPassword, createToken, verifyToken, deleteCookie };

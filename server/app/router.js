@@ -38,6 +38,7 @@ router.get("/styles/:id", styles.read);
 router.get("/favorites/:id", favorites.read);
 
 router.get("/checkLogin", auth.verifyToken, authActions.isLogged);
+router.get("/logout", auth.verifyToken, auth.deleteCookie);
 
 // Route to add a new item
 // router.post("/items", items.add);
