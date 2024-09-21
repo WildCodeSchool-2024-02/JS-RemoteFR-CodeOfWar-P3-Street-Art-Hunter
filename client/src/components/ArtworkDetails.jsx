@@ -17,7 +17,7 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
         />
         <div className="textDetailsContainer">
           <div className="textDetails">
-            <p>{artwork.title}</p>
+            <p className="title">{artwork.title}</p>
             <p>{artwork.author}</p>
           </div>
           <div className="textDetails">
