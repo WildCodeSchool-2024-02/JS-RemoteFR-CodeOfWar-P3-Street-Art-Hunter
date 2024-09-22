@@ -19,6 +19,7 @@ const ranking = require("./controllers/RankingActions");
 const auth = require("./services/auth");
 const verifyMiddleware = require("./services/verifyMiddleware");
 const { compareLogin } = require("./services/compareLogin");
+const { findCity } = require("./services/findCity");
 
 // Route to get a list of items
 // router.get("/items", items.browse);
@@ -28,6 +29,8 @@ router.get("/cities", cities.browse);
 router.get("/styles", styles.browse);
 router.get("/favorites", favorites.browse);
 router.get("/users/ranking", ranking.browse);
+
+router.post("/findCity", findCity);
 
 // Route to get a specific item by ID
 // router.get("/items/:id", items.read);
