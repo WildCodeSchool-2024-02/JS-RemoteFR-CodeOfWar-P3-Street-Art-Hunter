@@ -66,9 +66,8 @@ export default function Connection() {
               value={setUserLogin.password}
               onChange={handleChangeLogin}
             />
-            <div className="connectGradientBtn">
-              <GradientButton text="Se connecter" type="submit" />
-            </div>
+
+            <GradientButton text="Se connecter" type="submit" />
           </form>
 
           <hr className="connection_separator" />
