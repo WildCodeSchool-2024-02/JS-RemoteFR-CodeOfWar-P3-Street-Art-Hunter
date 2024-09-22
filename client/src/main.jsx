@@ -9,6 +9,7 @@ import {
   getCamera,
   getGallery,
   getUsersRanking,
+  getValidated,
 } from "./services/request";
 import useScreenWidth from "./utils/hook/useScreenWidth";
 
@@ -79,10 +80,16 @@ const router = createBrowserRouter([
       {
         path: "/gestion",
         element: <Gestion />,
+        loader: getValidated,
       },
       {
         path: "/gestion/:id",
         element: <GestionDetails />,
+        loader: async ({ params }) => ({
+          read: await getValidated(params.id),
+          // update: await ,
+          // delete: await ,
+        }),
       },
       {
         path: "/profile/:id",

@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import myAxios from "../services/instanceAxios";
+// import myAxios from "../services/instanceAxios";
 
-function Validation() {
-  const [artworks, setArtworks] = useState([]);
+function Validation({ artworks }) {
+  // const [artworks, setArtworks] = useState([]);
 
-  const getValidated = (id) => {
-    myAxios
-      .get(`/artworks/validate/${id}`)
-      .then((response) => setArtworks(response.data))
-      .catch((error) => console.error(error));
-  };
+  // const getValidated = (id) => {
+  //   myAxios
+  //     .get(`/artworks/validate/${id}`)
+  //     .then((response) => setArtworks(response.data))
+  //     .catch((error) => console.error(error));
+  // };
 
   // const sendCredentials = (id) => {
   //   myAxios
@@ -18,9 +19,9 @@ function Validation() {
   //     .then((response) => console.info(response))
   //     .catch((error) => console.error(error));
   // };
-  useEffect(() => {
-    getValidated();
-  }, []);
+  // useEffect(() => {
+  //   artworks();
+  // }, []);
   // const handleClickStatus = () => {
   //   setValidated(!validated);
   // };
@@ -33,11 +34,10 @@ function Validation() {
   //   }));
   // };
   // console.info("coucou", handleChangeArtwork);
-  console.info(artworks);
   return (
     <section>
-      {artworks.length > 0 ? (
-        artworks.map((artwork) => (
+      {artworks && artworks.length > 0 ? (
+        artworks?.map((artwork) => (
           <section className="validation" key={artwork.id}>
             <div>
               <Link to={`/gestion/${artwork.id}`}>
@@ -81,3 +81,15 @@ function Contact() {
   return <h1>Coucou de contact</h1>;
 }
 export { Validation, Contact };
+
+Validation.propTypes = {
+  artworks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

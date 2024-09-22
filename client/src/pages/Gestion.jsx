@@ -1,8 +1,13 @@
+import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
+
 import { Validation, Contact } from "../components/AdminSettings";
 import "../styles/gestion.css";
 
 export default function Gestion() {
+  const readArtwork = useLoaderData();
+  const artworks = readArtwork;
+
   const [isActive, setIsActive] = useState("Validation");
 
   const headers = [{ name: "Validation" }, { name: "Contact" }, { name: "" }];
@@ -35,7 +40,7 @@ export default function Gestion() {
         </div>
       </div>
       <section className="gestionBody">
-        <Admin />
+        <Admin artworks={artworks} />
       </section>
     </section>
   );
