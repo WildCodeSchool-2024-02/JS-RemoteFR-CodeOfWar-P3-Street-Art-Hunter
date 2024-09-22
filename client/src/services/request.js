@@ -57,3 +57,14 @@ export function getUsersRanking() {
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
+
+export function getCityName(lat, lon, setter) {
+  const location = {
+    lat,
+    lon,
+  };
+  myAxios
+    .post("/findCity", location)
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}

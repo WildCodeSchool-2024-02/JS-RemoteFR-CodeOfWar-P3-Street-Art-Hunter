@@ -1,12 +1,20 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
-
+import { getCityName } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
+  const [artworkLocation, setArtworkLocation] = useState();
+
+  useEffect(() => {
+    if (artwork.lat) {
+      getCityName(artwork.lat, artwork.lon, setArtworkLocation);
+    }
+  }, [artwork.lat, artwork.lon]);
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
@@ -23,7 +31,11 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
           <div className="textDetails">
             <p>📅 {frenchDate(artwork.create_date)}</p>
             <p>
-              📍 {artwork.lat}, {artwork.lon}
+              {artworkLocation && (
+                <>
+                  📍 {artworkLocation.city}, {artworkLocation.country}
+                </>
+              )}
             </p>
           </div>
           <p className="detailsDescription">{artwork.description}</p>
