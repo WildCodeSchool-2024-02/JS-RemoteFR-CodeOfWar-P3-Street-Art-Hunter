@@ -24,6 +24,7 @@ import Connection from "./pages/Connection";
 import Register from "./pages/Register";
 import HomeDesktop from "./pages/HomeDesktop";
 import Gestion from "./pages/Gestion";
+import GestionDetails from "./pages/GestionDetails";
 
 import "./styles/app.css";
 
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "/gestion",
         element: <Gestion />,
+      },
+      {
+        path: "/gestion/:id",
+        element: <GestionDetails />,
       },
       {
         path: "/profile/:id",

@@ -1,28 +1,23 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import myAxios from "../services/instanceAxios";
-import GradientButton from "./GradientButton";
 
 function Validation() {
-  const [validated, setValidated] = useState([]);
-  const [updateArtwork, setUpdateArtwork] = useState({
-    title: "",
-    description: "",
-    isValidate: "",
-    style: "",
-  });
+  const [artworks, setArtworks] = useState([]);
+
   const getValidated = (id) => {
     myAxios
-      .get(`/artworks/${id}/validate`)
-      .then((response) => setValidated(response.data))
+      .get(`/artworks/validate/${id}`)
+      .then((response) => setArtworks(response.data))
       .catch((error) => console.error(error));
   };
 
-  const sendCredentials = (id) => {
-    myAxios
-      .put(`/artworks/${id}`, updateArtwork, { withCredentials: true })
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
-  };
+  // const sendCredentials = (id) => {
+  //   myAxios
+  //     .put(`/artworks/${id}`, updateArtwork, { withCredentials: true })
+  //     .then((response) => console.info(response))
+  //     .catch((error) => console.error(error));
+  // };
   useEffect(() => {
     getValidated();
   }, []);
@@ -30,55 +25,49 @@ function Validation() {
   //   setValidated(!validated);
   // };
 
-  const handleChangeArtwork = (event) => {
-    const { name, value } = event.target;
-    setUpdateArtwork((previousAdd) => ({
-      ...previousAdd,
-      [name]: value,
-    }));
-  };
-  console.info("coucou", handleChangeArtwork);
-  console.info(validated);
+  // const handleChangeArtwork = (event) => {
+  //   const { name, value } = event.target;
+  //   setUpdateArtwork((previousAdd) => ({
+  //     ...previousAdd,
+  //     [name]: value,
+  //   }));
+  // };
+  // console.info("coucou", handleChangeArtwork);
+  console.info(artworks);
   return (
     <section>
-      {validated.length > 0 ? (
-        validated.map((validate) => (
-          <section className="validation" key={validate.id}>
-            <div onSubmit={sendCredentials}>
-              <img
-                className="imageValidate"
-                src={validate.image_url}
-                alt={validate.title}
-              />
+      {artworks.length > 0 ? (
+        artworks.map((artwork) => (
+          <section className="validation" key={artwork.id}>
+            <div>
+              <Link to={`/gestion/${artwork.id}`}>
+                <img
+                  src={artwork.image_url}
+                  alt={artwork.title}
+                  className="imageValidate"
+                />
+              </Link>
             </div>
-            <div className="informationValidate">
-              <p>{validate.user} </p>
-              <p>
-                Titre : <br />
-                {validate.title}
-              </p>
-              <input
-                type="text"
-                placeholder="Titre"
-                name="pseudo"
-                value={updateArtwork.title}
-                onChange={handleChangeArtwork}
-              />
-              <p>
-                Description : <br />
-                {validate.description}
-              </p>
-              <p>
-                Style : <br />
-                {validate.style}
-              </p>
-            </div>
-            <div className="register_form">
-              <GradientButton
-                text="Valider"
-                type="submit"
-                // onClick={handleClickStatus}
-              />
+            <div>
+              <div className="informationValidate">
+                <ul>
+                  <li>
+                    <span className="title-font">Pseudo du joueur </span>:{" "}
+                    {artwork.pseudo}
+                  </li>
+                  <li>
+                    <span className="title-font"> Titre </span>: {artwork.title}
+                  </li>
+                  <li>
+                    <span className="title-font">Description </span>:{" "}
+                    {artwork.description}
+                  </li>
+
+                  <li>
+                    <span className="title-font"> Style </span>: {artwork.style}{" "}
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         ))
