@@ -13,14 +13,12 @@ export default function NavBarDesktop() {
   };
 
   const pathArray = [
-    { path: "/", name: "Accueil" },
-    { path: "/gallery", name: "Galerie" },
-    { path: "/profile/1", name: "Profil" },
+    { path: "/", name: "Acceuil" },
+    { path: "/gallery", name: "Gallerie" },
+    { path: "/profile/1", name: "Profile" },
     { path: "/help", name: "Aide" },
     { path: "/connection", name: "Connexion" },
-    { path: "/gestion", name: "Gestion" },
-    ...(Connected ? [{ path: "/connection", name: "Connexion" }] : []),
-    // ...(Admin ? [{ path: "/admin", name: "Administration" }] : []),
+    { path: "/", name: "Gestion" },
   ];
   return (
     <section className="navDesktopContainer">

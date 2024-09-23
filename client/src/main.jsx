@@ -10,7 +10,6 @@ import {
   getGallery,
   getUsersRanking,
   getValidated,
-  // getRead,
 } from "./services/request";
 import useScreenWidth from "./utils/hook/useScreenWidth";
 

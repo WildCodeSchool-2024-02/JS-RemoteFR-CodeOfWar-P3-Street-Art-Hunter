@@ -48,7 +48,7 @@ const readByAdmin = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const artwork = req.body;
-
+  artwork.user_id = req.decoded.id;
   try {
     const insertId = await tables.artwork.create(artwork);
     res.status(201).json({ insertId });
@@ -57,6 +57,7 @@ const add = async (req, res, next) => {
     next(err);
   }
 };
+
 const edit = async (req, res, next) => {
   const artwork = { ...req.body, id: req.params.id };
   try {
