@@ -28,6 +28,7 @@ router.get("/cities", cities.browse);
 router.get("/styles", styles.browse);
 router.get("/favorites", favorites.browse);
 router.get("/users/ranking", ranking.browse);
+router.get("/artworks/validate", artworks.browseByAdmin);
 
 // Route to get a specific item by ID
 // router.get("/items/:id", items.read);
@@ -36,7 +37,7 @@ router.get("/artworks/:id", artworks.read);
 router.get("/cities/:id", cities.read);
 router.get("/styles/:id", styles.read);
 router.get("/favorites/:id", favorites.read);
-router.get("/artworks/validate/:id", artworks.validatedByAdmin);
+router.get("/artworks/validate/:id", artworks.readByAdmin);
 
 // Route to add a new item
 // router.post("/items", items.add);
