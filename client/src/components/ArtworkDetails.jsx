@@ -2,13 +2,20 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
-import { getCityName } from "../services/request";
+import useScreenWidth from "../utils/hook/useScreenWidth";
+import { getCityName, updateScore } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
+  const userInfo = true;
+  const screenWidth = useScreenWidth();
   const [artworkLocation, setArtworkLocation] = useState();
+
+  const HandleUpdateScore = () => {
+    updateScore(1, 100);
+  };
 
   useEffect(() => {
     if (artwork.lat) {
@@ -38,6 +45,11 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
               )}
             </p>
           </div>
+          {screenWidth < 480 && userInfo && (
+            <div className="btnPointsElement">
+              <GradientButton text="✔︎" onClick={HandleUpdateScore} />
+            </div>
+          )}
           <p className="detailsDescription">{artwork.description}</p>
           <GradientButton text="Fermer" onClick={() => setArtworkDetails()} />
         </div>

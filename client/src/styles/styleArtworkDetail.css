@@ -31,9 +31,38 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  font-family: var(--main-font);
+}
+.textDetails {
+  color: var(--grey);
+  font-family: var(--main-font);
 }
 .textDetails > p:first-child {
   margin-bottom: 0.3rem;
+}
+.textDetails > .title {
+  font-size: 26px;
+  font-family: var(--title-font);
+  background-color: var(--primary-color);
+  background-clip: text;
+  color: transparent;
+}
+.btnPointsElement {
+  position: absolute;
+  right: 1rem;
+}
+.btnPointsElement > #gradientButton {
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  font-family: var(--title-font);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnPointsElement > #gradientButton > #textButton {
+  margin-top: 0.2rem;
 }
 
 @media (width >= 480px) {

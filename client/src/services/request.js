@@ -51,6 +51,13 @@ export function updateUser(id, userData) {
     .catch((error) => console.info(error));
 }
 
+export function updateScore(id, score) {
+  myAxios
+    .put(`/score/${id}`, { score })
+    .then((response) => console.info(response))
+    .catch((error) => console.info(error));
+}
+
 export function getUsersRanking() {
   return myAxios
     .get("/users/ranking")
