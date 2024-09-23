@@ -3,6 +3,8 @@ import { useState } from "react";
 import myAxios from "../services/instanceAxios";
 import GradientButton from "../components/GradientButton";
 
+import "../styles/galleryDetails.css";
+
 import { frenchDate } from "../utils/function";
 
 export default function GestionDetails() {
@@ -21,7 +23,7 @@ export default function GestionDetails() {
     user_id: 1,
   });
 
-  const sendCredentials = (event) => {
+  const sendCredentialsForUpdate = (event) => {
     event.preventDefault();
     myAxios
       .put(`/artworks/${artwork.id}`, modified, { withCredentials: true })
@@ -35,17 +37,31 @@ export default function GestionDetails() {
       [name]: value,
     }));
   };
+  const sendCredentialsForDelete = (event) => {
+    event.preventDefault();
+    myAxios
+      .delete(`/artworks/${artwork.id}`, { withCredentials: true })
+      .then((response) => response.data)
+      .catch((error) => console.error(error));
+  };
 
   return (
     <section className="galleryDetails">
-      <h1>{artwork.title}</h1>
+      <div className="deleteArtwork">
+        <GradientButton
+          text="Supprimer l'oeuvre"
+          type="submit"
+          className="deleteArtwork"
+          onClick={sendCredentialsForDelete}
+        />
+      </div>
       <div className="galleryDetailsBody">
         <img
           src={artwork.image_url}
           alt={artwork.title}
           className="detailImage"
         />
-        <form onSubmit={sendCredentials}>
+        <form onSubmit={sendCredentialsForUpdate}>
           <ul>
             <li>
               <span className="title-font">Auteur </span>: {artwork.author}
@@ -58,7 +74,6 @@ export default function GestionDetails() {
                 onChange={handleChangeArtwork}
               />
             </li>
-
             <li>
               <span className="title-font">Pseudo du joueur </span>:{" "}
               {artwork.pseudo}
@@ -125,9 +140,9 @@ export default function GestionDetails() {
           </ul>
         </form>
         <GradientButton
-          text="Valider"
+          text="Valider les changements"
           type="submit"
-          onClick={sendCredentials}
+          onClick={sendCredentialsForUpdate}
         />
       </div>
     </section>
