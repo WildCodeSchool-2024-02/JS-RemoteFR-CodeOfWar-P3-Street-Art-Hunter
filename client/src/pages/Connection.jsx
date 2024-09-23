@@ -6,9 +6,6 @@ import "../styles/connection.css";
 import logo from "../assets/images/logo_streetArt.svg";
 
 export default function Connection() {
-  // const userLogin = useLoaderData();
-  // console.info("userlogin", userLogin);
-
   return (
     <section className="connection">
       <div className="connection_form">

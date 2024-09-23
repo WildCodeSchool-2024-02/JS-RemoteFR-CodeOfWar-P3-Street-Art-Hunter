@@ -58,15 +58,10 @@ export function getUsersRanking() {
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
-// const getValidated = (id) => {
-//   myAxios
-//     .get(`/artworks/validate/${id}`)
-//     .then((response) => setArtworks(response.data))
-//     .catch((error) => console.error(error));
-// };
-export function getValidated(id) {
+
+export function getValidated() {
   return myAxios
-    .get(`/artworks/validate/${id}`)
+    .get(`/artworks/validate`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 }
