@@ -44,9 +44,9 @@ const verifyToken = async (req, res, next) => {
   try {
     const { auth } = req.cookies;
 
-    await jwt.verify(auth, process.env.APP_SECRET, (err, decoded) => {
+    jwt.verify(auth, process.env.APP_SECRET, (err, decoded) => {
       if (err) {
-        res.status(401).send("Invalid token");
+        res.status(401).json({ message: "Invalid token" });
       }
       req.decoded = decoded;
       next();
@@ -56,4 +56,13 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.exports = { hashPassword, createToken, verifyToken };
+const deleteCookie = async (req, res, next) => {
+  try {
+    res.clearCookie("auth");
+    res.status(200).send({ message: "Disconnected" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { hashPassword, createToken, verifyToken, deleteCookie };

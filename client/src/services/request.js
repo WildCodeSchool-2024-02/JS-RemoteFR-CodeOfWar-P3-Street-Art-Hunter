@@ -51,9 +51,41 @@ export function updateUser(id, userData) {
     .catch((error) => console.info(error));
 }
 
+export function updateScore(id, score) {
+  myAxios
+    .put(`/score/${id}`, { score })
+    .then((response) => console.info(response))
+    .catch((error) => console.info(error));
+}
+
 export function getUsersRanking() {
   return myAxios
     .get("/users/ranking")
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
+}
+
+export function getCityName(lat, lon, setter) {
+  const location = {
+    lat,
+    lon,
+  };
+  myAxios
+    .post("/findCity", location)
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
+
+export function getUserConnected(setter) {
+  return myAxios
+    .get("/checkLogin", { withCredentials: true })
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error.message));
+}
+
+export function deleteCookie() {
+  return myAxios
+    .get("/logout", { withCredentials: true })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
 }
