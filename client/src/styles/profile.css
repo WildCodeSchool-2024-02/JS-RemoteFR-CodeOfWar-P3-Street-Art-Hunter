@@ -140,6 +140,9 @@
   left: 5.5rem;
   margin-top: -1rem;
 }
+.deleteProfil {
+  padding-top: 2rem;
+}
 
 @media (width >= 480px) {
   .profileContainer {

@@ -9,6 +9,7 @@ import ProfileForm from "../components/ProfileForm";
 import GradientButton from "../components/GradientButton";
 import Trophy from "../assets/images/profil_trophy.svg";
 import "../styles/profile.css";
+import myAxios from "../services/instanceAxios";
 
 export default function Profile() {
   const { setUserInfo } = useContext(UserInfoContext);
@@ -19,6 +20,17 @@ export default function Profile() {
     await deleteCookie();
     setUserInfo(null);
     navigate("/");
+  };
+  const sendCredential = (event) => {
+    event.preventDefault();
+    myAxios
+      .delete(`users/${user.id}`, { withCredentials: true })
+      .then((response) => {
+        console.info(response.data);
+        window.alert("Votre profil a bien été supprimé");
+        navigate("/register");
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div className="profilePage">
@@ -49,6 +61,11 @@ export default function Profile() {
       <div className="profilFormcontainer">
         <ProfileForm userDetail={user} />
         <GradientButton text="Déconnexion" onClick={handleLogout} />
+        <div className="deleteProfil">
+          <button type="button" onClick={sendCredential}>
+            Supprimer mon compte
+          </button>
+        </div>
       </div>
     </div>
   );
