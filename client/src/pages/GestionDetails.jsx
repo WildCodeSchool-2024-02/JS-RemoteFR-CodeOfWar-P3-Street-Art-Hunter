@@ -3,7 +3,7 @@ import { useState } from "react";
 import myAxios from "../services/instanceAxios";
 import GradientButton from "../components/GradientButton";
 
-import "../styles/galleryDetails.css";
+import "../styles/gestionDetails.css";
 
 import { frenchDate } from "../utils/function";
 
@@ -55,7 +55,7 @@ export default function GestionDetails() {
   };
 
   return (
-    <section className="galleryDetails">
+    <section className="gestionDetails">
       <div className="deleteArtwork">
         <GradientButton
           text="Supprimer l'oeuvre"
@@ -64,7 +64,7 @@ export default function GestionDetails() {
           onClick={sendCredentialsForDelete}
         />
       </div>
-      <div className="galleryDetailsBody">
+      <div className="gestionDetailsBody">
         <img
           src={artwork.image_url}
           alt={artwork.title}
