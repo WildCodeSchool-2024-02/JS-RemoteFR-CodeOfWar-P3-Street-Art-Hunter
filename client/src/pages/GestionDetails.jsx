@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import myAxios from "../services/instanceAxios";
 import GradientButton from "../components/GradientButton";
@@ -9,6 +9,7 @@ import { frenchDate } from "../utils/function";
 
 export default function GestionDetails() {
   const artwork = useLoaderData();
+  const navigate = useNavigate();
 
   const [modified, setModified] = useState({
     title: artwork.title,
@@ -27,7 +28,11 @@ export default function GestionDetails() {
     event.preventDefault();
     myAxios
       .put(`/artworks/${artwork.id}`, modified, { withCredentials: true })
-      .then((response) => response.data)
+      .then((response) => {
+        console.info(response.data);
+        window.alert("L'artwork a bien été modifié!!");
+        navigate("/gestion");
+      })
       .catch((error) => console.error(error));
   };
   const handleChangeArtwork = (event) => {
@@ -41,7 +46,11 @@ export default function GestionDetails() {
     event.preventDefault();
     myAxios
       .delete(`/artworks/${artwork.id}`, { withCredentials: true })
-      .then((response) => response.data)
+      .then((response) => {
+        console.info(response.data);
+        window.alert("L'artwork a bien été supprimé!!");
+        navigate("/gestion");
+      })
       .catch((error) => console.error(error));
   };
 
@@ -65,12 +74,12 @@ export default function GestionDetails() {
           <ul>
             <li>
               <span className="title-font">Auteur </span>: {artwork.author}
-              <label htmlFor="Auteur">auteur</label>{" "}
+              <label htmlFor="Auteur">auteur</label> <br />
               <input
                 type="text"
                 placeholder="Auteur*"
-                name="pseudo"
-                value={modified.pseudo}
+                name="author"
+                value={modified.author}
                 onChange={handleChangeArtwork}
               />
             </li>
@@ -80,10 +89,10 @@ export default function GestionDetails() {
             </li>
             <li>
               <span className="title-font">Titre </span>: {artwork.title}
-              <label htmlFor="Title">Titre</label>{" "}
+              <label htmlFor="Title">Titre</label> <br />
               <input
                 type="text"
-                placeholder="Title*"
+                placeholder="Titre*"
                 name="title"
                 value={modified.title}
                 onChange={handleChangeArtwork}
@@ -92,7 +101,7 @@ export default function GestionDetails() {
             <li>
               <span className="title-font">Description </span>:{" "}
               {artwork.description}{" "}
-              <label htmlFor="Description">Description</label>{" "}
+              <label htmlFor="Description">Description</label> <br />
               <input
                 type="text"
                 placeholder="Description*"
@@ -103,11 +112,11 @@ export default function GestionDetails() {
             </li>
             <li>
               <span className="title-font">Date de création </span> :{" "}
-              {frenchDate(artwork.createDate)}
+              {frenchDate(artwork.create_date)}
             </li>
             <li>
               <span className="title-font">Style </span>: {artwork.style}{" "}
-              <label htmlFor="Style">style</label>{" "}
+              <label htmlFor="Style">style</label> <br />
               <input
                 type="text"
                 placeholder="style*"
@@ -118,7 +127,7 @@ export default function GestionDetails() {
             </li>
             <li>
               <span className="title-font">Ville </span>: {artwork.city}{" "}
-              <label htmlFor="Ville">Ville</label>{" "}
+              <label htmlFor="Ville">Ville</label> <br />
               <input
                 type="text"
                 placeholder="Ville*"
