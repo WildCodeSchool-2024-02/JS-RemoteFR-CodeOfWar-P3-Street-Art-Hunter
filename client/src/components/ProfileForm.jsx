@@ -44,7 +44,7 @@ export default function ProfileForm({ userDetail }) {
   };
 
   return (
-    <section>
+    <>
       <div className="profileField">
         <label htmlFor="lastname">Nom</label>
         {editField === "lastname" ? (
@@ -201,7 +201,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formDetail.password}</p>
+            <p>***********</p>
           </div>
         )}
       </div>
@@ -232,10 +232,12 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
+
+            <img src={formDetail.avatar} alt="Avatar" className="avatarEdit" />
           </div>
         )}
       </div>
-    </section>
+    </>
   );
 }
 
