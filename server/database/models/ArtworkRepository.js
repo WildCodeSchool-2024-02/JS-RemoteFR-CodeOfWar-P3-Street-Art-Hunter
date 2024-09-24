@@ -61,7 +61,8 @@ where ${this.table}.id = ?`,
       INNER JOIN city ON city.id = artwork.city_id
       INNER JOIN user ON user.id = artwork.user_id 
       WHERE artwork.isValidated = 0
-      GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, city.name, user.pseudo`
+      GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, city.name, user.pseudo
+      ORDER BY artwork.create_date DESC`
     );
     return rows;
   }

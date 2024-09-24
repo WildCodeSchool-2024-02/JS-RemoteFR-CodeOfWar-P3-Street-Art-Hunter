@@ -51,6 +51,13 @@ export function updateUser(id, userData) {
     .catch((error) => console.info(error));
 }
 
+export function updateScore(id, score) {
+  myAxios
+    .put(`/score/${id}`, { score })
+    .then((response) => console.info(response))
+    .catch((error) => console.info(error));
+}
+
 export function getUsersRanking() {
   return myAxios
     .get("/users/ranking")
@@ -64,6 +71,18 @@ export function getValidated() {
     .then((response) => response.data)
     .catch((error) => console.error(error));
 }
+
+export function getCityName(lat, lon, setter) {
+  const location = {
+    lat,
+    lon,
+  };
+  myAxios
+    .post("/findCity", location)
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
+
 export function getUserConnected(setter) {
   return myAxios
     .get("/checkLogin", { withCredentials: true })

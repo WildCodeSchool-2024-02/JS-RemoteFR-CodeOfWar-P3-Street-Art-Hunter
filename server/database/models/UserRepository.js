@@ -52,6 +52,14 @@ class UserRepository extends AbstractRepository {
     return result.affectedRows;
   }
 
+  async updateScore(user) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET score = score + ? WHERE id = ?`,
+      [user.score, user.id]
+    );
+    return result.affectedRows;
+  }
+
   async delete(id) {
     const [result] = await this.database.query(
       `delete from ${this.table} where id = ?`,
