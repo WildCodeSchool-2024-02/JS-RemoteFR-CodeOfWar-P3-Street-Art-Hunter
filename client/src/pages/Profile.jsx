@@ -24,7 +24,7 @@ export default function Profile() {
   const sendCredential = (event) => {
     event.preventDefault();
     myAxios
-      .delete(`users/${user.id}`, { withCredentials: true })
+      .delete(`users/${user.id}`)
       .then((response) => {
         console.info(response.data);
         window.alert("Votre profil a bien été supprimé");
