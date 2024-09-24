@@ -46,3 +46,9 @@ h1 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.deleteArtwork {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 6rem;
+}

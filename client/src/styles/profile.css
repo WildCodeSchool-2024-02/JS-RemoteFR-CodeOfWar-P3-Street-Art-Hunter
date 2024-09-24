@@ -140,3 +140,12 @@
   left: 5.5rem;
   margin-top: -1rem;
 }
+
+@media (width >= 480px) {
+  .profileContainer {
+    padding-top: 6rem;
+  }
+  .profileContainer h2 {
+    display: none;
+  }
+}

@@ -23,6 +23,7 @@ const { findCity } = require("./services/findCity");
 
 //  ** USERS ** \\
 router.get("/users", users.browse);
+router.get("/users/ranking", ranking.browse);
 router.get("/users/:id", users.read);
 router.post(
   "/users",
@@ -36,7 +37,9 @@ router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\
 router.get("/artworks", artworks.browse);
+router.get("/artworks/validate", artworks.browseByAdmin);
 router.get("/artworks/:id", artworks.read);
+router.get("/artworks/validate/:id", artworks.readByAdmin);
 router.post("/artworks", auth.verifyToken, artworks.add);
 router.put("/artworks/:id", artworks.edit);
 router.delete("/artworks/:id", artworks.destroy);
@@ -63,7 +66,7 @@ router.put("/favorites/:id", favorites.edit);
 router.delete("/favorites/:id", favorites.destroy);
 
 // ** RANKING - SCORE ** \\
-router.get("/users/ranking", ranking.browse);
+
 router.put("/score/:id", users.editScore);
 
 // ** LOGIN - LOGOUT ** \\

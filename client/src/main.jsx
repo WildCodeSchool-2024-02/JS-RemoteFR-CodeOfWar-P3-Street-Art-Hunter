@@ -9,6 +9,7 @@ import {
   getCamera,
   getGallery,
   getUsersRanking,
+  getValidated,
 } from "./services/request";
 import useScreenWidth from "./utils/hook/useScreenWidth";
 
@@ -23,6 +24,8 @@ import Ranking from "./pages/Ranking";
 import Connection from "./pages/Connection";
 import Register from "./pages/Register";
 import HomeDesktop from "./pages/HomeDesktop";
+import Gestion from "./pages/Gestion";
+import GestionDetails from "./pages/GestionDetails";
 
 import "./styles/app.css";
 
@@ -74,7 +77,16 @@ const router = createBrowserRouter([
         element: <Camera />,
         loader: getCamera,
       },
-
+      {
+        path: "/gestion",
+        element: <Gestion />,
+        loader: getValidated,
+      },
+      {
+        path: "/gestion/:id",
+        element: <GestionDetails />,
+        loader: ({ params }) => getGallery(params.id),
+      },
       {
         path: "/profile/:id",
         element: <Profile />,
