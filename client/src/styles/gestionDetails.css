@@ -51,3 +51,18 @@ h1 {
   flex-direction: row-reverse;
   padding-top: 6rem;
 }
+.gestion_form {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+}
+
+.gestion_form > input {
+  padding: 1rem;
+  border: 1px #aeaeae solid;
+  border-radius: 12px;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
