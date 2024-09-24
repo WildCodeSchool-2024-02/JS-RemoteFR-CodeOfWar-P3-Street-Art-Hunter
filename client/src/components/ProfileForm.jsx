@@ -16,6 +16,7 @@ export default function ProfileForm({ userDetail }) {
     password: userDetail.password,
     avatar: userDetail.avatar,
     id: userDetail.id,
+    isAdmin: userDetail.isAdmin,
   });
   const [file, setFile] = useState(null);
 
@@ -231,6 +232,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
+
             <img src={formDetail.avatar} alt="Avatar" className="avatarEdit" />
           </div>
         )}
@@ -248,5 +250,6 @@ ProfileForm.propTypes = {
     password: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
+    isAdmin: PropTypes.bool.isRequired,
   }).isRequired,
 };

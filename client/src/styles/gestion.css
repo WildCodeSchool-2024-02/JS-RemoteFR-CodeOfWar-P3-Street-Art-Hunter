@@ -1,0 +1,72 @@
+.gestion {
+  padding-top: 7rem;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.gestionHeader {
+  height: 16%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.gestionContainer {
+  height: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.gestionContainer > .gestion:not(:first-child) {
+  padding-left: -8px;
+}
+
+.headers {
+  all: unset;
+  height: 100%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--grey);
+  border-bottom: 1px solid var(--grey);
+}
+.headers > p {
+  font-family: var(--main-font);
+}
+
+.active {
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+  margin-bottom: -1px;
+}
+.gestionBody {
+  padding: 1rem;
+  height: 80%;
+  overflow: scroll;
+  padding-bottom: 1000px;
+}
+.validation {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem 5rem 1rem;
+}
+
+.imageValidate {
+  /* height: 100%;
+  width: 100%; */
+  border-radius: 24px 24px 24px 24px;
+}
+.informationValidate {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  font-family: var(--main-font);
+  line-height: 1.2rem;
+  object-fit: contain;
+}
+.informationValidate li {
+  list-style-type: none;
+  padding-bottom: 1rem;
+  font-weight: 400;
+}

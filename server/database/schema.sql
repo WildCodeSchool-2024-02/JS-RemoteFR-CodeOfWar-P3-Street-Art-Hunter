@@ -165,7 +165,7 @@ CREATE TABLE artwork (
     create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     image_url TEXT NOT NULL,
     author VARCHAR(255),
-    isValidated BOOLEAN NOT NULL DEFAULT 0,
+    isValidated INT DEFAULT 0,
     style_id INT NOT NULL,
     FOREIGN KEY (style_id) REFERENCES style (id),
     city_id INT NOT NULL,

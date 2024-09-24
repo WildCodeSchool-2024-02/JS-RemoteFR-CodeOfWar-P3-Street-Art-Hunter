@@ -65,6 +65,13 @@ export function getUsersRanking() {
     .catch((error) => console.info(error));
 }
 
+export function getValidated() {
+  return myAxios
+    .get(`/artworks/validate`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+}
+
 export function getCityName(lat, lon, setter) {
   const location = {
     lat,
