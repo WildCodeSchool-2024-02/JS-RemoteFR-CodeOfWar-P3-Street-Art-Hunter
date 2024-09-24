@@ -15,6 +15,7 @@ const compareLogin = async (req, res, next) => {
       id: user.id,
       pseudo: user.pseudo,
       mail: user.mail,
+      isAdmin: user.isAdmin,
     };
 
     const verified = await argon2.verify(user.hashed_password, password);

@@ -75,3 +75,17 @@ export function getCityName(lat, lon, setter) {
     .then((response) => setter(response.data))
     .catch((error) => console.error(error));
 }
+
+export function getUserConnected(setter) {
+  return myAxios
+    .get("/checkLogin", { withCredentials: true })
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error.message));
+}
+
+export function deleteCookie() {
+  return myAxios
+    .get("/logout", { withCredentials: true })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}

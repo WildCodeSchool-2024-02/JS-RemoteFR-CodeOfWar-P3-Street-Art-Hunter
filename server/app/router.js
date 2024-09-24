@@ -67,6 +67,8 @@ router.get("/users/ranking", ranking.browse);
 router.put("/score/:id", users.editScore);
 
 // ** LOGIN - LOGOUT ** \\
+router.get("/checkLogin", auth.verifyToken, authActions.isLogged);
+router.get("/logout", auth.verifyToken, auth.deleteCookie);
 router.post("/login", compareLogin, auth.createToken, authActions.login);
 
 // ** SPECIALES ** \\
