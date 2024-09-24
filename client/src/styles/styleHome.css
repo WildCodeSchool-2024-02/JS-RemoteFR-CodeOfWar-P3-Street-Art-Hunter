@@ -1,21 +1,30 @@
 .homeDesktopContainer {
   height: 100vh;
   overflow: hidden;
+  background-image: url("../assets/images/backgroundDesktop.svg");
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+.desktopBlock {
+  height: 100%;
+  max-width: 1600px;
   padding: 8rem 8rem 2rem 8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-image: url("../assets/images/backgroundDesktop.svg");
-  background-size: 100%;
 }
 .leftContain {
   height: 100%;
   width: 60%;
+  max-height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .rankingHomeDesktop {
+  max-height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

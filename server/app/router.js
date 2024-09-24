@@ -37,6 +37,9 @@ router.get("/cities/:id", cities.read);
 router.get("/styles/:id", styles.read);
 router.get("/favorites/:id", favorites.read);
 
+router.get("/checkLogin", auth.verifyToken, authActions.isLogged);
+router.get("/logout", auth.verifyToken, auth.deleteCookie);
+
 // Route to add a new item
 // router.post("/items", items.add);
 router.post("/artworks", auth.verifyToken, artworks.add);
@@ -50,6 +53,7 @@ router.post(
 router.post("/cities", auth.verifyToken, cities.add);
 router.post("/styles", auth.verifyToken, styles.add);
 router.post("/favorites", auth.verifyToken, favorites.add);
+
 router.post("/login", compareLogin, auth.createToken, authActions.login);
 
 // Route to update a new item
