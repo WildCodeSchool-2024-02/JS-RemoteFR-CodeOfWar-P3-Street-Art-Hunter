@@ -21,7 +21,7 @@ export default function Profile() {
     setUserInfo(null);
     navigate("/");
   };
-  const sendCredential = (event) => {
+  const deleteUser = (event) => {
     event.preventDefault();
     myAxios
       .delete(`users/${user.id}`)
@@ -62,7 +62,7 @@ export default function Profile() {
         <ProfileForm userDetail={user} />
         <GradientButton text="Déconnexion" onClick={handleLogout} />
         <div className="deleteProfil">
-          <button type="button" onClick={sendCredential}>
+          <button type="button" onClick={deleteUser}>
             Supprimer mon compte
           </button>
         </div>
