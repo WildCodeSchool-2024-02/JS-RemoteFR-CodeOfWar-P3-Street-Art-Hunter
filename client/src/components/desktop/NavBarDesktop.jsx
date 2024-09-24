@@ -9,12 +9,6 @@ export default function NavBarDesktop() {
 
   const [isActive, setIsActive] = useState("Acceuil");
 
-  const [Connected, setConnected] = useState("false");
-
-  const handleClickYes = () => {
-    setConnected(!Connected);
-  };
-
   const pathArray = [
     { path: "/", name: "Accueil" },
     { path: "/gallery", name: "Galerie" },
@@ -42,9 +36,6 @@ export default function NavBarDesktop() {
             <p>{path.name}</p>
           </Link>
         ))}
-        <button type="button" onClick={handleClickYes}>
-          coucou
-        </button>
       </div>
     </section>
   );
