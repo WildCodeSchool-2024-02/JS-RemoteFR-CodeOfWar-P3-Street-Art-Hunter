@@ -1,12 +1,27 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
-
+import useScreenWidth from "../utils/hook/useScreenWidth";
+import { getCityName, updateScore } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
+  const userInfo = true;
+  const screenWidth = useScreenWidth();
+  const [artworkLocation, setArtworkLocation] = useState();
+
+  const HandleUpdateScore = () => {
+    updateScore(1, 100);
+  };
+
+  useEffect(() => {
+    if (artwork.lat) {
+      getCityName(artwork.lat, artwork.lon, setArtworkLocation);
+    }
+  }, [artwork.lat, artwork.lon]);
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
@@ -17,15 +32,24 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
         />
         <div className="textDetailsContainer">
           <div className="textDetails">
-            <p>{artwork.title}</p>
+            <p className="title">{artwork.title}</p>
             <p>{artwork.author}</p>
           </div>
           <div className="textDetails">
             <p>📅 {frenchDate(artwork.create_date)}</p>
             <p>
-              📍 {artwork.lat}, {artwork.lon}
+              {artworkLocation && (
+                <>
+                  📍 {artworkLocation.city}, {artworkLocation.country}
+                </>
+              )}
             </p>
           </div>
+          {screenWidth < 480 && userInfo && (
+            <div className="btnPointsElement">
+              <GradientButton text="✔︎" onClick={HandleUpdateScore} />
+            </div>
+          )}
           <p className="detailsDescription">{artwork.description}</p>
           <GradientButton text="Fermer" onClick={() => setArtworkDetails()} />
         </div>

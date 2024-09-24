@@ -31,7 +31,94 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  font-family: var(--main-font);
+}
+.textDetails {
+  color: var(--grey);
+  font-family: var(--main-font);
 }
 .textDetails > p:first-child {
   margin-bottom: 0.3rem;
+}
+.textDetails > .title {
+  font-size: 26px;
+  font-family: var(--title-font);
+  background-color: var(--primary-color);
+  background-clip: text;
+  color: transparent;
+}
+.btnPointsElement {
+  position: absolute;
+  right: 1rem;
+}
+.btnPointsElement > #gradientButton {
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  font-family: var(--title-font);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnPointsElement > #gradientButton > #textButton {
+  margin-top: 0.2rem;
+}
+
+@media (width >= 480px) {
+  .detailsContaineur {
+    position: relative;
+    align-items: center;
+  }
+  .detailsContain {
+    border-radius: 24px;
+    height: 92%;
+    width: 95%;
+    justify-content: center;
+    background-image: url("../assets/images/backgroundOnboarding.svg");
+    background-position: center;
+    background-size: 105%;
+    overflow: hidden;
+    font-family: var(--main-font);
+  }
+  .detailsImg {
+    height: 100%;
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 0 8px 2px var(--grey);
+  }
+  .textDetailsContainer {
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    padding: 1rem;
+    color: #fff;
+  }
+  .textDetailsContainer > p {
+    width: 40%;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    right: -20px;
+    border-radius: 24px;
+    border: 1px solid var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .title {
+    font-size: 32px;
+    font-family: var(--title-font);
+  }
+  .textDetails p {
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    border-radius: 24px;
+    border: 1px solid var(--grey);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .textDetails p:first-child {
+    margin-bottom: 1rem;
+  }
+  .textDetailsContainer > #gradientButton {
+    width: 40%;
+    margin-inline: auto;
+  }
 }
