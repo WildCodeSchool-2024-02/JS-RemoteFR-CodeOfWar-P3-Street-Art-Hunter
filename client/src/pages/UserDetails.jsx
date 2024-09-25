@@ -10,7 +10,6 @@ export default function UserDetails() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const user = useLoaderData();
-  console.info(user);
 
   const handleDeleteUser = async () => {
     await deleteUser(user.id);
