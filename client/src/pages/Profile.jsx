@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData, Link, useNavigate } from "react-router-dom";
-
-import { deleteCookie } from "../services/request";
+import { deleteCookie, deleteUser } from "../services/request";
 import { UserInfoContext } from "../services/context/UserInfoContext";
 
 import ProfileForm from "../components/ProfileForm";
@@ -9,10 +8,11 @@ import ProfileForm from "../components/ProfileForm";
 import GradientButton from "../components/GradientButton";
 import Trophy from "../assets/images/profil_trophy.svg";
 import "../styles/profile.css";
-import myAxios from "../services/instanceAxios";
 
 export default function Profile() {
   const { setUserInfo } = useContext(UserInfoContext);
+
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const user = useLoaderData();
 
@@ -21,17 +21,17 @@ export default function Profile() {
     setUserInfo(null);
     navigate("/");
   };
-  const deleteUser = (event) => {
-    event.preventDefault();
-    myAxios
-      .delete(`users/${user.id}`)
-      .then((response) => {
-        console.info(response.data);
-        window.alert("Votre profil a bien été supprimé");
-        navigate("/register");
-      })
-      .catch((error) => console.error(error));
+
+  const handleDeleteUser = async () => {
+    await deleteUser(user.id);
+    await deleteCookie();
+    setIsOpen(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      navigate("/register");
+    }, 2000);
   };
+
   return (
     <div className="profilePage">
       <div className="profileContainer">
@@ -62,9 +62,12 @@ export default function Profile() {
         <ProfileForm userDetail={user} />
         <GradientButton text="Déconnexion" onClick={handleLogout} />
         <div className="deleteProfil">
-          <button type="button" onClick={deleteUser}>
+          <button type="button" onClick={handleDeleteUser}>
             Supprimer mon compte
           </button>
+          {!isOpen && (
+            <p className="deleteUser"> Votre compte a bien été supprimé </p>
+          )}
         </div>
       </div>
     </div>
