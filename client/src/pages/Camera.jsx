@@ -3,11 +3,9 @@ import { useContext, useState, useRef } from "react";
 
 import { GeoLocationContext } from "../services/context/GeoLocationContext";
 
-import GradientButton from "../components/GradientButton";
+// import GradientButton from "../components/GradientButton";
 
 import myAxios from "../services/instanceAxios";
-
-// import takePicture from "../assets/images/camera_take_picture.svg";
 
 import "../styles/styleGradientButton.css";
 import "../styles/camera.css";
@@ -87,8 +85,7 @@ export default function Camera() {
         },
       })
       .then((response) => {
-        navigate("/");
-        console.info(response);
+        console.info("imp", response);
       })
       .catch((error) => {
         console.info("Du front mais catcg");
@@ -97,7 +94,7 @@ export default function Camera() {
       });
   };
 
-  const uploadPhoto = () => {
+  const uploadPhoto = (event) => {
     console.info("1");
     const formData = new FormData();
     console.info("2");
@@ -125,17 +122,17 @@ export default function Camera() {
 
     formData.append("lon", artworkProperties.lon);
     console.info("10");
-
+    event.preventDefault();
     sendArt(formData);
 
     setUploadStatus(true);
     console.info("last");
 
-    // setTimeout(() => {
-    //   console.info("ultime last");
-    //   setUploadStatus(false);
-    //   navigate("/");
-    // }, 2000);
+    setTimeout(() => {
+      console.info("ultime last");
+      setUploadStatus(false);
+      navigate("/");
+    }, 2000);
   };
 
   return (
@@ -242,9 +239,10 @@ export default function Camera() {
           value={artworkProperties.description}
           onChange={handleChangeProperties}
         />
-
-        <GradientButton text="Ajouter une œuvre" onClick={uploadPhoto} />
-        <input type="submit" />
+        <button type="submit" onSubmit={uploadPhoto}>
+          ok
+        </button>
+        {/* <GradientButton text="Ajouter une œuvre" onClick={uploadPhoto} /> */}
       </form>
       {uploadStatus && <p>Nouvel artwork ajouté !</p>}
     </section>

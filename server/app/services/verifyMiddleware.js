@@ -1,7 +1,6 @@
 const Joi = require("joi");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
-const path = require("path");
 
 const verifyFields = (req, res, next) => {
   const schema = Joi.object({
@@ -27,14 +26,13 @@ const storageArtwork = multer.diskStorage({
   filename(req, file, cb) {
     const id = uuidv4();
     console.info("uuid", id);
-    const artworkName = `${id}${path.extname(file.originalname)}`;
+    const artworkName = `${id}.png`;
     req.body.image_url = artworkName;
     cb(null, artworkName);
   },
 });
 
 const uploadArtwork = async (req, res, next) => {
-  console.info("test2", req.file);
   const upload = await multer({ storage: storageArtwork });
   return upload.single("image_url")(req, res, next);
 };
@@ -46,7 +44,7 @@ const storageAvatar = multer.diskStorage({
   filename(req, file, cb) {
     const id = uuidv4();
     console.info("uuid", id);
-    const pictureName = `${id}${path.extname(file.originalname)}`;
+    const pictureName = `${id}.png`;
     req.body.avatar = pictureName;
     cb(null, pictureName);
   },
