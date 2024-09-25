@@ -50,3 +50,19 @@ export function getUsersRanking() {
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
+
+export function postArtwork(formData) {
+  myAxios
+    .post("/artworks", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        withCredentials: true,
+      },
+    })
+    .then((response) => {
+      console.info(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
