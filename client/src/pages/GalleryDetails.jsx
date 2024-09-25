@@ -5,7 +5,6 @@ import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
-  console.info("artwork", artwork);
   const [message, setMessage] = useState("");
 
   const handleMouseOver = (e) => {
@@ -21,8 +20,6 @@ export default function GalleryDetails() {
     e.preventDefault();
     setMessage("");
   };
-
-  console.info("message", message);
 
   return (
     <section className="galleryDetails">
