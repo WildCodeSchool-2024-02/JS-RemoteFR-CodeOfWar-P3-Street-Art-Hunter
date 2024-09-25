@@ -8,8 +8,6 @@ export default function Gestion() {
   const { readArtwork, readUsers } = useLoaderData();
   const artworks = readArtwork;
   const users = readUsers;
-  console.info(artworks);
-  console.info(users);
 
   const [isActive, setIsActive] = useState("Validation");
 
