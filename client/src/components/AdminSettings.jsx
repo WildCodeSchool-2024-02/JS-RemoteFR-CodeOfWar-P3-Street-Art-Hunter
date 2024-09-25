@@ -52,7 +52,7 @@ function Users({ users }) {
       {users && users.length > 0 ? (
         users.map((user) => (
           <section className="UserList" key={user.id}>
-            <div>
+            <div className="imageUser">
               <img src={user.avatar} alt={user.pseudo} className="avatarUser" />
             </div>
             <div>
