@@ -65,7 +65,7 @@ export default function Profile() {
           <button type="button" onClick={handleDeleteUser}>
             Supprimer mon compte
           </button>
-          {!isOpen && (
+          {isOpen && (
             <p className="deleteUser"> Votre compte a bien été supprimé </p>
           )}
         </div>
