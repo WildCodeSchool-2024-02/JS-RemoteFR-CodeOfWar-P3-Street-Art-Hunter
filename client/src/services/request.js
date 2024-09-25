@@ -101,3 +101,12 @@ export function deleteCookie() {
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
 }
+
+export function deleteUser(id) {
+  myAxios
+    .delete(`users/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}

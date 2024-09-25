@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData, Link, useNavigate } from "react-router-dom";
-
-import { deleteCookie } from "../services/request";
+import { deleteCookie, deleteUser } from "../services/request";
 import { UserInfoContext } from "../services/context/UserInfoContext";
 
 import ProfileForm from "../components/ProfileForm";
@@ -12,6 +11,8 @@ import "../styles/profile.css";
 
 export default function Profile() {
   const { setUserInfo } = useContext(UserInfoContext);
+
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const user = useLoaderData();
 
@@ -20,6 +21,17 @@ export default function Profile() {
     setUserInfo(null);
     navigate("/");
   };
+
+  const handleDeleteUser = async () => {
+    await deleteUser(user.id);
+    await deleteCookie();
+    setIsOpen(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      navigate("/register");
+    }, 2000);
+  };
+
   return (
     <div className="profilePage">
       <div className="profileContainer">
@@ -49,6 +61,14 @@ export default function Profile() {
       <div className="profilFormcontainer">
         <ProfileForm userDetail={user} />
         <GradientButton text="Déconnexion" onClick={handleLogout} />
+        <div className="deleteProfil">
+          <button type="button" onClick={handleDeleteUser}>
+            Supprimer mon compte
+          </button>
+          {isOpen && (
+            <p className="deleteUser"> Votre compte a bien été supprimé </p>
+          )}
+        </div>
       </div>
     </div>
   );
