@@ -29,6 +29,7 @@ import Gestion from "./pages/Gestion";
 import GestionDetails from "./pages/GestionDetails";
 
 import "./styles/app.css";
+import UserDetails from "./pages/UserDetails";
 
 function HomeResponsive() {
   const screenWidth = useScreenWidth();
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
         path: "/gestion/:id",
         element: <GestionDetails />,
         loader: ({ params }) => getGallery(params.id),
+      },
+      {
+        path: "/userDetails/:id",
+        element: <UserDetails />,
       },
       {
         path: "/profile/:id",
