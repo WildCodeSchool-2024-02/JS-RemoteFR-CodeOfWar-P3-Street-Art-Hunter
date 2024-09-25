@@ -95,6 +95,7 @@ const router = createBrowserRouter([
       {
         path: "/userDetails/:id",
         element: <UserDetails />,
+        loader: ({ params }) => getUserbyId(params.id),
       },
       {
         path: "/profile/:id",
