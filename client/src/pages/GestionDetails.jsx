@@ -10,7 +10,6 @@ import { frenchDate } from "../utils/function";
 export default function GestionDetails() {
   const artwork = useLoaderData();
   const navigate = useNavigate();
-  console.info(artwork);
 
   const [modified, setModified] = useState({
     title: artwork.title,
