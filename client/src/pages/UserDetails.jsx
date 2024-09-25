@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { frenchDate } from "../utils/function";
 import GradientButton from "../components/GradientButton";
@@ -22,23 +22,23 @@ export default function UserDetails() {
   };
 
   return (
-    <section>
-      {" "}
-      <div className="gestionDetailsBody">
-        <img src={user.avatar} alt={user.pseudo} className="detailImage" />
+    <section className="userGestion">
+      <Link to="/gestion" className="gestionReturn">
+        Retour à la page gestion
+      </Link>
+      <div className="userGestionBody">
+        <img src={user.avatar} alt={user.pseudo} className="userImage" />
 
-        <div className="gestion_form">
+        <div className="userGestion_form">
           <ul>
             <li>
               <span className="title-font">Pseudo </span>: {user.pseudo}
             </li>
-            <div className="gestion_form">
-              <li>
-                <span className="title-font">Date d'inscription </span>:{" "}
-                {frenchDate(user.registration_date)}
-              </li>
-            </div>
 
+            <li>
+              <span className="title-font">Date d'inscription </span>:{" "}
+              {frenchDate(user.registration_date)}
+            </li>
             <li>
               <span className="title-font">Score </span>: {user.score}
             </li>
@@ -51,7 +51,10 @@ export default function UserDetails() {
           onClick={handleDeleteUser}
         />
         {isOpen && (
-          <p className="deleteUser"> Votre compte a bien été supprimé </p>
+          <p className="deleteUser">
+            {" "}
+            Le compte de l'utilisateur a bien été supprimé{" "}
+          </p>
         )}
       </div>
     </section>

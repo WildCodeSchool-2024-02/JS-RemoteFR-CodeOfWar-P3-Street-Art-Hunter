@@ -1,3 +1,8 @@
+.gestionReturn {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
 .gestionDetails {
   height: 100vh;
   width: 100%;
@@ -46,11 +51,6 @@ h1 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.deleteArtwork {
-  display: flex;
-  flex-direction: row-reverse;
-  padding-top: 6rem;
-}
 .gestion_form {
   display: flex;
   flex-direction: column;
@@ -65,4 +65,33 @@ h1 {
   border-radius: 12px;
   font-weight: bolder;
   margin-bottom: 0.5rem;
+}
+.gestionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.connection_separator {
+  border: none;
+  border-top: 1px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.connection_separator::after {
+  background: #fff;
+  content: "ou";
+  padding: 0 4px;
+  position: relative;
+  border-radius: 50%;
+  top: -12px;
+}
+@media (width >= 480px) {
+  .gestionDetails {
+    padding-top: 7rem;
+  }
 }

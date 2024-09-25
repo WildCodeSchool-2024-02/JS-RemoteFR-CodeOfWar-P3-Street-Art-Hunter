@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import myAxios from "../services/instanceAxios";
 import GradientButton from "../components/GradientButton";
@@ -56,14 +56,9 @@ export default function GestionDetails() {
 
   return (
     <section className="gestionDetails">
-      <div className="deleteArtwork">
-        <GradientButton
-          text="Supprimer l'oeuvre"
-          type="submit"
-          className="deleteArtwork"
-          onClick={sendCredentialsForDelete}
-        />
-      </div>
+      <Link to="/gestion" className="gestionReturn">
+        Retour à la page gestion
+      </Link>
       <div className="gestionDetailsBody">
         <img
           src={artwork.image_url}
@@ -173,11 +168,20 @@ export default function GestionDetails() {
             </ul>
           </div>
         </form>
-        <GradientButton
-          text="Valider les changements"
-          type="submit"
-          onClick={sendCredentialsForUpdate}
-        />
+        <div className="gestionButton">
+          <GradientButton
+            text="Valider les changements"
+            type="submit"
+            onClick={sendCredentialsForUpdate}
+          />
+          <hr className="connection_separator" />
+          <GradientButton
+            text="Supprimer l'oeuvre"
+            type="submit"
+            className="deleteArtwork"
+            onClick={sendCredentialsForDelete}
+          />
+        </div>
       </div>
     </section>
   );
