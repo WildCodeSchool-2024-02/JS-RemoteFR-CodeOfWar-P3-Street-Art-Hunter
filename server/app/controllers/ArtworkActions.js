@@ -11,8 +11,7 @@ const browse = async (req, res, next) => {
 };
 const browseByAdmin = async (req, res, next) => {
   try {
-    const artworkStyle = req.query;
-    const artworks = await tables.artwork.readAllByAdmin(artworkStyle);
+    const artworks = await tables.artwork.readAllByAdmin();
     res.json(artworks);
   } catch (error) {
     next(error);
