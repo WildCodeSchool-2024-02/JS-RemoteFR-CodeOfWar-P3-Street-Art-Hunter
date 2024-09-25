@@ -138,24 +138,6 @@ VALUES (
         'Collage d’affiches illustratives ou de propagande artistique sur les murs urbains, souvent avec un message social ou politique.'
     );
 
-CREATE TABLE city (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(80) NOT NULL
-);
-
-INSERT INTO
-    city (name)
-VALUES ('Paris'),
-    ('Lyon'),
-    ('Bordeaux'),
-    ('Saint Etienne'),
-    ('Nice'),
-    ('Marseille'),
-    ('Angouleme'),
-    ('Strasbourg'),
-    ('Montpellier'),
-    ('Toulouse');
-
 CREATE TABLE artwork (
     id int PRIMARY KEY auto_increment NOT NULL,
     title varchar(255) NOT NULL,
@@ -168,8 +150,6 @@ CREATE TABLE artwork (
     isValidated BOOLEAN NOT NULL DEFAULT 0,
     style_id INT NOT NULL,
     FOREIGN KEY (style_id) REFERENCES style (id),
-    city_id INT NOT NULL,
-    FOREIGN KEY (city_id) REFERENCES city (id),
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
@@ -184,8 +164,7 @@ INSERT INTO
         author,
         isValidated,
         style_id,
-        city_id,
-        user_id
+               user_id
     )
 VALUES (
         'le loup binational',
@@ -196,7 +175,6 @@ VALUES (
         'Jussi TwoSeven',
         1,
         3,
-        1,
         2
     );
 
@@ -217,7 +195,6 @@ INSERT INTO
         author,
         isValidated,
         style_id,
-        city_id,
         user_id
     )
 VALUES (
@@ -229,7 +206,7 @@ VALUES (
         'Jussi TwoSeven',
         1,
         3,
-        1,
+    
         2
     ),
     (
@@ -241,7 +218,7 @@ VALUES (
         'Banksy',
         1,
         2,
-        1,
+        
         3
     ),
     (
@@ -253,7 +230,7 @@ VALUES (
         'Anonyme',
         0,
         2,
-        2,
+        
         4
     ),
     (
@@ -265,7 +242,7 @@ VALUES (
         'Mystic Feline',
         0,
         3,
-        3,
+        
         5
     ),
     (
@@ -277,7 +254,7 @@ VALUES (
         'Anonyme',
         0,
         4,
-        4,
+        
         6
     ),
     (
@@ -289,7 +266,7 @@ VALUES (
         'Anonyme',
         0,
         5,
-        5,
+        
         1
     ),
     (
@@ -301,7 +278,7 @@ VALUES (
         'Anonyme',
         0,
         6,
-        6,
+        
         2
     ),
     (
@@ -313,7 +290,7 @@ VALUES (
         'Anonyme',
         1,
         7,
-        7,
+        
         3
     ),
     (
@@ -325,6 +302,6 @@ VALUES (
         'Anonyme',
         1,
         8,
-        8,
+        
         4
     );

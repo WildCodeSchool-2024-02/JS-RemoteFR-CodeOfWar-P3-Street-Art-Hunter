@@ -7,7 +7,7 @@ class ArtworkRepository extends AbstractRepository {
 
   async create(artwork) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, description, lat, lon, image_url, author, style_id, city_id, user_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (title, description, lat, lon, image_url, author, style_id, user_id) values (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         artwork.title,
         artwork.description,
@@ -16,7 +16,6 @@ class ArtworkRepository extends AbstractRepository {
         artwork.image_url,
         artwork.author,
         artwork.style_id,
-        artwork.city_id,
         artwork.user_id,
       ]
     );
@@ -26,10 +25,9 @@ class ArtworkRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT artwork.id, artwork.title, artwork.description, artwork.lat, artwork.lon, artwork.create_date, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, city.name as city, user.pseudo as pseudo
+      `SELECT artwork.id, artwork.title, artwork.description, artwork.lat, artwork.lon, artwork.create_date, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, user.pseudo as pseudo
 FROM ${this.table}
 INNER JOIN style ON style.id= artwork.style_id
-INNER JOIN city ON city_id = artwork.city_id
 INNER JOIN user ON user.id = artwork.user_id 
 where ${this.table}.id = ?`,
       [id]
@@ -52,7 +50,7 @@ where ${this.table}.id = ?`,
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, city_id = ?, user_id = ? where id = ?`,
+      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, user_id = ? where id = ?`,
       [
         artwork.title,
         artwork.description,
@@ -61,7 +59,6 @@ where ${this.table}.id = ?`,
         artwork.image_url,
         artwork.author,
         artwork.style_id,
-        artwork.city_id,
         artwork.user_id,
         artwork.id,
       ]

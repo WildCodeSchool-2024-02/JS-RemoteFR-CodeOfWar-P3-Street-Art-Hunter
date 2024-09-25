@@ -1,9 +1,15 @@
+.bigcontainer {
+  height: 100vh;
+  width: 100%;
+}
+
 .form_camera {
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  height: 100vh;
+  height: 90vh;
   overflow: scroll;
+  padding-bottom: 10vh;
 }
 
 .form_container_picture {

@@ -26,7 +26,9 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const artwork = req.body;
-  artwork.user_id = req.decoded.id;
+  console.info("test1", req.file);
+  artwork.user_id = 1;
+  console.info("coucou du back");
   try {
     const insertId = await tables.artwork.create(artwork);
     res.status(201).json({ insertId });

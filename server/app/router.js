@@ -39,7 +39,7 @@ router.get("/favorites/:id", favorites.read);
 
 // Route to add a new item
 // router.post("/items", items.add);
-router.post("/artworks", auth.verifyToken, artworks.add);
+router.post("/artworks", verifyMiddleware.uploadArtwork, artworks.add);
 router.post(
   "/users",
   verifyMiddleware.verifyFields,

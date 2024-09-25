@@ -20,9 +20,28 @@ const verifyFields = (req, res, next) => {
   }
 };
 
-const storage = multer.diskStorage({
+const storageArtwork = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/uploads"));
+    cb(null, "public/uploads");
+  },
+  filename(req, file, cb) {
+    const id = uuidv4();
+    console.info("uuid", id);
+    const artworkName = `${id}${path.extname(file.originalname)}`;
+    req.body.image_url = artworkName;
+    cb(null, artworkName);
+  },
+});
+
+const uploadArtwork = async (req, res, next) => {
+  console.info("test2", req.file);
+  const upload = await multer({ storage: storageArtwork });
+  return upload.single("image_url")(req, res, next);
+};
+
+const storageAvatar = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "public/uploads/avatars");
   },
   filename(req, file, cb) {
     const id = uuidv4();
@@ -34,11 +53,12 @@ const storage = multer.diskStorage({
 });
 
 const uploadPicture = (req, res, next) => {
-  const upload = multer({ storage });
+  const upload = multer({ storage: storageAvatar });
   return upload.single("avatar")(req, res, next);
 };
 
 module.exports = {
   verifyFields,
   uploadPicture,
+  uploadArtwork,
 };

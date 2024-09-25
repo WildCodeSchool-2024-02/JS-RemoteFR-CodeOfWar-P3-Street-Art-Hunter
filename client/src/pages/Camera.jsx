@@ -1,66 +1,36 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState, useRef } from "react";
-
-import { sendArtwork } from "../services/request";
 
 import { GeoLocationContext } from "../services/context/GeoLocationContext";
 
 import GradientButton from "../components/GradientButton";
-import { datePicture } from "../utils/function";
 
-import takePicture from "../assets/images/camera_take_picture.svg";
+import myAxios from "../services/instanceAxios";
+
+// import takePicture from "../assets/images/camera_take_picture.svg";
 
 import "../styles/styleGradientButton.css";
 import "../styles/camera.css";
 
 export default function Camera() {
   const userLocation = useContext(GeoLocationContext);
-
+  const data = useLoaderData();
+  const navigate = useNavigate();
   const videoRef = useRef(null);
-  const canvasRef = useRef(null);
-  const [isCameraActive, setIsCameraActive] = useState(false);
-  const [imageDataUrl, setImageDataUrl] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const photoRef = useRef(null);
+  const [hasPhoto, setHasPhoto] = useState(false);
 
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: false,
-      });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        setIsCameraActive(true);
-      }
-    } catch (error) {
-      console.error("Erreur lors de l'accès à la caméra :", error);
-    }
-  };
+  const [uploadStatus, setUploadStatus] = useState(false);
 
-  const capturePhoto = () => {
-    const canvas = canvasRef.current;
-    const video = videoRef.current;
-
-    if (canvas && video) {
-      const context = canvas.getContext("2d");
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const imageData = canvas.toDataURL("image/jpeg");
-      setImageDataUrl(imageData);
-    }
-  };
-
+  const [photoBlob, setPhotoBlob] = useState(null);
   const [artworkProperties, setArtworkProperties] = useState({
     title: "",
     description: "",
-    image_url: `${setImageDataUrl}`,
-    lat: `${userLocation.latitude}`,
-    lon: `${userLocation.longitude}`,
+    lat: `${userLocation && userLocation.latitude}`,
+    lon: `${userLocation && userLocation.longitude}`,
     author: "",
     style_id: "",
-    city_id: 1,
-    user_id: "",
+    user_id: 1,
   });
 
   const handleChangeProperties = (event) => {
@@ -71,22 +41,107 @@ export default function Camera() {
     }));
   };
 
-  const handleClickOpen = async () => {
-    setIsOpen(true);
-    await startCamera();
+  const getVideo = () => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        const video = videoRef.current;
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
-  const handleClikClose = async () => {
-    setIsOpen(false);
-    await capturePhoto();
+  const takePhoto = () => {
+    const width = 400;
+    const height = 300;
+
+    const video = videoRef.current;
+    const photo = photoRef.current;
+
+    if (!video || !photo) {
+      console.error("Ne peut pas être false");
+    }
+
+    photo.width = width;
+    photo.height = height;
+
+    const ctx = photo.getContext("2d");
+    ctx.drawImage(video, 0, 0, width, height);
+
+    photo.toBlob((blob) => {
+      setPhotoBlob(blob);
+      setHasPhoto(true);
+    }, "image/png");
   };
 
-  const data = useLoaderData();
+  const sendArt = (formData) => {
+    console.info("coucou de send art");
+    myAxios
+      .post("/artworks", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          withCredentials: true,
+        },
+      })
+      .then((response) => {
+        navigate("/");
+        console.info(response);
+      })
+      .catch((error) => {
+        console.info("Du front mais catcg");
+
+        console.error(error);
+      });
+  };
+
+  const uploadPhoto = () => {
+    console.info("1");
+    const formData = new FormData();
+    console.info("2");
+
+    formData.append("image_url", photoBlob);
+    console.info("3");
+
+    formData.append("title", artworkProperties.title);
+    console.info("4");
+
+    formData.append("author", artworkProperties.author);
+    console.info("5");
+
+    formData.append("description", artworkProperties.description);
+    console.info("6");
+
+    formData.append("style_id", artworkProperties.style_id);
+    console.info("7");
+
+    formData.append("user_id", artworkProperties.user_id);
+    console.info("8");
+
+    formData.append("lat", artworkProperties.lat);
+    console.info("9");
+
+    formData.append("lon", artworkProperties.lon);
+    console.info("10");
+
+    sendArt(formData);
+
+    setUploadStatus(true);
+    console.info("last");
+
+    // setTimeout(() => {
+    //   console.info("ultime last");
+    //   setUploadStatus(false);
+    //   navigate("/");
+    // }, 2000);
+  };
 
   return (
-    <section>
-      <form action="" method="post" className="form_camera">
-        <div className="form_container_picture">
+    <section className="bigcontainer">
+      <form onSubmit={uploadPhoto} className="form_camera">
+        {/* <div className="form_container_picture">
           <div className="form_file_upload">
             {imageDataUrl && (
               <div className="container_picture_captured">
@@ -126,10 +181,30 @@ export default function Camera() {
               )}
             </div>
           </div>
+        </div> */}
+        <div>
+          <button type="button" onClick={getVideo}>
+            Activer la Caméra
+          </button>
+          <div>
+            <video ref={videoRef}>
+              <track default kind="captions" srcLang="fr" />
+            </video>
+            <button type="button" onClick={takePhoto}>
+              Prendre une Photo
+            </button>
+          </div>
+          <canvas ref={photoRef} style={{ display: "none" }} />
+          {hasPhoto && (
+            <div>
+              <img src={URL.createObjectURL(photoBlob)} alt="capture" />
+            </div>
+          )}
+          {uploadStatus && <p>{uploadStatus}</p>}
         </div>
         <h1>Post</h1>
-        <label htmlFor="picture_date">Date</label>
-        <input type="text" value={datePicture} readOnly />
+        {/* <label htmlFor="picture_date">Date</label>
+        <input type="text" value={datePicture} readOnly /> */}
         <label htmlFor="picture_style">Type*</label>
         <select
           className="dropdown_Style"
@@ -151,6 +226,7 @@ export default function Camera() {
           value={artworkProperties.title}
           onChange={handleChangeProperties}
         />
+
         <label htmlFor="picture_author">Auteur</label>
         <input
           type="text"
@@ -159,12 +235,6 @@ export default function Camera() {
           onChange={handleChangeProperties}
         />
 
-        <label htmlFor="picture_location">Lieu*</label>
-        <input
-          type="text"
-          value={artworkProperties.lat}
-          onChange={handleChangeProperties}
-        />
         <label htmlFor="picture_description">Description</label>
         <textarea
           rows="5"
@@ -173,12 +243,10 @@ export default function Camera() {
           onChange={handleChangeProperties}
         />
 
-        <GradientButton
-          text="Ajouter une œuvre"
-          type="submit"
-          onClick={() => sendArtwork(artworkProperties)}
-        />
+        <GradientButton text="Ajouter une œuvre" onClick={uploadPhoto} />
+        <input type="submit" />
       </form>
+      {uploadStatus && <p>Nouvel artwork ajouté !</p>}
     </section>
   );
 }
