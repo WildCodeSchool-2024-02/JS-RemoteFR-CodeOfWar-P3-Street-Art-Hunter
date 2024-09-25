@@ -46,10 +46,13 @@ function Validation({ artworks }) {
     </section>
   );
 }
+function Users() {
+  return <h1>Coucou depuis users</h1>;
+}
 function Contact() {
   return <h1>Coucou de contact</h1>;
 }
-export { Validation, Contact };
+export { Validation, Users, Contact };
 
 Validation.propTypes = {
   artworks: PropTypes.arrayOf(

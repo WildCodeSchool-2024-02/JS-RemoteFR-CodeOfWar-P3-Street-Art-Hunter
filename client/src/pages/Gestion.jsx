@@ -1,18 +1,26 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import { Validation, Contact } from "../components/AdminSettings";
+import { Validation, Users, Contact } from "../components/AdminSettings";
 import "../styles/gestion.css";
 
 export default function Gestion() {
-  const readArtwork = useLoaderData();
+  const { readArtwork, readUsers } = useLoaderData();
   const artworks = readArtwork;
+  const user = readUsers;
+  console.info(artworks);
+  console.info(user);
 
   const [isActive, setIsActive] = useState("Validation");
 
-  const headers = [{ name: "Validation" }, { name: "Contact" }, { name: "" }];
+  const headers = [
+    { name: "Validation" },
+    { name: "Users" },
+    { name: "Contact" },
+    { name: "" },
+  ];
 
-  const adminSettings = { Validation, Contact };
+  const adminSettings = { Validation, Users, Contact };
   const Admin = adminSettings[isActive];
 
   const handleClickActive = (header) => {
