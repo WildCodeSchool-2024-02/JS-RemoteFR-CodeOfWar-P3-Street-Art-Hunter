@@ -7,9 +7,9 @@ import "../styles/gestion.css";
 export default function Gestion() {
   const { readArtwork, readUsers } = useLoaderData();
   const artworks = readArtwork;
-  const user = readUsers;
+  const users = readUsers;
   console.info(artworks);
-  console.info(user);
+  console.info(users);
 
   const [isActive, setIsActive] = useState("Validation");
 
@@ -48,7 +48,7 @@ export default function Gestion() {
         </div>
       </div>
       <section className="gestionBody">
-        <Admin artworks={artworks} />
+        <Admin artworks={artworks} users={users} />
       </section>
     </section>
   );
