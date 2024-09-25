@@ -18,6 +18,7 @@ const ranking = require("./controllers/RankingActions");
 
 const auth = require("./services/auth");
 const verifyMiddleware = require("./services/verifyMiddleware");
+const upload = require("./services/upload");
 const { compareLogin } = require("./services/compareLogin");
 
 // Route to get a list of items
@@ -39,12 +40,12 @@ router.get("/favorites/:id", favorites.read);
 
 // Route to add a new item
 // router.post("/items", items.add);
-router.post("/artworks", verifyMiddleware.uploadArtwork, artworks.add);
+router.post("/artworks", upload.uploadArtwork, artworks.add);
 router.post(
   "/users",
   verifyMiddleware.verifyFields,
   auth.hashPassword,
-  verifyMiddleware.uploadPicture,
+  upload.uploadPicture,
   users.add
 );
 router.post("/cities", auth.verifyToken, cities.add);
@@ -53,7 +54,7 @@ router.post("/favorites", auth.verifyToken, favorites.add);
 router.post("/login", compareLogin, auth.createToken, authActions.login);
 
 // Route to update a new item
-router.put("/users/:id", verifyMiddleware.uploadPicture, users.edit);
+router.put("/users/:id", upload.uploadPicture, users.edit);
 router.put("/artworks/:id", artworks.edit);
 router.put("/cities/:id", cities.edit);
 router.put("/styles/:id", styles.edit);
