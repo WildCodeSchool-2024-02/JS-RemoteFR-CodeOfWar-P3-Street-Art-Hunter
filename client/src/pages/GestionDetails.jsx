@@ -1,14 +1,15 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import myAxios from "../services/instanceAxios";
 import GradientButton from "../components/GradientButton";
 
-import "../styles/galleryDetails.css";
+import "../styles/gestionDetails.css";
 
 import { frenchDate } from "../utils/function";
 
 export default function GestionDetails() {
   const artwork = useLoaderData();
+  const navigate = useNavigate();
 
   const [modified, setModified] = useState({
     title: artwork.title,
@@ -27,7 +28,11 @@ export default function GestionDetails() {
     event.preventDefault();
     myAxios
       .put(`/artworks/${artwork.id}`, modified, { withCredentials: true })
-      .then((response) => response.data)
+      .then((response) => {
+        console.info(response.data);
+        window.alert("L'artwork a bien été modifié!!");
+        navigate("/gestion");
+      })
       .catch((error) => console.error(error));
   };
   const handleChangeArtwork = (event) => {
@@ -41,12 +46,16 @@ export default function GestionDetails() {
     event.preventDefault();
     myAxios
       .delete(`/artworks/${artwork.id}`, { withCredentials: true })
-      .then((response) => response.data)
+      .then((response) => {
+        console.info(response.data);
+        window.alert("L'artwork a bien été supprimé!!");
+        navigate("/gestion");
+      })
       .catch((error) => console.error(error));
   };
 
   return (
-    <section className="galleryDetails">
+    <section className="gestionDetails">
       <div className="deleteArtwork">
         <GradientButton
           text="Supprimer l'oeuvre"
@@ -55,89 +64,114 @@ export default function GestionDetails() {
           onClick={sendCredentialsForDelete}
         />
       </div>
-      <div className="galleryDetailsBody">
+      <div className="gestionDetailsBody">
         <img
           src={artwork.image_url}
           alt={artwork.title}
           className="detailImage"
         />
         <form onSubmit={sendCredentialsForUpdate}>
-          <ul>
-            <li>
-              <span className="title-font">Auteur </span>: {artwork.author}
-              <label htmlFor="Auteur">auteur</label>{" "}
-              <input
-                type="text"
-                placeholder="Auteur*"
-                name="pseudo"
-                value={modified.pseudo}
-                onChange={handleChangeArtwork}
-              />
-            </li>
-            <li>
-              <span className="title-font">Pseudo du joueur </span>:{" "}
-              {artwork.pseudo}
-            </li>
-            <li>
-              <span className="title-font">Titre </span>: {artwork.title}
-              <label htmlFor="Title">Titre</label>{" "}
-              <input
-                type="text"
-                placeholder="Title*"
-                name="title"
-                value={modified.title}
-                onChange={handleChangeArtwork}
-              />
-            </li>
-            <li>
-              <span className="title-font">Description </span>:{" "}
-              {artwork.description}{" "}
-              <label htmlFor="Description">Description</label>{" "}
-              <input
-                type="text"
-                placeholder="Description*"
-                name="description"
-                value={modified.description}
-                onChange={handleChangeArtwork}
-              />
-            </li>
-            <li>
-              <span className="title-font">Date de création </span> :{" "}
-              {frenchDate(artwork.createDate)}
-            </li>
-            <li>
-              <span className="title-font">Style </span>: {artwork.style}{" "}
-              <label htmlFor="Style">style</label>{" "}
-              <input
-                type="text"
-                placeholder="style*"
-                name="style"
-                value={modified.style}
-                onChange={handleChangeArtwork}
-              />
-            </li>
-            <li>
-              <span className="title-font">Ville </span>: {artwork.city}{" "}
-              <label htmlFor="Ville">Ville</label>{" "}
-              <input
-                type="text"
-                placeholder="Ville*"
-                name="city"
-                value={modified.city}
-                onChange={handleChangeArtwork}
-              />
-            </li>
-            <li>
-              <span className="title-font">Validation </span>:{" "}
-              <input
-                type="text"
-                name="validation"
-                value={modified.validated}
-                onChange={handleChangeArtwork}
-                placeholder="0 ou 1"
-              />
-            </li>
-          </ul>
+          <div className="gestion_form">
+            <ul>
+              <li>
+                <span className="title-font">Auteur </span>: {artwork.author}
+                <label htmlFor="Auteur">Modification de l'auteur</label> <br />
+                <div className="gestion_form">
+                  <input
+                    type="text"
+                    placeholder="Modification de l'auteur*"
+                    name="author"
+                    value={modified.author}
+                    onChange={handleChangeArtwork}
+                  />
+                </div>
+              </li>
+              <div className="gestion_form">
+                <li>
+                  <span className="title-font">Pseudo du joueur </span>:{" "}
+                  {artwork.pseudo}
+                </li>
+              </div>
+
+              <li>
+                <span className="title-font">Titre </span>: {artwork.title}
+                <label htmlFor="Title">Modification du titre</label> <br />
+                <div className="gestion_form">
+                  <input
+                    type="text"
+                    placeholder="Modification du titre*"
+                    name="title"
+                    value={modified.title}
+                    onChange={handleChangeArtwork}
+                  />
+                </div>
+              </li>
+
+              <li>
+                <span className="title-font">Description </span>:{" "}
+                {artwork.description}{" "}
+                <label htmlFor="Description">
+                  Modification de la description
+                </label>{" "}
+                <br />
+                <div className="gestion_form">
+                  <input
+                    type="text"
+                    placeholder="Modification de la description*"
+                    name="description"
+                    value={modified.description}
+                    onChange={handleChangeArtwork}
+                  />{" "}
+                </div>
+              </li>
+
+              <li>
+                <span className="title-font">Date de création </span> :{" "}
+                {frenchDate(artwork.create_date)}
+              </li>
+
+              <li>
+                <span className="title-font">Style </span>: {artwork.style}{" "}
+                <label htmlFor="Style">Modification du style</label> <br />
+                <div className="gestion_form">
+                  <input
+                    type="text"
+                    placeholder="Modification du style*"
+                    name="style"
+                    value={modified.style}
+                    onChange={handleChangeArtwork}
+                  />{" "}
+                </div>
+              </li>
+
+              <li>
+                <span className="title-font">Ville </span>: {artwork.city}{" "}
+                <label htmlFor="Ville">Modification de la ville</label> <br />{" "}
+                <div className="gestion_form">
+                  <input
+                    type="text"
+                    placeholder="Modification de la ville*"
+                    name="city"
+                    value={modified.city}
+                    onChange={handleChangeArtwork}
+                  />{" "}
+                </div>
+              </li>
+
+              <li>
+                <span className="title-font">Validation </span>:{" "}
+                <div className="gestion_form">
+                  <input
+                    type="text"
+                    name="isValidated"
+                    value={modified.isValidated ? 0 : 1}
+                    onChange={handleChangeArtwork}
+                    placeholder="0 ou 1"
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
         </form>
         <GradientButton
           text="Valider les changements"

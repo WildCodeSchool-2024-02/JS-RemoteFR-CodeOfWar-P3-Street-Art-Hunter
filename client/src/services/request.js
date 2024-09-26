@@ -6,7 +6,12 @@ export function getMap() {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
-
+export function getUser() {
+  return myAxios
+    .get("/users")
+    .then((response) => response.data.result)
+    .catch((error) => console.error(error));
+}
 export function getUserbyId(id) {
   return myAxios
     .get(`/users/${id}`)
@@ -94,5 +99,14 @@ export function deleteCookie() {
   return myAxios
     .get("/logout", { withCredentials: true })
     .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}
+
+export function deleteUser(id) {
+  myAxios
+    .delete(`users/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
     .catch((error) => console.error(error));
 }
