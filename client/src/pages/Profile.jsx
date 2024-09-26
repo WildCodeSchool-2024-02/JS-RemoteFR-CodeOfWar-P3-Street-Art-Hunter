@@ -15,7 +15,6 @@ export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const user = useLoaderData();
-  console.info("user", useLoaderData());
 
   const avatarUrl = `${import.meta.env.VITE_API_AVATAR}/${user.avatar}`;
 
