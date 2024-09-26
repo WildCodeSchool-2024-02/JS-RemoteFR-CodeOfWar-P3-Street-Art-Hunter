@@ -79,3 +79,24 @@
 .galleryNavbar {
   padding-top: 1rem;
 }
+
+@media (width >= 480px) {
+  .header-gallery {
+    margin-top: 5.5rem;
+    justify-content: flex-start;
+  }
+  .header-gallery > h1 {
+    display: none;
+  }
+  .header-gallery > label {
+    background: none;
+    margin: 0 0 1.5rem 1.5rem;
+  }
+  .header-gallery > label > select {
+    border: 1px solid var(--primary-color);
+    font-family: var(--main-font);
+    border-radius: 24px;
+    height: 1.5rem;
+    padding-inline: 0.5rem;
+  }
+}
