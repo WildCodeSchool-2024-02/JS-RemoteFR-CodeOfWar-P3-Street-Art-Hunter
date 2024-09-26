@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState, useRef } from "react";
 
 import { GeoLocationContext } from "../services/context/GeoLocationContext";
+import { UserInfoContext } from "../services/context/UserInfoContext";
 import { postArtwork } from "../services/request";
 import { takePhoto, getVideo } from "../utils/cameraTools";
 import takePicture from "../assets/images/camera_take_picture.svg";
@@ -11,6 +12,7 @@ import CameraForm from "../components/CameraForm";
 
 export default function Camera() {
   const userLocation = useContext(GeoLocationContext);
+  const { userInfo } = useContext(UserInfoContext);
   const navigate = useNavigate();
 
   const videoRef = useRef(null);
@@ -28,7 +30,7 @@ export default function Camera() {
     lon: `${userLocation && userLocation.longitude}`,
     author: "",
     style_id: 0,
-    user_id: 1,
+    user_id: `${userInfo.id}`,
   });
 
   const handleChangeProperties = (event) => {
