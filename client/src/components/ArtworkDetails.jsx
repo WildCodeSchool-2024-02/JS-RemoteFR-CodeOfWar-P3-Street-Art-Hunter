@@ -7,14 +7,12 @@ import { frenchDate } from "../utils/function";
 import "../styles/styleArtworkDetail.css";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
+  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}${artwork.image_url}`;
+  console.info("artworkURL", artworkUrl);
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
-        <img
-          src={artwork.image_url}
-          alt={artwork.title}
-          className="detailsImg"
-        />
+        <img src={artworkUrl} alt={artwork.title} className="detailsImg" />
         <div className="textDetailsContainer">
           <div className="textDetails">
             <p>{artwork.title}</p>
