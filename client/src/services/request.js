@@ -1,6 +1,6 @@
 import myAxios from "./instanceAxios";
 
-export function getMap() {
+export function getArtworks() {
   return myAxios
     .get("/artworks")
     .then((response) => response.data)
@@ -115,5 +115,12 @@ export function deleteUser(id) {
     .then((response) => {
       console.info(response.data);
     })
+    .catch((error) => console.error(error));
+}
+
+export function getFavorites(id, setter) {
+  return myAxios
+    .get(`/favorites/${id}`)
+    .then((response) => setter(response.data))
     .catch((error) => console.error(error));
 }

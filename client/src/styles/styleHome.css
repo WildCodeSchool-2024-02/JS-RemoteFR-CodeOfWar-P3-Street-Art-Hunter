@@ -67,3 +67,16 @@
   position: absolute;
   margin: -6rem 0 0 -6rem;
 }
+.btnFavorites {
+  position: absolute;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  background: var(--primary-gradient);
+  top: 1rem;
+  left: 1rem;
+  z-index: 8;
+  color: #fff;
+  font-family: var(--title-font);
+  font-size: 20px;
+}
