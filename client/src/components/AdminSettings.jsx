@@ -51,10 +51,16 @@ function Users({ users }) {
     <section>
       {users && users.length > 0 ? (
         users.map((user) => (
-          <section className="UserList" key={user.id}>
-            <div className="imageUser">
-              <img src={user.avatar} alt={user.pseudo} className="avatarUser" />
-            </div>
+          <section className="userList" key={user.id}>
+            <Link to={`/userDetails/${user.id}`}>
+              <div className="imageUser">
+                <img
+                  src={user.avatar}
+                  alt={user.pseudo}
+                  className="avatarUser"
+                />
+              </div>
+            </Link>
             <div>
               <div className="informationUser">
                 <ul>

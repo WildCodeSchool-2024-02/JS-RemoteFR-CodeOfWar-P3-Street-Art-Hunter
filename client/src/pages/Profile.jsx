@@ -52,7 +52,7 @@ export default function Profile() {
             </div>
           </Link>
           {user.isAdmin && (
-            <Link to="/admin">
+            <Link to="/gestion">
               <button type="button" className="adminBtn">
                 Gestion
               </button>

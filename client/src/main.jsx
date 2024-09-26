@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   getMap,
   getUserbyId,
-  getCamera,
+  getStyle,
   getGallery,
   getUsersRanking,
   getValidated,
@@ -29,6 +29,7 @@ import Gestion from "./pages/Gestion";
 import GestionDetails from "./pages/GestionDetails";
 
 import "./styles/app.css";
+import UserDetails from "./pages/UserDetails";
 
 function HomeResponsive() {
   const screenWidth = useScreenWidth();
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
         element: <Gallery />,
         loader: async () => ({
           artworkList: await getMap(),
-          styleArtwork: await getCamera(),
+          styleArtwork: await getStyle(),
         }),
       },
       {
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/camera",
         element: <Camera />,
-        loader: getCamera,
+        loader: getStyle,
       },
       {
         path: "/gestion",
@@ -90,6 +91,11 @@ const router = createBrowserRouter([
         path: "/gestion/:id",
         element: <GestionDetails />,
         loader: ({ params }) => getGallery(params.id),
+      },
+      {
+        path: "/userDetails/:id",
+        element: <UserDetails />,
+        loader: ({ params }) => getUserbyId(params.id),
       },
       {
         path: "/profile/:id",
