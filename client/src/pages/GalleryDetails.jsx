@@ -12,7 +12,7 @@ export default function GalleryDetails() {
 
   useEffect(() => {
     getCityName(artwork.lat, artwork.lon, setCityCountry);
-  }, {});
+  }, []);
   const handleMouseOver = (e) => {
     e.preventDefault();
     if (artwork.isValidated === 1) {

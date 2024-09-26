@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Masonry from "react-masonry-css";
 
@@ -9,7 +9,9 @@ export default function Favorites() {
   const { artworks, user } = useLoaderData();
   const [data, setData] = useState();
 
-  getFavorites(user.id, setData);
+  useEffect(() => {
+    getFavorites(user.id, setData);
+  }, []);
 
   const breakpointColumnsObj = {
     default: 4,

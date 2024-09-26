@@ -29,7 +29,7 @@ export default function Camera() {
     lat: `${userLocation && userLocation.latitude}`,
     lon: `${userLocation && userLocation.longitude}`,
     author: "",
-    style_id: 0,
+    style_id: "",
     user_id: `${userInfo.id}`,
   });
 
