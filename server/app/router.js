@@ -18,6 +18,7 @@ const ranking = require("./controllers/RankingActions");
 
 const auth = require("./services/auth");
 const verifyMiddleware = require("./services/verifyMiddleware");
+const upload = require("./services/upload");
 const { compareLogin } = require("./services/compareLogin");
 const { findCity } = require("./services/findCity");
 
@@ -29,10 +30,10 @@ router.post(
   "/users",
   verifyMiddleware.verifyFields,
   auth.hashPassword,
-  verifyMiddleware.uploadPicture,
+  upload.uploadPicture,
   users.add
 );
-router.put("/users/:id", verifyMiddleware.uploadPicture, users.edit);
+router.put("/users/:id", upload.uploadPicture, users.edit);
 router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\
@@ -40,7 +41,7 @@ router.get("/artworks", artworks.browse);
 router.get("/artworks/validate", artworks.browseByAdmin);
 router.get("/artworks/:id", artworks.read);
 router.get("/artworks/validate/:id", artworks.readByAdmin);
-router.post("/artworks", auth.verifyToken, artworks.add);
+router.post("/artworks", upload.uploadArtwork, artworks.add);
 router.put("/artworks/:id", artworks.edit);
 router.delete("/artworks/:id", artworks.destroy);
 

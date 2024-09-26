@@ -62,7 +62,6 @@ export default function Connection() {
               value={setUserLogin.password}
               onChange={handleChangeLogin}
             />
-
             <GradientButton text="Se connecter" type="submit" />
           </form>
 
