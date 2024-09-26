@@ -20,7 +20,6 @@ export default function GestionDetails() {
     image_url: `${artwork.image_url}`,
     author: artwork.author,
     style_id: 1,
-    city_id: 1,
     user_id: 1,
   });
 
@@ -134,20 +133,6 @@ export default function GestionDetails() {
                     placeholder="Modification du style*"
                     name="style"
                     value={modified.style}
-                    onChange={handleChangeArtwork}
-                  />{" "}
-                </div>
-              </li>
-
-              <li>
-                <span className="title-font">Ville </span>: {artwork.city}{" "}
-                <label htmlFor="Ville">Modification de la ville</label> <br />{" "}
-                <div className="gestion_form">
-                  <input
-                    type="text"
-                    placeholder="Modification de la ville*"
-                    name="city"
-                    value={modified.city}
                     onChange={handleChangeArtwork}
                   />{" "}
                 </div>
