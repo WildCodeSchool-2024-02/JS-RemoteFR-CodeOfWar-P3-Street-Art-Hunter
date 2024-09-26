@@ -6,7 +6,12 @@ export function getMap() {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
-
+export function getUser() {
+  return myAxios
+    .get("/users")
+    .then((response) => response.data.result)
+    .catch((error) => console.error(error));
+}
 export function getUserbyId(id) {
   return myAxios
     .get(`/users/${id}`)
@@ -44,6 +49,13 @@ export function updateUser(id, userData) {
     .catch((error) => console.info(error));
 }
 
+export function updateScore(id, score) {
+  myAxios
+    .put(`/score/${id}`, { score })
+    .then((response) => console.info(response))
+    .catch((error) => console.info(error));
+}
+
 export function getUsersRanking() {
   return myAxios
     .get("/users/ranking")
@@ -65,4 +77,45 @@ export function postArtwork(formData) {
     .catch((error) => {
       console.error(error);
     });
+}
+
+export function getValidated() {
+  return myAxios
+    .get(`/artworks/validate`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+}
+
+export function getCityName(lat, lon, setter) {
+  const location = {
+    lat,
+    lon,
+  };
+  myAxios
+    .post("/findCity", location)
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
+
+export function getUserConnected(setter) {
+  return myAxios
+    .get("/checkLogin", { withCredentials: true })
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error.message));
+}
+
+export function deleteCookie() {
+  return myAxios
+    .get("/logout", { withCredentials: true })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}
+
+export function deleteUser(id) {
+  myAxios
+    .delete(`users/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
 }

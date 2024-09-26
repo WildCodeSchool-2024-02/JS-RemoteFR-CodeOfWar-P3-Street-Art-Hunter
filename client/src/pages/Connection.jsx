@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import myAxios from "../services/instanceAxios";
@@ -6,18 +6,14 @@ import GradientButton from "../components/GradientButton";
 import "../styles/connection.css";
 
 import logo from "../assets/images/logo_streetArt.svg";
+import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function Connection() {
-  // const userLogin = useLoaderData();
-  // console.info("userlogin", userLogin);
-
-  const [auth, setAuth] = useState();
-  console.info(auth);
+  const { setUserInfo } = useContext(UserInfoContext);
   const [userLogin, setUserLogin] = useState({
     mail: "",
     password: "",
   });
-
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -26,7 +22,7 @@ export default function Connection() {
     myAxios
       .post("/login", userLogin, { withCredentials: true })
       .then((response) => {
-        setAuth(response);
+        setUserInfo(response.data);
         navigate("/");
       })
       .catch((error) => console.error(error));
@@ -66,9 +62,7 @@ export default function Connection() {
               value={setUserLogin.password}
               onChange={handleChangeLogin}
             />
-            <div className="connectGradientBtn">
-              <GradientButton text="Se connecter" type="submit" />
-            </div>
+            <GradientButton text="Se connecter" type="submit" />
           </form>
 
           <hr className="connection_separator" />

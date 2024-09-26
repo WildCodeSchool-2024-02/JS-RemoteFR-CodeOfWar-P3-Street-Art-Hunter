@@ -1,6 +1,7 @@
 import { useLocation, Outlet } from "react-router-dom";
 
 import { GeoLocationProvider } from "./services/context/GeoLocationContext";
+import { UserInfoProvider } from "./services/context/UserInfoContext";
 
 import NavBar from "./components/NavBar";
 
@@ -10,7 +11,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <>
+    <UserInfoProvider>
       {location.pathname === "/connection" ||
       location.pathname === "/register" ? null : (
         <NavBar />
@@ -20,7 +21,7 @@ function App() {
           <Outlet />
         </main>
       </GeoLocationProvider>
-    </>
+    </UserInfoProvider>
   );
 }
 

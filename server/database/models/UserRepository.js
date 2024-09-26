@@ -31,7 +31,9 @@ class UserRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `select * from ${this.table} order by registration_date DESC`
+    );
 
     return rows;
   }
@@ -48,6 +50,14 @@ class UserRepository extends AbstractRepository {
         user.avatar,
         user.id,
       ]
+    );
+    return result.affectedRows;
+  }
+
+  async updateScore(user) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET score = score + ? WHERE id = ?`,
+      [user.score, user.id]
     );
     return result.affectedRows;
   }

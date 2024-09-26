@@ -58,6 +58,22 @@ const edit = async (req, res, next) => {
     next(error);
   }
 };
+
+const editScore = async (req, res, next) => {
+  try {
+    const user = {
+      id: req.params.id,
+      score: req.body.score,
+    };
+    await tables.user.updateScore(user);
+    res
+      .status(204)
+      .send(`Points ajoutés avec succés: #{ id:${req.params.id} }`);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const destroy = async (req, res, next) => {
   try {
     await tables.user.delete(req.params.id);
@@ -73,6 +89,7 @@ module.exports = {
   browse,
   read,
   edit,
+  editScore,
   add,
   destroy,
 };

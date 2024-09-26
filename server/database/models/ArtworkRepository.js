@@ -36,6 +36,35 @@ where ${this.table}.id = ?`,
     return rows[0];
   }
 
+  async readByAdmin(id) {
+    const [rows] = await this.database.query(
+      `SELECT artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, city.name as city, user.pseudo as pseudo
+  FROM ${this.table}
+  INNER JOIN style ON style.id = artwork.style_id
+  INNER JOIN city ON city.id = artwork.city_id
+  INNER JOIN user ON user.id = artwork.user_id 
+  WHERE artwork.isValidated = 0 AND ${this.table}.id = ?
+  GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, city.name, user.pseudo`,
+      [id]
+    );
+
+    return rows;
+  }
+
+  async readAllByAdmin() {
+    const [rows] = await this.database.query(
+      `SELECT artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, city.name as city, user.pseudo as pseudo
+      FROM ${this.table}
+      INNER JOIN style ON style.id = artwork.style_id
+      INNER JOIN city ON city.id = artwork.city_id
+      INNER JOIN user ON user.id = artwork.user_id 
+      WHERE artwork.isValidated = 0
+      GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, city.name, user.pseudo
+      ORDER BY artwork.create_date DESC`
+    );
+    return rows;
+  }
+
   async readAll(where) {
     if (!where.q) {
       const [rows] = await this.database.query(`select * from ${this.table}`);
@@ -54,6 +83,7 @@ where ${this.table}.id = ?`,
       [
         artwork.title,
         artwork.description,
+        artwork.isValidated,
         artwork.lat,
         artwork.lon,
         artwork.image_url,
