@@ -80,3 +80,6 @@
   font-family: var(--title-font);
   font-size: 20px;
 }
+.btnFavorites:active {
+  opacity: 0.5;
+}

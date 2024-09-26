@@ -17,3 +17,12 @@
   height: 80vh;
   overflow: scroll;
 }
+
+@media (width >= 480px) {
+  .favoriteContainer > header {
+    margin-top: 5rem;
+  }
+  .favoriteContainer > header > p {
+    margin-right: 20vw;
+  }
+}
