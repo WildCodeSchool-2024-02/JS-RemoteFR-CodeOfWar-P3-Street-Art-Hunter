@@ -51,10 +51,9 @@ export default function Register() {
   };
 
   return (
-    <section>
+    <section className="registerContainer">
       <div className="register">
         <img src={logo} alt="Logo" className="registerLogo" />
-        <h2 className="registerTitle">INSCRIPTION</h2>
         <form onSubmit={sendCredentials}>
           <div className="register_form">
             <label htmlFor="Lastname">Nom</label>
