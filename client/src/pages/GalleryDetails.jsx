@@ -71,9 +71,6 @@ export default function GalleryDetails() {
           <li>
             <span className="title-font">Style </span>: {artwork.style}
           </li>
-          <li>
-            <span className="title-font">Ville </span>: {artwork.city}
-          </li>
         </ul>
       </div>
     </section>

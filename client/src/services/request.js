@@ -119,3 +119,29 @@ export function deleteUser(id) {
     })
     .catch((error) => console.error(error));
 }
+export function deleteArtwork(id) {
+  myAxios
+    .delete(`artworks/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}
+
+export function updateArtwork(id) {
+  myAxios
+    .put(`artworks/${id}`)
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}
+// const sendCredentialsForUpdate = (event) => {
+//   event.preventDefault();
+//   myAxios
+//     .put(`/artworks/${artwork.id}`, modified, { withCredentials: true })
+//     .then((response) => {
+//       console.info(response.data);
+//       window.alert("L'artwork a bien été modifié!!");
+//       navigate("/gestion");
+//     })
+//     .catch((error) => console.error(error));
+// };

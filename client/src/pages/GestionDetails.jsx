@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import myAxios from "../services/instanceAxios";
+import { deleteArtwork } from "../services/request";
 import GradientButton from "../components/GradientButton";
 
 import "../styles/gestionDetails.css";
@@ -11,6 +12,7 @@ export default function GestionDetails() {
   const artwork = useLoaderData();
   const navigate = useNavigate();
 
+  const [isOpen, setIsOpen] = useState(false);
   const [modified, setModified] = useState({
     title: artwork.title,
     description: artwork.description,
@@ -29,11 +31,24 @@ export default function GestionDetails() {
       .put(`/artworks/${artwork.id}`, modified, { withCredentials: true })
       .then((response) => {
         console.info(response.data);
-        window.alert("L'artwork a bien été modifié!!");
+        setIsOpen(true);
+        setTimeout(() => {
+          setIsOpen(false);
+          navigate("/gestion");
+        }, 20000);
         navigate("/gestion");
       })
       .catch((error) => console.error(error));
   };
+  // const handleUpdateArtwork = async () => {
+  //   await updateArtwork(artwork.id);
+  //   setIsOpen(true);
+  //   setTimeout(() => {
+  //     setIsOpen(false);
+  //     navigate("/gestion");
+  //   }, 2000);
+  // };
+
   const handleChangeArtwork = (event) => {
     const { name, value } = event.target;
     setModified((previousAdd) => ({
@@ -41,16 +56,25 @@ export default function GestionDetails() {
       [name]: value,
     }));
   };
-  const sendCredentialsForDelete = (event) => {
-    event.preventDefault();
-    myAxios
-      .delete(`/artworks/${artwork.id}`, { withCredentials: true })
-      .then((response) => {
-        console.info(response.data);
-        window.alert("L'artwork a bien été supprimé!!");
-        navigate("/gestion");
-      })
-      .catch((error) => console.error(error));
+  // const sendCredentialsForDelete = (event) => {
+  //   event.preventDefault();
+  //   myAxios
+  //     .delete(`/artworks/${artwork.id}`, { withCredentials: true })
+  //     .then((response) => {
+  //       console.info(response.data);
+  //       window.alert("L'artwork a bien été supprimé!!");
+  //       navigate("/gestion");
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
+  console.info(modified);
+  const handleDeleteArtwork = async () => {
+    await deleteArtwork(artwork.id);
+    setIsOpen(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      navigate("/gestion");
+    }, 2000);
   };
 
   return (
@@ -132,7 +156,7 @@ export default function GestionDetails() {
                     type="text"
                     placeholder="Modification du style*"
                     name="style"
-                    value={modified.style}
+                    value={modified.style_id}
                     onChange={handleChangeArtwork}
                   />{" "}
                 </div>
@@ -144,7 +168,7 @@ export default function GestionDetails() {
                   <input
                     type="text"
                     name="isValidated"
-                    value={modified.isValidated ? 0 : 1}
+                    value={modified.isValidated}
                     onChange={handleChangeArtwork}
                     placeholder="0 ou 1"
                   />
@@ -159,13 +183,19 @@ export default function GestionDetails() {
             type="submit"
             onClick={sendCredentialsForUpdate}
           />
+          {isOpen && (
+            <p className="deleteUser"> L'arwork a bien été modifié </p>
+          )}
           <hr className="connection_separator" />
           <GradientButton
             text="Supprimer l'oeuvre"
             type="submit"
             className="deleteArtwork"
-            onClick={sendCredentialsForDelete}
+            onClick={handleDeleteArtwork}
           />
+          {isOpen && (
+            <p className="deleteUser"> L'arwork a bien été supprimé </p>
+          )}
         </div>
       </div>
     </section>
