@@ -19,7 +19,7 @@ export function getUserbyId(id) {
     .catch((error) => console.info(error));
 }
 
-export function getCamera() {
+export function getStyle() {
   return myAxios
     .get("/styles")
     .then((response) => response.data)
@@ -29,13 +29,6 @@ export function getGallery(id) {
   return myAxios
     .get(`/artworks/${id}`)
     .then((response) => response.data)
-    .catch((error) => console.info(error));
-}
-
-export function sendArtwork(artworkProperties) {
-  return myAxios
-    .post("/artworks", artworkProperties, { withCredentials: true })
-    .then((response) => console.info(response))
     .catch((error) => console.info(error));
 }
 
@@ -68,6 +61,22 @@ export function getUsersRanking() {
     .get("/users/ranking")
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
+}
+
+export function postArtwork(formData) {
+  myAxios
+    .post("/artworks", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        withCredentials: true,
+      },
+    })
+    .then((response) => {
+      console.info(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 export function getValidated() {

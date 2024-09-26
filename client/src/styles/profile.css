@@ -129,7 +129,7 @@
 }
 
 .profilFormcontainer #gradientButton {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   width: 70%;
 }
 
@@ -141,7 +141,18 @@
   margin-top: -1rem;
 }
 .deleteProfil {
-  padding-top: 2rem;
+  align-self: flex-start;
+  margin-left: 2.6rem;
+}
+.deleteProfil > button {
+  margin-top: 0.5rem;
+  border: none;
+  font-size: 12px;
+  color: var(--grey);
+  background: none;
+  font-family: var(--main-font);
+  text-decoration: underline;
+  cursor: pointer;
 }
 .deleteUser {
   position: absolute;
@@ -154,10 +165,48 @@
   border-radius: 24px;
 }
 @media (width >= 480px) {
-  .profileContainer {
-    padding-top: 6rem;
-  }
-  .profileContainer h2 {
+  #grid-item {
     display: none;
+  }
+  .profileContainer {
+    margin-top: 7rem;
+    height: 25%;
+    background: none;
+    color: var(--primary-color);
+  }
+  .profilAvatar {
+    border: 3px solid var(--primary-color);
+  }
+  .profilSection {
+    padding-top: 0;
+  }
+  .profilClassement {
+    margin-top: 1rem;
+    background: var(--primary-gradient);
+    color: #fff;
+    padding: 1.8rem 0.5rem;
+    width: 50%;
+  }
+
+  .profilClassement div {
+    color: #fff;
+  }
+  .profilClassement div > img {
+    background-color: #ffe4ec;
+    padding: 0.5rem;
+    border-radius: 50%;
+    height: 2.3rem;
+  }
+  .profilClassement > div:first-child {
+    gap: 0.5rem;
+  }
+  .profilClassement > div:last-child {
+    background-color: #ffe4ec;
+    color: var(--primary-color);
+    width: 6rem;
+    font-size: 18px;
+  }
+  .profilFormcontainer {
+    justify-content: center;
   }
 }

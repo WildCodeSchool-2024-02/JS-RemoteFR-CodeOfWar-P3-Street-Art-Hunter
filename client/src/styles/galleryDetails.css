@@ -57,3 +57,16 @@ h1 {
   border: none;
   font-weight: bold;
 }
+.buttonGalleryValidated {
+  font-family: var(--main-font);
+  color: var(--grey);
+}
+
+@media (width >= 480px) {
+  .galleryDetails > h1 {
+    display: none;
+  }
+  .galleryDetailsBody {
+    margin-top: 5.5rem;
+  }
+}

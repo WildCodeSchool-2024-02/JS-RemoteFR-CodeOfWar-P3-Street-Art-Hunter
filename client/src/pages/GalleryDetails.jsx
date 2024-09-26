@@ -45,7 +45,7 @@ export default function GalleryDetails() {
                 onBlur={handleMouseOut}
                 className="buttonGalleryValidated"
               >
-                🟢{message}
+                🟢 {message}
               </button>
             ) : (
               <button
@@ -56,7 +56,7 @@ export default function GalleryDetails() {
                 onBlur={handleMouseOut}
                 className="buttonGalleryValidated"
               >
-                🟠{message}
+                🟠 {message}
               </button>
             )}
           </li>

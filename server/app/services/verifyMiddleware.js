@@ -1,7 +1,4 @@
 const Joi = require("joi");
-const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
-const path = require("path");
 
 const verifyFields = (req, res, next) => {
   const schema = Joi.object({
@@ -20,25 +17,6 @@ const verifyFields = (req, res, next) => {
   }
 };
 
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/uploads"));
-  },
-  filename(req, file, cb) {
-    const id = uuidv4();
-    console.info("uuid", id);
-    const pictureName = `${id}${path.extname(file.originalname)}`;
-    req.body.avatar = pictureName;
-    cb(null, pictureName);
-  },
-});
-
-const uploadPicture = (req, res, next) => {
-  const upload = multer({ storage });
-  return upload.single("avatar")(req, res, next);
-};
-
 module.exports = {
   verifyFields,
-  uploadPicture,
 };

@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   getMap,
   getUserbyId,
-  getCamera,
+  getStyle,
   getGallery,
   getUsersRanking,
   getValidated,
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         element: <Gallery />,
         loader: async () => ({
           artworkList: await getMap(),
-          styleArtwork: await getCamera(),
+          styleArtwork: await getStyle(),
         }),
       },
       {
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/camera",
         element: <Camera />,
-        loader: getCamera,
+        loader: getStyle,
       },
       {
         path: "/gestion",
