@@ -16,6 +16,8 @@ export default function Profile() {
   const navigate = useNavigate();
   const user = useLoaderData();
 
+  const avatarUrl = `${import.meta.env.VITE_API_AVATAR}/${user.avatar}`;
+
   const handleLogout = async () => {
     await deleteCookie();
     setUserInfo(null);
@@ -37,7 +39,7 @@ export default function Profile() {
       <div className="profileContainer">
         <h1 id="grid-item">Profil</h1>
         <section className="profilSection">
-          <img src={user.avatar} alt={user.pseudo} className="profilAvatar" />
+          <img src={avatarUrl} alt={user.pseudo} className="profilAvatar" />
           <h2>@{user.pseudo}</h2>
           <p className="profilEmail">{user.mail}</p>
           <Link to={`/profile/ranking/${user.id}`} className="profilClassement">
