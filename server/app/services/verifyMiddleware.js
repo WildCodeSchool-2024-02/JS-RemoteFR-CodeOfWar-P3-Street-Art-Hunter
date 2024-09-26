@@ -20,9 +20,9 @@ const verifyFields = (req, res, next) => {
   }
 };
 
-const storage = multer.diskStorage({
+const storageAvatar = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/uploads"));
+    cb(null, "public/uploads/avatars");
   },
   filename(req, file, cb) {
     const id = uuidv4();
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 });
 
 const uploadPicture = (req, res, next) => {
-  const upload = multer({ storage });
+  const upload = multer({ storage: storageAvatar });
   return upload.single("avatar")(req, res, next);
 };
 
