@@ -15,7 +15,7 @@ export default function NavBarDesktop() {
     ...(userInfo ? [{ path: `/profile/${userInfo.id}`, name: "Profil" }] : []),
     { path: "/help", name: "Aide" },
     ...(!userInfo ? [{ path: "/connection", name: "Connexion" }] : []),
-    ...(userInfo?.isAdmin ? [{ path: "/admin", name: "Gestion" }] : []),
+    ...(userInfo?.isAdmin ? [{ path: "/gestion", name: "Gestion" }] : []),
   ];
 
   return (
