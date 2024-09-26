@@ -41,11 +41,9 @@ export function sendArtwork(artworkProperties) {
 
 export function updateUser(id, userData) {
   const formData = new FormData();
-  console.info("updateUser-userData", userData);
   Object.keys(userData).forEach((key) => {
     formData.append(key, userData[key]);
   });
-  console.info("updateUser-Object", Object.keys(userData));
   return myAxios
     .put(`/users/${id}`, formData, {
       headers: {
