@@ -11,7 +11,7 @@
   align-items: flex-end;
 }
 .detailsContain {
-  height: 70%;
+  height: 80%;
   width: 100%;
   background-color: #fff;
   border-radius: 24px 24px 0 0;
@@ -20,7 +20,7 @@
   justify-content: space-between;
 }
 .detailsImg {
-  height: 35%;
+  height: 50%;
   border-radius: 24px 24px 0 0;
 }
 .textDetailsContainer {
