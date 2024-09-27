@@ -6,6 +6,7 @@
   width: 100%;
   padding-inline: 1rem;
 }
+
 .registerLogo {
   width: 100%;
 }
@@ -15,7 +16,6 @@
 .register_form {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   position: relative;
   width: 100%;
 }
@@ -56,7 +56,6 @@
 .register #gradientButton {
   margin: 1rem 0 1rem 0;
 }
-
 @media (width >= 480px) {
   .registerContainer {
     height: 100vh;

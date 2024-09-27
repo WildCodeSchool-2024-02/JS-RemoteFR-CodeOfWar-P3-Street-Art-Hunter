@@ -33,7 +33,7 @@ router.post(
   upload.uploadPicture,
   users.add
 );
-router.put("/users/:id", upload.uploadPicture, users.edit);
+router.put("/users/:id", upload.uploadPicture, auth.hashPassword, users.edit);
 router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\

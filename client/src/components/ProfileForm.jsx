@@ -7,23 +7,13 @@ import Pen from "../assets/images/profil_pen.svg";
 import Valid from "../assets/images/profil_valid.svg";
 
 export default function ProfileForm({ userDetail }) {
-  const [editField, setEditField] = useState(null);
-  const [formDetail, setFormDetail] = useState({
-    lastname: userDetail.lastname,
-    firstname: userDetail.firstname,
-    pseudo: userDetail.pseudo,
-    mail: userDetail.mail,
-    password: userDetail.password,
-    avatar: userDetail.avatar,
-    id: userDetail.id,
-  });
-  const [file, setFile] = useState(null);
+  const [editField, setEditField] = useState("");
+  const [formDetail, setFormDetail] = useState(userDetail);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     if (name === "avatar") {
-      setFile(e.target.files[0]);
-      setFormDetail({ ...formDetail, [name]: e.target.files[0].name });
+      setFormDetail({ ...formDetail, avatar: files[0] });
     } else {
       setFormDetail({ ...formDetail, [name]: value });
     }
@@ -33,13 +23,9 @@ export default function ProfileForm({ userDetail }) {
     setEditField(field);
   };
 
-  const handleSave = async () => {
-    const userData = { ...formDetail };
-    if (file) {
-      userData.avatar = file;
-    }
-    await updateUser(userDetail.id, userData);
-    setEditField(null);
+  const handleSave = () => {
+    updateUser(userDetail.id, formDetail);
+    setEditField("");
   };
 
   return (

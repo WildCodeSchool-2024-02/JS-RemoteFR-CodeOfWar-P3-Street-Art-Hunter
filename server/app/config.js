@@ -52,7 +52,7 @@ app.use(
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
 app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
 
@@ -108,6 +108,7 @@ app.use("/api", router);
 const publicFolderPath = path.join(__dirname, "/../public/uploads");
 
 // app.use(express.static(publicFolderPath));
+
 app.use("/uploads", express.static(publicFolderPath, { maxAge: "1y" }));
 
 // app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));

@@ -33,6 +33,7 @@ export default function GalleryDetails() {
       <h1>{artwork.title}</h1>
       <div className="galleryDetailsBody">
         <img src={artworkUrl} alt={artwork.title} className="detailImage" />
+
         <ul>
           <li className="galleryArtIsValidated">
             <p>

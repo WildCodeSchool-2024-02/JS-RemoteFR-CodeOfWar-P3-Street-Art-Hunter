@@ -50,6 +50,7 @@ export function getGallery(id) {
 
 // *** STYLES *** \\
 export function getStyle() {
+
   return myAxios
     .get("/styles")
     .then((response) => response.data)
@@ -77,6 +78,13 @@ export function getCityName(lat, lon, setter) {
 }
 
 // *** USERS *** \\
+export function postUser(userData) {
+  myAxios
+    .post("/users", userData)
+    .then((response) => console.info(response))
+    .catch((error) => console.error(error));
+}
+
 // *** ARTWORKS *** \\
 export function postArtwork(formData) {
   myAxios
@@ -97,7 +105,7 @@ export function postArtwork(formData) {
 // *** FAVORITES *** \\
 export function postFavorites(artworkId) {
   myAxios
-    .post(`/favorites`, { artworkId }, { withCredentials: true })
+    .post(`/favorites`, { artwork_id: artworkId }, { withCredentials: true })
     .then((response) => console.info(response))
     .catch((error) => console.error(error));
 }
@@ -126,6 +134,13 @@ export function updateUser(id, userData) {
     .catch((error) => console.info(error));
 }
 // *** ARTWORKS *** \\
+export function updateArtwork(id, modified) {
+  myAxios
+    .put(`artworks/${id}`, { modified })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}
+
 // *** STYLES *** \\
 // *** FAVORITES *** \\
 
@@ -148,3 +163,11 @@ export function deleteUser(id) {
 }
 
 // *** ARTWORKS *** \\
+export function deleteArtwork(id) {
+  myAxios
+    .delete(`artworks/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}
