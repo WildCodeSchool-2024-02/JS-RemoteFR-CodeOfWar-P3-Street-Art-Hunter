@@ -127,6 +127,13 @@ export function updateUser(id, userData) {
     .catch((error) => console.info(error));
 }
 // *** ARTWORKS *** \\
+export function updateArtwork(id, modified) {
+  myAxios
+    .put(`artworks/${id}`, { modified })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.error(error));
+}
+
 // *** STYLES *** \\
 // *** FAVORITES *** \\
 
@@ -149,3 +156,11 @@ export function deleteUser(id) {
 }
 
 // *** ARTWORKS *** \\
+export function deleteArtwork(id) {
+  myAxios
+    .delete(`artworks/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}

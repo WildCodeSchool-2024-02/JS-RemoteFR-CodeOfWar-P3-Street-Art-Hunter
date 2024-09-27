@@ -102,7 +102,7 @@ Validation.propTypes = {
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
-      image_url: PropTypes.string.isRequired,
+      image_url: PropTypes.string,
     })
   ).isRequired,
 };
@@ -110,10 +110,10 @@ Users.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      avatar: PropTypes.string.isRequired,
+      avatar: PropTypes.string,
       pseudo: PropTypes.string.isRequired,
       mail: PropTypes.string.isRequired,
-      registration_date: PropTypes.number.isRequired,
+      registration_date: PropTypes.string.isRequired,
       score: PropTypes.number.isRequired,
     })
   ).isRequired,

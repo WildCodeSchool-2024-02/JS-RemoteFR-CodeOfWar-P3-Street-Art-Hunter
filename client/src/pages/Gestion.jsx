@@ -29,6 +29,7 @@ export default function Gestion() {
 
   return (
     <section className="gestion">
+      <h1>Gestion</h1>
       <div className="gestionHeader">
         <div className="gestionContainer">
           {headers.map((header) => (
