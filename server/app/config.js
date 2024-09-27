@@ -111,9 +111,7 @@ const publicFolderPath = path.join(__dirname, "/../public/uploads");
 
 app.use("/uploads", express.static(publicFolderPath, { maxAge: "1y" }));
 
-
 // app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
-
 
 /*
 const path = require("path");
