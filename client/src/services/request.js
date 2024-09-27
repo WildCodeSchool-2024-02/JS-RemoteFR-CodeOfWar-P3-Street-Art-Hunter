@@ -77,6 +77,13 @@ export function getCityName(lat, lon, setter) {
 }
 
 // *** USERS *** \\
+export function postUser(userData) {
+  myAxios
+    .post("/users", userData)
+    .then((response) => console.info(response))
+    .catch((error) => console.error(error));
+}
+
 // *** ARTWORKS *** \\
 export function postArtwork(formData) {
   myAxios
