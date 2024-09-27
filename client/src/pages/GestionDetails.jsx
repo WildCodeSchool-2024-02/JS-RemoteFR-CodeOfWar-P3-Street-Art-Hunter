@@ -1,7 +1,7 @@
 import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import myAxios from "../services/instanceAxios";
-import { deleteArtwork } from "../services/request";
+
+import { updateArtwork, deleteArtwork } from "../services/request";
 import GradientButton from "../components/GradientButton";
 
 import "../styles/gestionDetails.css";
@@ -9,45 +9,32 @@ import "../styles/gestionDetails.css";
 import { frenchDate } from "../utils/function";
 
 export default function GestionDetails() {
-  const artwork = useLoaderData();
+  const { artwork, styles } = useLoaderData();
   const navigate = useNavigate();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState("");
   const [modified, setModified] = useState({
     title: artwork.title,
     description: artwork.description,
-    isValidated: artwork.isValidated,
+    isValidated: 0,
     lat: artwork.lat,
     lon: artwork.lon,
     image_url: `${artwork.image_url}`,
     author: artwork.author,
-    style_id: 1,
+    style_id: artwork.style_id,
     user_id: 1,
   });
 
-  const sendCredentialsForUpdate = (event) => {
+  const sendCredentialsForUpdate = async (event) => {
     event.preventDefault();
-    myAxios
-      .put(`/artworks/${artwork.id}`, modified, { withCredentials: true })
-      .then((response) => {
-        console.info(response.data);
-        setIsOpen(true);
-        setTimeout(() => {
-          setIsOpen(false);
-          navigate("/gestion");
-        }, 20000);
-        navigate("/gestion");
-      })
-      .catch((error) => console.error(error));
+    console.info(artwork, "coucou");
+    await updateArtwork(artwork.id, modified);
+    setIsOpen("modified");
+    setTimeout(() => {
+      setIsOpen("");
+      navigate("/gestion");
+    }, 2000);
   };
-  // const handleUpdateArtwork = async () => {
-  //   await updateArtwork(artwork.id);
-  //   setIsOpen(true);
-  //   setTimeout(() => {
-  //     setIsOpen(false);
-  //     navigate("/gestion");
-  //   }, 2000);
-  // };
 
   const handleChangeArtwork = (event) => {
     const { name, value } = event.target;
@@ -56,23 +43,12 @@ export default function GestionDetails() {
       [name]: value,
     }));
   };
-  // const sendCredentialsForDelete = (event) => {
-  //   event.preventDefault();
-  //   myAxios
-  //     .delete(`/artworks/${artwork.id}`, { withCredentials: true })
-  //     .then((response) => {
-  //       console.info(response.data);
-  //       window.alert("L'artwork a bien été supprimé!!");
-  //       navigate("/gestion");
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
-  console.info(modified);
+
   const handleDeleteArtwork = async () => {
     await deleteArtwork(artwork.id);
-    setIsOpen(true);
+    setIsOpen("delete");
     setTimeout(() => {
-      setIsOpen(false);
+      setIsOpen("");
       navigate("/gestion");
     }, 2000);
   };
@@ -88,7 +64,7 @@ export default function GestionDetails() {
           alt={artwork.title}
           className="detailImage"
         />
-        <form onSubmit={sendCredentialsForUpdate}>
+        <form>
           <div className="gestion_form">
             <ul>
               <li>
@@ -110,7 +86,6 @@ export default function GestionDetails() {
                   {artwork.pseudo}
                 </li>
               </div>
-
               <li>
                 <span className="title-font">Titre </span>: {artwork.title}
                 <label htmlFor="Title">Modification du titre</label> <br />
@@ -124,7 +99,6 @@ export default function GestionDetails() {
                   />
                 </div>
               </li>
-
               <li>
                 <span className="title-font">Description </span>:{" "}
                 {artwork.description}{" "}
@@ -147,31 +121,23 @@ export default function GestionDetails() {
                 <span className="title-font">Date de création </span> :{" "}
                 {frenchDate(artwork.create_date)}
               </li>
-
               <li>
                 <span className="title-font">Style </span>: {artwork.style}{" "}
                 <label htmlFor="Style">Modification du style</label> <br />
                 <div className="gestion_form">
-                  <input
-                    type="text"
-                    placeholder="Modification du style*"
-                    name="style"
+                  <select
+                    className="dropdown_Style"
+                    name="style_id"
                     value={modified.style_id}
                     onChange={handleChangeArtwork}
-                  />{" "}
-                </div>
-              </li>
-
-              <li>
-                <span className="title-font">Validation </span>:{" "}
-                <div className="gestion_form">
-                  <input
-                    type="text"
-                    name="isValidated"
-                    value={modified.isValidated}
-                    onChange={handleChangeArtwork}
-                    placeholder="0 ou 1"
-                  />
+                  >
+                    <option value={0}>Selectionner un type</option>
+                    {styles?.map((style) => (
+                      <option key={style.id} value={style.id}>
+                        {style.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </li>
             </ul>
@@ -183,7 +149,7 @@ export default function GestionDetails() {
             type="submit"
             onClick={sendCredentialsForUpdate}
           />
-          {isOpen && (
+          {isOpen === "modified" && (
             <p className="deleteUser"> L'arwork a bien été modifié </p>
           )}
           <hr className="connection_separator" />
@@ -193,7 +159,7 @@ export default function GestionDetails() {
             className="deleteArtwork"
             onClick={handleDeleteArtwork}
           />
-          {isOpen && (
+          {isOpen === "delete" && (
             <p className="deleteUser"> L'arwork a bien été supprimé </p>
           )}
         </div>

@@ -90,7 +90,10 @@ const router = createBrowserRouter([
       {
         path: "/gestion/:id",
         element: <GestionDetails />,
-        loader: ({ params }) => getGallery(params.id),
+        loader: async ({ params }) => ({
+          artwork: await getGallery(params.id),
+          styles: await getStyle(),
+        }),
       },
       {
         path: "/userDetails/:id",
