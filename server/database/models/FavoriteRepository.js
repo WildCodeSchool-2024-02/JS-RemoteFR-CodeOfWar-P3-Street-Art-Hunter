@@ -16,11 +16,11 @@ class FavoriteRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select * from ${this.table} where user_id = ?`,
       [id]
     );
 
-    return rows[0];
+    return rows;
   }
 
   async readAll() {

@@ -69,7 +69,7 @@ export default function Ranking() {
             &#x2718;
           </button>
         </div>
-        <RankingList rankings={rankings} data={data} />
+        <RankingList rankings={rankings} data={data && data} />
       </div>
     </section>
   );
