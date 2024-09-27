@@ -43,7 +43,6 @@ export default function UserDetails() {
             </li>
           </ul>
         </div>
-
         <GradientButton
           text="Supprimer le compte de l'utilisateur"
           type="submit"

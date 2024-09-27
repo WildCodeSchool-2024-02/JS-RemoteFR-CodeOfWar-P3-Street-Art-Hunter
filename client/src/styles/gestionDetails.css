@@ -54,7 +54,6 @@ h1 {
 .gestion_form {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   position: relative;
   width: 100%;
 }
@@ -66,10 +65,14 @@ h1 {
   font-weight: bolder;
   margin-bottom: 0.5rem;
 }
+.gestion_form label {
+  display: none;
+}
 .gestionButton {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1rem;
 }
 .connection_separator {
   border: none;
@@ -91,7 +94,14 @@ h1 {
   top: -12px;
 }
 @media (width >= 480px) {
+  .detailImage {
+    width: 100%;
+    object-fit: contain;
+  }
   .gestionDetails {
-    padding-top: 7rem;
+    padding-top: 5.5rem;
+  }
+  .gestion_form label {
+    display: flow;
   }
 }

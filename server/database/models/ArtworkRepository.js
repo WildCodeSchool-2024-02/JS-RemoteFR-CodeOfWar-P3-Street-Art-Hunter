@@ -53,13 +53,12 @@ where ${this.table}.id = ?`,
 
   async readAllByAdmin() {
     const [rows] = await this.database.query(
-      `SELECT artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, city.name as city, user.pseudo as pseudo
+      `SELECT artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, user.pseudo as pseudo
       FROM ${this.table}
       INNER JOIN style ON style.id = artwork.style_id
-      INNER JOIN city ON city.id = artwork.city_id
       INNER JOIN user ON user.id = artwork.user_id 
       WHERE artwork.isValidated = 0
-      GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, city.name, user.pseudo
+      GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, user.pseudo
       ORDER BY artwork.create_date DESC`
     );
     return rows;
@@ -79,7 +78,7 @@ where ${this.table}.id = ?`,
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `update ${this.table} set title = ?, description = ?, lat = ?, lon =?, image_url = ?, author = ?, style_id = ?, user_id = ? where id = ?`,
+      `update ${this.table} set title = ?, description = ?, isValidated = ?, lat = ?, lon = ?, image_url = ?, author = ?, style_id = ?, user_id = ?  where id = ?`,
       [
         artwork.title,
         artwork.description,
