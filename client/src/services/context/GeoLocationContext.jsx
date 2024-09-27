@@ -18,7 +18,7 @@ function GeoLocationProvider({ children }) {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition(getSuccesLocation, getErrorLocation, {
         enableHighAccuracy: true,
-        timeout: 8000,
+        timeout: 15000,
       });
     } else {
       console.error("La géolocalisation n'est pas supportée par ce navigateur");

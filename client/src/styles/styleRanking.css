@@ -172,4 +172,40 @@
   .listRanking {
     height: 90%;
   }
+  .rankingHeader {
+    margin-top: 5.5rem;
+    height: 25%;
+    background: none;
+  }
+  .userPicture {
+    background: var(--primary-gradient);
+  }
+  .userPseudo {
+    color: var(--primary-color);
+  }
+  .rankingTitle {
+    background: -webkit-linear-gradient(-90deg, #ff0d5a, #ff743e);
+    background-clip: text;
+    color: transparent;
+  }
+  .usersRankingContainer {
+    height: 50%;
+    padding: 1.5rem 1.5rem 4rem 1.5rem;
+  }
+  .userScore {
+    width: 50%;
+    background: var(--primary-gradient);
+  }
+  .userRank {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .profilClassement > div:first-child > p {
+    margin-left: 2rem;
+    font-size: 20px;
+  }
 }

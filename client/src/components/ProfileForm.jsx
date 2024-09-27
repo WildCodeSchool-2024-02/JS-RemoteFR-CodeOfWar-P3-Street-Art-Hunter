@@ -43,7 +43,7 @@ export default function ProfileForm({ userDetail }) {
   };
 
   return (
-    <section>
+    <>
       <div className="profileField">
         <label htmlFor="lastname">Nom</label>
         {editField === "lastname" ? (
@@ -200,7 +200,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <p>{formDetail.password}</p>
+            <p>***********</p>
           </div>
         )}
       </div>
@@ -231,22 +231,23 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-            <img src={formDetail.avatar} alt="Avatar" />
+
+            <img src={formDetail.avatar} alt="Avatar" className="avatarEdit" />
           </div>
         )}
       </div>
-    </section>
+    </>
   );
 }
 
 ProfileForm.propTypes = {
   userDetail: PropTypes.shape({
-    lastname: PropTypes.string.isRequired,
-    firstname: PropTypes.string.isRequired,
-    pseudo: PropTypes.string.isRequired,
-    mail: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
+    lastname: PropTypes.string,
+    firstname: PropTypes.string,
+    pseudo: PropTypes.string,
+    mail: PropTypes.string,
+    password: PropTypes.string,
+    avatar: PropTypes.string,
     id: PropTypes.number.isRequired,
   }).isRequired,
 };

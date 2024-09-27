@@ -46,3 +46,27 @@ h1 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.galleryArtIsValidated {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonGalleryValidated {
+  background-color: white;
+  border: none;
+  font-weight: bold;
+}
+.buttonGalleryValidated {
+  font-family: var(--main-font);
+  color: var(--grey);
+}
+
+@media (width >= 480px) {
+  .galleryDetails > h1 {
+    display: none;
+  }
+  .galleryDetailsBody {
+    margin-top: 5.5rem;
+  }
+}
