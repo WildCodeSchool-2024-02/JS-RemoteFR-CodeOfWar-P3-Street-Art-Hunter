@@ -26,7 +26,11 @@ export default function Ranking() {
         <div className="userInfoContainer">
           <div className="userPicturePseudo">
             <div className="userPicture">
-              <img src={userInfo.avatar} alt="avatar" className="userAvatar" />
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${userInfo.avatar}`}
+                alt="avatar"
+                className="userAvatar"
+              />
             </div>
             <p className="userPseudo">@{user.pseudo}</p>
           </div>

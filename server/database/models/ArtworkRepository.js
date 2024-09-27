@@ -78,7 +78,7 @@ where ${this.table}.id = ?`,
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `update ${this.table} set title = ?, description = ?, isValidated = ?, lat = ?, lon = ?, image_url = ?, author = ?, style_id = ?, user_id = ?  where id = ?`,
+      `update ${this.table} set title = ?, description = ?, isValidated = ?, lat = ?, lon = ?, image_url = ?, author = ?, style_id = ?  where id = ?`,
       [
         artwork.title,
         artwork.description,
@@ -88,7 +88,6 @@ where ${this.table}.id = ?`,
         artwork.image_url,
         artwork.author,
         artwork.style_id,
-        artwork.user_id,
         artwork.id,
       ]
     );

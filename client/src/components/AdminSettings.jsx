@@ -11,7 +11,7 @@ function Validation({ artworks }) {
             <div>
               <Link to={`/gestion/${artwork.id}`}>
                 <img
-                  src={artwork.image_url}
+                  src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
                   alt={artwork.title}
                   className="imageValidate"
                 />

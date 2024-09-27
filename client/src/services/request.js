@@ -80,7 +80,7 @@ export function getFavorites(id, setter) {
 
 export function login(userLogin, setter) {
   myAxios
-    .post("/login", userLogin)
+    .post("/login", userLogin, { withCredentials: true })
     .then((response) => setter(response.data))
     .catch((error) => console.error(error));
 }

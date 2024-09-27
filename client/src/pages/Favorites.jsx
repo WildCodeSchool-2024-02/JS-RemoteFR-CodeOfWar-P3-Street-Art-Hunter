@@ -25,7 +25,8 @@ export default function Favorites() {
         <h1>HuntBoard</h1>
         <p className="textFavorite">
           {" "}
-          {data && data.length}/{artworks.length} Street art trouvées !
+          {data && data.length}/{artworks.length} Street art trouvé
+          {data && data.length > 1 && "s"} !
         </p>
       </header>
       <div className="mansoryContainer">

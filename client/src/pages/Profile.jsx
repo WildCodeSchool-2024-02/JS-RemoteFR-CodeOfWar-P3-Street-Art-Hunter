@@ -18,7 +18,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const user = useLoaderData();
 
-  const avatarUrl = `${import.meta.env.VITE_API_URL_PICTURE}/${user.avatar}`;
+  const avatarUrl = `${import.meta.env.VITE_API_URL_PICTURE}/avatars/${user.avatar}`;
 
   const handleLogout = async () => {
     await deleteCookie();
