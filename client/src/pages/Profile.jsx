@@ -58,7 +58,7 @@ export default function Profile() {
               <p>{user.score}Pts</p>
             </div>
           </Link>
-          {user.isAdmin && screenWidth < 480 && (
+          {user.isAdmin === 1 && screenWidth < 480 && (
             <Link to="/gestion">
               <button type="button" className="adminBtn">
                 Gestion
