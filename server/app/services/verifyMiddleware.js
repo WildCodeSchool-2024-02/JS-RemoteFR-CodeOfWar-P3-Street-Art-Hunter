@@ -20,3 +20,4 @@ const verifyFields = (req, res, next) => {
 module.exports = {
   verifyFields,
 };
+

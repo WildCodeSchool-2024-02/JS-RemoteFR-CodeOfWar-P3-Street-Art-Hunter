@@ -50,6 +50,7 @@ export function getGallery(id) {
 
 // *** STYLES *** \\
 export function getStyle() {
+
   return myAxios
     .get("/styles")
     .then((response) => response.data)

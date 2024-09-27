@@ -46,14 +46,14 @@ const add = async (req, res, next) => {
 
 const edit = async (req, res, next) => {
   const user = { ...req.body, id: req.params.id };
-  if (req.file) {
-    user.avatar = req.file.filename;
-  }
   try {
+    if (req.file) {
+      user.avatar = req.file.filename;
+    }
     await tables.user.update(user);
     res
-      .status(204)
-      .send(`utilisateur modifié avec succès: #{ id:${req.params.id} }`);
+      .status(200)
+      .send(`utilisateur modifié avec succès: { id:${req.params.id} }`);
   } catch (error) {
     next(error);
   }
