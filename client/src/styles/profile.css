@@ -164,6 +164,10 @@
   padding: 1.5rem;
   border-radius: 24px;
 }
+.profileContainer > .btnFavorites {
+  top: 12vh;
+  left: 4vw;
+}
 @media (width >= 480px) {
   #grid-item {
     display: none;

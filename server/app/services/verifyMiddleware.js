@@ -20,7 +20,6 @@ const verifyFields = (req, res, next) => {
   }
 };
 
-
 const storageArtwork = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, "public/uploads");
@@ -59,3 +58,4 @@ module.exports = {
   uploadPicture,
   uploadArtwork,
 };
+
