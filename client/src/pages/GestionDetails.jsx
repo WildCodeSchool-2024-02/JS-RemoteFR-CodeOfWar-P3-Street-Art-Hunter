@@ -1,6 +1,5 @@
 import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-
 import { updateArtwork, deleteArtwork } from "../services/request";
 import GradientButton from "../components/GradientButton";
 
@@ -27,7 +26,6 @@ export default function GestionDetails() {
 
   const sendCredentialsForUpdate = async (event) => {
     event.preventDefault();
-    console.info(artwork, "coucou");
     await updateArtwork(artwork.id, modified);
     setIsOpen("modified");
     setTimeout(() => {
