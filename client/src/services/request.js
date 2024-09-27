@@ -37,7 +37,6 @@ export function updateUser(id, userData) {
   Object.keys(userData).forEach((key) => {
     formData.append(key, userData[key]);
   });
-  console.info("requestformdata", formData);
   return myAxios
     .put(`/users/${id}`, formData, {
       headers: {
