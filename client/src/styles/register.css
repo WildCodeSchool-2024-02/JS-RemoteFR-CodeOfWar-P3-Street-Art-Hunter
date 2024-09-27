@@ -2,8 +2,8 @@
   background-image: url("../assets/images/backgroundOnboarding.svg");
   background-size: "cover";
   background-position: "center";
-  height: "100vh";
-  width: "100%";
+  height: 100vh;
+  width: 100%;
   padding-inline: 1rem;
 }
 
