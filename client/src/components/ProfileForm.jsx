@@ -16,7 +16,6 @@ export default function ProfileForm({ userDetail }) {
     password: userDetail.password,
     avatar: userDetail.avatar,
     id: userDetail.id,
-    isAdmin: userDetail.isAdmin,
   });
   const [file, setFile] = useState(null);
 
@@ -243,13 +242,12 @@ export default function ProfileForm({ userDetail }) {
 
 ProfileForm.propTypes = {
   userDetail: PropTypes.shape({
-    lastname: PropTypes.string.isRequired,
-    firstname: PropTypes.string.isRequired,
-    pseudo: PropTypes.string.isRequired,
-    mail: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
+    lastname: PropTypes.string,
+    firstname: PropTypes.string,
+    pseudo: PropTypes.string,
+    mail: PropTypes.string,
+    password: PropTypes.string,
+    avatar: PropTypes.string,
     id: PropTypes.number.isRequired,
-    isAdmin: PropTypes.bool.isRequired,
   }).isRequired,
 };

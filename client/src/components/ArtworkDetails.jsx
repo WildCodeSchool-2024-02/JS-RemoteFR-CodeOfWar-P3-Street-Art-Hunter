@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 import useScreenWidth from "../utils/hook/useScreenWidth";
-import { getCityName, updateScore } from "../services/request";
+import { getCityName, postFavorites, updateScore } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
+import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
-  const userInfo = true;
+  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}${artwork.image_url}`;
+  const { userInfo } = useContext(UserInfoContext);
   const screenWidth = useScreenWidth();
   const [artworkLocation, setArtworkLocation] = useState();
 
   const HandleUpdateScore = () => {
-    updateScore(1, 100);
+    updateScore(userInfo.id, 100);
+    postFavorites(artwork.id);
+    console.info(userInfo.id, artwork.id);
   };
 
   useEffect(() => {
@@ -25,11 +29,7 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
-        <img
-          src={artwork.image_url}
-          alt={artwork.title}
-          className="detailsImg"
-        />
+        <img src={artworkUrl} alt={artwork.title} className="detailsImg" />
         <div className="textDetailsContainer">
           <div className="textDetails">
             <p className="title">{artwork.title}</p>

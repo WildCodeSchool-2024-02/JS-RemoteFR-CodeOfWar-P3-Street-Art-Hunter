@@ -8,13 +8,17 @@ import ProfileForm from "../components/ProfileForm";
 import GradientButton from "../components/GradientButton";
 import Trophy from "../assets/images/profil_trophy.svg";
 import "../styles/profile.css";
+import useScreenWidth from "../utils/hook/useScreenWidth";
 
 export default function Profile() {
-  const { setUserInfo } = useContext(UserInfoContext);
+  const { userInfo, setUserInfo } = useContext(UserInfoContext);
+  const screenWidth = useScreenWidth();
 
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const user = useLoaderData();
+
+  const avatarUrl = `${import.meta.env.VITE_API_AVATAR}/${user.avatar}`;
 
   const handleLogout = async () => {
     await deleteCookie();
@@ -36,8 +40,13 @@ export default function Profile() {
     <div className="profilePage">
       <div className="profileContainer">
         <h1 id="grid-item">Profil</h1>
+        {userInfo && screenWidth > 480 && (
+          <Link to={`/favorites/${userInfo.id}`} className="btnFavorites">
+            Favoris
+          </Link>
+        )}
         <section className="profilSection">
-          <img src={user.avatar} alt={user.pseudo} className="profilAvatar" />
+          <img src={avatarUrl} alt={user.pseudo} className="profilAvatar" />
           <h2>@{user.pseudo}</h2>
           <p className="profilEmail">{user.mail}</p>
           <Link to={`/profile/ranking/${user.id}`} className="profilClassement">
@@ -49,7 +58,7 @@ export default function Profile() {
               <p>{user.score}Pts</p>
             </div>
           </Link>
-          {user.isAdmin && (
+          {user.isAdmin && screenWidth < 480 && (
             <Link to="/gestion">
               <button type="button" className="adminBtn">
                 Gestion

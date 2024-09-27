@@ -1,12 +1,18 @@
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { frenchDate } from "../utils/function";
+
+import { getCityName } from "../services/request";
 import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
   const [message, setMessage] = useState("");
+  const [cityCountry, setCityCountry] = useState();
 
+  useEffect(() => {
+    getCityName(artwork.lat, artwork.lon, setCityCountry);
+  }, []);
   const handleMouseOver = (e) => {
     e.preventDefault();
     if (artwork.isValidated === 1) {
@@ -70,6 +76,10 @@ export default function GalleryDetails() {
           </li>
           <li>
             <span className="title-font">Style </span>: {artwork.style}
+          </li>
+          <li>
+            <span className="title-font">Ville </span>:{" "}
+            {cityCountry && cityCountry.city}
           </li>
         </ul>
       </div>

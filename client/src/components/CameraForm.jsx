@@ -9,7 +9,7 @@ export default function CameraForm({
   uploadPhoto,
 }) {
   const data = useLoaderData();
-  console.info(artworkProperties.lat, artworkProperties, 1);
+
   return (
     <>
       <label htmlFor="picture_style">Type*</label>
@@ -61,8 +61,8 @@ CameraForm.propTypes = {
     lat: PropTypes.string.isRequired,
     lon: PropTypes.string.isRequired,
     author: PropTypes.string,
-    style_id: PropTypes.number,
-    user_id: PropTypes.number,
+    style_id: PropTypes.string,
+    user_id: PropTypes.string,
   }).isRequired,
   handleChangeProperties: PropTypes.func.isRequired,
   uploadPhoto: PropTypes.func.isRequired,

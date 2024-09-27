@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
-  getMap,
+  getArtworks,
   getUserbyId,
   getStyle,
   getGallery,
@@ -30,6 +30,7 @@ import GestionDetails from "./pages/GestionDetails";
 
 import "./styles/app.css";
 import UserDetails from "./pages/UserDetails";
+import Favorites from "./pages/Favorites";
 
 function HomeResponsive() {
   const screenWidth = useScreenWidth();
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         element: <HomeResponsive />,
         loader: async () => ({
           rankings: await getUsersRanking(),
-          usersGlobal: await getMap(),
+          usersGlobal: await getArtworks(),
         }),
       },
       {
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
         path: "/gallery",
         element: <Gallery />,
         loader: async () => ({
-          artworkList: await getMap(),
+          artworkList: await getArtworks(),
           styleArtwork: await getStyle(),
         }),
       },
@@ -111,6 +112,14 @@ const router = createBrowserRouter([
         loader: async ({ params }) => ({
           userInfo: await getUserbyId(params.id),
           rankings: await getUsersRanking(),
+        }),
+      },
+      {
+        path: "/favorites/:id",
+        element: <Favorites />,
+        loader: async ({ params }) => ({
+          artworks: await getArtworks(),
+          user: await getUserbyId(params.id),
         }),
       },
     ],
