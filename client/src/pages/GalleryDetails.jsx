@@ -10,7 +10,7 @@ export default function GalleryDetails() {
   const [message, setMessage] = useState("");
   const [cityCountry, setCityCountry] = useState();
 
-  const artworkUrl = `${import.meta.env.VITE_API_URL_PICTURE}${artwork.image_url}`;
+  const artworkUrl = `${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`;
   useEffect(() => {
     getCityName(artwork.lat, artwork.lon, setCityCountry);
   }, []);

@@ -1,33 +1,23 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Masonry from "react-masonry-css";
-import myAxios from "../services/instanceAxios";
-import nothingNow from "../assets/images/nothingNow.svg";
 
+import { getArtworksByStyle } from "../services/request";
+
+import nothingNow from "../assets/images/nothingNow.svg";
 import "../styles/gallery.css";
 
 export default function Gallery() {
   const { artworkList, styleArtwork } = useLoaderData();
 
-  const data = artworkList;
-  const styles = styleArtwork;
-
   const [stylesArtwork, setStylesArtwork] = useState({
     style_id: "",
   });
 
-  const handleChangeFilter = (event) => setStylesArtwork(event.target.value);
-
   const [artworks, setArtworks] = useState();
 
-  const getArtworks = (style) => {
-    myAxios
-      .get(stylesArtwork.length > 0 ? `/artworks?q=${style}` : "/artworks")
-      .then((response) => setArtworks(response.data))
-      .catch((error) => console.error(error));
-  };
   useEffect(() => {
-    getArtworks(parseInt(stylesArtwork, 10));
+    getArtworksByStyle(stylesArtwork, setArtworks);
   }, [stylesArtwork]);
 
   const breakpointColumnsObj = {
@@ -45,11 +35,11 @@ export default function Gallery() {
           {" "}
           <select
             name="style_id"
-            onChange={handleChangeFilter}
+            onChange={(event) => setStylesArtwork(event.target.value)}
             value={stylesArtwork.style_id}
           >
             <option value="">Filtres</option>
-            {styles?.map((style) => (
+            {styleArtwork?.map((style) => (
               <option key={style.id} value={style.id}>
                 {style.name}
               </option>
@@ -58,7 +48,7 @@ export default function Gallery() {
         </label>
       </section>
       <section className="body-gallery">
-        {data.length === 0 ? (
+        {artworkList.length === 0 ? (
           <div className="nothing">
             <img src={nothingNow} alt="Pas d'artwork" />
             <p>Aucune oeuvre pour le moment</p>

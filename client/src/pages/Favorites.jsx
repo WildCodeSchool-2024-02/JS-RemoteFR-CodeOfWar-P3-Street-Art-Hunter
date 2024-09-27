@@ -42,7 +42,7 @@ export default function Favorites() {
                     <div key={artwork.id}>
                       <Link to={`/gallery/${artwork.id}`}>
                         <img
-                          src={`${import.meta.env.VITE_API_URL_PICTURE}${artwork.image_url}`}
+                          src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
                           alt={artwork.title}
                           className="imgFavorites"
                         />

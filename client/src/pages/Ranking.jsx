@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
-import myAxios from "../services/instanceAxios";
 
+import { getOneUserRanking } from "../services/request";
 import RankingList from "../components/RankingList";
 
 import "../styles/styleRanking.css";
@@ -15,10 +15,7 @@ export default function Ranking() {
   const user = rankings.find((ranking) => ranking.pseudo === userInfo.pseudo);
 
   const hanldeClickSearch = async (userPseudo) => {
-    await myAxios
-      .get(`/users/ranking?q=${userPseudo}`)
-      .then((res) => setData(res.data.result))
-      .catch((error) => console.info(error));
+    await getOneUserRanking(userPseudo, setData);
     setPseudo("");
   };
 
