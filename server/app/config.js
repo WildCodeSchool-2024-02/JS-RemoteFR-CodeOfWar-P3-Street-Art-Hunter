@@ -108,7 +108,7 @@ app.use("/api", router);
 // const publicFolderPath = path.join(__dirname, "/server/public/uploads");
 const publicFolderPath = path.join(__dirname, "/../public");
 
-// app.use(express.static(publicFolderPath));
+app.use("/uploads", express.static(publicFolderPath));
 app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
 /*

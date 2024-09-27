@@ -37,6 +37,8 @@ export default function Gallery() {
     500: 2,
   };
 
+  const artworkUrl = `${import.meta.env.VITE_API_ARTWORKS}/`;
+
   return (
     <section className="gallery">
       <section className="header-gallery">
@@ -80,7 +82,10 @@ export default function Gallery() {
               artworks?.map((artwork) => (
                 <div key={artwork.id}>
                   <Link to={`/gallery/${artwork.id}`}>
-                    <img src={artwork.image_url} alt={artwork.title} />
+                    <img
+                      src={`${artworkUrl}${artwork.image_url}`}
+                      alt={artwork.title}
+                    />
                   </Link>
                 </div>
               ))
