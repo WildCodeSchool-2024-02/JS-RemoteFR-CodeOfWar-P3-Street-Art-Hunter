@@ -121,6 +121,9 @@
   font-size: 24px;
   text-align: center;
 }
+.linkNavDesktop > p:hover {
+  color: var(--primary-color);
+}
 .linkNavActive {
   color: var(--primary-color);
   border-bottom: 1.5px solid var(--primary-color);

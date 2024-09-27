@@ -49,7 +49,7 @@ export function getArtworks() {
 }
 export function getArtworksByStyle(style, setter) {
   myAxios
-    .get(style.length > 0 ? `/artworks?q=${style}` : "/artworks")
+    .get(style ? `/artworks?q=${style}` : "/artworks")
     .then((response) => setter(response.data))
     .catch((error) => console.error(error));
 }

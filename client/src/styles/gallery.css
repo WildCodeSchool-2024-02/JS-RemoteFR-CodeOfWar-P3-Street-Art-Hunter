@@ -80,10 +80,40 @@
 .galleryNavbar {
   padding-top: 1rem;
 }
-.header-gallery > label {
+.header-gallery > div {
   background: none;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 }
-.header-gallery > label > select {
+.chip {
+  height: 2.5rem;
+  width: 7.8rem;
+  background-color: #000000;
+  border-radius: 12px;
+  padding-inline: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 12px 4px rgba(255, 253, 207, 0.6);
+  cursor: pointer;
+  border: none;
+  font-family: var(--title-font);
+  color: #fff;
+  font-size: 15px;
+}
+.chip:hover {
+  scale: 1.1;
+}
+.chipActive {
+  background: var(--primary-gradient);
+  scale: 1.15;
+  font-size: 18px;
+}
+.header-gallery > div > select {
   border: 1px solid var(--primary-color);
   font-family: var(--main-font);
   border-radius: 24px;
@@ -100,11 +130,11 @@
   .header-gallery > h1 {
     display: none;
   }
-  .header-gallery > label {
+  .header-gallery > div {
     background: none;
     margin: 0 0 1.5rem 1.5rem;
   }
-  .header-gallery > label > select {
+  .header-gallery > div > select {
     border: 1px solid var(--primary-color);
     font-family: var(--main-font);
     border-radius: 24px;

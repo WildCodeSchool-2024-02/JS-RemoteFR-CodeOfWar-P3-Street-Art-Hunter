@@ -3,17 +3,15 @@ import { useState, useEffect } from "react";
 import Masonry from "react-masonry-css";
 
 import { getArtworksByStyle } from "../services/request";
-
+import useScreenWidth from "../utils/hook/useScreenWidth";
 import nothingNow from "../assets/images/nothingNow.svg";
 import "../styles/gallery.css";
 
 export default function Gallery() {
   const { artworkList, styleArtwork } = useLoaderData();
+  const screenWidth = useScreenWidth();
 
-  const [stylesArtwork, setStylesArtwork] = useState({
-    style_id: "",
-  });
-
+  const [stylesArtwork, setStylesArtwork] = useState(null);
   const [artworks, setArtworks] = useState();
 
   useEffect(() => {
@@ -26,26 +24,49 @@ export default function Gallery() {
     700: 3,
     500: 2,
   };
-
+  console.info(stylesArtwork);
   return (
     <section className="gallery">
       <section className="header-gallery">
         <h1>Galerie</h1>
-        <label>
-          {" "}
-          <select
-            name="style_id"
-            onChange={(event) => setStylesArtwork(event.target.value)}
-            value={stylesArtwork.style_id}
-          >
-            <option value="">Filtres</option>
-            {styleArtwork?.map((style) => (
-              <option key={style.id} value={style.id}>
-                {style.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div>
+          {screenWidth < 480 ? (
+            <select
+              name="style_id"
+              onChange={(event) => setStylesArtwork(event.target.value)}
+              value={stylesArtwork}
+            >
+              <option value="">Filtres</option>
+              {styleArtwork?.map((style) => (
+                <option key={style.id} value={style.id}>
+                  {style.name}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <>
+              <button
+                type="button"
+                className={!stylesArtwork ? "chip chipActive" : "chip"}
+                onClick={() => setStylesArtwork()}
+              >
+                Tous
+              </button>
+              {styleArtwork?.map((style) => (
+                <button
+                  type="button"
+                  key={style.id}
+                  className={
+                    stylesArtwork === style.id ? "chip chipActive" : "chip"
+                  }
+                  onClick={() => setStylesArtwork(style.id)}
+                >
+                  {style.name}
+                </button>
+              ))}
+            </>
+          )}
+        </div>
       </section>
       <section className="body-gallery">
         {artworkList.length === 0 ? (
