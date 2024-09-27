@@ -105,13 +105,12 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
-const publicFolderPath = path.join(__dirname, "/../public");
-
-app.use("/uploads", express.static(publicFolderPath));
-app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
+const publicFolderPath = path.join(__dirname, "/../public/uploads");
 
 // app.use(express.static(publicFolderPath));
-// app.get(".", express.static(publicFolderPath, { maxAge: "1y" }));
+
+app.use("/uploads", express.static(publicFolderPath, { maxAge: "1y" }));
+
 
 // app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 

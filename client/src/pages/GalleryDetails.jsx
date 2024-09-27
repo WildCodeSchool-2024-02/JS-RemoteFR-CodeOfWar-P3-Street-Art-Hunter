@@ -10,6 +10,7 @@ export default function GalleryDetails() {
   const [message, setMessage] = useState("");
   const [cityCountry, setCityCountry] = useState();
 
+  const artworkUrl = `${import.meta.env.VITE_API_URL_PICTURE}${artwork.image_url}`;
   useEffect(() => {
     getCityName(artwork.lat, artwork.lon, setCityCountry);
   }, []);
@@ -31,11 +32,7 @@ export default function GalleryDetails() {
     <section className="galleryDetails">
       <h1>{artwork.title}</h1>
       <div className="galleryDetailsBody">
-        <img
-          src={artwork.image_url}
-          alt={artwork.title}
-          className="detailImage"
-        />
+        <img src={artworkUrl} alt={artwork.title} className="detailImage" />
 
         <ul>
           <li className="galleryArtIsValidated">
