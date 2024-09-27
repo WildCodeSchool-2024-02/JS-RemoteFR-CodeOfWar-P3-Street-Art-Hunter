@@ -58,7 +58,7 @@ const add = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
-  const artwork = { ...req.body, id: req.params.id };
+  const artwork = { ...req.body.modified, id: req.params.id };
   try {
     await tables.artwork.update(artwork);
     console.info("Artwork edited!!");
