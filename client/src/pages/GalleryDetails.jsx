@@ -7,12 +7,13 @@ import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
+  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}/${artwork.image_url}`;
   const [message, setMessage] = useState("");
   const [cityCountry, setCityCountry] = useState();
 
   useEffect(() => {
     getCityName(artwork.lat, artwork.lon, setCityCountry);
-  }, []);
+  }, [artwork.lat, artwork.lon]);
   const handleMouseOver = (e) => {
     e.preventDefault();
     if (artwork.isValidated === 1) {
@@ -31,12 +32,7 @@ export default function GalleryDetails() {
     <section className="galleryDetails">
       <h1>{artwork.title}</h1>
       <div className="galleryDetailsBody">
-        <img
-          src={artwork.image_url}
-          alt={artwork.title}
-          className="detailImage"
-        />
-
+        <img src={artworkUrl} alt={artwork.title} className="detailImage" />
         <ul>
           <li className="galleryArtIsValidated">
             <p>

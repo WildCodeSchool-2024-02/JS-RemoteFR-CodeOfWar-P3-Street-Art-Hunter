@@ -80,7 +80,10 @@ export default function Gallery() {
               artworks?.map((artwork) => (
                 <div key={artwork.id}>
                   <Link to={`/gallery/${artwork.id}`}>
-                    <img src={artwork.image_url} alt={artwork.title} />
+                    <img
+                      src={`${import.meta.env.VITE_API_URL_ARTWORK}/${artwork.image_url}`}
+                      alt={artwork.title}
+                    />
                   </Link>
                 </div>
               ))

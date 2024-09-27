@@ -10,7 +10,8 @@ import "../styles/styleArtworkDetail.css";
 import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
-  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}${artwork.image_url}`;
+  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}/${artwork.image_url}`;
+  console.info("artworkUrl", artworkUrl);
   const { userInfo } = useContext(UserInfoContext);
   const screenWidth = useScreenWidth();
   const [artworkLocation, setArtworkLocation] = useState();
