@@ -1,20 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 import useScreenWidth from "../utils/hook/useScreenWidth";
-import { getCityName, updateScore } from "../services/request";
+import { getCityName, postFavorites, updateScore } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
+import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
-  const userInfo = true;
+  const { userInfo } = useContext(UserInfoContext);
   const screenWidth = useScreenWidth();
   const [artworkLocation, setArtworkLocation] = useState();
 
   const HandleUpdateScore = () => {
-    updateScore(1, 100);
+    updateScore(userInfo.id, 100);
+    postFavorites(artwork.id);
+    console.info(userInfo.id, artwork.id);
   };
 
   useEffect(() => {
