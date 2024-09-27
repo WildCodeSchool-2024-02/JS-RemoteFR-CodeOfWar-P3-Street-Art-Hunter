@@ -2,19 +2,16 @@
   background-image: url("../assets/images/backgroundOnboarding.svg");
   background-size: "cover";
   background-position: "center";
-  /* height: "100vh";
-  width: "100%"; */
+  height: "100vh";
+  width: "100%";
+  padding-inline: 1rem;
 }
 
 .registerLogo {
   width: 100%;
 }
-.registerTitle {
-  font-family: var(--title-font);
-  font-size: 32px;
-  padding: 1rem;
-  text-align: center;
-  margin-top: -4rem;
+.register > form {
+  margin-top: -2rem;
 }
 .register_form {
   display: flex;
@@ -24,11 +21,11 @@
 }
 
 .register_form > input {
-  padding: 1rem;
+  padding: 0.7rem;
   border: 1px #aeaeae solid;
   border-radius: 12px;
   font-weight: bolder;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 .eyes {
   position: absolute;
@@ -58,12 +55,4 @@
 
 .register #gradientButton {
   margin: 1rem 0 1rem 0;
-}
-
-@media (width >= 480px) {
-  .register {
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-inline: 15rem;
-  }
 }

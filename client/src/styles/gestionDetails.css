@@ -1,0 +1,97 @@
+.gestionReturn {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gestionDetails {
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+}
+h1 {
+  font-family: var(--title-font);
+  font-size: 2rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.detailImage {
+  height: 50vh;
+  width: 100%;
+  border-radius: 24px 24px 24px 24px;
+}
+
+.gestionDetailsBody {
+  padding: 1rem;
+  height: 100%;
+  overflow: scroll;
+  padding-bottom: 10rem;
+  font-family: var(--main-font);
+}
+.gestionDetailsBody li {
+  list-style-type: none;
+  padding-top: 1rem;
+}
+.title-font {
+  font-family: var(--title-font);
+  font-size: 1.5rem;
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gestion_form {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+}
+
+.gestion_form > input {
+  padding: 1rem;
+  border: 1px #aeaeae solid;
+  border-radius: 12px;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
+.gestionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.connection_separator {
+  border: none;
+  border-top: 1px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.connection_separator::after {
+  background: #fff;
+  content: "ou";
+  padding: 0 4px;
+  position: relative;
+  border-radius: 50%;
+  top: -12px;
+}
+@media (width >= 480px) {
+  .gestionDetails {
+    padding-top: 7rem;
+  }
+}

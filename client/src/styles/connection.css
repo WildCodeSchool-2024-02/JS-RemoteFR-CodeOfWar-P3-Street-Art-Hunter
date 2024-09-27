@@ -1,13 +1,30 @@
+.connection {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
 .connection_form {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  background-image: url("../assets/images/backgroundOnboarding.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.connectHeader {
+  height: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
-  overflow: scroll;
+}
+.connectHeader img {
+  margin-left: -1rem;
 }
 .connection h2 {
   font-family: var(--title-font);
   font-size: 32px;
-  padding: 1rem;
+  margin-top: -2rem;
   text-align: center;
 }
 .headConnexion {
@@ -15,43 +32,35 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.connection_form {
-  background-image: url("../assets/images/backgroundOnboarding.svg");
-  background-size: "cover";
-  background-position: "center";
-  height: "100vh";
-  width: "100%";
+.connectContainerLink {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  justify-content: center;
 }
-
-.connection_form img {
-  margin-left: -1rem;
+.connectContainerLink > form {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
-.connection_form > input {
-  padding: 1rem;
+.connectContainerLink > form > input {
+  height: 48px;
+  width: 100%;
+  padding-left: 1rem;
   border: 1px #aeaeae solid;
   border-radius: 12px;
   font-weight: bolder;
-  margin-bottom: 0.5rem;
 }
 
-.connection_without {
-  all: unset;
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  text-align: center;
-  font-weight: 700;
-  border: 1px solid;
-  border-color: #ff743e;
-  background-color: white;
-  margin-bottom: 1rem;
+.connectContainerLink > form > #gradientButton {
+  padding: 0;
+  height: 48px;
 }
-
-hr {
+.connection_separator {
   border: none;
   border-top: 1px double #333;
   color: #333;
@@ -61,18 +70,105 @@ hr {
   margin-top: 1rem;
 }
 
-hr::after {
+.connection_separator::after {
   background: #fff;
   content: "ou";
   padding: 0 4px;
   position: relative;
-  top: -13px;
+  border-radius: 50%;
+  top: -12px;
+}
+
+.connection_without {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+  margin-block: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid;
+  border-color: #ff743e;
+  background-color: white;
 }
 
 .InscriptionLink {
   text-decoration: underline;
-  color: inherit;
 }
 .link_register {
+  font-family: var(--main-font);
+  font-size: 14px;
   text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media (width >= 480px) {
+  .connection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/images/backgroundOnboarding.svg");
+    background-size: cover;
+    background-position: center;
+  }
+  .connection_form {
+    height: 80%;
+    width: 30%;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border: 2px solid var(--grey);
+    border-radius: 24px;
+    box-shadow: 0 0 8px 4px var(--grey);
+    backdrop-filter: blur(2px);
+    justify-content: space-between;
+  }
+  .connectHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .connectHeader > img {
+    height: 80%;
+    width: 100%;
+  }
+  .connection h2 {
+    font-size: 2.3vw;
+    text-align: center;
+    margin-top: -1rem;
+    overflow: hidden;
+  }
+  .connectContainerLink {
+    height: 45%;
+  }
+  .connectContainerLink > form > input {
+    height: 4.5vh;
+    font-size: 1vw;
+  }
+  .connectContainerLink > form > #gradientButton {
+    padding: 0;
+    height: 4.5vh;
+    font-size: 1vw;
+  }
+  .headConnexion {
+    font-size: 100%;
+  }
+  .connection_without {
+    padding: 0;
+    height: 4.5vh;
+    font-size: 1vw;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .link_register,
+  .InscriptionLink {
+    font-size: 1vw;
+    font-weight: 100;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
 }

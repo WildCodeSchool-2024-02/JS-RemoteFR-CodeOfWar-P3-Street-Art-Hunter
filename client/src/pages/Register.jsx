@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import myAxios from "../services/instanceAxios";
 import "../styles/register.css";
@@ -19,12 +19,18 @@ export default function Register() {
   const [seePassword, setSeePassword] = useState(false);
   const [seeConfirmPassword, setSeeConfirmPassword] = useState(false);
 
+  const navigate = useNavigate();
+
   const sendCredentials = (event) => {
     event.preventDefault();
     if (userRegistration.password === confirmPassword) {
       myAxios
         .post("/users", userRegistration, { withCredentials: true })
-        .then((response) => console.info(response))
+        .then((response) => {
+          console.info(response);
+          window.alert("Votre compte a bien été crée.");
+          navigate("/connection");
+        })
         .catch((error) => console.error(error));
     } else {
       window.alert("Les deux mots de passe sont différents!!");
@@ -51,10 +57,9 @@ export default function Register() {
   };
 
   return (
-    <section>
+    <section className="registerContainer">
       <div className="register">
         <img src={logo} alt="Logo" className="registerLogo" />
-        <h2 className="registerTitle">INSCRIPTION</h2>
         <form onSubmit={sendCredentials}>
           <div className="register_form">
             <label htmlFor="Lastname">Nom</label>

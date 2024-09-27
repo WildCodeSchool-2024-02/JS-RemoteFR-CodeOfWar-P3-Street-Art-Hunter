@@ -13,7 +13,6 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     const favorite = await tables.favorite.read(req.params.id);
-
     if (favorite == null) {
       res.sendStatus(404);
     } else {
@@ -25,7 +24,10 @@ const read = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const favorite = req.body;
+  const favorite = {
+    user_id: req.decoded.id,
+    artwork_id: req.body.artwork_id,
+  };
 
   try {
     const insertId = await tables.favorite.create(favorite);

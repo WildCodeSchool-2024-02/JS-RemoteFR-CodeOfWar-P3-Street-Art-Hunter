@@ -9,6 +9,14 @@ const browse = async (req, res, next) => {
     next(err);
   }
 };
+const browseByAdmin = async (req, res, next) => {
+  try {
+    const artworks = await tables.artwork.readAllByAdmin();
+    res.json(artworks);
+  } catch (error) {
+    next(error);
+  }
+};
 
 const read = async (req, res, next) => {
   try {
@@ -24,9 +32,22 @@ const read = async (req, res, next) => {
   }
 };
 
+const readByAdmin = async (req, res, next) => {
+  try {
+    const artwork = await tables.artwork.readByAdmin(req.params.id);
+    if (artwork == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(artwork);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 const add = async (req, res, next) => {
   const artwork = req.body;
-
+  artwork.user_id = 1;
   try {
     const insertId = await tables.artwork.create(artwork);
     res.status(201).json({ insertId });
@@ -35,6 +56,7 @@ const add = async (req, res, next) => {
     next(err);
   }
 };
+
 const edit = async (req, res, next) => {
   const artwork = { ...req.body, id: req.params.id };
   try {
@@ -45,6 +67,7 @@ const edit = async (req, res, next) => {
     next(error);
   }
 };
+
 const destroy = async (req, res, next) => {
   try {
     await tables.artwork.delete(req.params.id);
@@ -57,8 +80,10 @@ const destroy = async (req, res, next) => {
 
 module.exports = {
   browse,
+  browseByAdmin,
   read,
   edit,
   add,
   destroy,
+  readByAdmin,
 };

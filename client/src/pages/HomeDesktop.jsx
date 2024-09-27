@@ -14,36 +14,38 @@ export default function HomeDesktop() {
 
   return (
     <section className="homeDesktopContainer">
-      <div className="leftContain">
-        <article className="textHomeContainer">
-          <img src={crown} alt="couronne" className="crownHomeDesktop" />
-          <h2>
-            Bienvenue sur <span>STREET ART HUNTER</span> Jhon!
-          </h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-            consequuntur cupiditate ullam reiciendis consectetur nulla culpa
-            iste suscipit, modi pariatur voluptate doloribus, mollitia totam
-            architecto quos autem. Eius, quis in?
-          </p>
-          <p>
-            Commencez dès maintenant a découvrir les oeuvres d’arts et partez à
-            la chasse avec votre téléphone mobile !
-          </p>
-        </article>
-        <div className="mapDesktop">
-          {artworkDetails && (
-            <ArtworkDetails
-              artwork={artworkDetails}
-              setArtworkDetails={setArtworkDetails}
-            />
-          )}
-          <Map setArtworkDetails={setArtworkDetails} />
+      <div className="desktopBlock">
+        <div className="leftContain">
+          <article className="textHomeContainer">
+            <img src={crown} alt="couronne" className="crownHomeDesktop" />
+            <h2>
+              Bienvenue sur <span>STREET ART HUNTER</span> Jhon!
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+              consequuntur cupiditate ullam reiciendis consectetur nulla culpa
+              iste suscipit, modi pariatur voluptate doloribus, mollitia totam
+              architecto quos autem. Eius, quis in?
+            </p>
+            <p>
+              Commencez dès maintenant a découvrir les oeuvres d’arts et partez
+              à la chasse avec votre téléphone mobile !
+            </p>
+          </article>
+          <div className="mapDesktop">
+            {artworkDetails && (
+              <ArtworkDetails
+                artwork={artworkDetails}
+                setArtworkDetails={setArtworkDetails}
+              />
+            )}
+            <Map setArtworkDetails={setArtworkDetails} />
+          </div>
         </div>
+        <aside className="rankingHomeDesktop">
+          <RankingList rankings={rankings} />
+        </aside>
       </div>
-      <aside className="rankingHomeDesktop">
-        <RankingList rankings={rankings} />
-      </aside>
     </section>
   );
 }

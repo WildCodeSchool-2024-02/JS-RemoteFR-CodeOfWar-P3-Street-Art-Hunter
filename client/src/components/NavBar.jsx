@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
+import { useContext } from "react";
 
+import { UserInfoContext } from "../services/context/UserInfoContext";
 import useScreenWidth from "../utils/hook/useScreenWidth";
 
 import Help from "../assets/images/nav_help.svg";
@@ -14,6 +16,7 @@ import NavBarDesktop from "./desktop/NavBarDesktop";
 import "../styles/navBar.css";
 
 export default function NavBar() {
+  const { userInfo } = useContext(UserInfoContext);
   const screenWidth = useScreenWidth();
 
   return screenWidth > 480 ? (
@@ -44,10 +47,19 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="nav_picto">
-        <Link to="/profile/1">
-          <img src={Profil} alt="Profile" />
-          <span className="nav_description">Profil</span>
-        </Link>
+        {userInfo ? (
+          <Link to={`/profile/${userInfo.id}`}>
+            <img src={Profil} alt="Profile" />
+            <span className="nav_description">Profil</span>
+          </Link>
+        ) : (
+          <Link to="/connection">
+            <div className="profilLogin">
+              <div> </div>
+            </div>
+            <p className="nav_description">Login</p>
+          </Link>
+        )}
       </div>
     </nav>
   );

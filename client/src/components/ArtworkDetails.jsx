@@ -1,31 +1,55 @@
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
-
+import useScreenWidth from "../utils/hook/useScreenWidth";
+import { getCityName, postFavorites, updateScore } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
+import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
+  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}${artwork.image_url}`;
+  const { userInfo } = useContext(UserInfoContext);
+  const screenWidth = useScreenWidth();
+  const [artworkLocation, setArtworkLocation] = useState();
+
+  const HandleUpdateScore = () => {
+    updateScore(userInfo.id, 100);
+    postFavorites(artwork.id);
+    console.info(userInfo.id, artwork.id);
+  };
+
+  useEffect(() => {
+    if (artwork.lat) {
+      getCityName(artwork.lat, artwork.lon, setArtworkLocation);
+    }
+  }, [artwork.lat, artwork.lon]);
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
-        <img
-          src={artwork.image_url}
-          alt={artwork.title}
-          className="detailsImg"
-        />
+        <img src={artworkUrl} alt={artwork.title} className="detailsImg" />
         <div className="textDetailsContainer">
           <div className="textDetails">
-            <p>{artwork.title}</p>
+            <p className="title">{artwork.title}</p>
             <p>{artwork.author}</p>
           </div>
           <div className="textDetails">
             <p>📅 {frenchDate(artwork.create_date)}</p>
             <p>
-              📍 {artwork.lat}, {artwork.lon}
+              {artworkLocation && (
+                <>
+                  📍 {artworkLocation.city}, {artworkLocation.country}
+                </>
+              )}
             </p>
           </div>
+          {screenWidth < 480 && userInfo && (
+            <div className="btnPointsElement">
+              <GradientButton text="✔︎" onClick={HandleUpdateScore} />
+            </div>
+          )}
           <p className="detailsDescription">{artwork.description}</p>
           <GradientButton text="Fermer" onClick={() => setArtworkDetails()} />
         </div>

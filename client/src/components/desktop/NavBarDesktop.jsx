@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import logo from "../../assets/images/simpleLogo.svg";
+import { UserInfoContext } from "../../services/context/UserInfoContext";
 
 export default function NavBarDesktop() {
+  const { userInfo } = useContext(UserInfoContext);
+
   const [isActive, setIsActive] = useState("Acceuil");
 
   const pathArray = [
     { path: "/", name: "Accueil" },
     { path: "/gallery", name: "Galerie" },
-    { path: "/profile/:id", name: "Profil" },
+
+    ...(userInfo ? [{ path: `/profile/${userInfo.id}`, name: "Profil" }] : []),
+
     { path: "/help", name: "Aide" },
-    { path: "/connection", name: "Connexion" },
+    ...(!userInfo ? [{ path: "/connection", name: "Connexion" }] : []),
+    ...(userInfo?.isAdmin ? [{ path: "/gestion", name: "Gestion" }] : []),
   ];
+
   return (
     <section className="navDesktopContainer">
       <img src={logo} alt="Logo" className="logoNavDesktop" />

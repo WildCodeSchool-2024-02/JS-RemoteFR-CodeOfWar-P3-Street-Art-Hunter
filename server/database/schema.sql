@@ -1,4 +1,3 @@
-
 CREATE TABLE user (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     lastname VARCHAR(255),
@@ -139,24 +138,6 @@ VALUES (
         'Collage d’affiches illustratives ou de propagande artistique sur les murs urbains, souvent avec un message social ou politique.'
     );
 
-CREATE TABLE city (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(80) NOT NULL
-);
-
-INSERT INTO
-    city (name)
-VALUES ('Paris'),
-    ('Lyon'),
-    ('Bordeaux'),
-    ('Saint Etienne'),
-    ('Nice'),
-    ('Marseille'),
-    ('Angouleme'),
-    ('Strasbourg'),
-    ('Montpellier'),
-    ('Toulouse');
-
 CREATE TABLE artwork (
     id int PRIMARY KEY auto_increment NOT NULL,
     title varchar(255) NOT NULL,
@@ -166,11 +147,9 @@ CREATE TABLE artwork (
     create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     image_url TEXT NOT NULL,
     author VARCHAR(255),
-    isValidated BOOLEAN NOT NULL DEFAULT 0,
+    isValidated INT DEFAULT 0,
     style_id INT NOT NULL,
     FOREIGN KEY (style_id) REFERENCES style (id),
-    city_id INT NOT NULL,
-    FOREIGN KEY (city_id) REFERENCES city (id),
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
@@ -185,21 +164,140 @@ INSERT INTO
         author,
         isValidated,
         style_id,
-        city_id,
         user_id
     )
-VALUES (
-        'le loup binational',
-        'Le Finlandais Jussi TwoSeven a représenté la décomposition du mouvement d’un loup en pleine course (rappelant le travail du photographe Eadweard Muybridge sur l’étude du mouvement au XIXe siècle). Mi-canidé, mi-Tour Eiffel, l’artiste combine à la fois le symbole de Paris et celui de son pays, la Finlande, et un élément de la ville et de la nature pour créer une œuvre on ne peut plus poétique.',
-        41.2,
-        10,
-        'https://www.connaissancedesarts.com/wp-content/thumbnails/uploads/2022/07/cda2022_jussi_two_seven_street_art_tunnel_paris_tuileries_2-tt-width-620-height-399-fill-0-crop-0-bgcolor-eeeeee.jpg',
-        'Jussi TwoSeven',
+VALUES 
+    (
+        "Jean-Pierre Michel",
+        "Homme politique français qui a soutenu la loi sur le PACS et l'union civile en 1999, et a été impliqué dans la loi sur le mariage pour tous en 2012.",
+        48.85821934194171,
+        2.3524330874274324,
+        "/artwork_JPM.png",
+        "C215",
         1,
         3,
+        1
+        ),
+        (
+            "Rencontre Furtive",
+            "Fresque RATP / Notorious Brand",
+            49.02247188289743,
+            2.336812028069045,
+            "/artwork_rencontreFurtive.jpg",
+            "Graffmatt",
+            1,
+            3,
+            1
+        ),
+        (
+            "Ciclope",
+            "Fresque créée dans le cadre du Caps festival organisé par l'association Co42 en parteneriat avec rentingArt et la ville de Clichy.",
+           49.04061964902911,
+           2.3368132467285405,
+            "/artwork_ciclope.jpeg",
+            "Caps Festival",
+            1,
+            3,
+            2
+        ),
+                (
+            "Revenge of the prohibition",
+            "amazing sticker",
+           49.04061964902911,
+           2.3368132467285405,
+            "/artwork_interdit.jpg",
+            "Clet Abraham",
+            1,
+            4,
+            2
+        ),
+                        (
+            "Revenge of the prohibition",
+            "amazing sticker",
+           49.04061964902911,
+           2.3368132467285405,
+            "",
+            "Clet Abraham",
+            1,
+            4,
+            2
+        ),
+    (
+        "The Kissing Policemen",
+        "Un mural représentant deux policiers s'embrassant, symbole de l'amour et de l'égalité.",
+        48.861992,
+        2.334385,
+        "/artwork_kissing.jpg",
+        "Banksy",
         1,
-        2
-    );
+        2,
+        3
+    ),
+    (
+        "Wheatpaste Art",
+        "Utilisation de collage et de papier pour créer des œuvres éphémères sur les murs.",
+        48.8655,
+        2.3212,
+        "/artwork_wheatpaste.webp",
+        "Various Artists",
+        1,
+        5,
+        4
+    ),
+    (
+        "Space Invader PA_1281",
+        "Murs décorés avec des motifs de pixel art, inspirés par le rétro gaming.",
+        48.865000,
+        2.360000,
+        "/artwork_pixel.webp",
+        "Invader",
+        1,
+        8,
+        4
+    ),
+    (
+        "Mural in Rue Dénoyez",
+        "Un mural vivant dans une rue connue pour son street art à Paris.",
+        48.8668,
+        2.3695,
+        "/artwork_denoyez.jpeg",
+        "Various Artists",
+        1,
+        3,
+        5
+    ),
+    (
+        "Space Invader PA_1156",
+        "Murs décorés avec des motifs de pixel art, inspirés par le rétro gaming.",
+        48.857000,
+        2.357000,
+        "/artwork_pixel2.webp",
+        "Invader",
+        1,
+        8,
+        5
+    ),
+("JO - unofficial title -",
+"Oeuvre du célèbre Monsieur Chat",
+48.8867,
+2.3431,
+"/artwork_monsieurChat.jpg",
+"Thoma Vuille (M. Chat)",
+1,
+1,
+6
+),
+("La Seine en Tricot",
+"Un yarn bombing géant représentant la Seine et ses ponts en laine colorée.",
+48.8566,
+2.3522, 
+"/artwork_yarnBombing2.webp",
+"Magda Sayeg",
+1,
+9,
+6
+);
+      
 
 CREATE TABLE favorite (
     user_id INT NOT NULL,
@@ -208,124 +306,3 @@ CREATE TABLE favorite (
     FOREIGN KEY (artwork_id) REFERENCES artwork (id)
 );
 
-INSERT INTO
-    artwork (
-        title,
-        description,
-        lat,
-        lon,
-        image_url,
-        author,
-        isValidated,
-        style_id,
-        city_id,
-        user_id
-    )
-VALUES (
-        'le loup binational',
-        'Le Finlandais Jussi TwoSeven a représenté la décomposition du mouvement d’un loup en pleine course (rappelant le travail du photographe Eadweard Muybridge sur l’étude du mouvement au XIXe siècle). Mi-canidé, mi-Tour Eiffel, l’artiste combine à la fois le symbole de Paris et celui de son pays, la Finlande, et un élément de la ville et de la nature pour créer une œuvre on ne peut plus poétique.',
-        100,
-        50,
-        'https://www.connaissancedesarts.com/wp-content/thumbnails/uploads/2022/07/cda2022_jussi_two_seven_street_art_tunnel_paris_tuileries_2-tt-width-620-height-399-fill-0-crop-0-bgcolor-eeeeee.jpg',
-        'Jussi TwoSeven',
-        1,
-        3,
-        1,
-        2
-    ),
-    (
-        'la fille au ballon rouge',
-        'Une œuvre en noir et blanc représentant une jeune fille qui lâche son ballon rouge',
-        48.8566,
-        2.3522,
-        'https://picsum.photos/id/650/300',
-        'Banksy',
-        1,
-        2,
-        1,
-        3
-    ),
-    (
-        'Le Phare Urbain',
-        'Un phare illuminé au milieu d\'une ville sombre, symbolisant l\'espoir et la direction dans un environnement chaotique.',
-        34.0522,
-        -118.2437,
-        'https://picsum.photos/id/500/200',
-        'Anonyme',
-        0,
-        2,
-        2,
-        4
-    ),
-    (
-        'Le Chat de Rue',
-        'Un chat coloré assis sur un mur de briques, observant les passants avec un regard mystérieux. L\'artiste joue avec les couleurs pour rendre l\'animal presque surréaliste.',
-        51.5074,
-        -0.1278,
-        'https://picsum.photos/id/50/300/200',
-        'Mystic Feline',
-        0,
-        3,
-        3,
-        5
-    ),
-    (
-        'La Cascade Humaine',
-        'Une cascade d\'eau se transforme progressivement en une silhouette humaine, symbolisant le lien entre la nature et l\'humanité.',
-        35.6895,
-        139.6917,
-        'https://picsum.photos/id/1000/200/300',
-        'Anonyme',
-        0,
-        4,
-        4,
-        6
-    ),
-    (
-        'L\'Oiseau Bleu',
-        'Un oiseau bleu vibrant s\'élève au-dessus des bâtiments, représentant la liberté et la paix dans un environnement urbain.',
-        40.7128,
-        -74.0060,
-        'https://picsum.photos/id/250/300',
-        'Anonyme',
-        0,
-        5,
-        5,
-        1
-    ),
-    (
-        'Le Voyageur Solaire',
-        'Un voyageur vêtu d\'un manteau doré marche à travers un désert urbain, illuminé par un soleil couchant rouge.',
-        41.9028,
-        12.4964,
-        'https://picsum.photos/id/230/200',
-        'Anonyme',
-        0,
-        6,
-        6,
-        2
-    ),
-    (
-        'La Fleur Urbaine',
-        'Une immense fleur rouge pousse entre les fissures du béton, représentant la résilience de la nature face à l\'urbanisation.',
-        55.7558,
-        37.6176,
-        'https://picsum.photos/id/238/200/300',
-        'Anonyme',
-        1,
-        7,
-        7,
-        3
-    ),
-    (
-        'Le Guerrier du Silence',
-        'Un guerrier en armure se tient silencieusement sur un toit, observant la ville en contrebas, prêt à défendre les innocents.',
-        52.5200,
-        13.4050,
-        'https://picsum.photos/id/237/200/300',
-        'Anonyme',
-        1,
-        8,
-        8,
-        4
-    );
