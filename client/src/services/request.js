@@ -97,7 +97,7 @@ export function postArtwork(formData) {
 // *** FAVORITES *** \\
 export function postFavorites(artworkId) {
   myAxios
-    .post(`/favorites`, { artworkId }, { withCredentials: true })
+    .post(`/favorites`, { artwork_id: artworkId }, { withCredentials: true })
     .then((response) => console.info(response))
     .catch((error) => console.error(error));
 }
