@@ -12,7 +12,9 @@ export default function NavBarDesktop() {
   const pathArray = [
     { path: "/", name: "Accueil" },
     { path: "/gallery", name: "Galerie" },
+
     ...(userInfo ? [{ path: `/profile/${userInfo.id}`, name: "Profil" }] : []),
+
     { path: "/help", name: "Aide" },
     ...(!userInfo ? [{ path: "/connection", name: "Connexion" }] : []),
     ...(userInfo?.isAdmin ? [{ path: "/gestion", name: "Gestion" }] : []),
