@@ -10,6 +10,7 @@ import "../styles/styleArtworkDetail.css";
 import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
+  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}${artwork.image_url}`;
   const { userInfo } = useContext(UserInfoContext);
   const screenWidth = useScreenWidth();
   const [artworkLocation, setArtworkLocation] = useState();
@@ -28,11 +29,7 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
-        <img
-          src={artwork.image_url}
-          alt={artwork.title}
-          className="detailsImg"
-        />
+        <img src={artworkUrl} alt={artwork.title} className="detailsImg" />
         <div className="textDetailsContainer">
           <div className="textDetails">
             <p className="title">{artwork.title}</p>
