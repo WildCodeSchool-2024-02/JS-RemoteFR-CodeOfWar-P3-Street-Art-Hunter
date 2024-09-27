@@ -46,7 +46,7 @@ function Validation({ artworks }) {
     </section>
   );
 }
-function Users({ users }) {
+function Hunters({ users }) {
   return (
     <section>
       {users && users.length > 0 ? (
@@ -93,7 +93,7 @@ function Users({ users }) {
 function Contact() {
   return <h1>Coucou de contact</h1>;
 }
-export { Validation, Users, Contact };
+export { Validation, Hunters, Contact };
 
 Validation.propTypes = {
   artworks: PropTypes.arrayOf(
@@ -106,7 +106,7 @@ Validation.propTypes = {
     })
   ).isRequired,
 };
-Users.propTypes = {
+Hunters.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

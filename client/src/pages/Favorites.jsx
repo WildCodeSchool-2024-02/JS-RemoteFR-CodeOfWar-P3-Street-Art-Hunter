@@ -22,7 +22,7 @@ export default function Favorites() {
   return (
     <section className="favoriteContainer">
       <header>
-        <h1>Favoris</h1>
+        <h1>HuntBoard</h1>
         <p className="textFavorite">
           {" "}
           {data && data.length}/{artworks.length} Street art trouvées !

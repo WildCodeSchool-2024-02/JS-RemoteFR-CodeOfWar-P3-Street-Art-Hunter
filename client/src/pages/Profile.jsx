@@ -42,7 +42,7 @@ export default function Profile() {
         <h1 id="grid-item">Profil</h1>
         {userInfo && screenWidth > 480 && (
           <Link to={`/favorites/${userInfo.id}`} className="btnFavorites">
-            Favoris
+            HuntBoard
           </Link>
         )}
         <section className="profilSection">
