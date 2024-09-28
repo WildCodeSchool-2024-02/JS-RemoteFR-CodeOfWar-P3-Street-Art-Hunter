@@ -133,7 +133,7 @@
     justify-content: flex-start;
   }
   .header-gallery > div {
-    height: 7rem;
+    height: 9rem;
     width: 70%;
     display: flex;
     flex-wrap: wrap;
@@ -143,8 +143,8 @@
     overflow-y: scroll;
   }
   .chip {
-    height: 2.5rem;
-    width: 7.8rem;
+    height: 3rem;
+    width: 8.5rem;
   }
   .header-gallery > h1 {
     display: none;

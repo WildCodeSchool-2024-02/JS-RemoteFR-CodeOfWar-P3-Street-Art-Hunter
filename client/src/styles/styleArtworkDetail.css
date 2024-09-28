@@ -43,9 +43,7 @@
 .textDetails > .title {
   font-size: 26px;
   font-family: var(--title-font);
-  background-color: var(--primary-color);
-  background-clip: text;
-  color: transparent;
+  color: var(--primary-color);
 }
 .btnPointsElement {
   position: absolute;
@@ -104,18 +102,21 @@
     right: -20px;
     border-radius: 24px;
     border: 1px solid var(--primary-color);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
   }
   .title {
     font-size: 32px;
     font-family: var(--title-font);
+    background-color: rgba(0, 0, 0, 0.7);
+    background-clip: none;
+    color: var(--primary-color);
   }
   .textDetails p {
     padding: 0.5rem 1rem;
     width: fit-content;
     border-radius: 24px;
     border: 1px solid var(--grey);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
   }
   .textDetails p:first-child {
     margin-bottom: 1rem;

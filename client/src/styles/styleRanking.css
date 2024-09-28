@@ -172,9 +172,28 @@
 }
 
 @media (width >= 480px) {
+  .rankingHomeDesktop {
+    background-color: rgba(255, 255, 255, 0.809);
+    border-radius: 24px;
+    border: 1px solid var(--grey);
+  }
   .listRanking {
     height: 115%;
+    border-radius: 48px;
+
+    opacity: 1;
+    padding: 1.5rem;
   }
+  .listRanking > .usersRanking > p:first-child {
+    color: var(--primary-color);
+  }
+  .usersRanking > p:first-child {
+    font-weight: 900;
+  }
+  .rankingListTitle {
+    padding-inline: 1.5rem;
+  }
+
   .rankingHeader {
     margin-top: 5.5rem;
     height: 25%;
@@ -192,8 +211,16 @@
     color: transparent;
   }
   .usersRankingContainer {
-    height: 50%;
+    height: 70%;
     padding: 1.5rem 1.5rem 4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rankInput {
+    height: 3.5rem;
+    width: 60%;
+    align-self: center;
   }
   .userScore {
     width: 20rem;
@@ -210,5 +237,31 @@
   .profilClassement > div:first-child > p {
     margin-left: 0.5rem;
     font-size: 20px;
+  }
+  .btnRankContainer {
+    height: 3.3rem;
+    width: auto;
+    display: inline;
+    position: absolute;
+    margin-top: 0;
+    right: 21%;
+  }
+  .btnRank {
+    height: 2.2rem;
+    width: 3.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    background: none;
+  }
+  .valid {
+    color: #56ff67;
+    border: none;
+    padding-right: 1rem;
+  }
+  .refuse {
+    color: #ff0d0d;
+    border: none;
+    padding-left: 0.2rem;
+    border-left: 1px solid var(--grey);
   }
 }

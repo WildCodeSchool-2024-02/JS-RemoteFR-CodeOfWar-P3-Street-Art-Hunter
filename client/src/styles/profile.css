@@ -258,6 +258,12 @@
     background-color: #ffffff00;
     margin-bottom: -0.7rem;
   }
+  .edit > .btn {
+    margin-bottom: -0.4rem;
+  }
+  .edit > p {
+    margin-bottom: 0.3rem;
+  }
   .inpSelect > label {
     background: #ffffff00;
     color: white;
@@ -267,11 +273,14 @@
     max-width: 80%;
     outline: none;
     background: none;
-    border-left: 1px dashed #ffffffb9;
-    border-bottom: 1px dashed #fff;
+    border-radius: 12px;
+    border: 1px dashed #ffffffb9;
     color: white;
     padding-bottom: 0.1rem;
     margin-bottom: 0.1rem;
+  }
+  .profileField > div > input:focus {
+    border: 1px solid #ffffffb9;
   }
   input[type="file"]::file-selector-button {
     color: var(--primary-color);
