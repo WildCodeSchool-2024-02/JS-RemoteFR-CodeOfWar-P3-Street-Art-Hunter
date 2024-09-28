@@ -92,7 +92,7 @@
 .chip {
   height: 2.5rem;
   width: 7.8rem;
-  background-color: #000000;
+  background-color: #222222;
   border-radius: 12px;
   padding-inline: 0.5rem;
   display: flex;
@@ -112,6 +112,7 @@
   background: var(--primary-gradient);
   scale: 1.15;
   font-size: 18px;
+  box-shadow: none;
 }
 .header-gallery > div > select {
   border: 1px solid var(--primary-color);

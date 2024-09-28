@@ -168,13 +168,16 @@
   top: 12vh;
   left: 4vw;
 }
+.inpSelect {
+  border-bottom: 1px solid var(--primary-color);
+}
 @media (width >= 480px) {
   #grid-item {
     display: none;
   }
   .profileContainer {
-    margin-top: 7rem;
-    height: 25%;
+    margin-top: 5rem;
+    padding-top: 2rem;
     background: none;
     color: var(--primary-color);
   }
@@ -185,11 +188,12 @@
     padding-top: 0;
   }
   .profilClassement {
+    height: 0;
     margin-top: 1rem;
     background: var(--primary-gradient);
     color: #fff;
     padding: 1.8rem 0.5rem;
-    width: 50%;
+    width: 30%;
   }
 
   .profilClassement div {
@@ -211,6 +215,27 @@
     font-size: 18px;
   }
   .profilFormcontainer {
-    justify-content: center;
+    height: 60vh;
+    padding-top: 1rem;
+  }
+  .profilFormcontainer #gradientButton {
+    width: 15rem;
+  }
+  .deleteProfil {
+    align-self: center;
+    margin-left: 0;
+  }
+  .profileField {
+    height: 11%;
+  }
+  .profileField > div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .profileField > div > input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid grey;
+    overflow: visible;
   }
 }

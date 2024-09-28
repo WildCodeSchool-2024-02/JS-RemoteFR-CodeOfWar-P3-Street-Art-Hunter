@@ -37,9 +37,6 @@
   width: 100%;
   overflow: hidden;
   box-shadow: 0 0 8px 2px var(--grey);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .textHomeContainer {
   width: 100%;
