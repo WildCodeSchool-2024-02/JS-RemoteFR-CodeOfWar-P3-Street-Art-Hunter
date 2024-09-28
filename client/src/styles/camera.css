@@ -7,7 +7,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: scroll;
 }
 
 .form_container_picture {
@@ -45,15 +44,6 @@
   padding-block: 0.5rem 0;
 }
 .form_custom_file_label {
-  /* display: inline-block;
-  border: 1px #ff743e solid;
-  color: #ff743e;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  transition: background-color 0.3s ease; */
   background: var(--primary-gradient);
   border-radius: 50%;
   height: 4rem;

@@ -37,7 +37,7 @@ export default function ProfileForm({ userDetail }) {
       >
         <label htmlFor="lastname">Nom</label>
         {editField === "lastname" ? (
-          <div>
+          <div className="editSlect">
             <input
               type="text"
               id="lastname"
@@ -73,7 +73,7 @@ export default function ProfileForm({ userDetail }) {
       >
         <label htmlFor="firstname">Prénom</label>
         {editField === "firstname" ? (
-          <div>
+          <div className="editSlect">
             <input
               type="text"
               id="firstname"
@@ -109,7 +109,7 @@ export default function ProfileForm({ userDetail }) {
       >
         <label htmlFor="pseudo">Pseudo</label>
         {editField === "pseudo" ? (
-          <div>
+          <div className="editSlect">
             <input
               type="text"
               id="pseudo"
@@ -145,7 +145,7 @@ export default function ProfileForm({ userDetail }) {
       >
         <label htmlFor="mail">Email</label>
         {editField === "mail" ? (
-          <div>
+          <div className="editSlect">
             <input
               type="email"
               id="mail"
@@ -181,7 +181,7 @@ export default function ProfileForm({ userDetail }) {
       >
         <label htmlFor="password">Mot de passe</label>
         {editField === "password" ? (
-          <div>
+          <div className="editSlect">
             <input
               type="password"
               id="password"
@@ -217,7 +217,7 @@ export default function ProfileForm({ userDetail }) {
       >
         <label htmlFor="avatar">Avatar</label>
         {editField === "avatar" ? (
-          <div>
+          <div className="editSlect">
             <input
               type="file"
               id="avatar"
@@ -241,12 +241,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-
-            <img
-              src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${formDetail.avatar}`}
-              alt="Avatar"
-              className="avatarEdit"
-            />
+            <p>Télécharger un fichier</p>
           </div>
         )}
       </div>

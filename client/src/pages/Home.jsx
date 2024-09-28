@@ -13,7 +13,10 @@ export default function Home() {
   const { userInfo } = useContext(UserInfoContext);
 
   return (
-    <section className="homePage_Map">
+    <section
+      className="homePage_Map"
+      style={{ overflow: "hidden", height: "100vh" }}
+    >
       {artworkDetails && (
         <ArtworkDetails
           artwork={artworkDetails}
