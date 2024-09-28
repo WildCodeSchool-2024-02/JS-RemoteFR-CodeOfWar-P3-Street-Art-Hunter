@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { frenchDate } from "../utils/function";
+import GradientButton from "./GradientButton";
 
 function Validation({ artworks }) {
   return (
@@ -9,13 +10,11 @@ function Validation({ artworks }) {
         artworks.map((artwork) => (
           <section className="validation" key={artwork.id}>
             <div>
-              <Link to={`/gestion/${artwork.id}`}>
-                <img
-                  src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
-                  alt={artwork.title}
-                  className="imageValidate"
-                />
-              </Link>
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
+                alt={artwork.title}
+                className="imageValidate"
+              />
             </div>
             <div>
               <div className="informationValidate">
@@ -38,6 +37,11 @@ function Validation({ artworks }) {
                 </ul>
               </div>
             </div>
+            <div className="checkArtworkBtn">
+              <Link to={`/userDetails/${artwork.id}`}>
+                <GradientButton text="Vérification" />
+              </Link>
+            </div>
           </section>
         ))
       ) : (
@@ -52,15 +56,13 @@ function Hunters({ users }) {
       {users && users.length > 0 ? (
         users.map((user) => (
           <section className="userList" key={user.id}>
-            <Link to={`/userDetails/${user.id}`}>
-              <div className="imageUser">
-                <img
-                  src={user.avatar}
-                  alt={user.pseudo}
-                  className="avatarUser"
-                />
-              </div>
-            </Link>
+            <div className="imageUser">
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${user.avatar}`}
+                alt={user.pseudo}
+                className="avatarUser"
+              />
+            </div>
             <div>
               <div className="informationUser">
                 <ul>
@@ -81,6 +83,11 @@ function Hunters({ users }) {
                   </li>
                 </ul>
               </div>
+            </div>
+            <div className="checkArtworkBtn">
+              <Link to={`/userDetails/${user.id}`}>
+                <GradientButton text="Vérification" />
+              </Link>
             </div>
           </section>
         ))
