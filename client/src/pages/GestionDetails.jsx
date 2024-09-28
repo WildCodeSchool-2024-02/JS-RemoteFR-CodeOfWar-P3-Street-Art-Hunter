@@ -1,6 +1,10 @@
 import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { updateArtwork, deleteArtwork } from "../services/request";
+import {
+  updateArtwork,
+  deleteArtwork,
+  deleteFavorite,
+} from "../services/request";
 import GradientButton from "../components/GradientButton";
 
 import "../styles/gestionDetails.css";
@@ -49,6 +53,7 @@ export default function GestionDetails() {
   };
 
   const handleDeleteArtwork = async () => {
+    await deleteFavorite(artwork.id);
     await deleteArtwork(artwork.id);
     setIsOpen("delete");
     setTimeout(() => {

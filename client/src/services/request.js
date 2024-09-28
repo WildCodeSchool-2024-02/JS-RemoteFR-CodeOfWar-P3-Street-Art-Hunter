@@ -160,7 +160,6 @@ export function updateArtwork(id, modified) {
 }
 
 // *** STYLES *** \\
-// *** FAVORITES *** \\
 
 // ###### *** DELETE *** ###### \\
 export function deleteCookie() {
@@ -184,6 +183,16 @@ export function deleteUser(id) {
 export function deleteArtwork(id) {
   myAxios
     .delete(`artworks/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}
+
+// *** FAVORITES *** \\
+export function deleteFavorite(id) {
+  myAxios
+    .delete(`favorites/${id}`)
     .then((response) => {
       console.info(response.data);
     })
