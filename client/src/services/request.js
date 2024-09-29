@@ -3,13 +3,13 @@ import myAxios from "./instanceAxios";
 // ##### *** GET *** ##### \\
 export function getUsersRanking() {
   return myAxios
-    .get("/users/ranking")
+    .get("/ranking/users")
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
 export function getOneUserRanking(pseudo, setter) {
   myAxios
-    .get(`/users/ranking?q=${pseudo}`)
+    .get(`/ranking/users?q=${pseudo}`)
     .then((res) => setter(res.data.result))
     .catch((error) => console.info(error));
 }
