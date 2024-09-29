@@ -89,6 +89,7 @@
   font-family: var(--title-font);
   font-weight: bold;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 .adminBtn:hover {
   background: var(--primary-color);
@@ -147,6 +148,7 @@
 .btn {
   background-color: white;
   border: none;
+  cursor: pointer;
 }
 
 .profilFormcontainer #gradientButton {

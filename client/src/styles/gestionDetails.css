@@ -42,6 +42,7 @@ h1 {
 }
 .gestionDetailsBody li {
   list-style-type: none;
+  padding-top: 1rem;
 }
 .title-font {
   font-family: var(--title-font);

@@ -176,6 +176,7 @@
   }
   .headers {
     padding-bottom: 0.3rem;
+    cursor: pointer;
   }
   .headers > p {
     font-family: var(--title-font);
