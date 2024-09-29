@@ -65,7 +65,7 @@ export default function GestionDetails() {
   return (
     <section className="gestionDetails">
       <Link to="/gestion" className="gestionReturn">
-        Retour à la page gestion
+        ⬅
       </Link>
       <div className="gestionDetailsBody">
         <img
@@ -76,6 +76,16 @@ export default function GestionDetails() {
         <form>
           <div className="gestion_form">
             <ul>
+              <div className="gestion_form">
+                <li>
+                  <span className="title-font">Pseudo du joueur </span>:{" "}
+                  {artwork.pseudo}
+                </li>
+              </div>
+              <li>
+                <span className="title-font">Date de création </span> :{" "}
+                {frenchDate(artwork.create_date)}
+              </li>
               <li>
                 <span className="title-font">Auteur </span>: {artwork.author}
                 <label htmlFor="Auteur">Modification de l'auteur</label> <br />
@@ -89,12 +99,6 @@ export default function GestionDetails() {
                   />
                 </div>
               </li>
-              <div className="gestion_form">
-                <li>
-                  <span className="title-font">Pseudo du joueur </span>:{" "}
-                  {artwork.pseudo}
-                </li>
-              </div>
               <li>
                 <span className="title-font">Titre </span>: {artwork.title}
                 <label htmlFor="Title">Modification du titre</label> <br />
@@ -124,11 +128,6 @@ export default function GestionDetails() {
                     onChange={handleChangeArtwork}
                   />{" "}
                 </div>
-              </li>
-
-              <li>
-                <span className="title-font">Date de création </span> :{" "}
-                {frenchDate(artwork.create_date)}
               </li>
               <li>
                 <span className="title-font">Style </span>: {artwork.style}{" "}
@@ -161,7 +160,6 @@ export default function GestionDetails() {
           {isOpen === "modified" && (
             <p className="deleteUser"> L'arwork a bien été modifié </p>
           )}
-          <hr className="connection_separator" />
           <GradientButton
             text="Supprimer l'oeuvre"
             type="submit"

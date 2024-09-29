@@ -11,9 +11,11 @@ export default function Gallery() {
 
   const [stylesArtwork, setStylesArtwork] = useState(null);
   const [artworks, setArtworks] = useState();
+  const [isVisibled, setIsVisibled] = useState(false);
 
   useEffect(() => {
     getArtworksByStyle(stylesArtwork, setArtworks);
+    setTimeout(() => setIsVisibled(true), 500);
   }, [stylesArtwork]);
 
   const breakpointColumnsObj = {
@@ -26,7 +28,7 @@ export default function Gallery() {
   return (
     <section className="gallery">
       <section className="header-gallery">
-        <h1>Galerie</h1>
+        <h1 className={isVisibled && "show"}>Galerie</h1>
         <div>
           <button
             type="button"

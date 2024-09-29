@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 
 import CameraForm from "../components/CameraForm";
 import { GeoLocationContext } from "../services/context/GeoLocationContext";
@@ -21,7 +21,7 @@ export default function Camera() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [uploadStatus, setUploadStatus] = useState(false);
-
+  const [isVisibled, setIsVisibled] = useState(false);
   const [photoBlob, setPhotoBlob] = useState(null);
   const [artworkProperties, setArtworkProperties] = useState({
     title: "",
@@ -63,6 +63,10 @@ export default function Camera() {
       navigate("/");
     }, 2000);
   };
+
+  useEffect(() => {
+    setTimeout(() => setIsVisibled(true), 500);
+  }, []);
 
   return (
     <section className="bigcontainer">
@@ -109,7 +113,9 @@ export default function Camera() {
             </div>
           </div>
         </div>
-        <h1 id="cameraTitle">Post</h1>
+        <h1 id="cameraTitle" className={isVisibled && "show"}>
+          Post
+        </h1>
         <div className="inputContainerCamera">
           <CameraForm
             artworkProperties={artworkProperties}

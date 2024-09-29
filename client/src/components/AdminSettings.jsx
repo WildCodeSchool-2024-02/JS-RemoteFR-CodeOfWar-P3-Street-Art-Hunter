@@ -38,7 +38,7 @@ function Validation({ artworks }) {
               </div>
             </div>
             <div className="checkArtworkBtn">
-              <Link to={`/userDetails/${artwork.id}`}>
+              <Link to={`/gestion/${artwork.id}`}>
                 <GradientButton text="Vérification" />
               </Link>
             </div>
