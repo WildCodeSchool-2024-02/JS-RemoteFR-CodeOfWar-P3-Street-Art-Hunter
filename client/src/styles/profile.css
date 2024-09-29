@@ -79,16 +79,23 @@
 }
 .adminBtn {
   position: absolute;
-  top: 2rem;
+  top: 1.3rem;
   right: 1rem;
-  padding: 0.9rem;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  background: none;
-  color: #fff;
+  padding: 0.2rem 0.9rem;
+  border-radius: 40px;
+  background: #fff;
+  color: var(--primary-color);
+  border: none;
   font-family: var(--title-font);
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+}
+.adminBtn:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+.adminBtn:active {
+  opacity: 0.6;
 }
 
 .profilFormcontainer {

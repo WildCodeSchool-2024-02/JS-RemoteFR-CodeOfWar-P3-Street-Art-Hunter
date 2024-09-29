@@ -95,10 +95,10 @@
   transition: transform 1.5s ease-out opacity 1.5s ease-out;
 }
 .show {
-  animation: slideIn 1.5s forwards;
+  animation: containerSlide 1.5s forwards;
 }
 
-@keyframes slideIn {
+@keyframes containerSlide {
   to {
     transform: translateX(0);
     opacity: 1;

@@ -5,7 +5,6 @@
   overflow: hidden;
 }
 .gestionHeader {
-  height: 16%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -57,8 +56,10 @@
 .validation {
   display: flex;
   align-items: center;
-  /* padding: 1rem 1rem 5rem 1rem; */
   flex-direction: column;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid gray;
 }
 .validation > div:last-child {
   height: 100%;
@@ -104,9 +105,12 @@
 
 .userList {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--grey);
   padding-top: 5rem;
 }
 .informationUser {
@@ -133,12 +137,11 @@
   display: flex;
   flex-grow: 1;
   align-items: center;
-  justify-content: center;
-}
-.checkArtworkBtn > a {
-  margin-left: 25%;
 }
 @media (width >= 480px) {
+  .gestionHeader {
+    height: 16%;
+  }
   .gestion > h1 {
     display: none;
   }
@@ -148,11 +151,9 @@
     max-width: 1440px;
     display: flex;
     flex-direction: row;
-    padding-top: 1rem;
     background-color: rgba(214, 214, 214, 0.109);
     border: 1px solid var(--primary-color);
     padding: 1rem;
-    margin-bottom: 1rem;
     border-radius: 48px;
   }
   .userList {
@@ -179,5 +180,11 @@
   .headers > p {
     font-family: var(--title-font);
     font-size: 24px;
+  }
+  .checkArtworkBtn {
+    justify-content: center;
+  }
+  .checkArtworkBtn > a {
+    margin-left: 25%;
   }
 }

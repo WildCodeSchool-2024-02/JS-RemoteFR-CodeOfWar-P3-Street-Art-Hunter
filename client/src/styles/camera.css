@@ -35,13 +35,15 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow: scroll;
 }
 .inputContainerCamera > #gradientButton {
   margin-top: 1rem;
 }
 #cameraTitle {
   padding-block: 0.5rem 0;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out opacity 0.5s ease-out;
 }
 .form_custom_file_label {
   background: var(--primary-gradient);
@@ -159,4 +161,15 @@ label {
   border-radius: 24px;
   background-color: #40e0c3;
   z-index: 3;
+}
+
+.show {
+  animation: containerSlide 0.5s forwards;
+}
+
+@keyframes containerSlide {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
