@@ -30,10 +30,14 @@ export default function ProfileForm({ userDetail }) {
 
   return (
     <>
-      <div className="profileField">
+      <div
+        className={
+          editField === "lastname" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="lastname">Nom</label>
         {editField === "lastname" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="text"
               id="lastname"
@@ -62,10 +66,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "firstname" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="firstname">Prénom</label>
         {editField === "firstname" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="text"
               id="firstname"
@@ -94,10 +102,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "pseudo" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="pseudo">Pseudo</label>
         {editField === "pseudo" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="text"
               id="pseudo"
@@ -126,10 +138,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "mail" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="mail">Email</label>
         {editField === "mail" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="email"
               id="mail"
@@ -158,10 +174,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "password" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="password">Mot de passe</label>
         {editField === "password" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="password"
               id="password"
@@ -190,10 +210,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "avatar" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="avatar">Avatar</label>
         {editField === "avatar" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="file"
               id="avatar"
@@ -217,12 +241,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-
-            <img
-              src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${formDetail.avatar}`}
-              alt="Avatar"
-              className="avatarEdit"
-            />
+            <p>Télécharger un fichier</p>
           </div>
         )}
       </div>

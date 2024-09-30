@@ -24,7 +24,6 @@ const { findCity } = require("./services/findCity");
 
 //  ** USERS ** \\
 router.get("/users", users.browse);
-router.get("/users/ranking", ranking.browse);
 router.get("/users/:id", users.read);
 router.post(
   "/users",
@@ -67,7 +66,7 @@ router.put("/favorites/:id", favorites.edit);
 router.delete("/favorites/:id", favorites.destroy);
 
 // ** RANKING - SCORE ** \\
-
+router.get("/ranking/users", ranking.browse);
 router.put("/score/:id", users.editScore);
 
 // ** LOGIN - LOGOUT ** \\

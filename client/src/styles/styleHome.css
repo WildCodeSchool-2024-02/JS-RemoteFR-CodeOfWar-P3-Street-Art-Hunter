@@ -2,11 +2,12 @@
   height: 100vh;
   overflow: hidden;
   background-image: url("../assets/images/backgroundDesktop.svg");
-  background-position: bottom;
+  background-position: top;
   background-size: cover;
   display: flex;
   justify-content: center;
 }
+
 .desktopBlock {
   height: 100%;
   max-width: 1600px;
@@ -17,19 +18,18 @@
 }
 .leftContain {
   height: 100%;
-  width: 60%;
+  width: 55%;
   max-height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .rankingHomeDesktop {
-  max-height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  width: 30%;
+  width: 40%;
 }
 .mapDesktop {
   border-radius: 24px;
@@ -40,7 +40,7 @@
 }
 .textHomeContainer {
   width: 100%;
-  padding-block: 3rem;
+  padding: 1.5rem 0 3rem 0;
 }
 .textHomeContainer > h2 {
   font-family: var(--title-font);
@@ -82,4 +82,25 @@
 }
 .btnFavorites:active {
   opacity: 0.5;
+}
+.textHomeContainer,
+.mapDesktop {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.9s ease-out opacity 0.9s ease-out;
+}
+.rankingHomeDesktop {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1.5s ease-out opacity 1.5s ease-out;
+}
+.show {
+  animation: containerSlide 1.5s forwards;
+}
+
+@keyframes containerSlide {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

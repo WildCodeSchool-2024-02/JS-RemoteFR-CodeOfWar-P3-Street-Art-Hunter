@@ -18,6 +18,9 @@
   background: -webkit-linear-gradient(-90deg, #ff0d5a, #ff743e);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-out opacity 0.5s ease-out;
 }
 .helpersContainer {
   height: 32px;
@@ -51,6 +54,17 @@
   height: 80%;
   overflow: scroll; /* Permet le défilement vertical uniquement */
   padding-bottom: 1000px;
+}
+
+.show {
+  animation: containerSlide 0.5s forwards;
+}
+
+@keyframes containerSlide {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* HELPERS */

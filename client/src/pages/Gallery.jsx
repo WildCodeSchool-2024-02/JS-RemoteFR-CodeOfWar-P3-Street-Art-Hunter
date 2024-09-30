@@ -3,21 +3,19 @@ import { useState, useEffect } from "react";
 import Masonry from "react-masonry-css";
 
 import { getArtworksByStyle } from "../services/request";
-
 import nothingNow from "../assets/images/nothingNow.svg";
 import "../styles/gallery.css";
 
 export default function Gallery() {
   const { artworkList, styleArtwork } = useLoaderData();
 
-  const [stylesArtwork, setStylesArtwork] = useState({
-    style_id: "",
-  });
-
+  const [stylesArtwork, setStylesArtwork] = useState(null);
   const [artworks, setArtworks] = useState();
+  const [isVisibled, setIsVisibled] = useState(false);
 
   useEffect(() => {
     getArtworksByStyle(stylesArtwork, setArtworks);
+    setTimeout(() => setIsVisibled(true), 500);
   }, [stylesArtwork]);
 
   const breakpointColumnsObj = {
@@ -30,22 +28,28 @@ export default function Gallery() {
   return (
     <section className="gallery">
       <section className="header-gallery">
-        <h1>Galerie</h1>
-        <label>
-          {" "}
-          <select
-            name="style_id"
-            onChange={(event) => setStylesArtwork(event.target.value)}
-            value={stylesArtwork.style_id}
+        <h1 className={isVisibled && "show"}>Galerie</h1>
+        <div>
+          <button
+            type="button"
+            className={!stylesArtwork ? "chip chipActive" : "chip"}
+            onClick={() => setStylesArtwork()}
           >
-            <option value="">Filtres</option>
-            {styleArtwork?.map((style) => (
-              <option key={style.id} value={style.id}>
-                {style.name}
-              </option>
-            ))}
-          </select>
-        </label>
+            Tous
+          </button>
+          {styleArtwork?.map((style) => (
+            <button
+              type="button"
+              key={style.id}
+              className={
+                stylesArtwork === style.id ? "chip chipActive" : "chip"
+              }
+              onClick={() => setStylesArtwork(style.id)}
+            >
+              {style.name}
+            </button>
+          ))}
+        </div>
       </section>
       <section className="body-gallery">
         {artworkList.length === 0 ? (

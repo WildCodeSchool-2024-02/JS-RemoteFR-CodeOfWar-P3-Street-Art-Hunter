@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Map from "../components/Map";
 import RankingList from "../components/RankingList";
@@ -14,11 +14,31 @@ export default function HomeDesktop() {
   const { userInfo } = useContext(UserInfoContext);
   const [artworkDetails, setArtworkDetails] = useState();
 
+  const [isVisibled, setIsVisibled] = useState({
+    article: false,
+    div: false,
+    aside: false,
+  });
+  useEffect(() => {
+    setTimeout(() => setIsVisibled({ article: true }), 500);
+    setTimeout(() => setIsVisibled({ article: true, aside: true }), 1200);
+    setTimeout(
+      () => setIsVisibled({ article: true, aside: true, div: true }),
+      1900
+    );
+  }, []);
+
   return (
     <section className="homeDesktopContainer">
       <div className="desktopBlock">
         <div className="leftContain">
-          <article className="textHomeContainer">
+          <article
+            className={
+              isVisibled.article
+                ? "textHomeContainer show"
+                : "textHomeContainer"
+            }
+          >
             <img src={crown} alt="couronne" className="crownHomeDesktop" />
             <h2>
               Bienvenue sur <span>STREET ART HUNTER</span>{" "}
@@ -35,7 +55,7 @@ export default function HomeDesktop() {
               à la chasse avec votre téléphone mobile !
             </p>
           </article>
-          <div className="mapDesktop">
+          <div className={isVisibled.div ? "mapDesktop show" : "mapDesktop"}>
             {artworkDetails && (
               <ArtworkDetails
                 artwork={artworkDetails}
@@ -45,7 +65,11 @@ export default function HomeDesktop() {
             <Map setArtworkDetails={setArtworkDetails} />
           </div>
         </div>
-        <aside className="rankingHomeDesktop">
+        <aside
+          className={
+            isVisibled.aside ? "rankingHomeDesktop show" : "rankingHomeDesktop"
+          }
+        >
           <RankingList rankings={rankings} />
         </aside>
       </div>

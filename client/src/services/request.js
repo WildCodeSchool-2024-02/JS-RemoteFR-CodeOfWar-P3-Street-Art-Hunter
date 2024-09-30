@@ -3,13 +3,13 @@ import myAxios from "./instanceAxios";
 // ##### *** GET *** ##### \\
 export function getUsersRanking() {
   return myAxios
-    .get("/users/ranking")
+    .get("/ranking/users")
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
 export function getOneUserRanking(pseudo, setter) {
   myAxios
-    .get(`/users/ranking?q=${pseudo}`)
+    .get(`/ranking/users?q=${pseudo}`)
     .then((res) => setter(res.data.result))
     .catch((error) => console.info(error));
 }
@@ -49,7 +49,7 @@ export function getArtworks() {
 }
 export function getArtworksByStyle(style, setter) {
   myAxios
-    .get(style.length > 0 ? `/artworks?q=${style}` : "/artworks")
+    .get(style ? `/artworks?q=${style}` : "/artworks")
     .then((response) => setter(response.data))
     .catch((error) => console.error(error));
 }
@@ -160,7 +160,6 @@ export function updateArtwork(id, modified) {
 }
 
 // *** STYLES *** \\
-// *** FAVORITES *** \\
 
 // ###### *** DELETE *** ###### \\
 export function deleteCookie() {
@@ -184,6 +183,16 @@ export function deleteUser(id) {
 export function deleteArtwork(id) {
   myAxios
     .delete(`artworks/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}
+
+// *** FAVORITES *** \\
+export function deleteFavorite(id) {
+  myAxios
+    .delete(`favorites/${id}`)
     .then((response) => {
       console.info(response.data);
     })
