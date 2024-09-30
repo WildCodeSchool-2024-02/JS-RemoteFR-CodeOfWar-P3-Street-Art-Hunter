@@ -58,7 +58,18 @@ const edit = async (req, res, next) => {
     next(error);
   }
 };
-
+const editPassword = async (req, res, next) => {
+  try {
+    const user = {
+      id: req.params.id,
+      hashed_password: req.body.hashed_password,
+    };
+    await tables.user.updatePassword(user);
+    res.status(204).json({ message: " Mot de passe modifié avec succès." });
+  } catch (error) {
+    next(error);
+  }
+};
 const editScore = async (req, res, next) => {
   try {
     const user = {
@@ -89,6 +100,7 @@ module.exports = {
   browse,
   read,
   edit,
+  editPassword,
   editScore,
   add,
   destroy,
