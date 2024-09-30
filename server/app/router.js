@@ -32,7 +32,15 @@ router.post(
   upload.uploadPicture,
   users.add
 );
-router.put("/users/:id", upload.uploadPicture, auth.hashPassword, users.edit);
+router.put("/users/:id", upload.uploadPicture, users.edit);
+router.put(
+  "/passwordUsers/:id",
+  verifyMiddleware.verifyPassword,
+  auth.verifyToken,
+  auth.hashPassword,
+  users.editPassword
+);
+// router.put("/passwordUsers/:id", auth.verifyToken, compareLogin, auth.hashPassword, users.editPassword); **Secure Path**
 router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\
