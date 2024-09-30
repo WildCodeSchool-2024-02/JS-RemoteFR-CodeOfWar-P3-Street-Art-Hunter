@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { updateUser } from "../services/request";
+import { updateUser, updatePasswordUser } from "../services/request";
 
 import "../styles/profile.css";
 import Pen from "../assets/images/profil_pen.svg";
@@ -8,7 +8,14 @@ import Valid from "../assets/images/profil_valid.svg";
 
 export default function ProfileForm({ userDetail }) {
   const [editField, setEditField] = useState("");
-  const [formDetail, setFormDetail] = useState(userDetail);
+  const [formDetail, setFormDetail] = useState({
+    lastname: userDetail.lastname,
+    firstname: userDetail.firstname,
+    pseudo: userDetail.pseudo,
+    mail: userDetail.mail,
+    avatar: userDetail.avatar,
+  });
+  const [passwordDetail, setPasswordDetail] = useState("");
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -17,6 +24,10 @@ export default function ProfileForm({ userDetail }) {
     } else {
       setFormDetail({ ...formDetail, [name]: value });
     }
+  };
+  const handleSavePassword = () => {
+    updatePasswordUser(userDetail.id, passwordDetail);
+    setEditField("");
   };
 
   const handleEdit = (field) => {
@@ -186,14 +197,10 @@ export default function ProfileForm({ userDetail }) {
               type="password"
               id="password"
               name="password"
-              value={formDetail.password}
-              onChange={handleChange}
+              value={passwordDetail.password}
+              onChange={(e) => setPasswordDetail(e.target.value)}
             />
-            <button
-              type="button"
-              className="btn"
-              onClick={() => handleSave("password")}
-            >
+            <button type="button" className="btn" onClick={handleSavePassword}>
               <img src={Valid} alt="valider" />
             </button>
           </div>

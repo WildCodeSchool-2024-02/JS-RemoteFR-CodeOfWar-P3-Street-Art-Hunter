@@ -148,9 +148,16 @@ export function updateUser(id, userData) {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((response) => response.data)
+    .then((response) => console.info(response.data))
     .catch((error) => console.info(error));
 }
+export function updatePasswordUser(id, password) {
+  myAxios
+    .put(`/passwordUsers/${id}`, { password }, { withCredentials: true })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.info(error));
+}
+
 // *** ARTWORKS *** \\
 export function updateArtwork(id, modified) {
   myAxios
