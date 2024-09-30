@@ -7,6 +7,12 @@ export function getUsersRanking() {
     .then((response) => response.data.result)
     .catch((error) => console.info(error));
 }
+export function getOneUserRanking(pseudo, setter) {
+  myAxios
+    .get(`/users/ranking?q=${pseudo}`)
+    .then((res) => setter(res.data.result))
+    .catch((error) => console.info(error));
+}
 export function getValidated() {
   return myAxios
     .get(`/artworks/validate`)
@@ -41,6 +47,12 @@ export function getArtworks() {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
+export function getArtworksByStyle(style, setter) {
+  myAxios
+    .get(style.length > 0 ? `/artworks?q=${style}` : "/artworks")
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
 export function getGallery(id) {
   return myAxios
     .get(`/artworks/${id}`)
@@ -50,7 +62,6 @@ export function getGallery(id) {
 
 // *** STYLES *** \\
 export function getStyle() {
-
   return myAxios
     .get("/styles")
     .then((response) => response.data)
@@ -66,6 +77,13 @@ export function getFavorites(id, setter) {
 }
 
 // ##### *** POST *** ###### \\
+
+export function login(userLogin, setter) {
+  myAxios
+    .post("/login", userLogin, { withCredentials: true })
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
 export function getCityName(lat, lon, setter) {
   const location = {
     lat,

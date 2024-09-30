@@ -25,7 +25,7 @@ export default function Help() {
   return (
     <section className="helpContainer">
       <div className="helpHeader">
-        <h1 className="helpTitle">Helper</h1>
+        <h1 className="helpTitle">Aide</h1>
         <div className="helpersContainer">
           {helpers.map((help) => (
             <button

@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 import useScreenWidth from "../utils/hook/useScreenWidth";
+import { UserInfoContext } from "../services/context/UserInfoContext";
 import { getCityName, postFavorites, updateScore } from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
-import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
   const artworkUrl = `${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`;
@@ -18,7 +18,6 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
   const HandleUpdateScore = () => {
     updateScore(userInfo.id, 100);
     postFavorites(artwork.id);
-    console.info(userInfo.id, artwork.id);
   };
 
   useEffect(() => {

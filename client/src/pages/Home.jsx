@@ -22,7 +22,7 @@ export default function Home() {
       )}
       {userInfo && (
         <Link to={`/favorites/${userInfo.id}`} className="btnFavorites">
-          Favoris
+          HuntBoard
         </Link>
       )}
       <Map setArtworkDetails={setArtworkDetails} />

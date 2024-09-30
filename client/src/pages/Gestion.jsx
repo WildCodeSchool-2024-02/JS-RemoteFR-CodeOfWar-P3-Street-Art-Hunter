@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import { Validation, Users, Contact } from "../components/AdminSettings";
+import { Validation, Hunters, Contact } from "../components/AdminSettings";
 import "../styles/gestion.css";
 
 export default function Gestion() {
@@ -13,12 +13,12 @@ export default function Gestion() {
 
   const headers = [
     { name: "Validation" },
-    { name: "Users" },
+    { name: "Hunters" },
     { name: "Contact" },
     { name: "" },
   ];
 
-  const adminSettings = { Validation, Users, Contact };
+  const adminSettings = { Validation, Hunters, Contact };
   const Admin = adminSettings[isActive];
 
   const handleClickActive = (header) => {

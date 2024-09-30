@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useRef } from "react";
 
+import CameraForm from "../components/CameraForm";
 import { GeoLocationContext } from "../services/context/GeoLocationContext";
 import { UserInfoContext } from "../services/context/UserInfoContext";
 import { postArtwork } from "../services/request";
@@ -8,7 +9,6 @@ import { takePhoto, getVideo } from "../utils/cameraTools";
 import takePicture from "../assets/images/camera_take_picture.svg";
 
 import "../styles/camera.css";
-import CameraForm from "../components/CameraForm";
 
 export default function Camera() {
   const userLocation = useContext(GeoLocationContext);
@@ -59,7 +59,6 @@ export default function Camera() {
     setUploadStatus(true);
 
     setTimeout(() => {
-      console.info("ultime last");
       setUploadStatus(false);
       navigate("/");
     }, 2000);

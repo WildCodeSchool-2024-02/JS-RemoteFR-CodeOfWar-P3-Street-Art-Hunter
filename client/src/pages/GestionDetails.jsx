@@ -12,6 +12,13 @@ export default function GestionDetails() {
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState("");
+  const filterStyle = styles.find((style) => {
+    if (style.name === artwork.style) {
+      return style;
+    }
+    return null;
+  });
+
   const [modified, setModified] = useState({
     title: artwork.title,
     description: artwork.description,
@@ -20,8 +27,7 @@ export default function GestionDetails() {
     lon: artwork.lon,
     image_url: `${artwork.image_url}`,
     author: artwork.author,
-    style_id: artwork.style_id,
-    user_id: 1,
+    style_id: filterStyle.id,
   });
 
   const sendCredentialsForUpdate = async (event) => {
@@ -58,7 +64,7 @@ export default function GestionDetails() {
       </Link>
       <div className="gestionDetailsBody">
         <img
-          src={artwork.image_url}
+          src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
           alt={artwork.title}
           className="detailImage"
         />

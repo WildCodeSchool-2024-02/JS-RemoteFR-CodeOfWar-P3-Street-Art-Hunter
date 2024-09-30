@@ -218,7 +218,11 @@ export default function ProfileForm({ userDetail }) {
               <img src={Pen} alt="modifier" />
             </button>
 
-            <img src={formDetail.avatar} alt="Avatar" className="avatarEdit" />
+            <img
+              src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${formDetail.avatar}`}
+              alt="Avatar"
+              className="avatarEdit"
+            />
           </div>
         )}
       </div>
