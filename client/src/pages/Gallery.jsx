@@ -24,7 +24,7 @@ export default function Gallery() {
     700: 3,
     500: 2,
   };
-  console.info(stylesArtwork);
+
   return (
     <section className="gallery">
       <section className="header-gallery">
