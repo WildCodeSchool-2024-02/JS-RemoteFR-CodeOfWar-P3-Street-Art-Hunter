@@ -55,7 +55,7 @@ class UserRepository extends AbstractRepository {
 
   async updatePassword(user) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} set hashed_password = ? where id = ?`,
+      `UPDATE ${this.table} SET hashed_password = ? where id = ?`,
       [user.hashed_password, user.id]
     );
     return result.affectedRows;
