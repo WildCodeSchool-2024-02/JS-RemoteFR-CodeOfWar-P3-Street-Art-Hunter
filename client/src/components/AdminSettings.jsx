@@ -90,10 +90,10 @@ function Users({ users }) {
     </section>
   );
 }
-function Contact() {
-  return <h1>Coucou de contact</h1>;
+function Version() {
+  return <p>Version 1.5</p>;
 }
-export { Validation, Users, Contact };
+export { Validation, Users, Version };
 
 Validation.propTypes = {
   artworks: PropTypes.arrayOf(
