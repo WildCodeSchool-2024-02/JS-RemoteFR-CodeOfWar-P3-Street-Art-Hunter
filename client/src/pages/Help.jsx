@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Règles, Licence, Contact } from "../components/Helpers";
 
@@ -6,6 +6,7 @@ import "../styles/styleHelp.css";
 
 export default function Help() {
   const [isActive, setIsActive] = useState("Règles");
+  const [isVisibled, setIsVisibled] = useState(false);
 
   const helpers = [
     { name: "Règles" },
@@ -22,10 +23,14 @@ export default function Help() {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => setIsVisibled(true), 500);
+  }, []);
+
   return (
     <section className="helpContainer">
       <div className="helpHeader">
-        <h1 className="helpTitle">Helper</h1>
+        <h1 className={isVisibled ? "helpTitle show" : "helpTitle"}>Aide</h1>
         <div className="helpersContainer">
           {helpers.map((help) => (
             <button

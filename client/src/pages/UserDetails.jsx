@@ -23,17 +23,23 @@ export default function UserDetails() {
   return (
     <section className="userGestion">
       <Link to="/gestion" className="gestionReturn">
-        Retour à la page gestion
+        ⬅
       </Link>
       <div className="userGestionBody">
-        <img src={user.avatar} alt={user.pseudo} className="userImage" />
+        <img
+          src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${user.avatar}`}
+          alt={user.pseudo}
+          className="userImage"
+        />
 
         <div className="userGestion_form">
           <ul>
             <li>
               <span className="title-font">Pseudo </span>: {user.pseudo}
             </li>
-
+            <li>
+              <span className="title-font">Email </span>: {user.mail}
+            </li>
             <li>
               <span className="title-font">Date d'inscription </span>:{" "}
               {frenchDate(user.registration_date)}
@@ -45,7 +51,6 @@ export default function UserDetails() {
         </div>
         <GradientButton
           text="Supprimer le compte de l'utilisateur"
-          type="submit"
           onClick={handleDeleteUser}
         />
         {isOpen && (

@@ -22,10 +22,11 @@ export default function Favorites() {
   return (
     <section className="favoriteContainer">
       <header>
-        <h1>Favoris</h1>
+        <h1>HuntBoard</h1>
         <p className="textFavorite">
           {" "}
-          {data && data.length}/{artworks.length} Street art trouvées !
+          {data && data.length}/{artworks.length} Street art trouvé
+          {data && data.length > 1 && "s"} !
         </p>
       </header>
       <div className="mansoryContainer">
@@ -41,7 +42,11 @@ export default function Favorites() {
                   favorite.artwork_id === artwork.id && (
                     <div key={artwork.id}>
                       <Link to={`/gallery/${artwork.id}`}>
-                        <img src={artwork.image_url} alt={artwork.title} />
+                        <img
+                          src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
+                          alt={artwork.title}
+                          className="imgFavorites"
+                        />
                       </Link>
                     </div>
                   )

@@ -3,29 +3,48 @@ import PropTypes from "prop-types";
 
 import GradientButton from "./GradientButton";
 import useScreenWidth from "../utils/hook/useScreenWidth";
-import { getCityName, postFavorites, updateScore } from "../services/request";
+import { UserInfoContext } from "../services/context/UserInfoContext";
+import {
+  getCityName,
+  getFavorites,
+  postFavorites,
+  updateScore,
+} from "../services/request";
 import { frenchDate } from "../utils/function";
 
 import "../styles/styleArtworkDetail.css";
-import { UserInfoContext } from "../services/context/UserInfoContext";
 
 export default function ArtworkDetails({ artwork, setArtworkDetails }) {
-  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}${artwork.image_url}`;
+  const artworkUrl = `${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`;
   const { userInfo } = useContext(UserInfoContext);
   const screenWidth = useScreenWidth();
   const [artworkLocation, setArtworkLocation] = useState();
+  const [favorites, setFavorites] = useState();
+  const [isAlreadyCheck, setIsAlreadyCheck] = useState(false);
 
   const HandleUpdateScore = () => {
     updateScore(userInfo.id, 100);
     postFavorites(artwork.id);
-    console.info(userInfo.id, artwork.id);
+    setIsAlreadyCheck(true);
   };
 
   useEffect(() => {
     if (artwork.lat) {
       getCityName(artwork.lat, artwork.lon, setArtworkLocation);
+      if (userInfo) {
+        getFavorites(userInfo.id, setFavorites);
+      }
     }
-  }, [artwork.lat, artwork.lon]);
+  }, [artwork.lat, artwork.lon, userInfo]);
+
+  useEffect(() => {
+    if (favorites) {
+      const artworkCheck = favorites.some(
+        (favorite) => favorite.artwork_id === artwork.id
+      );
+      setIsAlreadyCheck(artworkCheck);
+    }
+  }, [favorites]);
   return (
     <section className="detailsContaineur">
       <div className="detailsContain">
@@ -45,9 +64,9 @@ export default function ArtworkDetails({ artwork, setArtworkDetails }) {
               )}
             </p>
           </div>
-          {screenWidth < 480 && userInfo && (
+          {screenWidth < 480 && userInfo && !isAlreadyCheck && (
             <div className="btnPointsElement">
-              <GradientButton text="✔︎" onClick={HandleUpdateScore} />
+              <GradientButton text="+" onClick={HandleUpdateScore} />
             </div>
           )}
           <p className="detailsDescription">{artwork.description}</p>

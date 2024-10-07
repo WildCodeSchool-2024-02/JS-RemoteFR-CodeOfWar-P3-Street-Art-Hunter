@@ -18,7 +18,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const user = useLoaderData();
 
-  const avatarUrl = `${import.meta.env.VITE_API_AVATAR}/${user.avatar}`;
+  const avatarUrl = `${import.meta.env.VITE_API_URL_PICTURE}/avatars/${user.avatar}`;
 
   const handleLogout = async () => {
     await deleteCookie();
@@ -42,7 +42,7 @@ export default function Profile() {
         <h1 id="grid-item">Profil</h1>
         {userInfo && screenWidth > 480 && (
           <Link to={`/favorites/${userInfo.id}`} className="btnFavorites">
-            Favoris
+            HuntBoard
           </Link>
         )}
         <section className="profilSection">
@@ -58,7 +58,7 @@ export default function Profile() {
               <p>{user.score}Pts</p>
             </div>
           </Link>
-          {user.isAdmin && screenWidth < 480 && (
+          {user.isAdmin === 1 && screenWidth < 480 && (
             <Link to="/gestion">
               <button type="button" className="adminBtn">
                 Gestion

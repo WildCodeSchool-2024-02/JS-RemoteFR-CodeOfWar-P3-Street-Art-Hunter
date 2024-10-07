@@ -17,6 +17,11 @@
   height: 80vh;
   overflow: scroll;
 }
+.imgFavorites {
+  min-height: 200px;
+  max-height: 400px;
+  width: 100%;
+}
 
 @media (width >= 480px) {
   .favoriteContainer > header {

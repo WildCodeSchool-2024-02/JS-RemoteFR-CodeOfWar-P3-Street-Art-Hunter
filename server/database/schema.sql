@@ -8,7 +8,7 @@ CREATE TABLE user (
     hashed_password VARCHAR(255) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
     registration_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    avatar VARCHAR(255) DEFAULT 'https://picsum.photos/id/237/200/300'
+    avatar VARCHAR(255) DEFAULT 'defaultAvatar.png'
 );
 
 INSERT INTO
@@ -19,8 +19,7 @@ INSERT INTO
         mail,
         score,
         hashed_password,
-        isAdmin,
-        avatar
+        isAdmin
     )
 VALUES (
         'Rossignol',
@@ -29,8 +28,7 @@ VALUES (
         'alex@gmail.com',
         3200,
         'Monpassword',
-        TRUE,
-        'https://cdn-icons-png.freepik.com/256/3530/3530467.png?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
+        TRUE
     ),
     (
         'Mored',
@@ -39,9 +37,8 @@ VALUES (
         'charrl@gmail.com',
         3150,
         'Monpassword1',
-        TRUE,
-        'https://img.freepik.com/psd-gratuit/illustration-3d-personne-lunettes-soleil_23-2149436178.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
-    ),
+        TRUE
+  ),
     (
         'Mare',
         'rosa',
@@ -49,9 +46,8 @@ VALUES (
         'rosa@gmail.com',
         3980,
         'Monpassword2',
-        TRUE,
-        'https://img.freepik.com/photos-premium/simple-sourire-homme-heureux-portrait-numerique-arriere-plan-rouge-vif_96461-13322.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
-    ),
+        TRUE
+   ),
     (
         'Mire',
         'davido',
@@ -59,8 +55,7 @@ VALUES (
         'davido@gmail.com',
         2980,
         'Monpassword3',
-        TRUE,
-        'https://img.freepik.com/psd-gratuit/illustration-3d-personne-lunettes_23-2149436190.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
+        TRUE
     ),
     (
         'lopez',
@@ -69,8 +64,7 @@ VALUES (
         'lolo@gmail.com',
         4020,
         'Monpassword9',
-        FALSE,
-        'https://img.freepik.com/photos-premium/elevez-votre-marque-avatar-amical-qui-reflete-professionnalisme-ideal-pour-directeurs-ventes_1283595-18531.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
+        FALSE
     ),
     (
         'Rous',
@@ -79,15 +73,14 @@ VALUES (
         'age@gmail.com',
         200,
         'Monpassword7',
-        FALSE,
-        'https://img.freepik.com/psd-gratuit/rendu-3d-du-personnage-avatar_23-2150611746.jpg?uid=R159916031&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'
+        FALSE
     ),
-    ('Luna', 'Smith', 'lunaSmith', 'luna.smith@gmail.com', 20, 'LunaPass8', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-fille-moderne_23-2150611791.jpg?uid=R159916036&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
-('Max', 'Johnson', 'max33', 'max.johnson@gmail.com', 3450, 'MaxPass9', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-homme-jeune_23-2150611867.jpg?uid=R159916037&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
-('Eva', 'Brown', 'ev1bro', 'eva.brown@gmail.com', 1980, 'EvaPass10', FALSE, 'https://img.freepik.com/psd-gratuit/avatar-femme-petite_23-2150611972.jpg?uid=R159916039&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
-('Leo', 'Davis', 'le22vis', 'leo.davis@gmail.com', 4790, 'LeoPass11', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-homme-casual_23-2150612034.jpg?uid=R159916041&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
-('Nina', 'Wilson', 'ninson', 'nina.wilson@gmail.com', 2350, 'NinaPass12', TRUE, 'https://img.freepik.com/psd-gratuit/avatar-femme-mode_23-2150612089.jpg?uid=R159916043&ga=GA1.1.11097458.1723198447&semt=ais_hybrid'),
-('Oli', 'Martin', 'omartin', 'oli.martin@gmail.com', 520, 'OliPass13', FALSE, 'https://img.freepik.com/psd-gratuit/avatar-homme-sportif_23-2150612112.jpg?uid=R159916045&ga=GA1.1.11097458.1723198447&semt=ais_hybrid');
+    ('Luna', 'Smith', 'lunaSmith', 'luna.smith@gmail.com', 20, 'LunaPass8', TRUE ),
+('Max', 'Johnson', 'max33', 'max.johnson@gmail.com', 3450, 'MaxPass9', TRUE),
+('Eva', 'Brown', 'ev1bro', 'eva.brown@gmail.com', 1980, 'EvaPass10', FALSE ),
+('Leo', 'Davis', 'le22vis', 'leo.davis@gmail.com', 4790, 'LeoPass11', TRUE ),
+('Nina', 'Wilson', 'ninson', 'nina.wilson@gmail.com', 2350, 'NinaPass12', TRUE),
+('Oli', 'Martin', 'omartin', 'oli.martin@gmail.com', 520, 'OliPass13', FALSE);
 
 CREATE TABLE style (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -183,7 +176,7 @@ VALUES
             "Fresque RATP / Notorious Brand",
             49.02247188289743,
             2.336812028069045,
-            "/artwork_rencontreFurtive.jpg",
+            "artwork_rencontreFurtive.jpg",
             "Graffmatt",
             1,
             3,
@@ -194,7 +187,7 @@ VALUES
             "Fresque créée dans le cadre du Caps festival organisé par l'association Co42 en parteneriat avec rentingArt et la ville de Clichy.",
            49.04061964902911,
            2.3368132467285405,
-            "/artwork_ciclope.jpeg",
+            "artwork_ciclope.jpeg",
             "Caps Festival",
             1,
             3,
@@ -205,18 +198,7 @@ VALUES
             "amazing sticker",
            49.04061964902911,
            2.3368132467285405,
-            "/artwork_interdit.jpg",
-            "Clet Abraham",
-            1,
-            4,
-            2
-        ),
-                        (
-            "Revenge of the prohibition",
-            "amazing sticker",
-           49.04061964902911,
-           2.3368132467285405,
-            "",
+            "artwork_interdit.jpg",
             "Clet Abraham",
             1,
             4,
@@ -238,7 +220,7 @@ VALUES
         "Utilisation de collage et de papier pour créer des œuvres éphémères sur les murs.",
         48.8655,
         2.3212,
-        "/artwork_wheatpaste.webp",
+        "artwork_wheatpaste.webp",
         "Various Artists",
         1,
         5,
@@ -249,7 +231,7 @@ VALUES
         "Murs décorés avec des motifs de pixel art, inspirés par le rétro gaming.",
         48.865000,
         2.360000,
-        "/artwork_pixel.webp",
+        "artwork_pixel.webp",
         "Invader",
         1,
         8,
@@ -260,7 +242,7 @@ VALUES
         "Un mural vivant dans une rue connue pour son street art à Paris.",
         48.8668,
         2.3695,
-        "/artwork_denoyez.jpeg",
+        "artwork_denoyez.jpeg",
         "Various Artists",
         1,
         3,
@@ -271,7 +253,7 @@ VALUES
         "Murs décorés avec des motifs de pixel art, inspirés par le rétro gaming.",
         48.857000,
         2.357000,
-        "/artwork_pixel2.webp",
+        "artwork_pixel2.webp",
         "Invader",
         1,
         8,
@@ -281,7 +263,7 @@ VALUES
 "Oeuvre du célèbre Monsieur Chat",
 48.8867,
 2.3431,
-"/artwork_monsieurChat.jpg",
+"artwork_monsieurChat.jpg",
 "Thoma Vuille (M. Chat)",
 1,
 1,
@@ -291,12 +273,126 @@ VALUES
 "Un yarn bombing géant représentant la Seine et ses ponts en laine colorée.",
 48.8566,
 2.3522, 
-"/artwork_yarnBombing2.webp",
+"artwork_yarnBombing2.webp",
 "Magda Sayeg",
 1,
 9,
 6
+),
+("Belle mosaïque",
+"Mosaïque réalisée par le célèbre artiste norvégien Ememem",
+43.27532137810824,
+5.360504307848718,
+"artwork_mosaique.jpg",
+"Ememem",
+1,
+8,
+7
+),
+("Nûdem Durak",
+"Le peintre français Mahn Kloix vient d'achever une nouvelle fresque dans les rues de Marseille.",
+43.291213883290716,
+5.387537039313701,
+"artwork_muralMarseille.jpg",
+"Mahn Kloix",
+1,
+3,
+7
+),
+("Astro",
+"Superbe oeuvre 3D située à l'entrée du building Totem",
+43.30641822935788,
+5.367925273443503,
+"artwork_3D.jpg",
+"Unknown",
+1,
+6,
+8
+),
+("Manifestation ! les chats se rebellent !",
+"Oeuvre du célèbre Monsieur Chat",
+43.29360762493197,
+5.384264950801516,
+"artwork_monsieurChat2.jpg",
+"Thoma Vuille (M. Chat)",
+1,
+1,
+8
+),
+("Man vs wild",
+"2 grands artistes réunis pour un magnifique mural dans les rues de la cité fosséenne",
+43.29469316180753,
+5.383722162987219,
+"artwork_marseille.jpg",
+"Mahn Kloix, Giuseppe Gütan",
+1,
+3,
+8
+),
+ (
+        'Fluo',
+        'Une œuvre de street art vibrante capturée dans les rues de Bordeaux.',
+        44.8378,
+        -0.5792,
+        'artwork_bordeaux.webp',
+        'ArtStudent',
+        1,
+        3,
+        6
+    ),
+    (
+        'Maison rénovée',
+        'Une fresque murale saisissante trouvée à Roanne.',
+        46.0343,
+        4.0744,
+        'artwork_roanne.webp',
+        'Bombographe',
+        1,
+        3,
+        6
+    ),
+    ("L'Appel",
+"Super Bourdi",
+46.15834208033365,
+-1.149851850450287,
+"artwork_LR1.jpg",
+"Super Bourdi",
+1,
+5,
+9
+)
+,
+    ("JACE",
+"Œuvre d'art de JACE, rendue possible par l'association Lord.
+2022.",
+46.148886344260646,
+-1.1553362126202626,
+"artwork_LR2.jpg",
+"JACE",
+1,
+3,
+9
+),
+    ("Pota",
+"Un coléoptère de Pota.",
+46.159929699716564,
+-1.1499766457765002,
+"artwork_LR3.jpg",
+"Pota",
+1,
+5,
+9
 );
+-- ("",
+-- "",
+-- ,
+-- ,
+-- "",
+-- "",
+-- 1,
+-- ,
+-- 7
+-- );
       
 
 CREATE TABLE favorite (

@@ -1,53 +1,54 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { updateUser } from "../services/request";
+import { updateUser, updatePasswordUser } from "../services/request";
 
 import "../styles/profile.css";
 import Pen from "../assets/images/profil_pen.svg";
 import Valid from "../assets/images/profil_valid.svg";
 
 export default function ProfileForm({ userDetail }) {
-  const [editField, setEditField] = useState(null);
+  const [editField, setEditField] = useState("");
   const [formDetail, setFormDetail] = useState({
     lastname: userDetail.lastname,
     firstname: userDetail.firstname,
     pseudo: userDetail.pseudo,
     mail: userDetail.mail,
-    password: userDetail.password,
     avatar: userDetail.avatar,
-    id: userDetail.id,
   });
-  const [file, setFile] = useState(null);
+  const [passwordDetail, setPasswordDetail] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     if (name === "avatar") {
-      setFile(e.target.files[0]);
-      setFormDetail({ ...formDetail, [name]: e.target.files[0].name });
+      setFormDetail({ ...formDetail, avatar: files[0] });
     } else {
       setFormDetail({ ...formDetail, [name]: value });
     }
+  };
+  const handleSavePassword = () => {
+    updatePasswordUser(userDetail.id, passwordDetail);
+    setEditField("");
   };
 
   const handleEdit = (field) => {
     setEditField(field);
   };
 
-  const handleSave = async () => {
-    const userData = { ...formDetail };
-    if (file) {
-      userData.avatar = file;
-    }
-    await updateUser(userDetail.id, userData);
-    setEditField(null);
+  const handleSave = () => {
+    updateUser(userDetail.id, formDetail);
+    setEditField("");
   };
 
   return (
     <>
-      <div className="profileField">
+      <div
+        className={
+          editField === "lastname" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="lastname">Nom</label>
         {editField === "lastname" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="text"
               id="lastname"
@@ -76,10 +77,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "firstname" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="firstname">Prénom</label>
         {editField === "firstname" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="text"
               id="firstname"
@@ -108,10 +113,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "pseudo" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="pseudo">Pseudo</label>
         {editField === "pseudo" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="text"
               id="pseudo"
@@ -140,10 +149,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "mail" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="mail">Email</label>
         {editField === "mail" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="email"
               id="mail"
@@ -172,22 +185,22 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "password" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="password">Mot de passe</label>
         {editField === "password" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="password"
               id="password"
               name="password"
-              value={formDetail.password}
-              onChange={handleChange}
+              value={passwordDetail.password}
+              onChange={(e) => setPasswordDetail(e.target.value)}
             />
-            <button
-              type="button"
-              className="btn"
-              onClick={() => handleSave("password")}
-            >
+            <button type="button" className="btn" onClick={handleSavePassword}>
               <img src={Valid} alt="valider" />
             </button>
           </div>
@@ -204,10 +217,14 @@ export default function ProfileForm({ userDetail }) {
           </div>
         )}
       </div>
-      <div className="profileField">
+      <div
+        className={
+          editField === "avatar" ? "profileField inpSelect" : "profileField"
+        }
+      >
         <label htmlFor="avatar">Avatar</label>
         {editField === "avatar" ? (
-          <div className="valid">
+          <div className="editSlect">
             <input
               type="file"
               id="avatar"
@@ -231,8 +248,7 @@ export default function ProfileForm({ userDetail }) {
             >
               <img src={Pen} alt="modifier" />
             </button>
-
-            <img src={formDetail.avatar} alt="Avatar" className="avatarEdit" />
+            <p>Télécharger un fichier</p>
           </div>
         )}
       </div>

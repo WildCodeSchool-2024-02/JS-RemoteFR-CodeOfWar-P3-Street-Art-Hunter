@@ -1,33 +1,21 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Masonry from "react-masonry-css";
-import myAxios from "../services/instanceAxios";
-import nothingNow from "../assets/images/nothingNow.svg";
 
+import { getArtworksByStyle } from "../services/request";
+import nothingNow from "../assets/images/nothingNow.svg";
 import "../styles/gallery.css";
 
 export default function Gallery() {
   const { artworkList, styleArtwork } = useLoaderData();
 
-  const data = artworkList;
-  const styles = styleArtwork;
-
-  const [stylesArtwork, setStylesArtwork] = useState({
-    style_id: "",
-  });
-
-  const handleChangeFilter = (event) => setStylesArtwork(event.target.value);
-
+  const [stylesArtwork, setStylesArtwork] = useState(null);
   const [artworks, setArtworks] = useState();
+  const [isVisibled, setIsVisibled] = useState(false);
 
-  const getArtworks = (style) => {
-    myAxios
-      .get(stylesArtwork.length > 0 ? `/artworks?q=${style}` : "/artworks")
-      .then((response) => setArtworks(response.data))
-      .catch((error) => console.error(error));
-  };
   useEffect(() => {
-    getArtworks(parseInt(stylesArtwork, 10));
+    getArtworksByStyle(stylesArtwork, setArtworks);
+    setTimeout(() => setIsVisibled(true), 500);
   }, [stylesArtwork]);
 
   const breakpointColumnsObj = {
@@ -40,25 +28,31 @@ export default function Gallery() {
   return (
     <section className="gallery">
       <section className="header-gallery">
-        <h1>Galerie</h1>
-        <label>
-          {" "}
-          <select
-            name="style_id"
-            onChange={handleChangeFilter}
-            value={stylesArtwork.style_id}
+        <h1 className={isVisibled && "show"}>Galerie</h1>
+        <div>
+          <button
+            type="button"
+            className={!stylesArtwork ? "chip chipActive" : "chip"}
+            onClick={() => setStylesArtwork()}
           >
-            <option value="">Filtres</option>
-            {styles?.map((style) => (
-              <option key={style.id} value={style.id}>
-                {style.name}
-              </option>
-            ))}
-          </select>
-        </label>
+            Tous
+          </button>
+          {styleArtwork?.map((style) => (
+            <button
+              type="button"
+              key={style.id}
+              className={
+                stylesArtwork === style.id ? "chip chipActive" : "chip"
+              }
+              onClick={() => setStylesArtwork(style.id)}
+            >
+              {style.name}
+            </button>
+          ))}
+        </div>
       </section>
       <section className="body-gallery">
-        {data.length === 0 ? (
+        {artworkList.length === 0 ? (
           <div className="nothing">
             <img src={nothingNow} alt="Pas d'artwork" />
             <p>Aucune oeuvre pour le moment</p>
@@ -80,7 +74,10 @@ export default function Gallery() {
               artworks?.map((artwork) => (
                 <div key={artwork.id}>
                   <Link to={`/gallery/${artwork.id}`}>
-                    <img src={artwork.image_url} alt={artwork.title} />
+                    <img
+                      src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
+                      alt={artwork.title}
+                    />
                   </Link>
                 </div>
               ))

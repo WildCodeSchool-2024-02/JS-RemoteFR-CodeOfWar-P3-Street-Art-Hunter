@@ -1,6 +1,10 @@
 import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { updateArtwork, deleteArtwork } from "../services/request";
+import {
+  updateArtwork,
+  deleteArtwork,
+  deleteFavorite,
+} from "../services/request";
 import GradientButton from "../components/GradientButton";
 
 import "../styles/gestionDetails.css";
@@ -12,6 +16,13 @@ export default function GestionDetails() {
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState("");
+  const filterStyle = styles.find((style) => {
+    if (style.name === artwork.style) {
+      return style;
+    }
+    return null;
+  });
+
   const [modified, setModified] = useState({
     title: artwork.title,
     description: artwork.description,
@@ -20,8 +31,7 @@ export default function GestionDetails() {
     lon: artwork.lon,
     image_url: `${artwork.image_url}`,
     author: artwork.author,
-    style_id: artwork.style_id,
-    user_id: 1,
+    style_id: filterStyle.id,
   });
 
   const sendCredentialsForUpdate = async (event) => {
@@ -43,6 +53,7 @@ export default function GestionDetails() {
   };
 
   const handleDeleteArtwork = async () => {
+    await deleteFavorite(artwork.id);
     await deleteArtwork(artwork.id);
     setIsOpen("delete");
     setTimeout(() => {
@@ -54,17 +65,27 @@ export default function GestionDetails() {
   return (
     <section className="gestionDetails">
       <Link to="/gestion" className="gestionReturn">
-        Retour à la page gestion
+        ⬅
       </Link>
       <div className="gestionDetailsBody">
         <img
-          src={artwork.image_url}
+          src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
           alt={artwork.title}
           className="detailImage"
         />
         <form>
           <div className="gestion_form">
             <ul>
+              <div className="gestion_form">
+                <li>
+                  <span className="title-font">Pseudo du joueur </span>:{" "}
+                  {artwork.pseudo}
+                </li>
+              </div>
+              <li>
+                <span className="title-font">Date de création </span> :{" "}
+                {frenchDate(artwork.create_date)}
+              </li>
               <li>
                 <span className="title-font">Auteur </span>: {artwork.author}
                 <label htmlFor="Auteur">Modification de l'auteur</label> <br />
@@ -78,12 +99,6 @@ export default function GestionDetails() {
                   />
                 </div>
               </li>
-              <div className="gestion_form">
-                <li>
-                  <span className="title-font">Pseudo du joueur </span>:{" "}
-                  {artwork.pseudo}
-                </li>
-              </div>
               <li>
                 <span className="title-font">Titre </span>: {artwork.title}
                 <label htmlFor="Title">Modification du titre</label> <br />
@@ -113,11 +128,6 @@ export default function GestionDetails() {
                     onChange={handleChangeArtwork}
                   />{" "}
                 </div>
-              </li>
-
-              <li>
-                <span className="title-font">Date de création </span> :{" "}
-                {frenchDate(artwork.create_date)}
               </li>
               <li>
                 <span className="title-font">Style </span>: {artwork.style}{" "}
@@ -150,7 +160,6 @@ export default function GestionDetails() {
           {isOpen === "modified" && (
             <p className="deleteUser"> L'arwork a bien été modifié </p>
           )}
-          <hr className="connection_separator" />
           <GradientButton
             text="Supprimer l'oeuvre"
             type="submit"

@@ -7,7 +7,7 @@ import { UserInfoContext } from "../../services/context/UserInfoContext";
 export default function NavBarDesktop() {
   const { userInfo } = useContext(UserInfoContext);
 
-  const [isActive, setIsActive] = useState("Acceuil");
+  const [isActive, setIsActive] = useState("Accueil");
 
   const pathArray = [
     { path: "/", name: "Accueil" },

@@ -24,7 +24,6 @@ const { findCity } = require("./services/findCity");
 
 //  ** USERS ** \\
 router.get("/users", users.browse);
-router.get("/users/ranking", ranking.browse);
 router.get("/users/:id", users.read);
 router.post(
   "/users",
@@ -34,6 +33,14 @@ router.post(
   users.add
 );
 router.put("/users/:id", upload.uploadPicture, users.edit);
+router.put(
+  "/passwordUsers/:id",
+  verifyMiddleware.verifyPassword,
+  auth.verifyToken,
+  auth.hashPassword,
+  users.editPassword
+);
+// router.put("/passwordUsers/:id", auth.verifyToken, compareLogin, auth.hashPassword, users.editPassword); **Secure Path**
 router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\
@@ -67,7 +74,7 @@ router.put("/favorites/:id", favorites.edit);
 router.delete("/favorites/:id", favorites.destroy);
 
 // ** RANKING - SCORE ** \\
-
+router.get("/ranking/users", ranking.browse);
 router.put("/score/:id", users.editScore);
 
 // ** LOGIN - LOGOUT ** \\

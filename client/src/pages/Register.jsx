@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import myAxios from "../services/instanceAxios";
+import { postUser } from "../services/request";
 import "../styles/register.css";
 import logo from "../assets/images/logo_streetArt.svg";
 import openEyes from "../assets/images/openEyes.svg";
@@ -15,25 +15,22 @@ export default function Register() {
     mail: "",
     password: "",
   });
+  const [isOpen, setIsOpen] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [seePassword, setSeePassword] = useState(false);
   const [seeConfirmPassword, setSeeConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
-  const sendCredentials = (event) => {
+  const sendCredentials = async (event) => {
     event.preventDefault();
     if (userRegistration.password === confirmPassword) {
-      myAxios
-        .post("/users", userRegistration, { withCredentials: true })
-        .then((response) => {
-          console.info(response);
-          window.alert("Votre compte a bien été crée.");
-          navigate("/connection");
-        })
-        .catch((error) => console.error(error));
-    } else {
-      window.alert("Les deux mots de passe sont différents!!");
+      await postUser(userRegistration);
+      setIsOpen("userRegistration");
+      setTimeout(() => {
+        setIsOpen("");
+        navigate("/connection");
+      }, 2000);
     }
   };
 
@@ -144,6 +141,9 @@ export default function Register() {
               type="submit"
               onClick={sendCredentials}
             />
+            {isOpen === "userRegistration" && (
+              <p className="deleteUser"> Votre compte a bien été crée </p>
+            )}
           </div>
           <p className="linkRegister">
             Déjà un compte ?{" "}
