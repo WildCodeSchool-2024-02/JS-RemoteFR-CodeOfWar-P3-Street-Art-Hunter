@@ -27,16 +27,16 @@ VALUES (
         'RossAlex0',
         'alex@gmail.com',
         3200,
-        'Monpassword',
+        '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o',
         TRUE
     ),
     (
         'Mored',
         'charlotte',
-        'ChachaDtr',
+        'Chacha17',
         'charrl@gmail.com',
         3150,
-        'Monpassword1',
+        '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o',
         TRUE
   ),
     (
@@ -45,16 +45,16 @@ VALUES (
         'Roro',
         'rosa@gmail.com',
         3980,
-        'Monpassword2',
+        '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o',
         TRUE
    ),
     (
         'Mire',
         'davido',
-        'Dada',
+        'DavidO',
         'davido@gmail.com',
         2980,
-        'Monpassword3',
+        '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o',
         TRUE
     ),
     (
@@ -63,7 +63,7 @@ VALUES (
         'lolo',
         'lolo@gmail.com',
         4020,
-        'Monpassword9',
+        '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o',
         FALSE
     ),
     (
@@ -72,15 +72,15 @@ VALUES (
         'ag',
         'age@gmail.com',
         200,
-        'Monpassword7',
+        '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o',
         FALSE
     ),
-    ('Luna', 'Smith', 'lunaSmith', 'luna.smith@gmail.com', 20, 'LunaPass8', TRUE ),
-('Max', 'Johnson', 'max33', 'max.johnson@gmail.com', 3450, 'MaxPass9', TRUE),
-('Eva', 'Brown', 'ev1bro', 'eva.brown@gmail.com', 1980, 'EvaPass10', FALSE ),
-('Leo', 'Davis', 'le22vis', 'leo.davis@gmail.com', 4790, 'LeoPass11', TRUE ),
-('Nina', 'Wilson', 'ninson', 'nina.wilson@gmail.com', 2350, 'NinaPass12', TRUE),
-('Oli', 'Martin', 'omartin', 'oli.martin@gmail.com', 520, 'OliPass13', FALSE);
+    ('Luna', 'Smith', 'lunaSmith', 'luna.smith@gmail.com', 20, '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o', TRUE ),
+('Max', 'Johnson', 'max33', 'max.johnson@gmail.com', 3450, '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o', TRUE),
+('Eva', 'Brown', 'ev1bro', 'eva.brown@gmail.com', 1980, '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o', FALSE ),
+('Leo', 'Davis', 'le22vis', 'leo.davis@gmail.com', 4790, '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o', TRUE ),
+('Nina', 'Wilson', 'ninson', 'nina.wilson@gmail.com', 2350, '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o', TRUE),
+('Oli', 'Martin', 'omartin', 'oli.martin@gmail.com', 520, '$argon2id$v=19$m=19456,t=2,p=1$Lq8/SzHuxzt+acVYf1J1Yg$0Kx7uitAzrz1RN/ZNoxFxOcowa7YgyiBN9VjuPNN12o', FALSE);
 
 CREATE TABLE style (
     id INT PRIMARY KEY AUTO_INCREMENT,
