@@ -1,0 +1,91 @@
+.register {
+  background-image: url("../assets/images/backgroundOnboarding.svg");
+  background-size: "cover";
+  background-position: "center";
+  height: 100vh;
+  width: 100%;
+  padding-inline: 1rem;
+}
+
+.registerLogo {
+  width: 100%;
+}
+.register > form {
+  margin-top: -2rem;
+}
+.register_form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.register_form > input {
+  padding: 0.7rem;
+  border: 1px #aeaeae solid;
+  border-radius: 12px;
+  font-weight: bolder;
+  margin-bottom: 0.2rem;
+}
+.eyes {
+  position: absolute;
+  right: 1rem;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.register_form button {
+  background-color: white;
+  border: 1px solid white;
+  color: white;
+}
+
+.InscriptionLink {
+  text-decoration: underline;
+  color: inherit;
+}
+.linkRegister {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.register #gradientButton {
+  margin: 1rem 0 1rem 0;
+}
+@media (width >= 480px) {
+  .registerContainer {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/images/backgroundOnboarding.svg");
+    background-size: cover;
+    background-position: center;
+  }
+  .registerLogo {
+    width: 60%;
+    margin: -2rem auto 0 auto;
+  }
+  .register {
+    height: 80%;
+    width: 30%;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border: 2px solid var(--grey);
+    border-radius: 24px;
+    box-shadow: 0 0 8px 4px var(--grey);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+  }
+  .register #gradientButton {
+    margin: 0.5rem 0;
+    padding: 0.7rem;
+  }
+}

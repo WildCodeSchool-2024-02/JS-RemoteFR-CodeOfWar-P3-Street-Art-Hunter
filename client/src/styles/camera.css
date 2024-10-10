@@ -1,0 +1,175 @@
+.bigcontainer {
+  height: 100vh;
+  width: 100%;
+}
+
+.form_camera {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.form_container_picture {
+  width: 100%;
+  height: 35vh;
+  border-radius: 0px 0px 40px 40px;
+  background-image: url("../assets/images/streetBg.webp");
+  background-position: bottom;
+}
+
+.form_file_upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 170px;
+}
+
+.start_camera {
+  all: unset;
+}
+
+.inputContainerCamera {
+  width: 100%;
+  height: 60vh;
+  padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.inputContainerCamera > #gradientButton {
+  margin-top: 1rem;
+}
+#cameraTitle {
+  padding-block: 0.5rem 0;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out opacity 0.5s ease-out;
+}
+.form_custom_file_label {
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  border: 1px solid #fff;
+}
+
+.picture_camera {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.picture_upload {
+  all: unset;
+}
+
+label {
+  font-size: 0.7rem;
+  color: #aeaeae;
+  font-weight: 700;
+  position: relative;
+  top: 0.4rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #ffffff;
+  width: fit-content;
+}
+
+.inputContainerCamera > input,
+.inputContainerCamera > textarea,
+.inputContainerCamera > select {
+  padding: 11px 10px;
+  border: 1px #aeaeae solid;
+  border-radius: 4px;
+  color: #666666;
+  font-weight: bolder;
+}
+
+.form_camera > textarea {
+  margin-bottom: 2rem;
+  min-height: 150px;
+}
+
+.dialog_camera > dialog {
+  all: unset;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 70vh;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid black;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.take_a_picture {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.take_a_picture:hover {
+  opacity: 70%;
+}
+
+.take_a_picture > img {
+  width: 7rem;
+}
+
+.picture_Captured {
+  width: 100%;
+  height: 35vh;
+  border-radius: 0px 0px 40px 40px;
+  object-fit: cover;
+}
+
+.container_picture_captured {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  z-index: 1;
+}
+.cameraPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  border-radius: 24px;
+  background-color: #40e0c3;
+  z-index: 3;
+}
+
+.show {
+  animation: containerSlide 0.5s forwards;
+}
+
+@keyframes containerSlide {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

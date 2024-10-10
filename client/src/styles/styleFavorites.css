@@ -1,0 +1,33 @@
+.favoriteContainer {
+  height: 100vh;
+  width: 100%;
+  padding: 1rem;
+}
+.favoriteContainer > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.textFavorite {
+  font-family: var(--main-font);
+  color: var(--grey);
+  border-bottom: 1px solid var(--primary-color);
+}
+.mansoryContainer {
+  height: 80vh;
+  overflow: scroll;
+}
+.imgFavorites {
+  min-height: 200px;
+  max-height: 400px;
+  width: 100%;
+}
+
+@media (width >= 480px) {
+  .favoriteContainer > header {
+    margin-top: 5rem;
+  }
+  .favoriteContainer > header > p {
+    margin-right: 20vw;
+  }
+}

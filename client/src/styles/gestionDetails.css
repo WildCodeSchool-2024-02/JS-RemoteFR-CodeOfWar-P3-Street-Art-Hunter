@@ -1,0 +1,100 @@
+.gestionReturn {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  font-size: 28px;
+  color: var(--primary-color);
+}
+.userGestion > .userGestionBody {
+  margin-top: -0.5rem;
+}
+.gestionDetails {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+h1 {
+  font-family: var(--title-font);
+  font-size: 2rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.detailImage {
+  height: 25vh;
+  width: 100%;
+  border-radius: 24px 24px 24px 24px;
+}
+
+.gestionDetailsBody {
+  padding: 1rem;
+  height: 100%;
+  overflow: scroll;
+  padding-bottom: 10rem;
+  font-family: var(--main-font);
+}
+.gestionDetailsBody li {
+  list-style-type: none;
+  padding-top: 1rem;
+}
+.title-font {
+  font-family: var(--title-font);
+  font-size: 1.3rem;
+  background: -webkit-linear-gradient(
+    110deg,
+    #ff743e 0%,
+    #ff374f 60%,
+    #ff0d5a 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gestion_form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.gestion_form > input {
+  padding: 0.2rem 1rem;
+  border: 1px #aeaeae solid;
+  border-radius: 12px;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
+.gestion_form label {
+  display: none;
+}
+.gestionButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.gestionButton > #gradientButton {
+  width: 35%;
+}
+@media (width >= 480px) {
+  .detailImage {
+    width: 100%;
+    object-fit: contain;
+  }
+  .gestionDetails {
+    padding-top: 5.5rem;
+  }
+  .gestion_form label {
+    display: flow;
+  }
+  .title-font {
+    font-size: 1.5rem;
+  }
+}
