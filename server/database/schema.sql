@@ -142,9 +142,9 @@ CREATE TABLE artwork (
     author VARCHAR(255),
     isValidated INT DEFAULT 0,
     style_id INT NOT NULL,
-    FOREIGN KEY (style_id) REFERENCES style (id),
+    FOREIGN KEY (style_id) REFERENCES style (id) ON DELETE CASCADE,
     user_id int NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE
 );
 
 INSERT INTO

@@ -37,6 +37,7 @@ export default function ProfileForm({ userDetail }) {
   const handleSave = () => {
     updateUser(userDetail.id, formDetail);
     setEditField("");
+    window.location.reload();
   };
 
   return (

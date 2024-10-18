@@ -26,7 +26,7 @@ export default function GestionDetails() {
   const [modified, setModified] = useState({
     title: artwork.title,
     description: artwork.description,
-    isValidated: 0,
+    isValidated: 1,
     lat: artwork.lat,
     lon: artwork.lon,
     image_url: `${artwork.image_url}`,

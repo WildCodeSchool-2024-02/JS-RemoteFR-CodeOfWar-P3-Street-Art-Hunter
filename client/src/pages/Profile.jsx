@@ -32,7 +32,7 @@ export default function Profile() {
     setIsOpen(true);
     setTimeout(() => {
       setIsOpen(false);
-      navigate("/register");
+      navigate("/connection");
     }, 2000);
   };
 

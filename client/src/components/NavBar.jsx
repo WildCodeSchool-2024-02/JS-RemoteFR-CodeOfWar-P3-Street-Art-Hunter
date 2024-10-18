@@ -66,7 +66,10 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="nav_picto">
-        <Link to="/camera" onClick={() => SetNavSelect("camera")}>
+        <Link
+          to={userInfo ? "/camera" : ""}
+          onClick={() => SetNavSelect("camera")}
+        >
           <img
             src={Camera}
             alt="Camera"
