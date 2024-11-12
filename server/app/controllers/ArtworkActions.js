@@ -60,7 +60,6 @@ const add = async (req, res, next) => {
 const edit = async (req, res, next) => {
   const artwork = { ...req.body.modified, id: req.params.id };
   try {
-    console.info(artwork);
     await tables.artwork.update(artwork);
     console.info("Artwork edited!!");
     res.sendStatus(204);
