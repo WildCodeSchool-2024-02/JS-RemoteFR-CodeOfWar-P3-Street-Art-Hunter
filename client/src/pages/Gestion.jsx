@@ -10,6 +10,7 @@ export default function Gestion() {
   const artworks = readArtwork;
   const users = readUsers;
   const allArtworks = readAllArtworks;
+  console.info(allArtworks);
 
   const [isActive, setIsActive] = useState("Validation");
 

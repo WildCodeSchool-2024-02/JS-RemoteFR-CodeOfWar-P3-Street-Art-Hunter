@@ -19,6 +19,14 @@ export function getValidated() {
     .then((response) => response.data)
     .catch((error) => console.error(error));
 }
+
+export function getAllArtworks() {
+  return myAxios
+    .get(`/artworks/admin`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+}
+
 export function getUserConnected(setter) {
   return myAxios
     .get("/checkLogin", { withCredentials: true })

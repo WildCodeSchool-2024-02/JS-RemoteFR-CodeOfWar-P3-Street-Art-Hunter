@@ -51,13 +51,25 @@ where ${this.table}.id = ?`,
     return rows;
   }
 
-  async readAllByAdmin() {
+  async readForAdminValidate() {
     const [rows] = await this.database.query(
       `SELECT artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, user.pseudo as pseudo
       FROM ${this.table}
       INNER JOIN style ON style.id = artwork.style_id
       INNER JOIN user ON user.id = artwork.user_id 
       WHERE artwork.isValidated = 0
+      GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, user.pseudo
+      ORDER BY artwork.create_date DESC`
+    );
+    return rows;
+  }
+
+  async readAllByAdmin() {
+    const [rows] = await this.database.query(
+      `SELECT artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name as style, user.pseudo as pseudo
+      FROM ${this.table}
+      INNER JOIN style ON style.id = artwork.style_id
+      INNER JOIN user ON user.id = artwork.user_id 
       GROUP BY artwork.id, artwork.title, artwork.description, artwork.image_url, artwork.author, artwork.isValidated, style.name, user.pseudo
       ORDER BY artwork.create_date DESC`
     );

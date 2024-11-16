@@ -45,7 +45,8 @@ router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\
 router.get("/artworks", artworks.browse);
-router.get("/artworks/validate", artworks.browseByAdmin);
+router.get("/artworks/validate", artworks.browseForAdminvalidate);
+router.get("/artworks/admin", artworks.browseByAdmin);
 router.get("/artworks/:id", artworks.read);
 router.get("/artworks/validate/:id", artworks.readByAdmin);
 router.post("/artworks", upload.uploadArtwork, artworks.add);

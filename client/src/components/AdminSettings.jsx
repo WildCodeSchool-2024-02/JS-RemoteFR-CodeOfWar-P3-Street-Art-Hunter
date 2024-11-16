@@ -179,6 +179,7 @@ Artworks.propTypes = {
       description: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
       image_url: PropTypes.string,
+      style: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
