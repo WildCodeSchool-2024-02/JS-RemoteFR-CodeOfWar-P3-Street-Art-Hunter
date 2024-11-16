@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { frenchDate } from "../utils/function";
 
@@ -31,7 +31,10 @@ export default function GalleryDetails() {
 
   return (
     <section className="galleryDetails">
-      <h1>{artwork.title}</h1>
+      <Link to="/gallery" className="galleryReturn">
+        ⬅
+      </Link>
+      <h1>{artwork.title}</h1>{" "}
       <div className="galleryDetailsBody">
         <img src={artworkUrl} alt={artwork.title} className="detailImage" />
 
