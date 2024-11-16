@@ -84,7 +84,7 @@ function Hunters({ users }) {
                 </ul>
               </div>
             </div>
-            <div className="checkArtworkBtn">
+            <div className="checkUserBtn">
               <Link to={`/userDetails/${user.id}`}>
                 <GradientButton text="Vérification" />
               </Link>
