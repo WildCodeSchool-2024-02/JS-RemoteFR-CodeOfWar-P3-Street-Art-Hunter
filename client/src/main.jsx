@@ -86,6 +86,7 @@ const router = createBrowserRouter([
         loader: async () => ({
           readArtwork: await getValidated(),
           readUsers: await getUser(),
+          readAllArtworks: await getArtworks(),
         }),
       },
       {

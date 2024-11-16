@@ -97,11 +97,56 @@ function Hunters({ users }) {
     </section>
   );
 }
-function Version() {
-  return <p>Version 1.5</p>;
-}
+function Artworks({ allArtworks }) {
+  return (
+    <section>
+      {allArtworks && allArtworks.length > 0 ? (
+        allArtworks.map((allArtwork) => (
+          <section className="validation" key={allArtwork.id}>
+            <div>
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/${allArtwork.image_url}`}
+                alt={allArtwork.title}
+                className="imageValidate"
+              />
+            </div>
+            <div>
+              <div className="informationValidate">
+                <ul>
+                  <li>
+                    <span className="title-font">Pseudo du joueur </span>:{" "}
+                    {allArtwork.pseudo}
+                  </li>
+                  <li>
+                    <span className="title-font"> Titre </span>:{" "}
+                    {allArtwork.title}
+                  </li>
+                  <li>
+                    <span className="title-font">Description </span>:{" "}
+                    {allArtwork.description}
+                  </li>
 
-export { Validation, Hunters, Version };
+                  <li>
+                    <span className="title-font"> Style </span>:{" "}
+                    {allArtwork.style}{" "}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="checkArtworkBtn">
+              <Link to={`/gestion/${allArtwork.id}`}>
+                <GradientButton text="Vérification" />
+              </Link>
+            </div>
+          </section>
+        ))
+      ) : (
+        <p>Il n'y a pas d'oeuvre pour le moment.</p>
+      )}
+    </section>
+  );
+}
+export { Validation, Hunters, Artworks };
 
 Validation.propTypes = {
   artworks: PropTypes.arrayOf(
@@ -123,6 +168,17 @@ Hunters.propTypes = {
       mail: PropTypes.string.isRequired,
       registration_date: PropTypes.string.isRequired,
       score: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
+Artworks.propTypes = {
+  allArtworks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      image_url: PropTypes.string,
     })
   ).isRequired,
 };
