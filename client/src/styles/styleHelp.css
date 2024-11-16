@@ -42,7 +42,7 @@
   color: var(--grey);
   border-bottom: 1px solid var(--grey);
   position: relative;
-  z-index: 10;
+  z-index: 1;
   background-color: white;
 }
 
@@ -60,7 +60,6 @@
   overflow: scroll;
   padding-bottom: 1000px;
   position: relative;
-  z-index: 5;
   margin-top: 1rem;
 }
 
