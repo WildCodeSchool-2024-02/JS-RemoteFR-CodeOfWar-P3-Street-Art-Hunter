@@ -39,7 +39,7 @@ class FavoriteRepository extends AbstractRepository {
 
   async delete(id) {
     const [result] = await this.database.query(
-      `delete from ${this.table} where id = ?`,
+      `delete from ${this.table} where artwork_id = ?`,
       [id]
     );
     return result.affectedRows;

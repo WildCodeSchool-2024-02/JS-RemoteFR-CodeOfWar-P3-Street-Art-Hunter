@@ -1,24 +1,28 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import { Validation, Users, Contact } from "../components/AdminSettings";
+import { Validation, Hunters, Artworks } from "../components/AdminSettings";
+
 import "../styles/gestion.css";
 
 export default function Gestion() {
-  const { readArtwork, readUsers } = useLoaderData();
+  const { readArtwork, readUsers, readAllArtworks } = useLoaderData();
   const artworks = readArtwork;
   const users = readUsers;
+  const allArtworks = readAllArtworks;
+  console.info(allArtworks);
 
   const [isActive, setIsActive] = useState("Validation");
 
   const headers = [
     { name: "Validation" },
-    { name: "Users" },
-    { name: "Contact" },
+    { name: "Hunters" },
+    { name: "Artworks" },
     { name: "" },
   ];
 
-  const adminSettings = { Validation, Users, Contact };
+  const adminSettings = { Validation, Hunters, Artworks };
+
   const Admin = adminSettings[isActive];
 
   const handleClickActive = (header) => {
@@ -47,7 +51,7 @@ export default function Gestion() {
         </div>
       </div>
       <section className="gestionBody">
-        <Admin artworks={artworks} users={users} />
+        <Admin artworks={artworks} users={users} allArtworks={allArtworks} />
       </section>
     </section>
   );

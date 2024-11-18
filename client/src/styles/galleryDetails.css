@@ -3,6 +3,13 @@
   width: 100%;
   overflow: scroll;
 }
+.galleryReturn {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  font-size: 28px;
+  color: var(--primary-color);
+}
 h1 {
   font-family: var(--title-font);
   font-size: 2rem;
@@ -63,10 +70,13 @@ h1 {
 }
 
 @media (width >= 480px) {
-  .galleryDetails > h1 {
-    display: none;
+  .galleryDetails {
+    padding-top: 6rem;
   }
   .galleryDetailsBody {
-    margin-top: 5.5rem;
+    margin-top: 0.5rem;
+  }
+  .galleryReturn {
+    padding-top: 6rem;
   }
 }

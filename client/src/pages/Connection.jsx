@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-import myAxios from "../services/instanceAxios";
+
 import GradientButton from "../components/GradientButton";
-import "../styles/connection.css";
+import { UserInfoContext } from "../services/context/UserInfoContext";
+import { login } from "../services/request";
 
 import logo from "../assets/images/logo_streetArt.svg";
-import { UserInfoContext } from "../services/context/UserInfoContext";
+import "../styles/connection.css";
 
 export default function Connection() {
   const { setUserInfo } = useContext(UserInfoContext);
@@ -18,14 +18,8 @@ export default function Connection() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    myAxios
-      .post("/login", userLogin, { withCredentials: true })
-      .then((response) => {
-        setUserInfo(response.data);
-        navigate("/");
-      })
-      .catch((error) => console.error(error));
+    await login(userLogin, setUserInfo);
+    navigate("/");
   };
 
   const handleChangeLogin = (event) => {

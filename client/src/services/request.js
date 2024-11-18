@@ -3,8 +3,14 @@ import myAxios from "./instanceAxios";
 // ##### *** GET *** ##### \\
 export function getUsersRanking() {
   return myAxios
-    .get("/users/ranking")
+    .get("/ranking/users")
     .then((response) => response.data.result)
+    .catch((error) => console.info(error));
+}
+export function getOneUserRanking(pseudo, setter) {
+  myAxios
+    .get(`/ranking/users?q=${pseudo}`)
+    .then((res) => setter(res.data.result))
     .catch((error) => console.info(error));
 }
 export function getValidated() {
@@ -13,6 +19,14 @@ export function getValidated() {
     .then((response) => response.data)
     .catch((error) => console.error(error));
 }
+
+export function getAllArtworks() {
+  return myAxios
+    .get(`/artworks/admin`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+}
+
 export function getUserConnected(setter) {
   return myAxios
     .get("/checkLogin", { withCredentials: true })
@@ -41,6 +55,12 @@ export function getArtworks() {
     .then((response) => response.data)
     .catch((error) => console.info(error));
 }
+export function getArtworksByStyle(style, setter) {
+  myAxios
+    .get(style ? `/artworks?q=${style}` : "/artworks")
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
 export function getGallery(id) {
   return myAxios
     .get(`/artworks/${id}`)
@@ -50,7 +70,6 @@ export function getGallery(id) {
 
 // *** STYLES *** \\
 export function getStyle() {
-
   return myAxios
     .get("/styles")
     .then((response) => response.data)
@@ -66,6 +85,13 @@ export function getFavorites(id, setter) {
 }
 
 // ##### *** POST *** ###### \\
+
+export function login(userLogin, setter) {
+  myAxios
+    .post("/login", userLogin, { withCredentials: true })
+    .then((response) => setter(response.data))
+    .catch((error) => console.error(error));
+}
 export function getCityName(lat, lon, setter) {
   const location = {
     lat,
@@ -130,9 +156,16 @@ export function updateUser(id, userData) {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((response) => response.data)
+    .then((response) => console.info(response.data))
     .catch((error) => console.info(error));
 }
+export function updatePasswordUser(id, password) {
+  myAxios
+    .put(`/passwordUsers/${id}`, { password }, { withCredentials: true })
+    .then((response) => console.info(response.data))
+    .catch((error) => console.info(error));
+}
+
 // *** ARTWORKS *** \\
 export function updateArtwork(id, modified) {
   myAxios
@@ -142,7 +175,6 @@ export function updateArtwork(id, modified) {
 }
 
 // *** STYLES *** \\
-// *** FAVORITES *** \\
 
 // ###### *** DELETE *** ###### \\
 export function deleteCookie() {
@@ -166,6 +198,16 @@ export function deleteUser(id) {
 export function deleteArtwork(id) {
   myAxios
     .delete(`artworks/${id}`)
+    .then((response) => {
+      console.info(response.data);
+    })
+    .catch((error) => console.error(error));
+}
+
+// *** FAVORITES *** \\
+export function deleteFavorite(id) {
+  myAxios
+    .delete(`favorites/${id}`)
     .then((response) => {
       console.info(response.data);
     })

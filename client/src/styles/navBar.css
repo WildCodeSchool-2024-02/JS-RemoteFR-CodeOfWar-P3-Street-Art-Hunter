@@ -56,6 +56,13 @@
   width: 34px;
   margin-bottom: 4px;
 }
+.redSelect {
+  color: var(--primary-color);
+}
+.imgAsSelect {
+  filter: invert(24%) sepia(97%) saturate(6553%) hue-rotate(356deg)
+    brightness(97%) contrast(105%);
+}
 
 .navBar > .nav_picto > a {
   width: 32px;
@@ -120,6 +127,9 @@
   font-family: var(--title-font);
   font-size: 24px;
   text-align: center;
+}
+.linkNavDesktop > p:hover {
+  color: var(--primary-color);
 }
 .linkNavActive {
   color: var(--primary-color);

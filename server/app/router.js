@@ -24,7 +24,6 @@ const { findCity } = require("./services/findCity");
 
 //  ** USERS ** \\
 router.get("/users", users.browse);
-router.get("/users/ranking", ranking.browse);
 router.get("/users/:id", users.read);
 router.post(
   "/users",
@@ -33,12 +32,21 @@ router.post(
   upload.uploadPicture,
   users.add
 );
-router.put("/users/:id", upload.uploadPicture, auth.hashPassword, users.edit);
+router.put("/users/:id", upload.uploadPicture, users.edit);
+router.put(
+  "/passwordUsers/:id",
+  verifyMiddleware.verifyPassword,
+  auth.verifyToken,
+  auth.hashPassword,
+  users.editPassword
+);
+// router.put("/passwordUsers/:id", auth.verifyToken, compareLogin, auth.hashPassword, users.editPassword); **Secure Path**
 router.delete("/users/:id", users.destroy);
 
 // ** ARTWORKS ** \\
 router.get("/artworks", artworks.browse);
-router.get("/artworks/validate", artworks.browseByAdmin);
+router.get("/artworks/validate", artworks.browseForAdminvalidate);
+router.get("/artworks/admin", artworks.browseByAdmin);
 router.get("/artworks/:id", artworks.read);
 router.get("/artworks/validate/:id", artworks.readByAdmin);
 router.post("/artworks", upload.uploadArtwork, artworks.add);
@@ -67,7 +75,7 @@ router.put("/favorites/:id", favorites.edit);
 router.delete("/favorites/:id", favorites.destroy);
 
 // ** RANKING - SCORE ** \\
-
+router.get("/ranking/users", ranking.browse);
 router.put("/score/:id", users.editScore);
 
 // ** LOGIN - LOGOUT ** \\

@@ -1,12 +1,17 @@
 const login = async (req, res, next) => {
   try {
-    res.cookie("auth", req.token).json({
-      message: "Connexion réussie",
-      id: req.user.id,
-      pseudo: req.user.pseudo,
-      mail: req.user.mail,
-      isAdmin: req.user.isAdmin,
-    });
+    res
+      .cookie("auth", req.token, {
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      })
+      .json({
+        message: "Connexion réussie",
+        id: req.user.id,
+        pseudo: req.user.pseudo,
+        mail: req.user.mail,
+        isAdmin: req.user.isAdmin,
+      });
   } catch (error) {
     next(error);
   }

@@ -7,14 +7,12 @@ import { UserInfoContext } from "../../services/context/UserInfoContext";
 export default function NavBarDesktop() {
   const { userInfo } = useContext(UserInfoContext);
 
-  const [isActive, setIsActive] = useState("Acceuil");
+  const [isActive, setIsActive] = useState("Accueil");
 
   const pathArray = [
     { path: "/", name: "Accueil" },
     { path: "/gallery", name: "Galerie" },
-
     ...(userInfo ? [{ path: `/profile/${userInfo.id}`, name: "Profil" }] : []),
-
     { path: "/help", name: "Aide" },
     ...(!userInfo ? [{ path: "/connection", name: "Connexion" }] : []),
     ...(userInfo?.isAdmin ? [{ path: "/gestion", name: "Gestion" }] : []),

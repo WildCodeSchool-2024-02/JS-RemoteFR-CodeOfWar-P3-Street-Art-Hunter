@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { frenchDate } from "../utils/function";
 
@@ -7,9 +7,10 @@ import "../styles/galleryDetails.css";
 
 export default function GalleryDetails() {
   const artwork = useLoaderData();
-  const artworkUrl = `${import.meta.env.VITE_API_URL_ARTWORK}/${artwork.image_url}`;
   const [message, setMessage] = useState("");
   const [cityCountry, setCityCountry] = useState();
+
+  const artworkUrl = `${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`;
 
   useEffect(() => {
     getCityName(artwork.lat, artwork.lon, setCityCountry);
@@ -30,7 +31,10 @@ export default function GalleryDetails() {
 
   return (
     <section className="galleryDetails">
-      <h1>{artwork.title}</h1>
+      <Link to="/gallery" className="galleryReturn">
+        ⬅
+      </Link>
+      <h1>{artwork.title}</h1>{" "}
       <div className="galleryDetailsBody">
         <img src={artworkUrl} alt={artwork.title} className="detailImage" />
 

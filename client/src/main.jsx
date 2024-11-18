@@ -11,6 +11,7 @@ import {
   getUsersRanking,
   getValidated,
   getUser,
+  getAllArtworks,
 } from "./services/request";
 import useScreenWidth from "./utils/hook/useScreenWidth";
 
@@ -86,6 +87,7 @@ const router = createBrowserRouter([
         loader: async () => ({
           readArtwork: await getValidated(),
           readUsers: await getUser(),
+          readAllArtworks: await getAllArtworks(),
         }),
       },
       {

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { frenchDate } from "../utils/function";
+import GradientButton from "./GradientButton";
 
 function Validation({ artworks }) {
   return (
@@ -9,13 +10,11 @@ function Validation({ artworks }) {
         artworks.map((artwork) => (
           <section className="validation" key={artwork.id}>
             <div>
-              <Link to={`/gestion/${artwork.id}`}>
-                <img
-                  src={artwork.image_url}
-                  alt={artwork.title}
-                  className="imageValidate"
-                />
-              </Link>
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/${artwork.image_url}`}
+                alt={artwork.title}
+                className="imageValidate"
+              />
             </div>
             <div>
               <div className="informationValidate">
@@ -38,6 +37,11 @@ function Validation({ artworks }) {
                 </ul>
               </div>
             </div>
+            <div className="checkArtworkBtn">
+              <Link to={`/gestion/${artwork.id}`}>
+                <GradientButton text="Vérification" />
+              </Link>
+            </div>
           </section>
         ))
       ) : (
@@ -46,21 +50,19 @@ function Validation({ artworks }) {
     </section>
   );
 }
-function Users({ users }) {
+function Hunters({ users }) {
   return (
     <section>
       {users && users.length > 0 ? (
         users.map((user) => (
           <section className="userList" key={user.id}>
-            <Link to={`/userDetails/${user.id}`}>
-              <div className="imageUser">
-                <img
-                  src={user.avatar}
-                  alt={user.pseudo}
-                  className="avatarUser"
-                />
-              </div>
-            </Link>
+            <div className="imageUser">
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/avatars/${user.avatar}`}
+                alt={user.pseudo}
+                className="avatarUser"
+              />
+            </div>
             <div>
               <div className="informationUser">
                 <ul>
@@ -82,6 +84,11 @@ function Users({ users }) {
                 </ul>
               </div>
             </div>
+            <div className="checkUserBtn">
+              <Link to={`/userDetails/${user.id}`}>
+                <GradientButton text="Vérification" />
+              </Link>
+            </div>
           </section>
         ))
       ) : (
@@ -90,10 +97,56 @@ function Users({ users }) {
     </section>
   );
 }
-function Contact() {
-  return <h1>Coucou de contact</h1>;
+function Artworks({ allArtworks }) {
+  return (
+    <section>
+      {allArtworks && allArtworks.length > 0 ? (
+        allArtworks.map((allArtwork) => (
+          <section className="validation" key={allArtwork.id}>
+            <div>
+              <img
+                src={`${import.meta.env.VITE_API_URL_PICTURE}/${allArtwork.image_url}`}
+                alt={allArtwork.title}
+                className="imageValidate"
+              />
+            </div>
+            <div>
+              <div className="informationValidate">
+                <ul>
+                  <li>
+                    <span className="title-font">Pseudo du joueur </span>:{" "}
+                    {allArtwork.pseudo}
+                  </li>
+                  <li>
+                    <span className="title-font"> Titre </span>:{" "}
+                    {allArtwork.title}
+                  </li>
+                  <li>
+                    <span className="title-font">Description </span>:{" "}
+                    {allArtwork.description}
+                  </li>
+
+                  <li>
+                    <span className="title-font"> Style </span>:{" "}
+                    {allArtwork.style}{" "}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="checkArtworkBtn">
+              <Link to={`/gestion/${allArtwork.id}`}>
+                <GradientButton text="Vérification" />
+              </Link>
+            </div>
+          </section>
+        ))
+      ) : (
+        <p>Il n'y a pas d'oeuvre pour le moment.</p>
+      )}
+    </section>
+  );
 }
-export { Validation, Users, Contact };
+export { Validation, Hunters, Artworks };
 
 Validation.propTypes = {
   artworks: PropTypes.arrayOf(
@@ -106,7 +159,7 @@ Validation.propTypes = {
     })
   ).isRequired,
 };
-Users.propTypes = {
+Hunters.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -115,6 +168,18 @@ Users.propTypes = {
       mail: PropTypes.string.isRequired,
       registration_date: PropTypes.string.isRequired,
       score: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
+Artworks.propTypes = {
+  allArtworks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      image_url: PropTypes.string,
+      style: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
